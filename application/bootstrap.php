@@ -103,21 +103,17 @@ Session::$default = 'native';
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
-	'profiler'      => MODPATH.'profiler',   // Alert's Profiler Toolbar
-	// 'assets'     => MODPATH.'assets',     // Synapse Studios Assets module
-	'auth'          => MODPATH.'auth',       // Basic authentication
-	// 'cache'      => MODPATH.'cache',      // Caching with multiple backends
-	// 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
-	'database'      => MODPATH.'database',   // Database access
-	'email'         => MODPATH.'email',      // Kohana wrapper for SwiftMailer
-	// 'image'      => MODPATH.'image',      // Image manipulation
-	'kostache'      => MODPATH.'kostache',   // Class-based views / logicless templates
-	// 'media'      => MODPATH.'media',      // Synapse Studios - serve media files from within CFS
-	'notices'       => MODPATH.'notices',    // Synapse Studios - user notification
-	'orm'           => MODPATH.'orm',        // Object Relationship Mapping
-	// 'unittest'   => MODPATH.'unittest',   // Unit testing
-	'userguide'     => MODPATH.'userguide',  // User guide and API documentation
-	'vendo-acl'     => MODPATH.'vendo-acl',  // Vendo's policy-based authorization system
+	'profiler'      => MODPATH.'profilertoolbar', // Alert's Profiler Toolbar
+	'auth'          => MODPATH.'auth',            // Basic authentication
+	// 'cache'      => MODPATH.'cache',           // Caching with multiple backends
+	'database'      => MODPATH.'database',        // Database access
+	'email'         => MODPATH.'email',           // Kohana wrapper for SwiftMailer
+	'kostache'      => MODPATH.'kostache',        // Class-based views / logicless templates
+	'notices'       => MODPATH.'notices',         // Synapse Studios - user notification
+	'orm'           => MODPATH.'orm',             // Object Relationship Mapping
+	// 'unittest'   => MODPATH.'unittest',        // Unit testing
+	'userguide'     => MODPATH.'userguide',       // User guide and API documentation
+	'vendo-acl'     => MODPATH.'vendo-acl',       // Vendo's policy-based authorization system
 ));
 
 // Now that the database module has been loaded...

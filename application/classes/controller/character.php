@@ -11,7 +11,7 @@ class Controller_Character extends Abstract_Controller_Website {
 	
 	public function action_add()
 	{
-		if ( ! $this->user->can('add_character'))
+		if ( ! $this->user->can('character_add'))
 		{
 			// Not allowed, get the reason why
 			$status = Policy::$last_code;
@@ -55,7 +55,7 @@ class Controller_Character extends Abstract_Controller_Website {
 		// Load character model
 		$character = ORM::factory('character', array('name' => $this->request->param('character')));
 		
-		if ( ! $this->user->can('remove_character', array('character' => $character)))
+		if ( ! $this->user->can('character_remove', array('character' => $character)))
 		{
 			// Not allowed, get the reason why
 			$status = Policy::$last_code;
@@ -80,7 +80,7 @@ class Controller_Character extends Abstract_Controller_Website {
 	{
 		$character = ORM::factory('character', array('name' => $this->request->param('character')));
 		
-		if ( ! $this->user->can('edit_character', array('character' => $character)))
+		if ( ! $this->user->can('character_edit', array('character' => $character)))
 		{
 			// Not allowed, get the reason why
 			$status = Policy::$last_code;

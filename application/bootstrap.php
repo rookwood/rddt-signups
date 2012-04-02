@@ -154,12 +154,6 @@ Route::set('profile', 'profile(/<user>)')
 		'action'     => 'profile'
 	));
 	
-Route::set('default', '(<controller>(/<action>(/<id>)))')
-	->defaults(array(
-		'controller' => 'welcome',
-		'action'     => 'index',
-	));
-	
 Route::set('event display', 'event/<id>', array('id' => '^(\d+)$'))
 	->defaults(array(
 		'controller' => 'event',
@@ -182,4 +176,10 @@ Route::set('event', 'character/<action>(/<id>)', array('action' => 'add|remove|e
 	->defaults(array(
 		'controller' => 'event',
 		'action'     => 'add',
+	));
+
+Route::set('default', '(<controller>(/<action>(/<id>)))')
+	->defaults(array(
+		'controller' => 'welcome',
+		'action'     => 'index',
 	));

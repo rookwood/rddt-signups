@@ -1,0 +1,1 @@
+<?php defined('SYSPATH') or die('No direct access allowed.');class View_Page_Admin_Role_Edit extends Abstract_View_Admin_Layout {	public $title = 'Edit role';	public $form_name = 'edit_role';	public function action()	{		return '/'.Route::get('admin')->uri(array('controller' => 'role', 'action' => 'edit')).'/'.$this->roles->name;	}}

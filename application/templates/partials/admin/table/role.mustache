@@ -1,0 +1,28 @@
+	<figure id="role_table">
+		<figcaption>{{role_table_caption}}</figcaption>
+		<table id="roles">
+			<thead>
+				<tr>
+					<td colspan="2">Actions</td>
+					<td>Role ID</td>
+					<td>Name</td>
+					<td>Description</td>
+				</tr>
+			</thead>
+			<tbody>
+			{{#roles}}
+				<tr class="{{role_stripe}}">
+					<td><a href="{{edit_route}}" title="Edit role"><img src="/media/img/icons/application_edit.png" /></a></td>
+					<td><a href="{{remove_route}}" title="Remove role"><img src="/media/img/icons/cross.png" /></a></td>
+					<td>{{id}}</td>
+					<td>{{name}}</td>
+					<td>{{description}}</td>
+				</tr>
+			{{/roles}}
+			</tbody>
+		</table>
+	</figure>
+	
+	<form action="{{button_action_create_role}}" method="post">
+		<input type="submit" value="Add new role" class="standard_acction" />
+	</form>

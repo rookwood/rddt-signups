@@ -1,0 +1,2 @@
+<?php defined('SYSPATH') or die('No direct access allowed.');/** * Events model */class Model_Event extends ORM {	// Relationships
+	protected $_belongs_to = array('dungeon' => array());		protected $_has_many   = array(		'characters' => array(			'model'    => 'character',			'through'  => 'signups',		),	);}

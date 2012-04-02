@@ -1,0 +1,29 @@
+	<form id="register" action="{{action}}" method="post" class="panel">
+		<fieldset>
+			<legend>{{title}}</legend>
+			{{#errors}}<div id="errors">{{errors}}</div>{{/errors}}
+			<ul>
+				<li>
+					<label for="user_name">Username:</label>
+					<input type="text" name="user[username]" id="user_name" autofocus="autofocus" />
+				</li>
+					<label for="user_password">Password:</label>
+					<input type="password" name="user[password]" id="user_password" />
+				</li>
+				<li>
+					<label for="remember">Remember login:</label>
+					<input type="checkbox" name="remember" value="TRUE" id="remember" checked="checked" />
+				</li>
+				{{{csrf}}}
+			</ul>
+		</fieldset>
+		<input type="submit" value="Submit" />
+	</form>
+{{#retrieval}}
+
+	<ul id="recovery">
+{{#retrieval_links}}
+	<li><a href="{{url}}">{{text}}</a></li>
+{{/retrieval_links}}
+	</ul>
+{{/retrieval}}

@@ -1,0 +1,1 @@
+<?php defined('SYSPATH') or die('No direct access allowed.');class View_Page_User_Profile extends Abstract_View_Page {	public $title = 'View Profile';}

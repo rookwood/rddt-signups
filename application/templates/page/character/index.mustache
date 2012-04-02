@@ -1,0 +1,9 @@
+
+{{^characters}}You have no characters listed.{{/characters}}
+{{#characters}}
+	<ul>
+	{{#character}}	
+		<li class="{{class}}">{{name}}</li>
+	{{/#character}}
+	</ul>
+{{/characters}}

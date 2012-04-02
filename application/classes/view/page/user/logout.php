@@ -1,0 +1,1 @@
+<?php defined('SYSPATH') or die('No direct access allowed.');class View_Page_User_Logout extends Abstract_View_Page {}

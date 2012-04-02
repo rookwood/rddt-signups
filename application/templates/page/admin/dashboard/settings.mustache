@@ -1,0 +1,40 @@
+
+	<h3>{{title}}</h3>
+	
+	<form action="{{settings_action}}" method="post" class="panel">
+		<fieldset id="settings">
+			<legend>Registration</legend>
+			<ul>
+			<li>
+				<label for="open_registration">Allow open user registration?</label>
+				<select id="open_registartion" name="options[registration][open_registration]">
+					<option value="0-bool"{{^open_registration}} selected="selected"{{/open_registration}}>No</option>
+					<option value="1-bool"{{#open_registration}} selected="selected"{{/open_registration}}>Yes</option>
+				</select>
+			</li>
+			<li>
+				<label for="require_email_verification">Require email verification?</label>
+				<select id="require_email_verification" name="options[registration][require_email_verification]">
+					<option value="0-bool"{{^require_email_verification}} selected="selected"{{/require_email_verification}}>No</option>
+					<option value="1-bool"{{#require_email_verification}} selected="selected"{{/require_email_verification}}>Yes</option>
+				</select>
+			</li>
+			<li>
+				<label for="email_lost_password">Allow password retrieval via email?</label>
+				<select id="email_lost_password" name="options[lost_data][email_lost_password]">
+					<option value="0-bool"{{^email_lost_password}} selected="selected"{{/email_lost_password}}>No</option>
+					<option value="1-bool"{{#email_lost_password}} selected="selected"{{/email_lost_password}}>Yes</option>
+				</select>
+			</li>
+			<li>
+				<label for="email_lost_username">Allow username retrieval via email?</label>
+				<select id="email_lost_username" name="options[lost_data][email_lost_username]">
+					<option value="0-bool"{{^email_lost_username}} selected="selected"{{/email_lost_username}}>No</option>
+					<option value="1-bool"{{#email_lost_username}} selected="selected"{{/email_lost_username}}>Yes</option>
+				</select>
+			</li>
+		</fieldset>
+		{{{csrf}}}
+		<input type="submit" value="Submit" />
+	</form>
+	

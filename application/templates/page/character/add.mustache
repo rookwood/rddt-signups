@@ -1,0 +1,30 @@
+
+	<form id="character_add" action="{{action}}" method="post" class="panel">
+		<fieldset>
+			<ol>
+				<li>
+					<label for="name">Username:</label>
+					<input type="text" name="character[name]" id="name" value="{{character.name}}" {{#errors.name}}class="error" {{/errors.name}}/>
+				</li>
+				<li>
+					<label for="profession">Profession:</label>
+					<select name="character[profession]" id="profession">
+						<option value="warrior">Warrior</option>
+						<option value="ranger">Ranger</option>
+						<option value="monk">Monk</option>
+						<option value="necromancer">Necromancer</option>
+						<option value="elementalist">Elementalist</option>
+						<option value="mesmer">Mesmer</option>
+						<option value="ritualist">Ritualist</option>
+						<option value="assassain">Assassain</option>
+						<option value="dervish">Dervish</option>
+						<option value="paragon">Paragon</option>
+					</select>
+				</li>
+				<li>
+					{{{csrf}}}
+					<input type="submit" value="Add character" />
+				</li>
+			</ol>
+		</fieldset>
+	</form>

@@ -1,0 +1,38 @@
+	<figure id="recent_user_table">
+		<figcaption>{{user_table_caption}}</figcaption>
+		<table id="users">
+			<thead>
+				<tr>
+					<td colspan="2">Actions</td>
+					<td>User ID</td>
+					<td>Username</td>
+					<td>Real name</td>
+					<td>Email</td>
+					<td>Occupation</td>
+					{{#show_roles}}
+					<td>Roles</td>
+					{{/show_roles}}
+				</tr>
+			</thead>
+			<tbody>
+			{{#users}}
+				<tr class="{{user_stripe}}">
+					<td><a href="{{edit_route}}" title="Edit user"><img src="/media/img/icons/user_edit.png" /></a></td>
+					<td><a href="{{deactivate_route}}" title="Deactivate user account"><img src="/media/img/icons/user_delete.png" /></a></td>
+					<td>{{id}}</td>
+					<td>{{username}}</td>
+					<td>{{name}}</td>
+					<td>{{email}}</td>
+					<td>{{occupation}}</td>
+					{{#show_roles}}
+					<td>{{roles}}</td>
+					{{/show_roles}}
+				</tr>
+			{{/users}}
+			</tbody>
+		</table>
+	</figure>
+
+	<form action="{{button_action_create_user}}" method="post">
+		<input type="submit" value="Add new user" class="standard_acction" />
+	</form>

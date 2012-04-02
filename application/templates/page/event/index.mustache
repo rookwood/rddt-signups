@@ -1,0 +1,25 @@
+
+	<table id="events">
+		<thead>
+			<tr>
+				<td>Sign-up</td>
+				<td>Date</td>
+				<td>Start time</td>
+				<td>Event name</td>
+				<td>Status</td>
+				<td>Host</td>
+			</tr>
+		</thead>
+		<tbody>
+		{{#events}}
+			<tr>
+			<td>{{sign_up_link}}<td>
+				<td>{{date}}</td>
+				<td>{{time}}</td>
+				<td>{{description}}</td>
+				<td>{{status}}</td>
+				<td>{{host}}</td>
+			</tr>
+		{{/events}}
+		</tbody>
+	</table>

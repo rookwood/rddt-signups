@@ -1,0 +1,20 @@
+
+	<form action="{{action}}" method="post" name="{{form_name}}" class="panel">
+		{{#errors}}<div class="error">{{{errors}}}</div>{{/errors}}
+		{{#success}}<div class="success">{{{success}}}</div>{{/success}}
+		<fieldset>
+			<legend>{{title}}</legend>
+			<ul>
+				<li>
+					<label for="role_name">Name:</label>
+					<input type="text" name="role[name]" id="role_name" value="{{roles.name}}" />
+				</li>
+				<li>
+					<label for="role_description">Description:</label>
+					<input type="text" name="role[description]" id="role_description" value="{{roles.description}}" />
+				</li>
+				{{{csrf}}}
+			</ul>
+		</fieldset>
+		<input type="submit" value="Submit" />
+	</form>

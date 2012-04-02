@@ -19,7 +19,7 @@ class Controller_Event extends Abstract_Controller_Website {
 		// Load the event object
 		$event = ORM::factory('event', array('id' => $this->request->param('id')));
 		
-		if ( ! $this->user->can('view_event', array('event' => $event)))
+		if ( ! $this->user->can('event_view', array('event' => $event)))
 		{
 				Notices::add('error', 'msg_info', array('message' => Kohana::message('koreg', 'event.view.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 				$this->request->redirect(Route::url('event'));
@@ -30,7 +30,7 @@ class Controller_Event extends Abstract_Controller_Website {
 	
 	public function action_add()
 	{
-		if ( ! $this->user->can('add_event'))
+		if ( ! $this->user->can('event_add'))
 		{
 			Notices::add('error', 'msg_info', array('message' => Kohana::message('koreg', 'event.add.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 			$this->request->redirect(Route::url('event'));
@@ -54,7 +54,7 @@ class Controller_Event extends Abstract_Controller_Website {
 		// Load the event object
 		$event = ORM::factory('event', array('id' => $this->request->param('id')));
 		
-		if ( ! $this->user->can('remove_event', array('event' => $event)))
+		if ( ! $this->user->can('event_remove', array('event' => $event)))
 		{
 			Notices::add('error', 'msg_info', array('message' => Kohana::message('koreg', 'event.remove.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 			$this->request->redirect(Route::url('event'));
@@ -73,7 +73,7 @@ class Controller_Event extends Abstract_Controller_Website {
 		// Load the event object
 		$event = ORM::factory('event', array('id' => $this->request->param('id')));
 		
-		if ( ! $this->user->can('edit_event', array('event' => $event)))
+		if ( ! $this->user->can('event_edit', array('event' => $event)))
 		{
 			Notices::add('error', 'msg_info', array('message' => Kohana::message('koreg', 'event.edit.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 			$this->request->redirect(Route::url('event'));
@@ -98,7 +98,7 @@ class Controller_Event extends Abstract_Controller_Website {
 		// Load the event object
 		$event = ORM::factory('event', array('id' => $this->request->param('id')));
 		
-		if ( ! $this->user->can('signup_event', array('event' => $event)))
+		if ( ! $this->user->can('event_signup', array('event' => $event)))
 		{
 			Notices::add('error', 'msg_info', array('message' => Kohana::message('koreg', 'event.signup.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 			$this->request->redirect(Route::url('event'));

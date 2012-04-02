@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 01, 2012 at 09:11 PM
+-- Generation Time: Apr 02, 2012 at 03:01 PM
 -- Server version: 5.0.92
 -- PHP Version: 5.2.9
 
@@ -23,8 +23,8 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `characters` (
   `id` int(11) unsigned NOT NULL auto_increment,
   `name` varchar(19) NOT NULL,
-  `profession_id` int(10) unsigned NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
+  `profession_id` int(11) unsigned NOT NULL,
+  `user_id` int(11) unsigned NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `characters_ibfk_1` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -61,9 +61,9 @@ CREATE TABLE IF NOT EXISTS `dungeons` (
 
 CREATE TABLE IF NOT EXISTS `events` (
   `id` int(11) unsigned NOT NULL auto_increment,
-  `time` datetime NOT NULL,
+  `time` timestamp NULL default NULL,
   `dungeon_id` int(11) unsigned NOT NULL,
-  `description` text NOT NULL,
+  `description` text,
   `status` int(2) unsigned NOT NULL,
   `user_id` int(11) unsigned NOT NULL,
   PRIMARY KEY  (`id`)
@@ -120,9 +120,8 @@ INSERT INTO `professions` (`id`, `name`) VALUES
 
 CREATE TABLE IF NOT EXISTS `profiles` (
   `id` int(11) unsigned NOT NULL auto_increment,
-  `first_name` varchar(20) character set latin1 NOT NULL,
-  `last_name` varchar(30) character set latin1 NOT NULL,
-  `timezone` int(2) default NULL,
+  `first_name` varchar(20) character set latin1 default NULL,
+  `last_name` varchar(30) character set latin1 default NULL,
   `birthdate` date default NULL,
   `user_id` int(11) unsigned NOT NULL,
   PRIMARY KEY  (`id`),
@@ -193,6 +192,7 @@ CREATE TABLE IF NOT EXISTS `signups` (
   `status` int(2) unsigned NOT NULL,
   `role` varchar(20) NOT NULL,
   `comment` text,
+  `timestamp` timestamp NOT NULL default CURRENT_TIMESTAMP,
   PRIMARY KEY  (`event_id`,`character_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -209,6 +209,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(64) NOT NULL,
   `logins` int(10) unsigned NOT NULL default '0',
   `last_login` int(10) unsigned default NULL,
+  `timezone` varchar(50) NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 

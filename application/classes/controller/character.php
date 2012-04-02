@@ -4,25 +4,32 @@ class Controller_Character extends Abstract_Controller_Website {
 
 	public function action_index()
 	{
+		// Load array of this user's character list from the database
 		$characters = ORM::factory('character')->where('user_id', '=', $this->user->id)->find_all()->as_array();
 		
+		// Pass character array to the view class
 		$this->view->characters = (count($characters) !== 0) ? $characters : FALSE;
 	}
 	
 	public function action_add()
 	{
+		// Can user add new characters at this time?
 		if ( ! $this->user->can('character_add'))
 		{
 			// Not allowed, get the reason why
 			$status = Policy::$last_code;
 			
+			// Must be logged in to add a character
 			if ($status === Policy_Add_Character::NOT_LOGGED_IN)
 			{			
 				Notices::add('info', 'msg_info', array('message' => Kohana::message('koreg', 'character.add.not_logged_in'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 
+				// Redirect to login screen; come back once finished
 				$this->session->set('follow_login', $this->request->url());
 				$this->request->redirect(Route::url('user', array('controller' => 'user', 'action' => 'login')));
 			}
+			
+			// Unspecified reason for denial
 			else if ($status === Policy_Add_Character::NOT_ALLOWED)
 			{
 				Notices::add('denied', 'msg_info', array('message' => Kohana::message('koreg', 'character.add.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
@@ -60,6 +67,7 @@ class Controller_Character extends Abstract_Controller_Website {
 			// Not allowed, get the reason why
 			$status = Policy::$last_code;
 			
+			// Unspecified reason for denial
 			if ($status === Policy_Remove_Character::NOT_ALLOWED)
 			{			
 				Notices::add('info', 'msg_info', array('message' => Kohana::message('koreg', 'character.remove.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
@@ -78,13 +86,16 @@ class Controller_Character extends Abstract_Controller_Website {
 	
 	public function action_edit()
 	{
+		// Load character model
 		$character = ORM::factory('character', array('name' => $this->request->param('character')));
 		
+		// Is user allowed to edit this character?
 		if ( ! $this->user->can('character_edit', array('character' => $character)))
 		{
 			// Not allowed, get the reason why
 			$status = Policy::$last_code;
 			
+			// Unspecified reason for denial
 			if ($status === Policy_Edit_Character::NOT_ALLOWED)
 			{			
 				Notices::add('info', 'msg_info', array('message' => Kohana::message('koreg', 'character.edit.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
@@ -93,16 +104,20 @@ class Controller_Character extends Abstract_Controller_Website {
 			}
 		}
 		
+		// Valid csrf, etc
 		if ($this->valid_post())
 		{
+			// Extract character data from $_POST
 			$character_post = Arr::get($this->request->post(), 'character', array());
 			
+			// Set data to character model and save
 			$character->values($character_post);
 			$character->save();
 			
 			Notices::add('success', 'msg_info', array('message' => Kohana::message('koreg', 'character.edit.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 		}
 		
+		// Pass character data to view class
 		$this->view->character = $character;
 	}
 }

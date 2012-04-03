@@ -34,3 +34,6 @@
 [submodule "modules/kostache"]
 	path = modules/kostache
 	url = git://github.com/zombor/KOstache.git
+[submodule "modules/assets"]
+	path = modules/assets
+	url = git://github.com/synapsestudios/kohana-assets.git

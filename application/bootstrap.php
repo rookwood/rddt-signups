@@ -104,6 +104,7 @@ Session::$default = 'native';
  */
 Kohana::modules(array(
 	'profiler'      => MODPATH.'profilertoolbar', // Alert's Profiler Toolbar
+	'assets'        => MODPATH.'assets',          // Synapse Studio's asset manager
 	'auth'          => MODPATH.'auth',            // Basic authentication
 	// 'cache'      => MODPATH.'cache',           // Caching with multiple backends
 	'database'      => MODPATH.'database',        // Database access

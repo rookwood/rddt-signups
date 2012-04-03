@@ -149,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
 INSERT INTO `roles` (`id`, `name`, `description`) VALUES
 (1, 'login', 'Login privileges, granted after account confirmation'),
 (2, 'admin', 'Administrative user, has access to everything.'),
-(3, 'verefied', 'User with verified email address; access to all normal site areas'),
+(3, 'verified_user', 'User with verified email address; access to all normal site areas'),
 (4, 'coordinator', 'Event coordinator; can create and edit own events'),
 (5, 'leadership', 'Guild leadership; can edit other''s events');
 

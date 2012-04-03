@@ -76,13 +76,13 @@ class Controller_Admin_User extends Abstract_Controller_Admin {
 				try 
 				{
 					// Create our user
-					$user = ORM::factory('user')->create_user($user_post, array('username', 'email', 'password'));
+					$user = ORM::factory('user')->create_user($user_post, array('username', 'email', 'password', 'timezone'));
 					
 					// Add roles
 					$user->update_roles($role_post);
 					
 					// Create the user's profile
-					$profile = ORM::factory('profile')->create_profile($user, $profile_post, array('first_name', 'last_name', 'occupation', 'favorite_game', 'birthdate'));
+					$profile = ORM::factory('profile')->create_profile($user, $profile_post, array('first_name', 'last_name', 'birthdate'));
 					
 					// User notification
 					Notices::add('info', 'msg_info', array('message' => Kohana::message('koreg', 'admin.user.create.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));

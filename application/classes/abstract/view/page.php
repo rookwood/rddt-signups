@@ -123,6 +123,14 @@ class Abstract_View_Page extends Abstract_View_Layout {
 			);
 		}
 		
+		if ($this->user->can('character_add'))
+		{
+			$links[] = array(
+				'location' => Route::url('character', array('action' => 'add')),
+				'text'     => 'Add new character',
+			);
+		}
+		
 		return $links;
 	}
 	

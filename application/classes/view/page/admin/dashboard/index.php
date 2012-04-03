@@ -33,10 +33,10 @@ class View_Page_Admin_Dashboard_Index extends Abstract_View_Admin_Layout {
 				'username'         => $user->username,
 				'name'             => $user->profile->first_name.' '.$user->profile->last_name,
 				'email'            => $user->email,
-				'occupation'       => $user->profile->occupation,
+				'timezone'         => $user->timezone,
 				'roles'            => implode(', ', $roles),
-				'edit_route'       => '/'.Route::get('admin')->uri(array('controller' => 'user', 'action' => 'edit',    'name' => $user->username)),
-				'deactivate_route' => '/'.Route::get('admin')->uri(array('controller' => 'user', 'action' => 'disable', 'name' => $user->username)),
+				'edit_route'       => Route::url('admin', array('controller' => 'user', 'action' => 'edit',    'name' => $user->username)),
+				'deactivate_route' => Route::url('admin', array('controller' => 'user', 'action' => 'disable', 'name' => $user->username)),
 			);
 		}
 		return $user_list;
@@ -56,8 +56,8 @@ class View_Page_Admin_Dashboard_Index extends Abstract_View_Admin_Layout {
 				'name'         => $role->name,
 				'description'  => $role->description,
 				'role_stripe'  => Text::alternate('even', 'odd'),
-				'edit_route'   => '/'.Route::get('admin')->uri(array('controller' => 'role', 'action' => 'edit', 'name' => $role->name)),
-				'remove_route' => '/'.Route::get('admin')->uri(array('controller' => 'role', 'action' =>'remove', 'name' => $role->name)),
+				'edit_route'   => Route::url('admin', array('controller' => 'role', 'action' => 'edit', 'name' => $role->name)),
+				'remove_route' => Route::url('admin', array('controller' => 'role', 'action' =>'remove', 'name' => $role->name)),
 			);
 		}
 		

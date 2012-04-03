@@ -101,13 +101,13 @@ class Controller_User extends Abstract_Controller_Website {
 				try 
 				{
 					// Create our user
-					$user = ORM::factory('user')->create_user($user_post, array('username', 'email', 'password'));
+					$user = ORM::factory('user')->create_user($user_post, array('username', 'email', 'password', 'timezone'));
 					
 					// Add the 'login' role; without this new users will be unable to log in.
 					$user->add('roles', ORM::factory('role')->where('name', '=', 'login')->find());
 					
 					// Create the user's profile
-					$profile = ORM::factory('profile')->create_profile($user, $profile_post, array('first_name', 'last_name', 'occupation', 'favorite_game', 'birthdate'));
+					$profile = ORM::factory('profile')->create_profile($user, $profile_post, array('first_name', 'last_name', 'birthdate'));
 					
 					// Creation complete, log in the user
 					$login = Auth::instance()->login($user_post['username'], $user_post['password'], FALSE);

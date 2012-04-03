@@ -53,7 +53,7 @@ class Controller_Character extends Abstract_Controller_Website {
 			
 			Notices::add('success', 'msg_info', array('message' => Kohana::message('character.add.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 			
-			$this->request->redirect(Route::url('character');
+			$this->request->redirect(Route::url('character display'));
 		}
 	}
 	
@@ -72,7 +72,7 @@ class Controller_Character extends Abstract_Controller_Website {
 			{			
 				Notices::add('info', 'msg_info', array('message' => Kohana::message('koreg', 'character.remove.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 
-				$this->request->redirect(Route::url('character');
+				$this->request->redirect(Route::url('character'));
 			}
 		}
 				
@@ -100,7 +100,7 @@ class Controller_Character extends Abstract_Controller_Website {
 			{			
 				Notices::add('info', 'msg_info', array('message' => Kohana::message('koreg', 'character.edit.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 
-				$this->request->redirect(Route::url('character');
+				$this->request->redirect(Route::url('character'));
 			}
 		}
 		

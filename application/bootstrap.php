@@ -173,9 +173,9 @@ Route::set('character display', 'character/<id>', array('id' => '^(\d+)$'))
 		'action'     => 'index',
 	));
 
-Route::set('event', 'character/<action>(/<id>)', array('action' => 'add|remove|edit', 'id' => '^(\d+)$'))
+Route::set('character', 'character/<action>(/<id>)', array('action' => 'add|remove|edit', 'id' => '^(\d+)$'))
 	->defaults(array(
-		'controller' => 'event',
+		'controller' => 'character',
 		'action'     => 'add',
 	));
 

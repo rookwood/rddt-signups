@@ -3,18 +3,14 @@
 class View_Page_Admin_User_Create extends Abstract_View_Admin_Layout {
 
 	public $title = 'Create new user account';
-		
+	
 	public function action()
 	{
-		return '/'.Route::get('admin')
-			->uri(array(
-				'controller' => 'user',
-				'action'     => 'create',
-			));
+		return Route::url('admin', array('controller' => 'user', 'action'     => 'create'));
 	}
-
+	
 	public function roles()
-	{		
+	{
 		$role_list = array();
 		
 		foreach (ORM::factory('role')->find_all() as $role)
@@ -29,6 +25,5 @@ class View_Page_Admin_User_Create extends Abstract_View_Admin_Layout {
 		}
 		
 		return $role_list;
-	}	
-
+	}
 }

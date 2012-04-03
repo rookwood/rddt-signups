@@ -24,7 +24,7 @@ class Model_Profession extends ORM {
 	 *
 	 * @return  array
 	 */
-	public static function list()
+	public static function profession_list()
 	{	
 		return array('warrior', 'ranger', 'monk', 'necromancer', 'elementalist', 'mesmer', 'ritualist', 'assassain', 'dervish', 'paragon');
 	}

@@ -16,11 +16,11 @@ class Model_Character extends ORM {
 				array('min_length', array(':value', 3)),
 				array('max_length', array(':value', 19)),
 				// To be valid names in game, must start with a letter, contain no numbers, and no more than one consecutive space
-				array('regex', array('^[a-zA-Z]+( [a-zA-Z]+)*$')),
-				array(array($this, 'character_name_available')),
+				// array('regex', array(':value', '^[a-zA-Z]+( [a-zA-Z]+)*$')),
+				// array(array($this, 'character_name_available')),
 			),
 			'profession' => array(
-				array(array($this, 'valid_profession'))	,
+				array(array($this, 'valid_profession')),
 			),
 		);
 	}
@@ -42,7 +42,9 @@ class Model_Character extends ORM {
 		// Change profession name to appropriate id
 		$profession = ORM::factory('profession', array('name' => $values['profession']));
 		$values['profession_id'] = $profession->id;
-		unset $values['profession'];		
+		$expected[] = 'profession_id';
+		
+		unset($values['profession']);
 		
 		// Create the record
 		return $this->values($values, $expected)->create();
@@ -56,7 +58,7 @@ class Model_Character extends ORM {
 	 */
 	public function character_name_available($name)
 	{
-		return ORM::factory('character', array('name', $name))->loaded();
+		return ORM::factory('character')->where('name', '=', $name)->find()->loaded();
 	}
 	
 	/**
@@ -67,6 +69,6 @@ class Model_Character extends ORM {
 	 */
 	public function valid_profession($profession)
 	{
-		return in_array($profession, Model_Profession::list());
+		return in_array($profession, Model_Profession::profession_list());
 	}
 }

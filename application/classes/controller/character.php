@@ -46,14 +46,21 @@ class Controller_Character extends Abstract_Controller_Website {
 		if ($this->valid_post())
 		{
 			// Submitted data
-			$character_post = Arr::get($this->request->post(), 'charactrer', array());
+			$character_post = Arr::get($this->request->post(), 'character', array());
 						
 			// Create the character
-			$character = ORM::factory('character')->create_character($user, $character_post, array('name', 'profession'));
-			
-			Notices::add('success', 'msg_info', array('message' => Kohana::message('character.add.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
-			
-			$this->request->redirect(Route::url('character display'));
+			try
+			{
+				$character = ORM::factory('character')->create_character($user, $character_post, array('name', 'profession'));
+				
+				Notices::add('success', 'msg_info', array('message' => Kohana::message('character.add.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				
+				$this->request->redirect(Route::url('character display', array('id' => $character->id)));
+			}
+			catch(Exception $e)
+			{			
+				$this->view->errors = $e->errors('character');
+			}
 		}
 	}
 	

@@ -7,8 +7,7 @@ class Controller_Event extends Abstract_Controller_Website {
 		// Retreive all future events and ones that started in the last hour
 		$events = ORM::factory('event')
 			->where('time', '<', strftime('%F', time() - Date::HOUR))
-			->find_all()
-			->as_array();
+			->find_all();
 			
 		// Pass events to the view class
 		$this->view->events = $events;

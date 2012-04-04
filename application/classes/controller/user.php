@@ -147,7 +147,6 @@ class Controller_User extends Abstract_Controller_Website {
 				
 				// We have no valid Model_User, so we have to pass the form values back directly
 				$this->view->values = Arr::merge($user_post, $profile_post);
-				
 			}
 		}
 		else if ($this->request->method() == HTTP_Request::POST)

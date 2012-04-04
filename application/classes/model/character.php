@@ -5,7 +5,11 @@
 class Model_Character extends ORM {
 
 	// Relationships
-	protected $_belongs_to = array('user' => array());
+	protected $_belongs_to = array(
+		'user'       => array(),
+		'profession' => array(),
+	
+	);
 		
 	// Validation rules
 	public function rules()

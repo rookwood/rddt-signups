@@ -8,7 +8,12 @@ class Controller_Character extends Abstract_Controller_Website {
 		$characters = ORM::factory('character')->where('user_id', '=', $this->user->id)->find_all()->as_array();
 		
 		// Pass character array to the view class
-		$this->view->characters = (count($characters) !== 0) ? $characters : FALSE;
+		if (count($characters) !== 0)
+		{
+			$this->view->characters = $characters;
+			$this->view->count = TRUE;
+		}
+		
 	}
 	
 	public function action_add()
@@ -20,27 +25,27 @@ class Controller_Character extends Abstract_Controller_Website {
 			$status = Policy::$last_code;
 			
 			// Must be logged in to add a character
-			if ($status === Policy_Add_Character::NOT_LOGGED_IN)
+			if ($status === Policy_Character_Add::NOT_LOGGED_IN)
 			{			
 				Notices::add('info', 'msg_info', array('message' => Kohana::message('koreg', 'character.add.not_logged_in'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
-
+				
 				// Redirect to login screen; come back once finished
 				$this->session->set('follow_login', $this->request->url());
 				$this->request->redirect(Route::url('user', array('controller' => 'user', 'action' => 'login')));
 			}
 			
 			// Unspecified reason for denial
-			else if ($status === Policy_Add_Character::NOT_ALLOWED)
+			else if ($status === Policy_Character_Add::NOT_ALLOWED)
 			{
 				Notices::add('denied', 'msg_info', array('message' => Kohana::message('koreg', 'character.add.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
-
+				
 				$this->request->redirect(Route::url('default', array('controller' => 'welcome', 'action' => 'index')));
 			}
 		}
-
+		
 		// Alias for user and profile
 		$user = $this->user;
-		$profile = $user->profile;		
+		$profile = $user->profile;
 		
 		// Is the form submitted correctly w/ CSRF token?
 		if ($this->valid_post())
@@ -55,11 +60,14 @@ class Controller_Character extends Abstract_Controller_Website {
 				
 				Notices::add('success', 'msg_info', array('message' => Kohana::message('character.add.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 				
-				$this->request->redirect(Route::url('character display', array('id' => $character->id)));
+				$this->request->redirect(Route::url('character'));
 			}
-			catch(Exception $e)
+			catch(ORM_Validation_Exception $e)
 			{			
 				$this->view->errors = $e->errors('character');
+				
+				// We have no valid Model_Character, so we have to pass the form values back directly
+				$this->view->values = $character_post;
 			}
 		}
 	}

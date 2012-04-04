@@ -166,17 +166,11 @@ Route::set('event', 'event(/<action>(/<id>))', array('action' => 'add|remove|edi
 		'controller' => 'event',
 		'action'     => 'index',
 	));
-	
-Route::set('character display', 'character/<id>', array('id' => '^(\d+)$'))
+
+Route::set('character', 'character(/<action>(/<id>))', array('action' => 'add|remove|edit', 'id' => '^(\d+)$'))
 	->defaults(array(
 		'controller' => 'character',
 		'action'     => 'index',
-	));
-
-Route::set('character', 'character/<action>(/<id>)', array('action' => 'add|remove|edit', 'id' => '^(\d+)$'))
-	->defaults(array(
-		'controller' => 'character',
-		'action'     => 'add',
 	));
 
 Route::set('default', '(<controller>(/<action>(/<id>)))')

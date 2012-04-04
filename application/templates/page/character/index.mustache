@@ -1,9 +1,8 @@
 
-{{^characters}}You have no characters listed.{{/characters}}
-{{#characters}}
+{{^count}}<p>You have no characters listed.</p>{{/count}}
+{{#count}}
 	<ul>
-	{{#character}}	
-		<li class="{{class}}">{{name}}</li>
-	{{/character}}
+{{#character_list}}		<li class="{{profession}}">{{name}}</li>
+{{/character_list}}
 	</ul>
-{{/characters}}
+{{/count}}

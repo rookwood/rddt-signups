@@ -89,7 +89,12 @@ class Controller_Character extends Abstract_Controller_Website {
 
 				$this->request->redirect(Route::url('character'));
 			}
-			elseif
+			elseif ($status === Policy_Remove_Character::NOT_OWNER)
+			{
+				Notices::add('info', 'msg_info', array('message' => Kohana::message('koreg', 'character.remove.not_owner'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				
+				$this->request->redirect(Route::url('character'));
+			}
 		}
 				
 		// Remove

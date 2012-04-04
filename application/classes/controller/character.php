@@ -89,6 +89,7 @@ class Controller_Character extends Abstract_Controller_Website {
 
 				$this->request->redirect(Route::url('character'));
 			}
+			elseif
 		}
 				
 		// Remove
@@ -117,6 +118,20 @@ class Controller_Character extends Abstract_Controller_Website {
 
 				$this->request->redirect(Route::url('character'));
 			}
+			// Non-administrator tried to edit another user's character
+			elseif ($status === Policy_Edit_Character::NOT_OWNER)
+			{
+				Notices::add('info', 'msg_info', array('message' => Kohana::message('koreg', 'character.edit.not_owner'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				
+				$this->request->redirect(Route::url('character'));
+			}
+			// Other denial reason
+			else
+			{
+				Notices::add('info', 'msg_info', array('message' => Kohana::message('koreg', 'character.edit.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				
+				$this->request->redirect(Route::url('character'));
+			}
 		}
 		
 		// Valid csrf, etc
@@ -125,11 +140,20 @@ class Controller_Character extends Abstract_Controller_Website {
 			// Extract character data from $_POST
 			$character_post = Arr::get($this->request->post(), 'character', array());
 			
-			// Set data to character model and save
-			$character->values($character_post);
-			$character->save();
-			
-			Notices::add('success', 'msg_info', array('message' => Kohana::message('koreg', 'character.edit.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			try
+			{			
+				// Set data to character model and save
+				$character->values($character_post);
+				$character->save();
+				
+				Notices::add('success', 'msg_info', array('message' => Kohana::message('koreg', 'character.edit.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			}
+			catch(ORM_Validation_Exception $e)
+			{
+				$this->view->errors = $e->errors('character');
+				
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('koreg', 'character.edit.failed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			}
 		}
 		
 		// Pass character data to view class

@@ -53,10 +53,15 @@ class Controller_User extends Abstract_Controller_Website {
 				// User notification
 				Notices::add('info', 'msg_info', array('message' => Kohana::message('koreg', 'user.edit.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 			}
-			catch (Exception $e)
+			catch (ORM_Validtaion_Exception $e)
 			{
 				// User notification
-				Notices::add('error', 'msg_error', array('message' => (string) $e, 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				Notices::add('error', 'msg_error', array('message' => Kohana::message('koreg', 'generic.validation'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				
+				$this->view->errors = $e->errors('validation');
+				
+				// We have no valid Model_User, so we have to pass the form values back directly
+				$this->view->values = Arr::merge($user_post, $profile_post);
 			}
 		}
 		

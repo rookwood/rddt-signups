@@ -32,7 +32,7 @@ class View_Page_User_Register extends Abstract_View_Page {
 		foreach (Date::$timezone_list as $value => $name)
 		{
 			
-			if ($key == $current_timezone)
+			if ($value == $current_timezone)
 			{
 				$out[] = array('value' => $value, 'name' => $name, 'selected' => TRUE);
 			}

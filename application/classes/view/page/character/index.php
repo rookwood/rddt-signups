@@ -24,4 +24,14 @@ class View_Page_Character_Index extends Abstract_View_Page {
 		
 		return $out;
 	}
+	
+	public function character_add_link()
+	{
+		if ($this->user->can('character_add'))
+		{
+			return Route::url('character', array('action' => 'add'));
+		}
+		
+		return FALSE;
+	}
 }

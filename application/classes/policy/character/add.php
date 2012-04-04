@@ -16,5 +16,4 @@ class Policy_Character_Add extends Policy {
 		// Probably other reasons we might not want to allow creation... will add in the future
 		return TRUE;
 	}
-
 }

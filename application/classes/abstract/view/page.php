@@ -68,6 +68,16 @@ class Abstract_View_Page extends Abstract_View_Layout {
 		
 		$links = array();
 		
+		// Admin dashboard link
+		if ($this->user->can('use_admin'))
+		{
+			$links[] = array(
+				'location' => Route::url('admin'),
+				'text'     => 'Admin dashboard',
+				'icon'     => array('src' => '/media/img/icons/application_form.png'),
+			);
+		}
+		
 		// Link to resend verification email
 		if ( ! $this->user->is_a('verified_user') AND $this->user->can('get_registration_email'))
 		{
@@ -108,26 +118,13 @@ class Abstract_View_Page extends Abstract_View_Layout {
 		if (Auth::instance()->logged_in())
 		{
 			$links[] = array(
+				'location' => Route::url('character'),
+				'text'     => 'My Characters',
+			);		
+			
+			$links[] = array(
 				'location' => Route::url('user', array('controller' => 'user', 'action' => 'logout')),
 				'text'     => 'Log out'
-			);
-		}
-		
-		// Admin dashboard link
-		if ($this->user->can('use_admin'))
-		{
-			$links[] = array(
-				'location' => Route::url('admin'),
-				'text'     => 'Admin dashboard',
-				'icon'     => array('src' => '/media/img/icons/application_form.png'),
-			);
-		}
-		
-		if ($this->user->can('character_add'))
-		{
-			$links[] = array(
-				'location' => Route::url('character', array('action' => 'add')),
-				'text'     => 'Add new character',
 			);
 		}
 		

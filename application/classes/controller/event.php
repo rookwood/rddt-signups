@@ -132,7 +132,7 @@ class Controller_Event extends Abstract_Controller_Website {
 			$character = ORM::factory('character', array('name' => $event_post['name']));
 			
 			if ( ! $character->loaded())
-				thow new Exception('Charcter not found.');
+				throw new Exception('Charcter not found.');
 			
 			// Add user to event
 			$event->add('character', $character);

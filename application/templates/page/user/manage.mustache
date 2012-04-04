@@ -32,7 +32,7 @@
 					<label for="user_timezone">Time Zone:</label>
 					<select name="user[timezone]" id="user_timezone">
 					{{#timezone_list}}
-						<option value="{{value}}"{{#selected}} selected="selected"{{/selected}}>{{name}}</option}}
+						<option value="{{value}}"{{#selected}} selected="selected"{{/selected}}>{{name}}</option>
 					{{/timezone_list}}
 					</select>
 					{{#errors.timezone}}<p class="error_message">{{errors.timezone}}</p>{{/errors.timezone}}

@@ -24,7 +24,7 @@ class Controller_User extends Abstract_Controller_Website {
 			{
 				Notices::add('denied', 'msg_info', array('message' => Kohana::message('koreg', 'user.edit.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 
-				$this->request->redirect(Route::url('default', array('controller' => 'welcome', 'action' => 'index')));
+				$this->request->redirect(Route::url('default'));
 			}
 		}
 		
@@ -45,7 +45,7 @@ class Controller_User extends Abstract_Controller_Website {
 			try 
 			{
 				// Update all user data
-				$user->update_user($user_post, array('email', 'password'));
+				$user->update_user($user_post, array('email', 'password', 'timezone'));
 				
 				// Update all profile data
 				$profile->values($profile_post);
@@ -84,13 +84,13 @@ class Controller_User extends Abstract_Controller_Website {
 			{
 				Notices::add('info', 'msg_info', array('message' => Kohana::message('koreg', 'user.registration.completed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 
-				$this->request->redirect(Route::url('default', array('controller' => 'welcome', 'action' => 'index')));
+				$this->request->redirect(Route::url('default'));
 			}
 			else if ($status === Policy_Register::REGISTRATION_CLOSED)
 			{
 				Notices::add('denied', 'msg_info', array('message' => Kohana::message('koreg', 'user.registration.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 
-				$this->request->redirect(Route::url('default', array('controller' => 'welcome', 'action' => 'index')));
+				$this->request->redirect(Route::url('default'));
 			}
 		}
 		
@@ -130,7 +130,7 @@ class Controller_User extends Abstract_Controller_Website {
 						$user->add_role('verified_user');
 						
 						// Redirect to the main page
-						$this->request->redirect(Route::url('default', array('controller' => 'welcome', 'action' => 'index')));
+						$this->request->redirect(Route::url('default'));
 					}
 					
 				}
@@ -176,7 +176,7 @@ class Controller_User extends Abstract_Controller_Website {
 			{			
 				Notices::add('info', 'msg_info', array('message' => Kohana::message('koreg', 'user.login.already_logged_in'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 
-				$this->request->redirect(Route::url('default', array('controller' => 'welcome',)));
+				$this->request->redirect(Route::url('default'));
 			}
 		}
 	
@@ -200,7 +200,7 @@ class Controller_User extends Abstract_Controller_Website {
 				}
 				else
 				{
-					$this->request->redirect(Route::url('default', array('controller' => 'welcome', 'action' => 'index')));
+					$this->request->redirect(Route::url('default'));
 				}
 			}
 			else
@@ -268,19 +268,19 @@ class Controller_User extends Abstract_Controller_Website {
 			{
 				Notices::add('error', 'msg_info', array('message' => Kohana::message('koreg', 'user.registration_email.completed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 
-				$this->request->redirect(Route::url('default', array('controller' => 'welcome', 'action' => 'index')));
+				$this->request->redirect(Route::url('default'));
 			}
 			else if (Policy::$last_code === Policy_Get_Registration_Email::ACCOUNT_DEACTIVATED)
 			{
 				Notices::add('error', 'msg_info', array('message' => Kohana::message('koreg', 'user.registration_email.banned'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 
-				$this->request->redirect(Route::url('default', array('controller' => 'welcome', 'action' => 'index')));
+				$this->request->redirect(Route::url('default'));
 			}
 			else if (Policy::$last_code === Policy_Get_Registration_Email::NOT_REQUIRED)
 			{
 				Notices::add('error', 'msg_info', array('message' => Kohana::message('koreg', 'user.registration_email.not_required'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 
-				$this->request->redirect(Route::url('default', array('controller' => 'welcome', 'action' => 'index')));
+				$this->request->redirect(Route::url('default'));
 			}
 			else
 			{
@@ -330,13 +330,13 @@ class Controller_User extends Abstract_Controller_Website {
 					throw new HTTP_Exception_404('Invalid check case.');
 			}
 
-			$this->request->redirect(Route::url('default', array('controller' => 'welcome', 'action' => 'index')));
+			$this->request->redirect(Route::url('default'));
 		}
 		else
 		{
 			Notices::add('error', 'msg_info', array('message' => Kohana::message('koreg', 'user.registration_email.bad_key'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 
-			$this->request->redirect(Route::url('default', array('controller' => 'welcome')));
+			$this->request->redirect(Route::url('default'));
 		}
 	}
 

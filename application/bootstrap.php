@@ -103,7 +103,7 @@ Session::$default = 'native';
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
-	//'profiler'      => MODPATH.'profilertoolbar', // Alert's Profiler Toolbar
+	'profiler'      => MODPATH.'profilertoolbar', // Alert's Profiler Toolbar
 	'assets'        => MODPATH.'assets',          // Synapse Studio's asset manager
 	'auth'          => MODPATH.'auth',            // Basic authentication
 	// 'cache'      => MODPATH.'cache',           // Caching with multiple backends
@@ -155,19 +155,19 @@ Route::set('profile', 'profile(/<user>)')
 		'action'     => 'profile'
 	));
 	
-Route::set('event display', 'event/<id>', array('id' => '^(\d+)$'))
+Route::set('event display', 'event/<id>', array('id' => '/^\pN++$/uD'))
 	->defaults(array(
 		'controller' => 'event',
 		'action'     => 'display',
 	));
 
-Route::set('event', 'event(/<action>(/<id>))', array('action' => 'add|remove|edit', 'id' => '^(\d+)$'))
+Route::set('event', 'event(/<action>(/<id>))', array('action' => 'add|remove|edit', 'id' => '/^\pN++$/uD'))
 	->defaults(array(
 		'controller' => 'event',
 		'action'     => 'index',
 	));
 
-Route::set('character', 'character(/<action>(/<id>))', array('action' => 'add|remove|edit', 'id' => '^(\d+)$'))
+Route::set('character', 'character(/<action>(/<id>))', array('action' => 'add|remove|edit', 'id' => '/^\pN++$/uD'))
 	->defaults(array(
 		'controller' => 'character',
 		'action'     => 'index',

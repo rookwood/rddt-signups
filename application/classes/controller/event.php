@@ -6,11 +6,11 @@ class Controller_Event extends Abstract_Controller_Website {
 	{
 		// Retreive all future events and ones that started in the last hour
 		$events = ORM::factory('event')
-			->where('time', '<', strftime('%F', time() - Date::HOUR))
+			//->where('time', '<', strftime('%F', time() - Date::HOUR))
 			->find_all();
 			
 		// Pass events to the view class
-		$this->view->events = $events;
+		$this->view->event_data = $events;
 	}
 	
 	public function action_display()
@@ -113,6 +113,8 @@ class Controller_Event extends Abstract_Controller_Website {
 	{
 		// Load the event object
 		$event = ORM::factory('event', array('id' => $this->request->param('id')));
+		
+		ProfilerToolbar::addData('test pre redir');
 		
 		// Can user sign-up for this event?
 		if ( ! $this->user->can('event_signup', array('event' => $event)))

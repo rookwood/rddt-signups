@@ -22,8 +22,8 @@ class Controller_Event extends Abstract_Controller_Website {
 		if ( ! $this->user->can('event_view', array('event' => $event)))
 		{
 				// Error notification
-				Notices::add('error', 'msg_info', array('message' => Kohana::message('event', 'event.view.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
-				$this->request->redirect(Route::url('event'));
+			Notices::add('error', 'msg_info', array('message' => Kohana::message('event', 'event.view.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			$this->request->redirect(Route::url('event'));
 		}
 		
 		// Pass event data to the view class
@@ -46,14 +46,24 @@ class Controller_Event extends Abstract_Controller_Website {
 			// Extract event data from $_POST
 			$event_post = Arr::get($this->request->post(), 'event', array());
 			
-			// Create new event object
-			$event = ORM::factory('event')->create_event($this->user, $event_post, array(
-				'time', 'dungeon_id', 'description', 'status'
-			));
-			
-			// Notification
-			Notices::add('success', 'msg_info', array('message' => Kohana::message('event', 'event.add.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
-			$this->request->redirect(Route::url('event'));
+			try
+			{
+				// Create new event object
+				$event = ORM::factory('event')->create_event($this->user, $event_post, array(
+					'time', 'ampm', 'date', 'timezone', 'dungeon', 'description', 'status'
+				));
+				
+				// Notification
+				Notices::add('success', 'msg_info', array('message' => Kohana::message('event', 'event.add.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				$this->request->redirect(Route::url('event'));
+			}
+			catch(ORM_Validation_Exception $e)
+			{
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('event', 'event.add.failed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				
+				$this->view->errors = $e->errors('event');
+				$this->view->values = $event_post;
+			}
 		}
 	}
 	

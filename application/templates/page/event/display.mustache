@@ -1,0 +1,37 @@
+	<form action="{{sign_up_link}}" method="post" id="sign_up_form" class="panel">
+		<fieldset>
+			<legend>Event details</legend>
+			<table id="events">
+				<thead>
+					<tr>
+						<td>Date</td>
+						<td>Start time</td>
+						<td>Event name</td>
+						<td>Status</td>
+						<td>Host</td>
+					</tr>
+				</thead>
+				<tbody>
+				{{#event}}
+					<tr>
+						<td>{{date}}</td>
+						<td>{{time}}</td>
+						<td>{{description}}</td>
+						<td>{{status}}</td>
+						<td>{{host}}</td>
+					</tr>
+				{{/event}}
+				</tbody>
+			</table>
+			{{{csrf}}}
+			<input type="submit" value="Sign up" />
+		</fieldset>
+		<h4>Currently signed up</h4>
+		<ul>
+		{{#attendees}}
+			<li class="profession">{{name}} the {{profession}}</li>
+		{{/attendees}}
+		</ul>
+		
+		<input type="submit" value="other sign up button" />
+	</form>

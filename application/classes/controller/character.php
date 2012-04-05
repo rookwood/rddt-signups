@@ -27,7 +27,7 @@ class Controller_Character extends Abstract_Controller_Website {
 			// Must be logged in to add a character
 			if ($status === Policy_Character_Add::NOT_LOGGED_IN)
 			{			
-				Notices::add('info', 'msg_info', array('message' => Kohana::message('koreg', 'character.add.not_logged_in'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				Notices::add('info', 'msg_info', array('message' => Kohana::message('character', 'character.add.not_logged_in'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 				
 				// Redirect to login screen; come back once finished
 				$this->session->set('follow_login', $this->request->url());
@@ -37,7 +37,7 @@ class Controller_Character extends Abstract_Controller_Website {
 			// Unspecified reason for denial
 			else if ($status === Policy_Character_Add::NOT_ALLOWED)
 			{
-				Notices::add('denied', 'msg_info', array('message' => Kohana::message('koreg', 'character.add.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				Notices::add('denied', 'msg_info', array('message' => Kohana::message('character', 'character.add.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 				
 				$this->request->redirect(Route::url('default', array('controller' => 'welcome', 'action' => 'index')));
 			}
@@ -85,13 +85,13 @@ class Controller_Character extends Abstract_Controller_Website {
 			// Unspecified reason for denial
 			if ($status === Policy_Remove_Character::NOT_ALLOWED)
 			{			
-				Notices::add('info', 'msg_info', array('message' => Kohana::message('koreg', 'character.remove.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				Notices::add('info', 'msg_info', array('message' => Kohana::message('character', 'character.remove.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 
 				$this->request->redirect(Route::url('character'));
 			}
 			elseif ($status === Policy_Remove_Character::NOT_OWNER)
 			{
-				Notices::add('info', 'msg_info', array('message' => Kohana::message('koreg', 'character.remove.not_owner'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				Notices::add('info', 'msg_info', array('message' => Kohana::message('character', 'character.remove.not_owner'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 				
 				$this->request->redirect(Route::url('character'));
 			}
@@ -119,21 +119,21 @@ class Controller_Character extends Abstract_Controller_Website {
 			// Unspecified reason for denial
 			if ($status === Policy_Edit_Character::NOT_ALLOWED)
 			{			
-				Notices::add('info', 'msg_info', array('message' => Kohana::message('koreg', 'character.edit.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				Notices::add('info', 'msg_info', array('message' => Kohana::message('character', 'character.edit.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 
 				$this->request->redirect(Route::url('character'));
 			}
 			// Non-administrator tried to edit another user's character
 			elseif ($status === Policy_Edit_Character::NOT_OWNER)
 			{
-				Notices::add('info', 'msg_info', array('message' => Kohana::message('koreg', 'character.edit.not_owner'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				Notices::add('info', 'msg_info', array('message' => Kohana::message('character', 'character.edit.not_owner'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 				
 				$this->request->redirect(Route::url('character'));
 			}
 			// Other denial reason
 			else
 			{
-				Notices::add('info', 'msg_info', array('message' => Kohana::message('koreg', 'character.edit.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				Notices::add('info', 'msg_info', array('message' => Kohana::message('character', 'character.edit.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 				
 				$this->request->redirect(Route::url('character'));
 			}
@@ -151,13 +151,13 @@ class Controller_Character extends Abstract_Controller_Website {
 				$character->values($character_post);
 				$character->save();
 				
-				Notices::add('success', 'msg_info', array('message' => Kohana::message('koreg', 'character.edit.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				Notices::add('success', 'msg_info', array('message' => Kohana::message('character', 'character.edit.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 			}
 			catch(ORM_Validation_Exception $e)
 			{
 				$this->view->errors = $e->errors('character');
 				
-				Notices::add('error', 'msg_info', array('message' => Kohana::message('koreg', 'character.edit.failed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('character', 'character.edit.failed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 			}
 		}
 		

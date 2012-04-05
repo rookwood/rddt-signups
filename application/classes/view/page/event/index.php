@@ -16,11 +16,11 @@ class View_Page_Event_Index extends Abstract_View_Page {
 			
 			// Build event array
 			$out[] = array(
-				'sign_up_link' => Route::url('event', array('action' => 'signup', 'id' => $event->id)),
+				'details_link' => Route::url('event display', array('id' => $event->id)),
 				'date'         => date('Y M d', $local_start_time),
 				'time'         => date('g:i a', $local_start_time),
 				'description'  => $event->description,
-				'status'       => $event->status,
+				'status'       => $event->status->name,
 				'host'         => $event->user->username,
 			);
 		}

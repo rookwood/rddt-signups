@@ -155,13 +155,13 @@ Route::set('profile', 'profile(/<user>)')
 		'action'     => 'profile'
 	));
 	
-Route::set('event display', 'event/<id>', array('id' => '/^\pN++$/uD'))
+Route::set('event display', 'event/<id>')
 	->defaults(array(
 		'controller' => 'event',
 		'action'     => 'display',
 	));
 
-Route::set('event', 'event(/<action>(/<id>))', array('action' => 'add|remove|edit', 'id' => '/^\pN++$/uD'))
+Route::set('event', 'events(/<action>(/<id>))', array('action' => 'add|remove|edit'))
 	->defaults(array(
 		'controller' => 'event',
 		'action'     => 'index',

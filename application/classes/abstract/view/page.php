@@ -123,6 +123,11 @@ class Abstract_View_Page extends Abstract_View_Layout {
 			);		
 			
 			$links[] = array(
+				'location' => Route::url('event'),
+				'text'     => 'Scheduled events',
+			);
+			
+			$links[] = array(
 				'location' => Route::url('user', array('controller' => 'user', 'action' => 'logout')),
 				'text'     => 'Log out'
 			);

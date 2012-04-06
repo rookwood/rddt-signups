@@ -247,7 +247,8 @@ background-image:         linear-gradient(top, #4d90fe, #357ae8);
 filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#4d90fe', EndColorStr='#357ae8'); 
 box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
-form input[type=text], form input[type=password], form input[type=date] { border: 1px solid #d5d5d5; width: 151px;}
+form input[type=text], form input[type=password], form input[type=date], form input[type=radio] { border: 1px solid #d5d5d5; width: 151px;}
+form input[type=radio] { display: block; height:20px; padding: 5px, 0}
 
 table {background-color: #f8f8f8; margin:12px;}
 table td {border: 1px solid #d5d5d5; padding: 2px 4px;}

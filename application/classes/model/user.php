@@ -15,6 +15,7 @@ class Model_User extends Model_Auth_User implements Model_ACL_User {
 		'user_tokens'  => array('model' => 'user_token'),
 		'roles'        => array('model' => 'role', 'through' => 'roles_users'),
 		'keys'         => array('model' => 'key'),
+		'characters'   => array('model' => 'character'),
 	);
 	
 	protected $_has_one = array(

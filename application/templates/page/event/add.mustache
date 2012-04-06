@@ -15,14 +15,14 @@
 						<option value="{{value}}"{{#selected}} selected="selected"{{/selected}}>{{name}}</option>
 {{/dungeon_list}}
 					</select>
-					{{#errors.dungeon}}<p class="error_message">{{errors.select}}</p>{{/errors.select}}
+					{{#errors.dungeon}}<p class="error_message">{{errors.dungeon}}</p>{{/errors.dungeon}}
 				</li>
 				<li>
 					<label for="time">Scheduled time:</label>
 					<input type="time" name="event[time]" id="time" value="{{values.time}}" {{#errors.time}}class="error" {{/errors.time}}/>
 				</li>
 				<li>
-					<label for="timezone">Scheduled timezone:</label>
+					<label for="timezone">In timezone:</label>
 					<select name="event[timezone]" id="timezone">
 {{#timezone_list}}
 						<option value="{{value}}"{{#selected}} selected="selected"{{/selected}}>{{name}}</option>
@@ -31,8 +31,12 @@
 					{{#errors.timezone}}<p class="error_message">{{errors.timezone}}</p>{{/errors.timezone}}
 				</li>
 				<li>
+					<label for="date">Scheduled date:</label>
+					<input type="date" name="event[date]" id="date" value="{{values.date}}" {{#errors.date}}class="error" {{/errors.date}}/>
+				</li>
+				<li>
 					<label for="description">Event details:</label>
-					<textarea name="event[description]" id="description" value="{{values.description}}" {{#errors.description}}class="error" {{/errors.time}}></textarea>
+					<textarea name="event[description]" id="description" value="{{values.description}}" {{#errors.description}}class="error" {{/errors.description}}></textarea>
 				</li>
 				<li>
 					{{{csrf}}}

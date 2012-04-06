@@ -16,7 +16,7 @@ class View_Page_Event_Index extends Abstract_View_Page {
 			
 			// Build event array
 			$out[] = array(
-				'details_link' => Route::url('event display', array('id' => $event->id)),
+				'details_link' => Route::url('event', array('action' => 'display', 'id' => $event->id)),
 				'date'         => date('Y M d', $local_start_time),
 				'time'         => date('g:i a', $local_start_time),
 				'description'  => $event->description,
@@ -25,7 +25,7 @@ class View_Page_Event_Index extends Abstract_View_Page {
 			);
 		}
 		
-		return $out;
+		return isset($out) ? $out : FALSE;
 	}
 
 }

@@ -6,7 +6,7 @@ class Controller_Event extends Abstract_Controller_Website {
 	{
 		// Retreive all future events and ones that started in the last hour
 		$events = ORM::factory('event')
-			->where('time', '<', strftime('%s', time() - Date::HOUR))
+			->where('time', '>', strftime('%s', time() - Date::HOUR))
 			->find_all();
 			
 		// Pass events to the view class
@@ -50,7 +50,7 @@ class Controller_Event extends Abstract_Controller_Website {
 			{
 				// Create new event object
 				$event = ORM::factory('event')->create_event($this->user, $event_post, array(
-					'time', 'ampm', 'date', 'timezone', 'dungeon', 'description', 'status'
+					'time', 'dungeon_id', 'description', 'status_id', 'user_id', 'title',
 				));
 				
 				// Notification
@@ -124,8 +124,6 @@ class Controller_Event extends Abstract_Controller_Website {
 		// Load the event object
 		$event = ORM::factory('event', array('id' => $this->request->param('id')));
 		
-		ProfilerToolbar::addData('test pre redir');
-		
 		// Can user sign-up for this event?
 		if ( ! $this->user->can('event_signup', array('event' => $event)))
 		{
@@ -140,23 +138,51 @@ class Controller_Event extends Abstract_Controller_Website {
 			// Extract event data from $_POST
 			$event_post = Arr::get($this->request->post(), 'event', array());
 			
+			ProfilerToolbar::addData($event_post);
+			ProfilerToolbar::addData($_POST);
+			
 			// Load character object
-			$character = ORM::factory('character', array('name' => $event_post['name']));
+			$character = ORM::factory('character', array('name' => $event_post['character']));
 			
 			if ( ! $character->loaded())
 				throw new Exception('Charcter not found.');
 			
 			// Add user to event
-			$event->add('character', $character);
+			$event->add('characters', $character);
 			
 			// Load sign-up (pivot) object to fill in details
 			$signup = ORM::factory('signup', array('event_id' => $event->id, 'character_id' => $character->id));
+			//$signup = ORM::factory('signup')
+			//	->where('event_id', '=', $event->id)
+			//	->and_where('character_id', '=', $character->id)
+			//	->find();
+			
+			$signup->load();
+			
+			if ( ! $signup->loaded())
+			{
+				ProfilerToolbar::addData('Event id: '.$event->id);
+				ProfilerToolbar::addData('Character id: '.$character->id);
+				ProfilerToolbar::addData($signup);
+				
+				throw new Exception('failed to load signup record');
+			}
 			
 			// User signing-up as active or standby?
-			$signup->status  = ($event_post['status'] === 'standby') ? 'standby' : 'ready';
+			$signup_status = ORM::factory('status', array('name' => $event_post['status']));
+			
+			if ( ! $signup_status->loaded())
+			{
+				// Default to stand-by on error
+				$signup_status = ORM::factory('status', array('name' => 'stand-by'));
+			}
+			
+			$signup->status_id  = $signup_status->id;
 			
 			// TODO add purifier here
 			$signup->comment = $event_post['comment'];
+			
+			$signup->save();
 			
 			// Notification of sign-up
 			Notices::add('success', 'msg_success', array('message' => Kohana::message('event', 'event.signup.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));

@@ -154,14 +154,8 @@ Route::set('profile', 'profile(/<user>)')
 		'controller' => 'user',
 		'action'     => 'profile'
 	));
-	
-Route::set('event display', 'event/<id>')
-	->defaults(array(
-		'controller' => 'event',
-		'action'     => 'display',
-	));
 
-Route::set('event', 'events(/<action>(/<id>))', array('action' => 'add|remove|edit'))
+Route::set('event', 'event(/<action>(/<id>))', array('action' => 'add|remove|edit|display'))
 	->defaults(array(
 		'controller' => 'event',
 		'action'     => 'index',

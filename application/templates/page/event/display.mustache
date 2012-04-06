@@ -23,6 +23,29 @@
 				{{/event}}
 				</tbody>
 			</table>
+			<ul>
+				<li>
+					<label for="character">Attend as:</label>
+					<select name="event[character]" id="character">
+{{#characters}}
+						<option class="{{profession}}" value="{{name}}">{{name}}</option>
+{{/characters}}
+					</select>
+				</li>
+				<li>
+					<fieldset class="reliability">
+						<legend>Sign-up as:</legend>
+						<label for="status_ready">Ready</label>
+						<input type="radio" name="event[status]" id="status_ready" value="ready" />
+						<label for="status_standby">Stand-by</label>
+						<input type="radio" name="event[status]" id="status_standby" value="standby" />
+					</fieldset>					
+				</li>
+				<li>
+					<label for="comments">Comments:</label>
+					<textarea name="event[comment]" id="comments"></textarea>
+				</li>
+			</ul>
 			{{{csrf}}}
 			<input type="submit" value="Sign up" />
 		</fieldset>

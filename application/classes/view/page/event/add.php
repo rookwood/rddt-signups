@@ -31,7 +31,7 @@ class View_Page_Event_Add extends Abstract_View_Page {
 			}
 		}
 		
-		return $out;		
+		return $out;
 	}
 	
 	public function dungeon_list()

@@ -22,10 +22,21 @@ class View_Page_Event_Index extends Abstract_View_Page {
 				'description'  => $event->description,
 				'status'       => $event->status->name,
 				'host'         => $event->user->username,
+				'build'        => $event->build,
+				'url'          => $event->url,
 			);
 		}
 		
 		return isset($out) ? $out : FALSE;
 	}
 
+	public function add_event()
+	{
+		if ($this->user->can('add_event'))
+		{
+			return Route::url('event', array('action' => 'add'));
+		}
+		
+		return FALSE;
+	}
 }

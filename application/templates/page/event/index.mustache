@@ -8,6 +8,7 @@
 				<td>Event name</td>
 				<td>Status</td>
 				<td>Host</td>
+				<td>Build</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -19,7 +20,12 @@
 				<td>{{description}}</td>
 				<td>{{status}}</td>
 				<td>{{host}}</td>
+				<td>{{#url}}<a href="{{url}}">{{/url}}{{build}}{{#url}}</a>{{/url}}</td>
 			</tr>
 		{{/events}}
 		</tbody>
 	</table>
+	
+{{#add_event}}
+<a href="{{add_event"}}>Add new event</a>
+{{/add_event}}

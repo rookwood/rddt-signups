@@ -1,11 +1,11 @@
 
-	<form action="{{event_add_action}}" method="post" class="panel" id="event_add">
+	<form action="{{event_edit_action}}" method="post" class="panel" id="event_edit">
 		<fieldset>
-			<legend>Create new event</legend>
+			<legend>Edit event</legend>
 			<ul>
 				<li>
 					<label for="title">Event title:</label>
-					<input type="text" name="event[title]" id="title" value="{{values.title}}" {{#errors.title}}class="error" {{/errors.title}}/>
+					<input type="text" name="event[title]" id="title" value="{{event_data.title}}" {{#errors.title}}class="error" {{/errors.title}}/>
 					{{#errors.title}}<p class="error_message">{{errors.title}}</p>{{/errors.title}}
 				</li>
 				<li>
@@ -19,7 +19,7 @@
 				</li>
 				<li>
 					<label for="time">Scheduled time:</label>
-					<input type="time" name="event[time]" id="time" value="{{values.time}}" {{#errors.time}}class="error" {{/errors.time}}/>
+					<input type="time" name="event[time]" id="time" value="{{scheduled_time}}" {{#errors.time}}class="error" {{/errors.time}}/>
 				</li>
 				<li>
 					<label for="timezone">In timezone:</label>
@@ -32,19 +32,19 @@
 				</li>
 				<li>
 					<label for="date">Scheduled date:</label>
-					<input type="date" name="event[date]" id="date" value="{{values.date}}" {{#errors.date}}class="error" {{/errors.date}}/>
+					<input type="date" name="event[date]" id="date" value="{{scheduled_date}}" {{#errors.date}}class="error" {{/errors.date}}/>
 				</li>
 				<li>
 					<label for="description">Event details:</label>
-					<textarea name="event[description]" id="description" value="{{values.description}}" {{#errors.description}}class="error" {{/errors.description}}></textarea>
+					<textarea name="event[description]" id="description" value="{{event_data.description}}" {{#errors.description}}class="error" {{/errors.description}}></textarea>
 				</li>
 				<li>
 					<label for="build">Build planned:</label>
-					<input type="text" name="event[build]" id="build" value="{{values.build}}" {{#errors.build}}class="error" {{/errors.build}}/>
+					<input type="text" name="event[build]" id="build" value="{{event_data.build}}" {{#errors.build}}class="error" {{/errors.build}}/>
 				</li>
 				<li>
 					<label for="url">Build link:</label>
-					<input type="url" name="event[url]" id="url" value="{{values.url}}" {{#errors.url}}class="error" {{/errors.url}}/>
+					<input type="url" name="event[url]" id="url" value="{{event_data.url}}" {{#errors.url}}class="error" {{/errors.url}}/>
 				</li>
 				<li>
 					{{{csrf}}}

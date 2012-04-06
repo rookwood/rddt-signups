@@ -1,6 +1,6 @@
 	<form action="{{sign_up_link}}" method="post" id="sign_up_form" class="panel">
 		<fieldset>
-			<legend>Event details</legend>
+			<legend>Event details{{#edit_event}} <a href="{{edit_event}}">(edit this event)</a>{{/edit_event}}</legend>
 			<table id="events">
 				<thead>
 					<tr>
@@ -9,6 +9,7 @@
 						<td>Event name</td>
 						<td>Status</td>
 						<td>Host</td>
+						<td>Build</td>
 					</tr>
 				</thead>
 				<tbody>
@@ -19,6 +20,7 @@
 						<td>{{description}}</td>
 						<td>{{status}}</td>
 						<td>{{host}}</td>
+						<td>{{#url}}<a href="{{url}}">{{/url}}{{build}}{{#url}}</a>{{/url}}</td>
 					</tr>
 				{{/event}}
 				</tbody>
@@ -53,6 +55,9 @@
 		<ul>
 		{{#attendees}}
 			<li class="profession">{{name}} the {{profession}}</li>
+		{{/attendees}}
+		{{^attendees}}
+			<li>Nobody!</li>
 		{{/attendees}}
 		</ul>
 		

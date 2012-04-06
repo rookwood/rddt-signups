@@ -4,9 +4,13 @@ class Controller_Event extends Abstract_Controller_Website {
 
 	public function action_index()
 	{
+		$status = ORM::factory('status', array('name' => 'cancelled'));
+		
 		// Retreive all future events and ones that started in the last hour
 		$events = ORM::factory('event')
 			->where('time', '>', strftime('%s', time() - Date::HOUR))
+			->and_where('status_id', '!=', $status->id)
+			->order_by('time', 'ASC')
 			->find_all();
 			
 		// Pass events to the view class
@@ -50,7 +54,7 @@ class Controller_Event extends Abstract_Controller_Website {
 			{
 				// Create new event object
 				$event = ORM::factory('event')->create_event($this->user, $event_post, array(
-					'time', 'dungeon_id', 'description', 'status_id', 'user_id', 'title',
+					'time', 'dungeon_id', 'description', 'status_id', 'user_id', 'title', 'build', 'url',
 				));
 				
 				// Notification
@@ -65,27 +69,6 @@ class Controller_Event extends Abstract_Controller_Website {
 				$this->view->values = $event_post;
 			}
 		}
-	}
-	
-	public function action_remove()
-	{
-		// Load the event object
-		$event = ORM::factory('event', array('id' => $this->request->param('id')));
-		
-		// Can user remove this event?
-		if ( ! $this->user->can('event_remove', array('event' => $event)))
-		{
-			// Error notification
-			Notices::add('error', 'msg_info', array('message' => Kohana::message('event', 'event.remove.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
-			$this->request->redirect(Route::url('event'));
-		}
-		
-		// Remove
-		$event->delete();
-		
-		Notices::add('success', 'msg_info', array('message' => Kohana::message('event.remove.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
-		
-		$this->request->redirect(Route::url('event'));
 	}
 	
 	public function action_edit()
@@ -107,16 +90,51 @@ class Controller_Event extends Abstract_Controller_Website {
 			// Get event data from $_POST
 			$event_post = Arr::get($this->request->post(), 'event', array());
 			
-			// Save data to event object
-			$event->values($event_post);
-			$character->save();
-			
-			Notices::add('success', 'msg_info', array('message' => Kohana::message('event', 'event.edit.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			try
+			{
+				// Save data to event object
+				$event->edit_event($this->user, $event_post, array(
+						'time', 'dungeon_id', 'description', 'status_id', 'user_id', 'title', 'build', 'url',
+				));
+				
+				Notices::add('success', 'msg_info', array('message' => Kohana::message('event', 'event.edit.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			}
+			catch(ORM_Validation_Exception $e)
+			{
+				$this->view->errors = $e->errors('event');
+				$this->view->values = $event_post;
+			}
+		}
+		else
+		{
+			$this->view->values = $event->as_array();
 		}
 		
 		// Pass event object to the view class
-		$this->view->character = $event;
+		$this->view->event_data = $event;
 		
+	}
+	
+	public function action_remove()
+	{
+		// Load the event object
+		$event = ORM::factory('event', array('id' => $this->request->param('id')));
+		
+		// Can user remove this event?
+		if ( ! $this->user->can('event_remove', array('event' => $event)))
+		{
+			// Error notification
+			Notices::add('error', 'msg_info', array('message' => Kohana::message('event', 'event.remove.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			$this->request->redirect(Route::url('event'));
+		}
+		
+		// Cancel the event (will be hidden from view)
+		$status = ORM::factory('status', array('name' => 'cancelled'));
+		$event->status_id = $status->id;
+		
+		Notices::add('success', 'msg_info', array('message' => Kohana::message('event.remove.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+		
+		$this->request->redirect(Route::url('event'));
 	}
 	
 	public function action_signup()

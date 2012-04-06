@@ -22,15 +22,27 @@ class View_Page_Event_Display extends Abstract_View_Page {
 		return array(
 			'date'         => date('Y M d', $local_start_time),
 			'time'         => date('g:i a', $local_start_time),
-			'description'  => $event->description,
+			'description'  => $event->title,
 			'status'       => $event->status->name,
 			'host'         => $event->user->username,
+			'build'        => $event->build,
+			'url'          => $event->url,
 		);
 	}
 	
 	public function attendees()
 	{
-		return $this->event_data->characters->find_all();
+		$attendees = $this->event_data->characters->find_all();
+		
+		foreach ($attendees as $character)
+		{
+			$out[] = array(
+				'profession' => $character->profession->name,
+				'name'       => $character->name,
+			);
+		}
+		
+		return isset($out) ? $out : FALSE;
 	}
 	
 	public function characters()
@@ -46,5 +58,14 @@ class View_Page_Event_Display extends Abstract_View_Page {
 		}
 		
 		return $out;
+	}
+	
+	public function edit_event()
+	{
+		if ($this->user->can('event_edit', array('event' => $this->event_data)))
+		{
+			return Route::url('event', array('action' => 'edit', 'id' => $this->event_data->id));
+		}
+		return FALSE;
 	}
 }

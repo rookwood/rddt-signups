@@ -9,7 +9,8 @@ class Controller_Event extends Abstract_Controller_Website {
 		// Retreive all future events and ones that started in the last hour
 		$events = ORM::factory('event')
 			->where('time', '>', strftime('%s', time() - Date::HOUR))
-			->and_where('status_id', '!=', $status->id)
+			//->and_where('status_id', '!=', $status->id)
+			->order_by('status_id', 'ASC')
 			->order_by('time', 'ASC')
 			->find_all();
 			
@@ -131,6 +132,7 @@ class Controller_Event extends Abstract_Controller_Website {
 		// Cancel the event (will be hidden from view)
 		$status = ORM::factory('status', array('name' => 'cancelled'));
 		$event->status_id = $status->id;
+		$event->save();
 		
 		Notices::add('success', 'msg_info', array('message' => Kohana::message('event.remove.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 		

@@ -68,4 +68,12 @@ class View_Page_Event_Display extends Abstract_View_Page {
 		}
 		return FALSE;
 	}
+	
+	public function remove_event()
+	{
+		if ($this->user->can('event_remove', array('event' =>$this->event_data)))
+		{
+			return Route::url('event', array('action' => 'remove', 'id' => $this->event_data->id));
+		}
+	}
 }

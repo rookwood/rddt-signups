@@ -9,11 +9,13 @@ class View_Page_Event_Index extends Abstract_View_Page {
 	
 	public function events()
 	{		
+		ProfilerToolbar::addData($this->event_data);
+
 		foreach($this->event_data as $event)
 		{
 			// Calculate start time using user's time offset from GMT
 			$local_start_time = Date::offset($this->user->timezone, 'Europe/London') + $event->time;
-			
+
 			// Build event array
 			$out[] = array(
 				'details_link' => Route::url('event', array('action' => 'display', 'id' => $event->id)),
@@ -21,7 +23,7 @@ class View_Page_Event_Index extends Abstract_View_Page {
 				'time'         => date('g:i a', $local_start_time),
 				'description'  => $event->description,
 				'status'       => $event->status->name,
-				'host'         => $event->user->username,
+				'host'         => ORM::factory('character', $event->character_id)->name,
 				'build'        => $event->build,
 				'url'          => $event->url,
 			);
@@ -32,7 +34,7 @@ class View_Page_Event_Index extends Abstract_View_Page {
 
 	public function add_event()
 	{
-		if ($this->user->can('add_event'))
+		if ($this->user->can('event_add'))
 		{
 			return Route::url('event', array('action' => 'add'));
 		}

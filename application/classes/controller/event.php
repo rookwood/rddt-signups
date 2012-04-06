@@ -55,7 +55,7 @@ class Controller_Event extends Abstract_Controller_Website {
 			{
 				// Create new event object
 				$event = ORM::factory('event')->create_event($this->user, $event_post, array(
-					'time', 'dungeon_id', 'description', 'status_id', 'user_id', 'title', 'build', 'url',
+					'time', 'dungeon_id', 'description', 'status_id', 'user_id', 'title', 'build', 'url', 'character_id',
 				));
 				
 				// Notification

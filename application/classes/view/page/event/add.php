@@ -53,4 +53,20 @@ class View_Page_Event_Add extends Abstract_View_Page {
 		
 		return $out;
 	}
+	
+	public function characters()
+	{
+		$characters =  $this->user->characters->find_all();
+		
+		foreach ($characters as $character)
+		{
+			$out[] = array(
+				'profession' => $character->profession->name,
+				'name'       => $character->name,
+			);
+		}
+		
+		return $out;
+	}
+
 }

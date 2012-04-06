@@ -14,7 +14,7 @@
 		<tbody>
 		{{#events}}
 			<tr>
-			<td><a href="{{details_link}}">Details</a></td>
+				<td><a href="{{details_link}}">Details</a></td>
 				<td>{{date}}</td>
 				<td>{{time}}</td>
 				<td>{{description}}</td>
@@ -23,9 +23,14 @@
 				<td>{{#url}}<a href="{{url}}">{{/url}}{{build}}{{#url}}</a>{{/url}}</td>
 			</tr>
 		{{/events}}
+		{{^events}}
+			<tr>
+				<td colspan="7">No events scheduled at this time</td>
+			</tr>
+		{{/events}}
 		</tbody>
 	</table>
 	
 {{#add_event}}
-<a href="{{add_event"}}>Add new event</a>
+<a href="{{add_event}}">Add new event</a>
 {{/add_event}}

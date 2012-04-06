@@ -19,12 +19,15 @@ class View_Page_Event_Display extends Abstract_View_Page {
 		// Calculate start time using user's time offset from GMT
 		$local_start_time = Date::offset($this->user->timezone, 'Europe/London') + $event->time;
 		
+		$host = ORM::factory('character', $event->character_id);
+		
 		return array(
 			'date'         => date('Y M d', $local_start_time),
 			'time'         => date('g:i a', $local_start_time),
 			'description'  => $event->title,
 			'status'       => $event->status->name,
-			'host'         => $event->user->username,
+			'host'         => $host->user->username,
+			'hostas'       => $host->name,
 			'build'        => $event->build,
 			'url'          => $event->url,
 		);

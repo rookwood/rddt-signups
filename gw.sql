@@ -1,17 +1,16 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.9
+-- version 3.3.10deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 02, 2012 at 03:01 PM
--- Server version: 5.0.92
--- PHP Version: 5.2.9
+-- Generation Time: Apr 06, 2012 at 10:55 AM
+-- Server version: 5.1.54
+-- PHP Version: 5.3.5-1ubuntu7.4
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 --
--- Database: `roycewel_gw`
+-- Database: `gw`
 --
 
 -- --------------------------------------------------------
@@ -21,13 +20,14 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `characters` (
-  `id` int(11) unsigned NOT NULL auto_increment,
-  `name` varchar(19) NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(19) CHARACTER SET latin1 NOT NULL,
   `profession_id` int(11) unsigned NOT NULL,
   `user_id` int(11) unsigned NOT NULL,
-  PRIMARY KEY  (`id`),
+  PRIMARY KEY (`id`),
   KEY `characters_ibfk_1` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
 
 -- --------------------------------------------------------
 
@@ -36,10 +36,20 @@ CREATE TABLE IF NOT EXISTS `characters` (
 --
 
 CREATE TABLE IF NOT EXISTS `config` (
-  `group_name` varchar(30) character set latin1 NOT NULL,
-  `config_key` varchar(30) character set latin1 NOT NULL,
-  `config_value` varchar(30) character set latin1 NOT NULL
+  `group_name` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `config_key` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `config_value` varchar(30) CHARACTER SET latin1 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `config`
+--
+
+INSERT INTO `config` (`group_name`, `config_key`, `config_value`) VALUES
+('registration', 'open_registration', 'b:1;'),
+('registration', 'require_email_verification', 'b:0;'),
+('lost_data', 'email_lost_password', 'b:1;'),
+('lost_data', 'email_lost_username', 'b:1;');
 
 -- --------------------------------------------------------
 
@@ -48,10 +58,18 @@ CREATE TABLE IF NOT EXISTS `config` (
 --
 
 CREATE TABLE IF NOT EXISTS `dungeons` (
-  `id` int(11) unsigned NOT NULL auto_increment,
-  `name` varchar(30) NOT NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) CHARACTER SET latin1 NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `dungeons`
+--
+
+INSERT INTO `dungeons` (`id`, `name`) VALUES
+(1, 'Domain of Anguish'),
+(2, 'Underworld');
 
 -- --------------------------------------------------------
 
@@ -60,14 +78,15 @@ CREATE TABLE IF NOT EXISTS `dungeons` (
 --
 
 CREATE TABLE IF NOT EXISTS `events` (
-  `id` int(11) unsigned NOT NULL auto_increment,
-  `time` timestamp NULL default NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) NOT NULL,
+  `time` int(11) DEFAULT NULL,
   `dungeon_id` int(11) unsigned NOT NULL,
-  `description` text,
-  `status` int(2) unsigned NOT NULL,
+  `description` text CHARACTER SET latin1,
+  `status_id` int(11) unsigned NOT NULL,
   `user_id` int(11) unsigned NOT NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -76,25 +95,23 @@ CREATE TABLE IF NOT EXISTS `events` (
 --
 
 CREATE TABLE IF NOT EXISTS `keys` (
-  `id` int(11) unsigned NOT NULL auto_increment,
-  `key` varchar(30) character set latin1 NOT NULL,
-  `action` varchar(20) character set latin1 default NULL,
-  `sent_time` timestamp NOT NULL default CURRENT_TIMESTAMP,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `key` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `action` varchar(20) CHARACTER SET latin1 DEFAULT NULL,
+  `sent_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` int(11) unsigned NOT NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 --
 -- Table structure for table `professions`
 --
 
 CREATE TABLE IF NOT EXISTS `professions` (
-  `id` int(11) unsigned NOT NULL auto_increment,
-  `name` varchar(15) NOT NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(15) CHARACTER SET latin1 NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `professions`
@@ -119,14 +136,14 @@ INSERT INTO `professions` (`id`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `profiles` (
-  `id` int(11) unsigned NOT NULL auto_increment,
-  `first_name` varchar(20) character set latin1 default NULL,
-  `last_name` varchar(30) character set latin1 default NULL,
-  `birthdate` date default NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(20) CHARACTER SET latin1 DEFAULT NULL,
+  `last_name` varchar(30) CHARACTER SET latin1 DEFAULT NULL,
+  `birthdate` date DEFAULT NULL,
   `user_id` int(11) unsigned NOT NULL,
-  PRIMARY KEY  (`id`),
+  PRIMARY KEY (`id`),
   KEY `user_profile_fk1` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -135,12 +152,12 @@ CREATE TABLE IF NOT EXISTS `profiles` (
 --
 
 CREATE TABLE IF NOT EXISTS `roles` (
-  `id` int(11) unsigned NOT NULL auto_increment,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
   `description` varchar(255) NOT NULL,
-  PRIMARY KEY  (`id`),
+  PRIMARY KEY (`id`),
   UNIQUE KEY `uniq_name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `roles`
@@ -162,7 +179,7 @@ INSERT INTO `roles` (`id`, `name`, `description`) VALUES
 CREATE TABLE IF NOT EXISTS `roles_users` (
   `user_id` int(10) unsigned NOT NULL,
   `role_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY  (`user_id`,`role_id`),
+  PRIMARY KEY (`user_id`,`role_id`),
   KEY `fk_role_id` (`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -173,12 +190,17 @@ CREATE TABLE IF NOT EXISTS `roles_users` (
 --
 
 CREATE TABLE IF NOT EXISTS `sessions` (
-  `session_id` varchar(24) character set latin1 NOT NULL,
+  `session_id` varchar(24) CHARACTER SET latin1 NOT NULL,
   `last_active` int(10) unsigned NOT NULL,
-  `contents` text character set latin1 NOT NULL,
-  PRIMARY KEY  (`session_id`),
+  `contents` text CHARACTER SET latin1 NOT NULL,
+  PRIMARY KEY (`session_id`),
   KEY `last_active` (`last_active`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `sessions`
+--
+
 
 -- --------------------------------------------------------
 
@@ -187,14 +209,38 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 CREATE TABLE IF NOT EXISTS `signups` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `event_id` int(11) unsigned NOT NULL,
   `character_id` int(11) unsigned NOT NULL,
-  `status` int(2) unsigned NOT NULL,
-  `role` varchar(20) NOT NULL,
-  `comment` text,
-  `timestamp` timestamp NOT NULL default CURRENT_TIMESTAMP,
-  PRIMARY KEY  (`event_id`,`character_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `status_id` int(11) unsigned NOT NULL,
+  `role` varchar(20) CHARACTER SET latin1 NOT NULL,
+  `comment` text CHARACTER SET latin1,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique` (`event_id`,`character_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `statuses`
+--
+
+CREATE TABLE IF NOT EXISTS `statuses` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) CHARACTER SET latin1 NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `statuses`
+--
+
+INSERT INTO `statuses` (`id`, `name`) VALUES
+(1, 'scheduled'),
+(2, 'cancelled'),
+(3, 'ready'),
+(4, 'stand-by');
 
 -- --------------------------------------------------------
 
@@ -203,15 +249,15 @@ CREATE TABLE IF NOT EXISTS `signups` (
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) unsigned NOT NULL auto_increment,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(254) NOT NULL,
-  `username` varchar(32) NOT NULL default '',
+  `username` varchar(32) NOT NULL DEFAULT '',
   `password` varchar(64) NOT NULL,
-  `logins` int(10) unsigned NOT NULL default '0',
-  `last_login` int(10) unsigned default NULL,
+  `logins` int(10) unsigned NOT NULL DEFAULT '0',
+  `last_login` int(10) unsigned DEFAULT NULL,
   `timezone` varchar(50) NOT NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -220,17 +266,18 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 CREATE TABLE IF NOT EXISTS `user_tokens` (
-  `id` int(11) unsigned NOT NULL auto_increment,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(11) unsigned NOT NULL,
   `user_agent` varchar(40) NOT NULL,
   `token` varchar(40) NOT NULL,
   `type` varchar(100) NOT NULL,
   `created` int(10) unsigned NOT NULL,
   `expires` int(10) unsigned NOT NULL,
-  PRIMARY KEY  (`id`),
+  PRIMARY KEY (`id`),
   UNIQUE KEY `uniq_token` (`token`),
   KEY `fk_user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
 
 --
 -- Constraints for dumped tables

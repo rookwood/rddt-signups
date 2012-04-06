@@ -138,9 +138,6 @@ class Controller_Event extends Abstract_Controller_Website {
 			// Extract event data from $_POST
 			$event_post = Arr::get($this->request->post(), 'event', array());
 			
-			ProfilerToolbar::addData($event_post);
-			ProfilerToolbar::addData($_POST);
-			
 			// Load character object
 			$character = ORM::factory('character', array('name' => $event_post['character']));
 			
@@ -152,19 +149,9 @@ class Controller_Event extends Abstract_Controller_Website {
 			
 			// Load sign-up (pivot) object to fill in details
 			$signup = ORM::factory('signup', array('event_id' => $event->id, 'character_id' => $character->id));
-			//$signup = ORM::factory('signup')
-			//	->where('event_id', '=', $event->id)
-			//	->and_where('character_id', '=', $character->id)
-			//	->find();
-			
-			$signup->load();
 			
 			if ( ! $signup->loaded())
 			{
-				ProfilerToolbar::addData('Event id: '.$event->id);
-				ProfilerToolbar::addData('Character id: '.$character->id);
-				ProfilerToolbar::addData($signup);
-				
 				throw new Exception('failed to load signup record');
 			}
 			

@@ -46,6 +46,7 @@ class Model_Event extends ORM {
 		$values['status_id']    = $status_id;
 		$values['time']         = $time;
 		$values['character_id'] = $character->id;
+		$values['user_id']      = $user->id;
 		
 		// Create record and save
 		return $this->values($values, $expected)->create();

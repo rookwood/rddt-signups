@@ -32,20 +32,27 @@
 {{#characters}}
 						<option class="{{profession}}" value="{{name}}">{{name}}</option>
 {{/characters}}
+{{^characters}}
+						<option value="">You have no registered characters</option>
+{{/characters}}
 					</select>
+				</li>
+				<li>
+					<label for="role">For role:</label>
+					<input type="text" name="event[role]" id="role" value="{{values.role}}" {{#errors.role}}class="error" {{/errors.role}}/>
+				</li>
+				<li>
+					<label for="comments">Comments:</label>
+					<textarea name="event[comment]" id="comments"></textarea>
 				</li>
 				<li>
 					<fieldset class="reliability">
 						<legend>Sign-up as:</legend>
 						<label for="status_ready">Ready</label>
-						<input type="radio" name="event[status]" id="status_ready" value="ready" />
+						<input type="radio" name="event[status]" id="status_ready" value="ready" checked="checked" />
 						<label for="status_standby">Stand-by</label>
 						<input type="radio" name="event[status]" id="status_standby" value="standby" />
 					</fieldset>					
-				</li>
-				<li>
-					<label for="comments">Comments:</label>
-					<textarea name="event[comment]" id="comments"></textarea>
 				</li>
 			</ul>
 			{{{csrf}}}
@@ -60,10 +67,11 @@
 			<li>Nobody!</li>
 		{{/attendees}}
 		</ul>
-		
-		<input type="submit" value="other sign up button" />
 	</form>
 	
 {{#remove_event}}
 <a href="{{remove_event}}">Cancel this event</a>
 {{/remove_event}}
+{{#withdraw}}
+<a href="{{withdraw}}">Withdraw from this event</a>
+{{/withdraw}}

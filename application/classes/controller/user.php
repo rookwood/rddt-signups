@@ -427,6 +427,6 @@ class Controller_User extends Abstract_Controller_Website {
 	
 	public function action_profile()
 	{
-	
+		// Public info about a user NYI
 	}
 }

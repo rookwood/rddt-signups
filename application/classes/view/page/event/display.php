@@ -60,7 +60,7 @@ class View_Page_Event_Display extends Abstract_View_Page {
 			);
 		}
 		
-		return $out;
+		return isset($out) ? $out : FALSE;
 	}
 	
 	public function edit_event()
@@ -77,6 +77,18 @@ class View_Page_Event_Display extends Abstract_View_Page {
 		if ($this->user->can('event_remove', array('event' =>$this->event_data)))
 		{
 			return Route::url('event', array('action' => 'remove', 'id' => $this->event_data->id));
+		}
+	}
+	
+	public function withdraw()
+	{
+		if ($this->user->can('event_withdraw', array('event' => $this->event_data)))
+		{
+			return Route::url('event', array('action' => 'withdraw', 'id' => $this->event_data->id));
+		}
+		else
+		{
+			return FALSE;
 		}
 	}
 }

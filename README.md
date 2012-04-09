@@ -10,11 +10,19 @@ This is still a work in progress and open to anyone wishing to contribute.
 * Adding characters to users' accounts and displaying a list of all that are attached
 * Display of all guild events and detailed view of such which includes attendees
 * Event creation, cancellation, and sign-up
-
-### Features in progress
 * Event editing
+* 
+### Features in progress
+* Automatic handling of stand-by status for any given event
 * Characrter editing and removal
 
 ### Features to be added
 * Administrative versions of event and character management
-* Support for automatically dealing with event sign-ups and roles
+
+
+### Idea scratchpad (i.e. things I need to add)
+* Sort through stand-by signups on cancelation... but what about voluntary stand-bys?
+* Get rid of all the silly redirects... just set up the view class manually; it'll be cleaner in the end
+* Go through all policy classes and controllers to make sure that potential errors are all accounted for
+* Add comments that I was too lazy to write on the first draft
+* Consider what general users will need access to should they be allowed to create events freely.

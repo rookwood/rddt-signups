@@ -9,5 +9,7 @@ class Model_Signup extends ORM {
 		'events'     => array(),
 		'characters' => array(),
 	);
+	
+	protected $_belongs_to = array('slot' => array());
 
 }

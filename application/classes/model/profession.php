@@ -17,7 +17,13 @@ class Model_Profession extends ORM {
 	const PARAGON      = 10;
 	
 	// Relationships
-	protected $_has_many = array('characters' => array());
+	protected $_has_many = array(
+		'characters' => array(),
+		'slots'      => array(
+			'through' => 'professions_slots',
+			'model'   => 'slot',
+		),
+	);
 	
 	/**
 	 * Returns array of all current professions

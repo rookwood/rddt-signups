@@ -69,4 +69,13 @@ class View_Page_Event_Add extends Abstract_View_Page {
 		return $out;
 	}
 
+	public function build_list()
+	{
+		foreach (ORM::factory('build')->find_all() as $build)
+		{
+			$out[] = array('name' => $build->name, 'url' => $build->url);
+		}
+		
+		return $out;
+	}
 }

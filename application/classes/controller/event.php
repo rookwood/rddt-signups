@@ -8,7 +8,7 @@ class Controller_Event extends Abstract_Controller_Website {
 		
 		// Retreive all future events and ones that started in the last hour
 		$events = ORM::factory('event')
-			->where('time', '>', strftime('%s', time() - Date::HOUR))
+			//->where('time', '>', strftime('%s', time() - Date::HOUR))
 			//->and_where('status_id', '!=', $status->id)
 			->order_by('status_id', 'ASC')
 			->order_by('time', 'ASC')
@@ -55,7 +55,7 @@ class Controller_Event extends Abstract_Controller_Website {
 			{
 				// Create new event object
 				$event = ORM::factory('event')->create_event($this->user, $event_post, array(
-					'time', 'dungeon_id', 'description', 'status_id', 'user_id', 'title', 'build', 'url', 'character_id', 'user_id'
+					'time', 'dungeon_id', 'description', 'status_id', 'user_id', 'title', 'build_id', 'url', 'character_id', 'user_id'
 				));
 				
 				// Notification
@@ -192,7 +192,10 @@ class Controller_Event extends Abstract_Controller_Website {
 			}
 			
 			$signup->status_id  = $signup_status->id;
-			$signup->role = $event_post['role'];
+			
+			// Get slot info
+			$slot = ORM::factory('slot', array('name' => $event_post['slot']));
+			$signup->slot_id = $slot->id;
 			
 			// TODO add purifier here
 			$signup->comment = $event_post['comment'];

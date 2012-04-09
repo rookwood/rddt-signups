@@ -40,11 +40,11 @@
 				</li>
 				<li>
 					<label for="build">Build planned:</label>
-					<input type="text" name="event[build]" id="build" value="{{values.build}}" {{#errors.build}}class="error" {{/errors.build}}/>
-				</li>
-				<li>
-					<label for="url">Build link:</label>
-					<input type="url" name="event[url]" id="url" value="{{values.url}}" {{#errors.url}}class="error" {{/errors.url}}/>
+					<select name="event[build]" id="build" {{#errors.build}}class="error" {{/errors.build}}>
+{{#build_list}}
+						<option value="{{name}}">{{name}}</option>
+{{/build_list}}
+					</select>
 				</li>
 				<li>
 					<label for="character">Lead as:</label>

@@ -38,9 +38,13 @@
 					</select>
 				</li>
 				<li>
-					<label for="role">For role:</label>
-					<input type="text" name="event[role]" id="role" value="{{values.role}}" {{#errors.role}}class="error" {{/errors.role}}/>
-				</li>
+					<label for="slot">For open role slot:</label>
+					<select name="event[slot]" id="slot">
+{{#role_list}}
+						<option value="{{name}}">{{name}} {{#number}}({{number}} / {{total}} open){{/number}}{{^number}}(Stand-by){{/number}}</option>
+{{/role_list}}
+					</select>
+					</li>
 				<li>
 					<label for="comments">Comments:</label>
 					<textarea name="event[comment]" id="comments"></textarea>

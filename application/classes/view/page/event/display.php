@@ -28,8 +28,8 @@ class View_Page_Event_Display extends Abstract_View_Page {
 			'status'       => $event->status->name,
 			'host'         => $host->user->username,
 			'hostas'       => $host->name,
-			'build'        => $event->build,
-			'url'          => $event->url,
+			'build'        => $event->build->name,
+			'url'          => $event->build->url,
 		);
 	}
 	
@@ -90,5 +90,53 @@ class View_Page_Event_Display extends Abstract_View_Page {
 		{
 			return FALSE;
 		}
+	}
+	
+	/**
+	 * Return a list of roles needed for the build used in this event
+	 * Data includes role names and how many of each slot type are open
+	 *
+	 * @return  array  Role list
+	 */
+	public function role_list()
+	{
+		// Build used for this event
+		$build = ORM::factory('build', $this->event_data->build_id);
+		
+		// Slots needed for this build
+		$slots = $build->slots->find_all();
+		
+		// Sign-ups that are cancelled or standby should not be included in the counts
+		$cancelled = ORM::factory('status', array('name' => 'cancelled'))->id;
+		$standby   = ORM::factory('status', array('name' => 'standby'))->id;
+		
+		// Iterate each role to get name and number of openings remaining
+		foreach ($slots as $slot)
+		{
+			// Build / slot relationship with total count information
+			$function = ORM::factory('function', array('build_id' => $build->id, 'slot_id' => $slot->id));
+			
+			// Count how many slots are taken up by sign-ups
+			$slots_filled = DB::select(array('COUNT("id")', 'count'))
+				->from('signups')
+				->where('event_id',       '=', $this->event_data->id)
+				->and_where('slot_id',    '=', $slot->id)
+				->and_where('status_id', '!=', $cancelled)
+				->and_where('status_id', '!=', $standby)
+				->as_object()
+				->execute();
+
+			// Build data array
+			if ($function->number - $slots_filled[0]->count !== 0)
+			{
+				$out[] = array('name' => $slot->name, 'number' => $function->number - $slots_filled[0]->count, 'total' => $function->number);
+			}
+			else
+			{
+				$out[] = array('name' => $slot->name, 'number' => FALSE, 'total' => $function->number);
+			}
+		}
+		
+		return isset($out) ? $out : FALSE;
 	}
 }

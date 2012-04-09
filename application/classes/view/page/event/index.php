@@ -7,10 +7,13 @@ class View_Page_Event_Index extends Abstract_View_Page {
 	 */
 	public $event_data;
 	
+	/**
+	 * Builds an array of data for all events to be listed
+	 *
+	 * @return  mixed  (array) Event data or (bool) FALSE
+	 */
 	public function events()
-	{
-		ProfilerToolbar::addData($this->event_data, 'Event data');
-		
+	{	
 		foreach($this->event_data as $event)
 		{
 			// Calculate start time using user's time offset from GMT
@@ -31,7 +34,12 @@ class View_Page_Event_Index extends Abstract_View_Page {
 		
 		return isset($out) ? $out : FALSE;
 	}
-
+	
+	/**
+	 * URL pointing to form to add new event
+	 *
+	 * @return  mixed  (array) Event data or (bool) FALSE
+	 */
 	public function add_event()
 	{
 		if ($this->user->can('event_add'))

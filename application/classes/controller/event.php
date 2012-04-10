@@ -22,7 +22,7 @@ class Controller_Event extends Abstract_Controller_Website {
 	{
 		// Load the event object
 		$event = ORM::factory('event', array('id' => $this->request->param('id')));
-		
+	
 		// Can user view this event?
 		if ( ! $this->user->can('event_view', array('event' => $event)))
 		{
@@ -182,15 +182,33 @@ class Controller_Event extends Abstract_Controller_Website {
 				throw new Exception('failed to load signup record');
 			}
 			
-			// User signing-up as active or standby?
-			$signup_status = ORM::factory('status', array('name' => $event_post['status']));
+			// Load slot to test if available
+			$slot = ORM::factory('slot', array('name' => $event_post['slot']));
 			
+			// If slots are full, you have to sign-up as standby
+			if ( ! $this->user->can('event_signup_active', array('event' => $event, 'slot' => $slot)))
+			{
+				$policy_status = Policy::$last_code;
+				
+				if ($policy_status === Policy_Event_Signup_Active::STANDBY_ONLY)
+				{
+					$signup_status = ORM::factory('status', array('name' => 'stand-by'));
+				}
+			}
+			else
+			{
+				// If slots available, allow user preference
+				$signup_status = ORM::factory('status', array('name' => $event_post['status']));
+			}
+			
+			// Ensure that valid status was given
 			if ( ! $signup_status->loaded())
 			{
 				// Default to stand-by on error
 				$signup_status = ORM::factory('status', array('name' => 'stand-by'));
 			}
 			
+			// Set sign-up status
 			$signup->status_id  = $signup_status->id;
 			
 			// Get slot info

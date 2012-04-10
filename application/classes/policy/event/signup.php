@@ -2,10 +2,12 @@
 
 class Policy_Event_Signup extends Policy {
 
-	const NOT_ALLOWED   = 1;
-	const STANDBY_ONLY  = 2;
-	const PRIVATE_EVENT = 3; //NYI
-	const NOT_LOGGED_IN = 4;
+	const NOT_ALLOWED        = 1;
+	const PRIVATE_EVENT      = 2; //NYI
+	const NOT_LOGGED_IN      = 3;
+	const START_TIME_PASSED  = 4;
+	const ALREADY_SIGNED_UP  = 5;
+	const HAVE_NO_CHARACTERS = 6;
 	
 	public function execute(Model_ACL_User $user, array $extras = NULL)
 	{
@@ -15,13 +17,24 @@ class Policy_Event_Signup extends Policy {
 			return self::NOT_LOGGED_IN;
 		}
 		
-		if ($extras['slots'] <= $extras['filled'])
+		// Can't signup for events whose start time has already passed
+		if ($extras['event']->time < time())
 		{
-			return self::STANDBY_ONLY;
+			return self::START_TIME_PASSED;
 		}
 		
-		return TRUE;
+		if ($user->characters->count_all() === 0)
+		{
+			return self::HAVE_NO_CHARACTERS;
+		}
+		// Can't signup for events in which you are already enrolled
+		if (Model_Signup::is_signed_up($user, $extras['event']))
+		{
+			return self::ALREADY_SIGNED_UP;
+		}
 		
+		// Can't think of any other reason to keep you out at this point
+		return TRUE;
 	}
 
 }

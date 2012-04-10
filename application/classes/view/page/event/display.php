@@ -100,43 +100,33 @@ class View_Page_Event_Display extends Abstract_View_Page {
 	 */
 	public function role_list()
 	{
-		// Build used for this event
-		$build = ORM::factory('build', $this->event_data->build_id);
-		
 		// Slots needed for this build
-		$slots = $build->slots->find_all();
-		
-		// Sign-ups that are cancelled or standby should not be included in the counts
-		$cancelled = ORM::factory('status', array('name' => 'cancelled'))->id;
-		$standby   = ORM::factory('status', array('name' => 'standby'))->id;
-		
+		$slots = $this->event_data->build->slots->find_all();
+				
 		// Iterate each role to get name and number of openings remaining
 		foreach ($slots as $slot)
 		{
-			// Build / slot relationship with total count information
-			$function = ORM::factory('function', array('build_id' => $build->id, 'slot_id' => $slot->id));
+			$total = Model_Function::slot_count($this->event_data->build, $slot);
+			$available = $total - $slot->slots_filled($this->event_data);
 			
-			// Count how many slots are taken up by sign-ups
-			$slots_filled = DB::select(array('COUNT("id")', 'count'))
-				->from('signups')
-				->where('event_id',       '=', $this->event_data->id)
-				->and_where('slot_id',    '=', $slot->id)
-				->and_where('status_id', '!=', $cancelled)
-				->and_where('status_id', '!=', $standby)
-				->as_object()
-				->execute();
-
-			// Build data array
-			if ($function->number - $slots_filled[0]->count !== 0)
+			ProfilerToolbar::addData('Total: '.$total);
+			ProfilerToolbar::addData('Available: '.$available);
+			
+			if ($available > 0)
 			{
-				$out[] = array('name' => $slot->name, 'number' => $function->number - $slots_filled[0]->count, 'total' => $function->number);
+				$out[] = array('name' => $slot->name, 'number' => $available, 'total' => $total);
 			}
 			else
 			{
-				$out[] = array('name' => $slot->name, 'number' => FALSE, 'total' => $function->number);
+				$out[] = array('name' => $slot->name, 'number' => FALSE, 'total' => $total);
 			}
 		}
 		
 		return isset($out) ? $out : FALSE;
+	}
+	
+	public function signup()
+	{
+		return  TRUE === $this->user->can('event_signup', array('event' => $this->event_data));
 	}
 }

@@ -62,7 +62,7 @@ class Model_Character extends ORM {
 	 */
 	public function character_name_available($name)
 	{
-		return ORM::factory('character')->where('name', '=', $name)->find()->loaded();
+		return (bool) ORM::factory('character', array('name' => $name)->loaded();
 	}
 	
 	/**

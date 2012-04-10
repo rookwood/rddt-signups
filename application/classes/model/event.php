@@ -69,19 +69,25 @@ class Model_Event extends ORM {
 		
 		// Convert dungeon name to id
 		$dungeon    = ORM::factory('dungeon', array('name' => $values['dungeon']));
-		$dungeon_id = $dungeon->id;
 		
 		// Convert status name to id
 		$status    = ORM::factory('status', array('name' => 'scheduled'));
-		$status_id = $status->id;
+		
+		// Get character id
+		$character = ORM::factory('character', array('name' => $values['character']));
+		
+		// Get build id
+		$build = ORM::factory('build', array('name' => $values['build']));
 		
 		// Add remaining values needed
-		$values['dungeon_id'] = $dungeon_id;
-		$values['status_id']  = $status_id;
-		$values['user_id']    = $user->id;
-		$values['time']       = $time;
+		$values['dungeon_id']   = $dungeon->id;
+		$values['status_id']    = $status->id;
+		$values['time']         = $time;
+		$values['character_id'] = $character->id;
+		$values['user_id']      = $user->id;
+		$values['build_id']     = $build->id;
 		
-		// Create record and save
+		// Save record
 		return $this->values($values, $expected)->save();
 	 }
 

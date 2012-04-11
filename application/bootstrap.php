@@ -167,6 +167,12 @@ Route::set('character', 'character(/<action>(/<id>))', array('action' => 'add|re
 		'action'     => 'index',
 	));
 
+Route::set('build', 'build(/<action>(/<id>))', array('action' => 'add|remove|edit', '/^\pN++$/uD'))
+	->defaults(array(
+		'controller' => 'build',
+		'action'     => 'index',
+	));
+
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
 		'controller' => 'welcome',

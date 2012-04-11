@@ -40,12 +40,19 @@
 				</li>
 				<li>
 					<label for="build">Build planned:</label>
-					<input type="text" name="event[build]" id="build" value="{{event_data.build}}" {{#errors.build}}class="error" {{/errors.build}}/>
+					<select name="event[build]" id="build" {{#errors.build}}class="error" {{/errors.build}}>
+{{#build_list}}
+						<option value="{{name}}">{{name}}</option>
+{{/build_list}}
+					</select>
 				</li>
 				<li>
-					<label for="url">Build link:</label>
-					<input type="url" name="event[url]" id="url" value="{{event_data.url}}" {{#errors.url}}class="error" {{/errors.url}}/>
-				</li>
+					<label for="character">Lead as:</label>
+					<select name="event[character]" id="character">
+{{#characters}}
+						<option class="{{profession}}" value="{{name}}">{{name}}</option>
+{{/characters}}
+					</select>
 				<li>
 					{{{csrf}}}
 					<input type="submit" value="Create event" />
@@ -53,4 +60,3 @@
 			</ul>
 		</fieldset>
 	</form>
-		

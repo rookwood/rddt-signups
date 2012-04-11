@@ -40,15 +40,7 @@ class View_Page_Event_Add extends Abstract_View_Page {
 		
 		foreach ($dungeons as $dungeon)
 		{
-			if ($dungeon->name === $this->values['dungeon'])
-			{
-				$out[] = array('value' => $dungeon->name, 'name' => $dungeon->name, 'selected' => TRUE);
-			}
-			else
-			{
-				$out[] = array('value' => $dungeon->name, 'name' => $dungeon->name);
-			}
-			
+			$out[] = array('value' => $dungeon->name, 'name' => $dungeon->name);
 		}
 		
 		return $out;

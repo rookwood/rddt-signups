@@ -12,6 +12,6 @@
 			'through' => 'functions',
 			'model' => 'slot',
 		),
-		'builds'    => array(),
+		'events'    => array(),
 	);
 }

@@ -106,7 +106,7 @@ class Controller_Event extends Abstract_Controller_Website {
 				
 				// Setup display of edited event
 				$this->view = Kostache::factory('page/event/display')
-					->assets(Assets::factory())
+					->assets(Assets::factory());
 			}
 			catch(ORM_Validation_Exception $e)
 			{
@@ -146,7 +146,7 @@ class Controller_Event extends Abstract_Controller_Website {
 		
 		// Show event list
 		$this->view = Kostache::factory('page/event/index')
-				->assets(Assets::factory())
+				->assets(Assets::factory());
 	}
 	
 	public function action_signup()

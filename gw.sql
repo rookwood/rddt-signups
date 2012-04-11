@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 08, 2012 at 10:53 AM
+-- Generation Time: Apr 10, 2012 at 07:46 PM
 -- Server version: 5.1.54
 -- PHP Version: 5.3.5-1ubuntu7.4
 
@@ -25,14 +25,7 @@ CREATE TABLE IF NOT EXISTS `builds` (
   `url` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `builds`
---
-
-
--- --------------------------------------------------------
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Table structure for table `characters`
@@ -45,8 +38,7 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `user_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `characters_ibfk_1` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
-
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Table structure for table `config`
@@ -103,10 +95,10 @@ CREATE TABLE IF NOT EXISTS `events` (
   `description` text CHARACTER SET latin1,
   `status_id` int(11) unsigned NOT NULL,
   `character_id` int(11) unsigned NOT NULL,
-  `build` varchar(50) DEFAULT NULL,
-  `url` varchar(100) DEFAULT NULL,
+  `build_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
 
 -- --------------------------------------------------------
 
@@ -120,12 +112,7 @@ CREATE TABLE IF NOT EXISTS `functions` (
   `slot_id` int(11) unsigned NOT NULL,
   `number` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `functions`
---
-
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -187,10 +174,6 @@ CREATE TABLE IF NOT EXISTS `professions_slots` (
   PRIMARY KEY (`profession_id`,`slot_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `professions_slots`
---
-
 
 -- --------------------------------------------------------
 
@@ -208,8 +191,6 @@ CREATE TABLE IF NOT EXISTS `profiles` (
   KEY `user_profile_fk1` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `roles`
@@ -278,15 +259,12 @@ CREATE TABLE IF NOT EXISTS `signups` (
   `event_id` int(11) unsigned NOT NULL,
   `character_id` int(11) unsigned NOT NULL,
   `status_id` int(11) unsigned NOT NULL,
-  `role` varchar(20) CHARACTER SET latin1 NOT NULL,
+  `slot_id` int(11) unsigned NOT NULL,
   `comment` text CHARACTER SET latin1,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique` (`event_id`,`character_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
-
-
--- --------------------------------------------------------
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Table structure for table `slots`
@@ -297,14 +275,7 @@ CREATE TABLE IF NOT EXISTS `slots` (
   `name` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `slots`
---
-
-
--- --------------------------------------------------------
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Table structure for table `statuses`
@@ -343,7 +314,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
-
 -- --------------------------------------------------------
 
 --
@@ -361,12 +331,7 @@ CREATE TABLE IF NOT EXISTS `user_tokens` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `uniq_token` (`token`),
   KEY `fk_user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
-
---
--- Dumping data for table `user_tokens`
---
-
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- Constraints for dumped tables

@@ -1,0 +1,25 @@
+
+	<form action="{{add_action}}" method="POST" id="form_build_add">
+		<fieldset>
+			<legend>Add new build</legend>
+			<ul>
+				<li>
+					<label for="name">Build name:</label>
+					<input type="text" name="build[name]" id="name" {{#errors.name}}class="error" {{/errors.name}}/>
+				</li>
+{{#slots}}
+				<li>
+					<label for="slot_{{name}}_check">{{name}}:</label>
+					<input type="checkbox" name="slot[name]" value="{{name}}" id="slot_{{name}}_check" />
+					<input type="number" name="slot[quantity][{{name}}]" />
+				</li>
+{{/slots}}
+				<li>
+					{{{csrf}}}
+					<input type="submit" value="Submit" />
+				</li>
+			</ul>
+		</fieldset>
+	</form>
+
+<p>Need something not listed here?  You can <a href="{{slot_add}}">add it</a>.

@@ -173,6 +173,12 @@ Route::set('build', 'build(/<action>(/<id>))', array('action' => 'add|remove|edi
 		'action'     => 'index',
 	));
 
+Route::set('slot', 'slot(/<action>(/<id>))', array('action' => 'add|remove|edit', '/^\pN++$/uD'))
+	->defaults(array(
+		'controller' => 'slot',
+		'action'     => 'index',
+	));
+
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
 		'controller' => 'welcome',

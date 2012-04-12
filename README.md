@@ -28,3 +28,4 @@ This is still a work in progress and open to anyone wishing to contribute.
 * Add comments that I was too lazy to write on the first draft
 * Consider what general users will need access to should they be allowed to create events freely.
 * Need sensibile form structure / names for slot (in-game role) handling
+* Create new event from build list page

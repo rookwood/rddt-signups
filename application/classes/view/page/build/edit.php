@@ -7,5 +7,15 @@ class View_Page_Build_Edit extends View_Page_Build_Add {
 		return Route::url('build', array('action' => 'edit', 'id' => $this->build_data->id));
 	}
 
+	public function slots()
+	{
+		foreach (ORM::factory('slot')->order_by('name', 'ASC')->find_all() as $slot)
+		{
+			$function = ORM::factory('function', array('slot_id' => $slot->id, 'build_id' => $this->build_data->id));
 
+			$out[] = array('name' => $slot->name, 'quantity' => ($function->loaded()) ? $function->number : FALSE);
+		}
+		
+		return $out;
+	}
 }

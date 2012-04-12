@@ -9,9 +9,8 @@
 				</li>
 {{#slots}}
 				<li>
-					<label for="slot_{{name}}_check">{{name}}:</label>
-					<input type="checkbox" name="slot[name]" value="{{name}}" id="slot_{{name}}_check" />
-					<input type="number" name="slot[quantity][{{name}}]" />
+					<label for="{{name}}">{{name}}:</label>
+					<input type="number" name="quantity[{{name}}]" id="{{name}}" />
 				</li>
 {{/slots}}
 				<li>

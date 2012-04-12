@@ -1,7 +1,20 @@
-
-	<h4>Currently saved builds</h4>
-	<ul>
+	<h4>Currently available builds</h4>
+	<table>
+		<thead>
+			<tr>
+				<td colspan="2">Actions</td>
+				<td>Name</td>
+				<td>PvX link</td>
+			</tr>
+		</thead>
+		<tbody>
 {{#build_list}}
-		<li><a href="{{edit_link}}">{{name}}</a> : <a href="{{url}}">PvX link</a></li>
+			<tr>
+				<td><a href="{{create_url}}"><img src="/media/img/icons/page_edit.png" /></a></td>
+				<td><a href="{{edit_url}}"><img src="/media/img/icons/page_add.png" /></a></td>
+				<td>{{name}}</td>
+				<td><a href="{{url}}">PvX link</a></td>
+			</tr>
 {{/build_list}}
-	</ul>
+		</tbody>
+	</table>

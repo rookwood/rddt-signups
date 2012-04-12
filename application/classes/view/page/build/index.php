@@ -8,7 +8,12 @@ class View_Page_Build_Index extends Abstract_View_Page {
 	{
 		foreach ($this->build_data as $build)
 		{
-			$out[] = array('name' => $build->name, 'url' => $build->url, 'edit_link' => Route::url('build', array('action' => 'edit', 'id' => $build->id)));
+			$out[] = array(
+				'name'       => $build->name,
+				'url'        => $build->url,
+				'edit_url'   => Route::url('build', array('action' => 'edit', 'id' => $build->id)),
+				'create_url' => Route::url('event', array('action' => 'add')) . URL::query('array'('build' => $build->id))
+			);
 		}
 		
 		return $out;

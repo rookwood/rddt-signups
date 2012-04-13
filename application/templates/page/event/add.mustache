@@ -1,4 +1,3 @@
-
 	<form action="{{event_add_action}}" method="post" class="panel" id="event_add">
 		<fieldset>
 			<legend>Create new event</legend>
@@ -42,7 +41,7 @@
 					<label for="build">Build planned:</label>
 					<select name="event[build]" id="build" {{#errors.build}}class="error" {{/errors.build}}>
 {{#build_list}}
-						<option value="{{name}}">{{name}}</option>
+						<option value="{{name}}"{{#selected}} selected="selected{{/selected}}>{{name}}</option>
 {{/build_list}}
 					</select>
 				</li>

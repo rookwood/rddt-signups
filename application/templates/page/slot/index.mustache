@@ -1,0 +1,21 @@
+<h4>Slots</h4>
+<table>
+	<thead>
+		<tr>
+			<td colspan="1">Actions</td>
+			<td>Name</td>
+			<td>Professions</td>
+		</tr>
+	</thead>
+	<tbody>
+{{#slot_list}}
+		<tr>
+			<td><a href="{{edit_link}}"><img src="/media/img/icons/page_edit.png" /></a></td>
+			<td>{{name}}</td>
+			<td>{{professions}}</td>
+		</tr>
+{{/slot_list}}
+	</tbody>
+</table>
+
+<a href="{{slot_add_url}}">Add new slot</a>

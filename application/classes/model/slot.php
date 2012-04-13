@@ -48,4 +48,52 @@ class Model_Slot extends ORM {
 		
 		return $slots_filled[0]->count;
 	}
+	
+	public function add_slot($data)
+	{
+		// Add slot record
+		$this->name = $data['name'];
+		$this->create();
+		
+		// Add profession associations
+		foreach ($data['profession'] as $profession)
+		{
+			$this->add('professions', ORM::factory('profession', array('name' => $profession)));
+		}
+		
+		return $this;
+	}
+	
+	public function edit_slot($data)
+	{
+		// Save new name if changed
+		if ( ! $this->name === $data['name'])
+		{
+			$this->name = $data['name'];
+			$this->save();
+		}
+		
+		// Deal with profession relationships
+		foreach (Model_Profession::profession_list() as $profession)
+		{
+			// Check if present; add if not
+			if (in_array($profession, $data['profession']))
+			{
+				if ( ! $this->has('professions', ORM::factory('profession', array('name' => $profession))))
+				{
+					$this->add('professions', ORM::factory('profession', array('name' => $profession)));
+				}
+			}
+			// Check if absent, delete if so
+			else
+			{
+				if ($this->has('professions', ORM::factory('profession', array('name' => $profession))))
+				{
+					$this->remove('professions', ORM::factory('profession', array('name' => $profession)));
+				}
+			}
+		}
+		
+		return $this;
+	}
 }

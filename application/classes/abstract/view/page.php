@@ -128,6 +128,16 @@ class Abstract_View_Page extends Abstract_View_Layout {
 			);
 			
 			$links[] = array(
+				'location' => Route::url('build'),
+				'text'     => 'Build list',
+			);
+			
+			$links[] = array(
+				'location' => Route::url('slot'),
+				'text'     => 'Slot list',
+			);
+			
+			$links[] = array(
 				'location' => Route::url('user', array('controller' => 'user', 'action' => 'logout')),
 				'text'     => 'Log out'
 			);

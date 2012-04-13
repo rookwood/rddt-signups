@@ -12,14 +12,14 @@ class View_Page_Build_Index extends Abstract_View_Page {
 				'name'       => $build->name,
 				'url'        => $build->url,
 				'edit_url'   => Route::url('build', array('action' => 'edit', 'id' => $build->id)),
-				'create_url' => Route::url('event', array('action' => 'add')) . URL::query('array'('build' => $build->id))
+				'create_url' => Route::url('event', array('action' => 'add')) . URL::query(array('build' => $build->id))
 			);
 		}
 		
 		return $out;
 	}
 	
-	public function add_link()
+	public function build_add_link()
 	{
 		return Route::url('build', array('action' => 'add'));
 	}

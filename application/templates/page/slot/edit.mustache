@@ -1,0 +1,25 @@
+
+	<form action="{{slot_edit_url}}" method="POST" id="form_slot_edit_action">
+		<fieldset>
+			<legend>Edit slot</legend>
+			<ul>
+				<li>
+					<label for="name">Slot name:</label>
+					<input type="text" name="slot[name]" id="name" value="{{slot_data.name}}" {{#errors.name}}class="error" {{/errors.name}}/>
+				</li>
+				<li>
+					<p>Eligible professions:</p>
+				</li>
+{{#professions}}
+				<li>
+					<label for="check_{{name}}">{{name}}</label>
+					<input type="checkbox" name="slot[profession][]" value="{{name}}" id="check_{{name}}" {{#checked}}checked="checked" {{/checked}}/>
+				</li>
+{{/professions}}
+				<li>
+					{{{csrf}}}
+					<input type="submit" value="Submit" />
+				</li>
+			</ul>
+		</fieldset>
+	</form>

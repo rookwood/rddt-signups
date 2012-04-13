@@ -65,7 +65,7 @@ class View_Page_Event_Add extends Abstract_View_Page {
 	{
 		foreach (ORM::factory('build')->find_all() as $build)
 		{
-			$out[] = array('name' => $build->name, 'url' => $build->url);
+			$out[] = array('name' => $build->name, 'url' => $build->url, 'selected' => ($this->build_id === $build->id) ? TRUE : FALSE);
 		}
 		
 		return $out;

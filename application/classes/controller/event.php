@@ -74,6 +74,14 @@ class Controller_Event extends Abstract_Controller_Website {
 				$this->view->values = $event_post;
 			}
 		}
+		else
+		{
+			// Was build submitted via query?
+			$build = $this->request->query('build');
+			
+			if ($build)
+				$this->view->build_id = $build;
+		}
 	}
 	
 	public function action_edit()

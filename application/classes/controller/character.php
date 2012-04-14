@@ -33,7 +33,6 @@ class Controller_Character extends Abstract_Controller_Website {
 				$this->session->set('follow_login', $this->request->url());
 				$this->request->redirect(Route::url('user', array('controller' => 'user', 'action' => 'login')));
 			}
-			
 			// Unspecified reason for denial
 			else if ($status === Policy_Character_Add::NOT_ALLOWED)
 			{
@@ -98,7 +97,8 @@ class Controller_Character extends Abstract_Controller_Website {
 		}
 				
 		// Remove
-		$character->delete();
+		$character->visibility = 0;
+		$character->save();
 		
 		Notices::add('success', 'msg_info', array('message' => Kohana::message('character.remove.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 		

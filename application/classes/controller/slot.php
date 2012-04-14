@@ -15,7 +15,16 @@ class Controller_Slot extends Abstract_Controller_Website {
 		// Is user allowed to add slots?
 		if ( ! $this->user->can('slot_add'))
 		{
-			Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'slot.add.not_allwed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			$status = Policy::$last_code;
+			
+			if ($status === Policy_Slot_Add::NOT_LOGGED_IN)
+			{
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'slot.add.not_logged_in'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			}
+			else
+			{
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'slot.add.not_allwed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			}
 			$this->request->redirect(Route::url('slot'));
 		}
 		
@@ -51,9 +60,17 @@ class Controller_Slot extends Abstract_Controller_Website {
 		// Can this user edit this slot?
 		if ( ! $this->user->can('slot_edit', array('slot' => $slot)))
 		{
-			Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'slot.edit.not_allwed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			$status = Policy::$last_code;
+			
+			if ($status === Policy_Slot_Add::NOT_LOGGED_IN)
+			{
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'slot.edit.not_logged_in'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			}
+			else
+			{
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'slot.edit.not_allwed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			}
 			$this->request->redirect(Route::url('slot'));
-		}
 		
 		// Valid csrf, etc.
 		if ($this->valid_post())
@@ -91,9 +108,17 @@ class Controller_Slot extends Abstract_Controller_Website {
 		// Can this user edit this slot?
 		if ( ! $this->user->can('slot_edit', array('slot' => $slot)))
 		{
-			Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'slot.remove.not_allwed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			$status = Policy::$last_code;
+			
+			if ($status === Policy_Slot_Add::NOT_LOGGED_IN)
+			{
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'slot.remove.not_logged_in'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			}
+			else
+			{
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'slot.remove.not_allwed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			}
 			$this->request->redirect(Route::url('slot'));
-		}
 		
 		// Don't want to compeltely remove as that would leave gaps in historical data
 		$slot->visibility = 0;

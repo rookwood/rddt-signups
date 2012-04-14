@@ -15,7 +15,7 @@ return array(
 			'not_allowed'       => 'You may not remove characters at this time',
 			'not_owner'         => 'You may only remove characters that you own',
 			'success'           => 'Character removed successfully',
-		)
+		),
 	),
 	'event' => array(
 		'view'   => array(
@@ -46,6 +46,43 @@ return array(
 			'failed'            => 'There was an error cancelling your spot.  Please try again.',
 			'not_signed_up'     => 'You cannot withdraw from an event for which you did not sign-up.',
 			'start_time_passed' => 'You cannot withdraw from events once their start time has passed.',
+		),
+	),
+	'build' => array(
+		'add' => array(
+			'not_allowed'       => 'You may not add new builds at this time.',
+			'not_logged_in'     => 'You must be logged in to perform that action.',
+		),
+		'edit' => array(
+			'locked'            => 'This build is locked and may not be edited.',
+			'not_allowed'       => 'You may not edit this build at this time.',
+			'not_owner'         => 'You may not edit builds that you did not create.',
+			'not_logged_in'     => 'You must be logged in to perform that action.',
+		),
+		'remove' => array(
+			'locked'            => 'This build is locked and may not be removed.',
+			'not_allowed'       => 'You may not remove this build at this time.',
+			'not_owner'         => 'You may not remove builds that you did not create.',
+			'not_logged_in'     => 'You must be logged in to perform that action.',
+			'success'           => 'Build removed successfully',
+		),
+	),
+	'slot' => array(
+		'add' => array(
+			'not_allowed'       => 'You may not add new player roles at this time.',
+			'not_logged_in'     => 'You must be logged in to perform that action.',
+		),
+		'edit' => array(
+			'locked'            => 'This role is locked and may not be edited.',
+			'not_allowed'       => 'You may not edit this role at this time.',
+			'not_owner'         => 'You may not edit roleds that you did not create.',
+			'not_logged_in'     => 'You must be logged in to perform that action.',
+		),
+		'remove' => array(
+			'locked'            => 'This role is locked and may not be removed.',
+			'not_allowed'       => 'You may not remove this role at this time.',
+			'not_owner'         => 'You may not remove roles that you did not create.',
+			'not_logged_in'     => 'You must be logged in to perform that action.',
 		),
 	),
 );

@@ -11,8 +11,16 @@ class Controller_Build extends Abstract_Controller_Website {
 	{
 		if ( ! $this->user->can('build_add'))
 		{
-			ProfilerToolbar::addData('failing policy: '.Policy::$last_code);
-			Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'build.add.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			$status = Policy::$last_code;
+			
+			if (Policy::$last_code === Policy_Build_Add::NOT_LOGGED_IN)
+			{
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'build.add.not_logged_in'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			}
+			else
+			{
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'build.add.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			}
 			$this->view = Kostache::factory('page/build/index')
 				->assets(Assets::factory())
 				->set('build_data', ORM::factory('build')->where('visibility', '=', 1)->find_all());
@@ -31,7 +39,7 @@ class Controller_Build extends Abstract_Controller_Website {
 				}
 				catch(ORM_Validation_Exception $e)
 				{
-					Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'build.edit.failed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+					Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'build.add.failed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 				}
 				
 				$this->view->build_data = Arr::merge($build_post, $quantity_post);
@@ -43,13 +51,29 @@ class Controller_Build extends Abstract_Controller_Website {
 	{	
 		$build = ORM::factory('build', $this->request->param('id'));
 		
-		if ( ! $this->user->can('build_edit', array('build' => $build)))
+		if ( ! $this->user->can('build_edit', array('build' => $build))
 		{
-			Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'build.edit.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			$status = Policy::$last_code;
+			
+			if (Policy::$last_code === Policy_Build_Add::NOT_LOGGED_IN)
+			{
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'build.edit.not_logged_in'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			}
+			elseif (Policy::$last_code === Policy_Build_Add::LOCKED)
+			{
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'build.edit.protected'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			}
+			elseif (Policy::$last_code === Policy_Build_Add::NOT_OWNER)
+			{
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'build.edit.not_owner'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			}
+			else
+			{
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'build.add.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			}
 			$this->view = Kostache::factory('page/build/index')
 				->assets(Assets::factory())
-				->set('build_data', ORM::factory('build')->where('visibility', '=', 1)->find_all())
-				->set('user', $this->user);
+				->set('build_data', ORM::factory('build')->where('visibility', '=', 1)->find_all());
 		}
 		else
 		{
@@ -78,10 +102,26 @@ class Controller_Build extends Abstract_Controller_Website {
 	{
 		$build = ORM::factory('build', $this->request->param('id'));
 
-		if ( ! $this->user->can('build_remove', array('build' => $build->id)))
+		if ( ! $this->user->can('build_remove', array('build' => $build))
 		{
-			Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'build.remove.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
-		}
+			$status = Policy::$last_code;
+			
+			if (Policy::$last_code === Policy_Build_Add::NOT_LOGGED_IN)
+			{
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'build.remove.not_logged_in'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			}
+			elseif (Policy::$last_code === Policy_Build_Add::LOCKED)
+			{
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'build.remove.protected'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			}
+			elseif (Policy::$last_code === Policy_Build_Add::NOT_OWNER)
+			{
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'build.remove.not_owner'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			}
+			else
+			{
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'build.remove.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			}
 		else
 		{
 			$build->visibility = 0;

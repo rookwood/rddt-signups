@@ -210,7 +210,7 @@ class Controller_Event extends Abstract_Controller_Website {
 				
 				if ($policy_status === Policy_Event_Signup_Active::STANDBY_ONLY)
 				{
-					$signup_status = ORM::factory('status', array('name' => 'stand-by'));
+					$signup_status = ORM::factory('status', array('name' => 'stand-by (forced)'));
 				}
 			}
 			else
@@ -223,7 +223,7 @@ class Controller_Event extends Abstract_Controller_Website {
 			if ( ! $signup_status->loaded())
 			{
 				// Default to stand-by on error
-				$signup_status = ORM::factory('status', array('name' => 'stand-by'));
+				$signup_status = ORM::factory('status', array('name' => 'stand-by (forced)'));
 			}
 			
 			// Set sign-up status
@@ -311,6 +311,15 @@ class Controller_Event extends Abstract_Controller_Website {
 					$signup->status_id = $cancelled;
 					$signup->save();
 				}
+				
+				// Bump someone from forced stand-by list up to this slot
+				$standby_forced = ORM::factory('status', array('name' => 'stand-by (forced)'))->id;
+				$ready = ORM::factory('status', array('name' => 'ready'))->id;
+				
+				$bump = ORM::factory('signup')->where('event_id', '=', $event->id)->and_where('status_id', '=', $standby_forced)->order_by('timestamp', 'DESC')->find(1);
+				$bump->status_id = $ready;
+				$bump->save();
+				
 				Notices::add('success', 'msg_info', array('message' => Kohana::message('gw', 'event.withdraw.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 			}
 			// Something bad happened... log it for fixing

@@ -7,25 +7,21 @@ This is still a work in progress and open to anyone wishing to contribute.
 * User registration (including handling logins, profiles, and optional email verificaiton)
 * Access control (using the excellent [Vendo-ACL](http://github.com/vendo/acl)
 * Rough user administration to edit user data including application roles
-* Adding characters to users' accounts and displaying a list of all that are attached
-* Display of all guild events and detailed view of such which includes attendees
-* Event creation, cancellation, and sign-up
-* Event editing
+* Character creation and management
+* Event creation and managment
 * Automatic handling of stand-by status for any given event
+* Build creation and management (including in-game roles)
 
 ### Features in progress
-* Characrter editing and removal
-* Build creation and editing
+* Filter displayed roles in event sign-up by users' eligible characters
 
 ### Features to be added
 * Administrative versions of event and character management
 
 
 ### Idea scratchpad (i.e. things I need to add)
-* Sort through stand-by signups on cancelation... but what about voluntary stand-bys?
 * Get rid of all the silly redirects... just set up the view class manually; it'll be cleaner in the end (in-progress)
 * Go through all policy classes and controllers to make sure that potential errors are all accounted for
 * Add comments that I was too lazy to write on the first draft
 * Consider what general users will need access to should they be allowed to create events freely.
-* Need sensibile form structure / names for slot (in-game role) handling
-* Create new event from build list page
+* Email notification of event changes?

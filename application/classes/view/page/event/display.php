@@ -41,10 +41,11 @@ class View_Page_Event_Display extends Abstract_View_Page {
 			return $attendee_list;
 		
 		$ready = ORM::factory('status', array('name' => 'ready'))->id;
-		$standby = ORM::factory('status', array('name' => 'stand-by'))->id;
+		$standby_voluntary = ORM::factory('status', array('name' => 'stand-by (voluntary)'))->id;
+		$standby_forced    = ORM::factory('status', array('name' => 'stand-by (forced)'))->id;
 		
 		// Load all characters signed-up for the event
-		$attendees = $this->event_data->characters->where('status_id', '=', $ready)->or_where('status_id', '=', $standby)->find_all();
+		$attendees = $this->event_data->characters->where('status_id', '=', $ready)->or_where('status_id', '=', $standby_voluntary)->or_where('status_id', '=', $standby_forced)->find_all();
 		
 		foreach ($attendees as $character)
 		{
@@ -57,6 +58,7 @@ class View_Page_Event_Display extends Abstract_View_Page {
 					'profession' => $character->profession->name,
 					'name'       => $character->name,
 					'role'       => $signup->slot->name,
+					'comment'    => $signup->comment,
 				);
 			}
 			else
@@ -65,6 +67,7 @@ class View_Page_Event_Display extends Abstract_View_Page {
 					'profession' => $character->profession->name,
 					'name'       => $character->name,
 					'role'       => $signup->slot->name,
+					'comment'    => $signup->comment,
 				);
 			}
 		}

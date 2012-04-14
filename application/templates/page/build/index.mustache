@@ -13,7 +13,7 @@
 				<td><a href="{{create_url}}"><img src="/media/img/icons/page_add.png" title="Create event using {{name}}" /></a></td>
 				<td><a href="{{edit_url}}"><img src="/media/img/icons/page_edit.png" title="Edit {{name}}" /></a></td>
 				<td>{{name}}</td>
-				<td><a href="{{url}}">PvX link</a></td>
+				<td>{{#url}}<a href="{{url}}">PvX link</a>{{/url}}{{^url}}No link available{{/url}}</td>
 			</tr>
 {{/build_list}}
 		</tbody>

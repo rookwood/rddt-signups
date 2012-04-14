@@ -1,0 +1,24 @@
+	<form id="character_edit" action="{{edit_action_url}}" method="post" class="panel">
+		<fieldset>
+			<legend>Edit character</legend>
+			<ul>
+				<li>
+					<label for="name">Character name:</label>
+					<input type="text" name="character[name]" id="name" value="{{name}}" {{#errors.name}}class="error" {{/errors.name}}/>
+					{{#errors.name}}<p class="error_message">{{errors.name}}</p>{{/errors.name}}
+				</li>
+				<li>
+					<label for="profession">Profession:</label>
+					<select name="character[profession]" id="profession">
+					{{#professions}}
+						<option value="{{name}}"{{#selected}} selected="selected"{{/selected}}>{{name}}</option>
+					{{/professions}}
+					</select>
+				</li>
+				<li>
+					{{{csrf}}}
+					<input type="submit" value="Add character" />
+				</li>
+			</ul>
+		</fieldset>
+	</form>

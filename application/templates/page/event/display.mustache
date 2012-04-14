@@ -65,14 +65,49 @@
 {{/signup}}
 		</fieldset>
 		<h4>Currently signed up</h4>
-		<ul>
-		{{#attendees}}
-			<li class="profession">{{name}} the {{profession}}</li>
-		{{/attendees}}
+		<table>
+			<thead>
+				<tr>
+					<td>Name</td>
+					<td>Role</td>
+					<td>Profession</td>
+				</tr>
+			</thead>
+			<tbody>
+		{{#attendees.active}}
+				<tr>
+					<td>{{name}}</td>
+					<td>{{role}}</td>
+					<td><img src="/media/img/prof_icons/{{profession}}.png" width="24" height="24" title="{{profession}}" /></td>
+				</tr>
+		{{/attendees.active}}
 		{{^attendees}}
-			<li>Nobody!</li>
+			<tr><td colspan="3">No one has signed-up yet.</td></tr>
 		{{/attendees}}
-		</ul>
+			</tbody>
+		</table>
+		<h4>Stand-by list</h4>
+		<table>
+			<thead>
+				<tr>
+					<td>Name</td>
+					<td>Role</td>
+					<td>Profession</td>
+				</tr>
+			</thead>
+			<tbody>
+		{{#attendees.standby}}
+				<tr>
+					<td>{{name}}</td>
+					<td>{{role}}</td>
+					<td><img src="/media/img/prof_icons/{{profession}}.png" width="24" height="24" title="{{profession}}" /></td>
+				</tr>
+		{{/attendees.standby}}
+		{{^attendees}}
+			<tr><td colspan="3">No one has signed-up yet.</td></tr>
+		{{/attendees}}
+			</tbody>
+		</table>
 	</form>
 	
 {{#remove_event}}

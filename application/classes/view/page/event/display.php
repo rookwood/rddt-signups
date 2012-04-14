@@ -35,17 +35,42 @@ class View_Page_Event_Display extends Abstract_View_Page {
 	
 	public function attendees()
 	{
-		$attendees = $this->event_data->characters->find_all();
+		static $attendee_list;
+		
+		if ( ! empty($attendee_list))
+			return $attendee_list;
+		
+		$ready = ORM::factory('status', array('name' => 'ready'))->id;
+		$standby = ORM::factory('status', array('name' => 'stand-by'))->id;
+		
+		// Load all characters signed-up for the event
+		$attendees = $this->event_data->characters->where('status_id', '=', $ready)->or_where('status_id', '=', $standby)->find_all();
 		
 		foreach ($attendees as $character)
 		{
-			$out[] = array(
-				'profession' => $character->profession->name,
-				'name'       => $character->name,
-			);
+			// Load character's sign-up record
+			$signup = ORM::factory('signup', array('character_id' => $character->id, 'event_id' => $this->event_data->id));
+			
+			if ($signup->status_id === $ready)
+			{
+				$out['active'][] = array(
+					'profession' => $character->profession->name,
+					'name'       => $character->name,
+					'role'       => $signup->slot->name,
+				);
+			}
+			else
+			{
+				$out['standby'][] = array(
+					'profession' => $character->profession->name,
+					'name'       => $character->name,
+					'role'       => $signup->slot->name,
+				);
+			}
 		}
 		
-		return isset($out) ? $out : FALSE;
+		// If no attendees yet, use 'no signup' message
+		return isset($out) ? $attendees = $out : FALSE;
 	}
 	
 	public function characters()
@@ -108,9 +133,6 @@ class View_Page_Event_Display extends Abstract_View_Page {
 		{
 			$total = Model_Function::slot_count($this->event_data->build, $slot);
 			$available = $total - $slot->slots_filled($this->event_data);
-			
-			ProfilerToolbar::addData('Total: '.$total);
-			ProfilerToolbar::addData('Available: '.$available);
 			
 			if ($available > 0)
 			{

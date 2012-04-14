@@ -95,8 +95,9 @@ class Controller_Slot extends Abstract_Controller_Website {
 			$this->request->redirect(Route::url('slot'));
 		}
 		
-		// Good-bye
-		$slot->delete();
+		// Don't want to compeltely remove as that would leave gaps in historical data
+		$slot->visibility = 0;
+		$slot->save();
 		
 		$this->request->redirect(Route::url('slot'));
 	}

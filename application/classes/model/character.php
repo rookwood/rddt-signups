@@ -8,7 +8,13 @@ class Model_Character extends ORM {
 	protected $_belongs_to = array(
 		'user'       => array(),
 		'profession' => array(),
+	);
 	
+	protected $_has_many = array(
+		'events'     => array(
+			'through' => 'signups',
+			'model'   => 'signup',
+		),
 	);
 		
 	// Validation rules
@@ -52,6 +58,17 @@ class Model_Character extends ORM {
 		
 		// Create the record
 		return $this->values($values, $expected)->create();
+	}
+	
+	public function edit_character($data)
+	{
+		$profession = ORM::factory('profession', array('name' => $data['profession']));
+		
+		$data['profession_id'] = $profession->id;
+		
+		$this->values($data)->save();
+		
+		return $this;
 	}
 	
 	/**

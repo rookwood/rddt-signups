@@ -16,7 +16,7 @@ class Policy_Event_Signup_Active extends Policy {
 	public function execute(Model_ACL_User $user, array $extras = NULL)
 	{
 		// Can't signup as active for a role that is already filled out
-		if ( ! $extras['slot']->slot_available($extras['event'])
+		if ( ! $extras['slot']->slot_available($extras['event']))
 		{
 			return self::STANDBY_ONLY;
 		}

@@ -7,6 +7,10 @@
 					<label for="name">Build name:</label>
 					<input type="text" name="build[name]" id="name" value="{{build_data.name}}" {{#errors.name}}class="error" {{/errors.name}}/>
 				</li>
+				<li>
+					<label for="url">Build link:</label>
+					<input type="url" name="build[url]" id="url" value="{{build_data.url}}" {{#errors.url}}class="error" {{/errors.url}}/>
+				</li>
 {{#slots}}
 				<li>
 					<label for="{{name}}">{{name}}:</label>
@@ -22,3 +26,7 @@
 	</form>
 
 <p>Need something not listed here?  You can <a href="{{slot_add}}">add it</a>.
+{{#removal}}
+<hr />
+<p><a href="{{removal}}">Remove this build</a></p>
+{{/removal}}

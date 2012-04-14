@@ -18,4 +18,14 @@ class View_Page_Build_Edit extends View_Page_Build_Add {
 		
 		return $out;
 	}
+	
+	public function removal()
+	{
+		if ( ! $this->user->can('build_remove', array('build' => $this->build_data)))
+		{
+			return FALSE;
+		}
+		
+		return Route::url('build', array('action' => 'remove', 'id' => $this->build_data->id));
+	}
 }

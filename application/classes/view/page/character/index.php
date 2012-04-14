@@ -24,6 +24,7 @@ class View_Page_Character_Index extends Abstract_View_Page {
 			$out[] = array(
 				'name'       => $character->name,
 				'profession' => $character->profession->name,
+				'edit_url'   => Route::url('character', array('action' => 'edit', 'id' => $character->id)),
 			);
 		}
 		

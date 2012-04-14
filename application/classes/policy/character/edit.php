@@ -26,7 +26,7 @@ class Policy_Character_Edit extends Policy {
 			}
 			
 			// Anyone else shouldn't be here
-			return self::NOT_OWNER
+			return self::NOT_OWNER;
 		}
 	}
 }

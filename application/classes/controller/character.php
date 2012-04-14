@@ -108,7 +108,7 @@ class Controller_Character extends Abstract_Controller_Website {
 	public function action_edit()
 	{
 		// Load character model
-		$character = ORM::factory('character', array('name' => $this->request->param('character')));
+		$character = ORM::factory('character', $this->request->param('id'));
 		
 		// Is user allowed to edit this character?
 		if ( ! $this->user->can('character_edit', array('character' => $character)))
@@ -148,8 +148,7 @@ class Controller_Character extends Abstract_Controller_Website {
 			try
 			{			
 				// Set data to character model and save
-				$character->values($character_post);
-				$character->save();
+				$character->edit_character($character_post);
 				
 				Notices::add('success', 'msg_info', array('message' => Kohana::message('gw', 'character.edit.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 			}
@@ -162,6 +161,6 @@ class Controller_Character extends Abstract_Controller_Website {
 		}
 		
 		// Pass character data to view class
-		$this->view->character = $character;
+		$this->view->character_data = $character;
 	}
 }

@@ -48,7 +48,8 @@ class Controller_Build extends Abstract_Controller_Website {
 			Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'build.edit.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 			$this->view = Kostache::factory('page/build/index')
 				->assets(Assets::factory())
-				->set('build_data', ORM::factory('build')->where('visibility', '=', 1)->find_all());
+				->set('build_data', ORM::factory('build')->where('visibility', '=', 1)->find_all())
+				->set('user', $this->user);
 		}
 		else
 		{
@@ -68,9 +69,31 @@ class Controller_Build extends Abstract_Controller_Website {
 			}
 			
 			$this->view->build_data = $build;
+			
 		}
+		$this->view->user = $this->user;
 	}
 	
-	public function action_remove(){}
+	public function action_remove()
+	{
+		$build = ORM::factory('build', $this->request->param('id'));
+
+		if ( ! $this->user->can('build_remove', array('build' => $build->id)))
+		{
+			Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'build.remove.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+		}
+		else
+		{
+			$build->visibility = 0;
+			$build->save();
+			
+			Notices::add('success', 'msg_info', array('message' => Kohana::message('gw', 'build.remove.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+		}
+		
+		$this->view = Kostache::factory('page/build/index')
+			->assets(Assets::factory())
+			->set('build_data', ORM::factory('build')->where('visibility', '=', 1)->find_all())
+			->set('user', $this->user);
+	}
 
 }

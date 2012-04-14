@@ -16,12 +16,13 @@ This is still a work in progress and open to anyone wishing to contribute.
 * Filter displayed roles in event sign-up by users' eligible characters
 
 ### Features to be added
-* Administrative versions of event and character management
+* Administrative versions of event, build, and character management
 
 
 ### Idea scratchpad (i.e. things I need to add)
 * Get rid of all the silly redirects... just set up the view class manually; it'll be cleaner in the end (in-progress)
 * Go through all policy classes and controllers to make sure that potential errors are all accounted for
-* Add comments that I was too lazy to write on the first draft
+* Write message files for aforementioned potential errors
+* Add comments that I failed to write on the first draft
 * Consider what general users will need access to should they be allowed to create events freely.
 * Email notification of event changes?

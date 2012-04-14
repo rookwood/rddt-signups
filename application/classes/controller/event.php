@@ -4,7 +4,7 @@ class Controller_Event extends Abstract_Controller_Website {
 
 	public function action_index()
 	{
-		$status = ORM::factory('status', array('name' => 'cancelled'));
+		$status = Model_Status::CANCELLED;
 		
 		// Retreive all future events and ones that started in the last hour
 		$events = ORM::factory('event')
@@ -146,7 +146,7 @@ class Controller_Event extends Abstract_Controller_Website {
 		}
 		
 		// Cancel the event (will be hidden from view)
-		$status = ORM::factory('status', array('name' => 'cancelled'));
+		$status = Model_Status::CANCELLED;
 		$event->status_id = $status->id;
 		$event->save();
 		
@@ -210,7 +210,7 @@ class Controller_Event extends Abstract_Controller_Website {
 				
 				if ($policy_status === Policy_Event_Signup_Active::STANDBY_ONLY)
 				{
-					$signup_status = ORM::factory('status', array('name' => 'stand-by (forced)'));
+					$signup_status = Model_Status::STANDBY_FORCED;
 				}
 			}
 			else
@@ -222,8 +222,8 @@ class Controller_Event extends Abstract_Controller_Website {
 			// Ensure that valid status was given
 			if ( ! $signup_status->loaded())
 			{
-				// Default to stand-by on error
-				$signup_status = ORM::factory('status', array('name' => 'stand-by (forced)'));
+				// Default to forced stand-by on error
+				$signup_status = Model_Status::STANDBY_FORCED;
 			}
 			
 			// Set sign-up status
@@ -301,7 +301,7 @@ class Controller_Event extends Abstract_Controller_Website {
 				->find_all();
 			
 			// Cancellation status
-			$cancelled = ORM::factory('status', array('name' => 'cancelled'))->id;
+			$cancelled = Model_Status::CANCELLED;
 			
 			try
 			{
@@ -313,19 +313,22 @@ class Controller_Event extends Abstract_Controller_Website {
 				}
 				
 				// Bump someone from forced stand-by list up to this slot
-				$standby_forced = ORM::factory('status', array('name' => 'stand-by (forced)'))->id;
-				$ready = ORM::factory('status', array('name' => 'ready'))->id;
+				$standby_forced = Model_Status::STANDBY_FORCED;
+				$ready = Model_Status::READY;
 				
 				$bump = ORM::factory('signup')->where('event_id', '=', $event->id)->and_where('status_id', '=', $standby_forced)->order_by('timestamp', 'DESC')->find(1);
-				$bump->status_id = $ready;
-				$bump->save();
+				if ($bump->loaded())
+				{
+					$bump->status_id = $ready;
+					$bump->save();
+				}
 				
 				Notices::add('success', 'msg_info', array('message' => Kohana::message('gw', 'event.withdraw.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 			}
 			// Something bad happened... log it for fixing
 			catch(Exception $e)
 			{
-				die('Exception while trying to cancel signup');exit;
+				ProfilerToolbar::addData($e);
 			}
 		}
 		$this->view = Kostache::factory('page/event/display')

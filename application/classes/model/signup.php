@@ -3,9 +3,6 @@
  * Event sign-up model
  */
 class Model_Signup extends ORM {
-
-	public static $cancelled;
-	public static $standby;
 	
 	// Relationships
 	protected $_has_many = array(
@@ -35,11 +32,7 @@ class Model_Signup extends ORM {
 			// If we find that record, the use is already signed-up
 			if ($slot->loaded())
 			{
-				if ( ! isset(self::$cancelled))
-				{
-					self::$cancelled = ORM::factory('status', array('name' => 'cancelled'))->id;
-				}
-				if ($slot->status_id !== self::$cancelled)
+				if ($slot->status_id != Model_Status::CANCELLED)
 				{
 					return TRUE;
 				}

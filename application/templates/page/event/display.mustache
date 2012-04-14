@@ -44,6 +44,9 @@
 {{#role_list}}
 						<option value="{{name}}">{{name}} {{#number}}({{number}} / {{total}} open){{/number}}{{^number}}(Stand-by){{/number}}</option>
 {{/role_list}}
+{{^role_list}}
+						<option value="">None of your characters can fit the roles needed for this run</option>
+{{/role_list}}
 					</select>
 					</li>
 				<li>

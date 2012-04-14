@@ -56,7 +56,10 @@ class View_Page_Event_Display extends Abstract_View_Page {
 		
 		// Return cached results if available
 		if ( ! empty($attendee_list))
+		{
+			ProfilerToolbar::addData('Using cached result for attendees', 'cache');
 			return $attendee_list;
+		}
 		
 		// Statuses needed to test against
 		$ready = ORM::factory('status', array('name' => 'ready'))->id;
@@ -105,9 +108,10 @@ class View_Page_Event_Display extends Abstract_View_Page {
 	 */
 	public function characters()
 	{
-		$characters =  $this->user->characters->find_all();
+		if (empty($this->characters))
+			$this->characters =  $this->user->characters->find_all();
 		
-		foreach ($characters as $character)
+		foreach ($this->characters as $character)
 		{
 			$out[] = array(
 				'profession' => $character->profession->name,
@@ -170,22 +174,28 @@ class View_Page_Event_Display extends Abstract_View_Page {
 	 */
 	public function role_list()
 	{
+		// Cached results
+		static $role_list;
+		
+		if ( ! empty($role_list))
+		{
+			ProfilerToolbar::addData('Using cached result for role_list', 'cache');
+			return $role_list;
+		}
+		
 		// Slots needed for this build
 		$slots = $this->event_data->build->slots->find_all();
 				
-		$characters =  $this->user->characters->find_all();
+		if (empty($this->characters))
+			$this->characters =  $this->user->characters->find_all();
 
 		// Iterate each role to get name and number of openings remaining
 		foreach ($slots as $slot)
 		{
-			ProfilerToolbar::addData('Testing '.$slot->name, 'slots');
-			foreach ($characters as $character)
+			foreach ($this->characters as $character)
 			{
-				ProfilerToolbar::addData('against '.$character->name, 'slots');
 				if ($slot->can_use($character))
 				{
-					ProfilerToolbar::addData($slot->name.' can use '.$character->name, 'slots');
-					
 					$total = Model_Function::slot_count($this->event_data->build, $slot);
 					$available = $total - $slot->slots_filled($this->event_data);
 					
@@ -202,9 +212,14 @@ class View_Page_Event_Display extends Abstract_View_Page {
 			}
 		}
 		
-		return isset($out) ? $out : FALSE;
+		return isset($out) ? $role_list = $out : FALSE;
 	}
 	
+	/**
+	 * Tests if current user can see sign-up form
+	 *
+	 * @return  bool
+	 */
 	public function signup()
 	{
 		return  TRUE === $this->user->can('event_signup', array('event' => $this->event_data));

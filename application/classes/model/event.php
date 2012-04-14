@@ -35,7 +35,7 @@ class Model_Event extends ORM {
 		$dungeon    = ORM::factory('dungeon', array('name' => $values['dungeon']));
 		
 		// Convert status name to id
-		$status    = ORM::factory('status', array('name' => 'scheduled'));
+		$status    = Model_Status::SCHEDULED;
 		
 		// Get character id
 		$character = ORM::factory('character', array('name' => $values['character']));
@@ -71,7 +71,7 @@ class Model_Event extends ORM {
 		$dungeon    = ORM::factory('dungeon', array('name' => $values['dungeon']));
 		
 		// Convert status name to id
-		$status    = ORM::factory('status', array('name' => 'scheduled'));
+		$status    = ORM::factory('status', array('name' => $values['status']));
 		
 		// Get character id
 		$character = ORM::factory('character', array('name' => $values['character']));

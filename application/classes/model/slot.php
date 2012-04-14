@@ -25,24 +25,15 @@ class Model_Slot extends ORM {
 	}
 	
 	public function slots_filled(Model_Event $event)
-	{
-		// Saving status IDs in static cache reduces number of database considerably
-		static $cache = array();
-		
-		// Poor man's status caching
-		if ( ! isset($cache['cancelled']))
-			$cache['cancelled'] = ORM::factory('status', array('name' => 'cancelled'))->id;
-		
-		if ( ! isset($cache['standby']))
-			$cache['standby'] = ORM::factory('status', array('name' => 'standby'))->id;
-		
+	{		
 		// Count how many slots are taken up by sign-ups
 		$slots_filled = DB::select(array('COUNT("id")', 'count'))
 			->from('signups')
 			->where('event_id',       '=', $event->id)
 			->and_where('slot_id',    '=', $this->id)
-			->and_where('status_id', '!=', $cache['cancelled'])
-			->and_where('status_id', '!=', $cache['standby'])
+			->and_where('status_id', '!=', Model_Status::CANCELLED)
+			->and_where('status_id', '!=', Model_Status::STANDBY_VOLUNTARY)
+			->and_where('status_id', '!=', Model_Status::STANDBY_FORCED)
 			->as_object()
 			->execute();
 		

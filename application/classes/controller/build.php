@@ -51,7 +51,7 @@ class Controller_Build extends Abstract_Controller_Website {
 	{	
 		$build = ORM::factory('build', $this->request->param('id'));
 		
-		if ( ! $this->user->can('build_edit', array('build' => $build))
+		if ( ! $this->user->can('build_edit', array('build' => $build)))
 		{
 			$status = Policy::$last_code;
 			
@@ -102,7 +102,7 @@ class Controller_Build extends Abstract_Controller_Website {
 	{
 		$build = ORM::factory('build', $this->request->param('id'));
 
-		if ( ! $this->user->can('build_remove', array('build' => $build))
+		if ( ! $this->user->can('build_remove', array('build' => $build)))
 		{
 			$status = Policy::$last_code;
 			
@@ -122,6 +122,7 @@ class Controller_Build extends Abstract_Controller_Website {
 			{
 				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'build.remove.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 			}
+		}
 		else
 		{
 			$build->visibility = 0;

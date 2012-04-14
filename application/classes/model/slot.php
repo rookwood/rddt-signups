@@ -96,4 +96,19 @@ class Model_Slot extends ORM {
 		
 		return $this;
 	}
+	
+	public function can_use($character)
+	{
+		if (is_string($character))
+		{
+			$character = ORM::factory('character', array('name' => $character));
+		}
+		
+		ProfilerToolbar::addData($character->profession);
+		if ($this->has('professions', $character->profession))
+		{
+			return TRUE;
+		}
+		return FALSE;
+	}
 }

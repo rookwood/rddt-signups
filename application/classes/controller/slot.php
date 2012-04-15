@@ -71,7 +71,7 @@ class Controller_Slot extends Abstract_Controller_Website {
 				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'slot.edit.not_allwed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 			}
 			$this->request->redirect(Route::url('slot'));
-		
+		}
 		// Valid csrf, etc.
 		if ($this->valid_post())
 		{
@@ -119,7 +119,7 @@ class Controller_Slot extends Abstract_Controller_Website {
 				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'slot.remove.not_allwed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 			}
 			$this->request->redirect(Route::url('slot'));
-		
+		}
 		// Don't want to compeltely remove as that would leave gaps in historical data
 		$slot->visibility = 0;
 		$slot->save();

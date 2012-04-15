@@ -179,6 +179,12 @@ Route::set('slot', 'slot(/<action>(/<id>))', array('action' => 'add|remove|edit'
 		'action'     => 'index',
 	));
 
+Route::set('dungeon', 'dungeon(/<action>(/<id>))', array('action' => 'add'))
+	->defaults(array(
+		'controller' => 'dungeon',
+		'action'     => 'index',
+	));
+
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
 		'controller' => 'welcome',

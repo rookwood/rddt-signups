@@ -49,4 +49,9 @@ class View_Page_Event_Index extends Abstract_View_Page {
 		
 		return FALSE;
 	}
+	
+	public function old_events()
+	{
+		return Route::url('event').URL::query(array('filter' => 'past'));
+	}
 }

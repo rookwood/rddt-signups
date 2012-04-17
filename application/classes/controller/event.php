@@ -4,15 +4,49 @@ class Controller_Event extends Abstract_Controller_Website {
 
 	public function action_index()
 	{
-		$status = Model_Status::CANCELLED;
+		$filter = Arr::get($this->request->query(), 'filter', 'default');
+		$sort   = Arr::get($this->request->query(), 'sort',   'ASC');
 		
-		// Retreive all future events and ones that started in the last hour
-		$events = ORM::factory('event')
-			//->where('time', '>', strftime('%s', time() - Date::HOUR))
-			//->and_where('status_id', '!=', $status->id)
-			->order_by('status_id', 'ASC')
-			->order_by('time', 'ASC')
-			->find_all();
+		switch ($filter)
+		{
+			/* THIS IS NOT CURRENTLY WORKING
+			case 'mine':
+				$events = ORM::factory('event')
+					->with('characters')
+					->select('characters.user_id', 'event.id', 'event.name', 'event.time')
+					->where('user_id', '=', $this->user->id)
+					->find_all();
+			break;*/
+			
+			case 'past':
+				$events = ORM::factory('event')
+					->where('time', '<', time())
+					->and_where('status_id', '!=', Model_Status::CANCELLED)
+					->order_by('status_id', 'ASC')
+					->order_by('time', 'ASC')
+					->find_all();
+			break;
+			
+			case 'dungeon':
+				$events = ORM::factory('event')
+					->where('time', '>', time() - Date::HOUR)
+					->and_where('status_id', '!=', Model_Status::CANCELLED)
+					->and_where('dungeon_id', '=', $this->request->query('id'))
+					->order_by('status_id', 'ASC')
+					->order_by('time', 'ASC')
+					->find_all();
+			break;
+			
+			case 'default':
+				$events = ORM::factory('event')
+					->where('time', '>', time() - Date::HOUR)
+					->and_where('status_id', '!=', Model_Status::CANCELLED)
+					->order_by('status_id', 'ASC')
+					->order_by('time', 'ASC')
+					->find_all();
+			break;
+		}
+		
 			
 		// Pass events to the view class
 		$this->view->event_data = $events;
@@ -26,7 +60,7 @@ class Controller_Event extends Abstract_Controller_Website {
 		// Can user view this event?
 		if ( ! $this->user->can('event_view', array('event' => $event)))
 		{
-				// Error notification
+			// Error notification
 			Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'event.view.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 			$this->request->redirect(Route::url('event'));
 		}

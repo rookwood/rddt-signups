@@ -12,7 +12,7 @@ class Model_Profession extends ORM {
 	const ELEMENTALIST = 5;
 	const MESMER       = 6;
 	const RITUALIST    = 7;
-	const ASSASSAIN    = 8;
+	const ASSASSIN    = 8;
 	const DERVISH      = 9;
 	const PARAGON      = 10;
 	
@@ -32,7 +32,7 @@ class Model_Profession extends ORM {
 	 */
 	public static function profession_list()
 	{	
-		return array('warrior', 'ranger', 'monk', 'necromancer', 'elementalist', 'mesmer', 'ritualist', 'assassain', 'dervish', 'paragon');
+		return array('warrior', 'ranger', 'monk', 'necromancer', 'elementalist', 'mesmer', 'ritualist', 'assassin', 'dervish', 'paragon');
 	}
 	 
 }

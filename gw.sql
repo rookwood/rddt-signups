@@ -153,7 +153,7 @@ INSERT INTO `professions` (`id`, `name`) VALUES
 (5, 'elementalist'),
 (6, 'mesmer'),
 (7, 'ritualist'),
-(8, 'assassain'),
+(8, 'assassin'),
 (9, 'dervish'),
 (10, 'paragon');
 

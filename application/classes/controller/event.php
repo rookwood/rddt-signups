@@ -187,8 +187,7 @@ class Controller_Event extends Abstract_Controller_Website {
 		Notices::add('success', 'msg_info', array('message' => Kohana::message('event.remove.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 		
 		// Show event list
-		$this->view = Kostache::factory('page/event/index')
-				->assets(Assets::factory());
+		$this->request->redirect(Route::url('event'));
 	}
 	
 	public function action_signup()

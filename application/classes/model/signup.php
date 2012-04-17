@@ -5,12 +5,13 @@
 class Model_Signup extends ORM {
 	
 	// Relationships
-	protected $_has_many = array(
+	protected $_belongs_to = array(
+		'slot'       => array(),
 		'events'     => array(),
 		'characters' => array(),
+		'status'     => array(),
 	);
 	
-	protected $_belongs_to = array('slot' => array());
 
 	/**
 	 * Tests if a user is signed up for a given event on any of their characters

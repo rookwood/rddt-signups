@@ -12,7 +12,7 @@
 			'through' => 'functions',
 			'model' => 'slot',
 		),
-		'events'    => array(),
+		'events' => array(),
 	);
 
 	public function add_build(array $build, array $quantity)

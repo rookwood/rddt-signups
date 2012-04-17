@@ -11,6 +11,7 @@ class Model_Character extends ORM {
 	);
 	
 	protected $_has_many = array(
+		'signups'    => array('model' => 'signup'),
 		'events'     => array(
 			'through' => 'signups',
 			'model'   => 'signup',

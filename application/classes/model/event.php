@@ -10,9 +10,11 @@ class Model_Event extends ORM {
 		'user'    => array(),
 		'status'  => array(),
 		'build'   => array(),
+		'status'  => array(),
 	);
 	
 	protected $_has_many   = array(
+		'signups'    => array('model' => 'signup'),
 		'characters' => array(
 			'model'    => 'character',
 			'through'  => 'signups',

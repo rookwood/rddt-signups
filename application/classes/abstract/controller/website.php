@@ -29,6 +29,11 @@ abstract class Abstract_Controller_Website extends Controller {
 		if (! isset($this->user))
 		{
 			$this->user = Auth::instance()->get_user();
+			if ( ! isset($this->user->timezone))
+			{
+				$this->user->timezone = 'America/Chicago';
+				Notices::add('info', 'info', array('message' => 'Until you log in, all times are displayed in the America/Chicago timezone.', 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			}
 		}
 		
 		// Set default title and content views (path only)

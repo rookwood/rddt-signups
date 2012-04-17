@@ -36,10 +36,13 @@ class Controller_Build extends Abstract_Controller_Website {
 				{
 					$build = ORM::factory('build');
 					$build->add_build($build_post, $quantity_post);
+					
+					$this->request->redirect(Route::url('build');
 				}
 				catch(ORM_Validation_Exception $e)
 				{
 					Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'build.add.failed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+					$this->view->errors = $e->errors('build');
 				}
 				
 				$this->view->build_data = Arr::merge($build_post, $quantity_post);

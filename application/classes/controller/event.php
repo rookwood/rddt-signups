@@ -181,8 +181,7 @@ class Controller_Event extends Abstract_Controller_Website {
 		}
 		
 		// Cancel the event (will be hidden from view)
-		$status = Model_Status::CANCELLED;
-		$event->status_id = $status->id;
+		$event->status_id =  Model_Status::CANCELLED;
 		$event->save();
 		
 		Notices::add('success', 'msg_info', array('message' => Kohana::message('event.remove.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));

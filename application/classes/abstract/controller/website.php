@@ -65,6 +65,10 @@ abstract class Abstract_Controller_Website extends Controller {
 		// Do we want to show the profiler toolbar?
 		$this->view->profiler = Kohana::$config->load('site')->get('show_profiler');
 		
+		// Don't render layout on ajax requests
+		if ($this->request->is_ajax())
+			$this->view->render_layout = FALSE;
+		
 		$this->response->body($this->view);
 	}
 

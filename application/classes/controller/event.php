@@ -33,6 +33,7 @@ class Controller_Event extends Abstract_Controller_Website {
 		
 		// Pass event data to the view class
 		$this->view->event_data = $event;
+		$this->view->user = $this->user;
 	}
 	
 	public function action_add()

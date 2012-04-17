@@ -1,4 +1,7 @@
 
+	{{#add_event}}
+	<a href="{{add_event}}">Add new event</a>
+	{{/add_event}}
 	<table id="events">
 		<thead>
 			<tr>
@@ -14,7 +17,7 @@
 		<tbody>
 		{{#events}}
 			<tr>
-				<td><a href="{{details_link}}">Details</a></td>
+				<td><a href="{{details_link}}" class="event_details">Details</a></td>
 				<td>{{date}}</td>
 				<td>{{time}}</td>
 				<td>{{title}}</td>
@@ -31,6 +34,4 @@
 		</tbody>
 	</table>
 	
-{{#add_event}}
-<a href="{{add_event}}">Add new event</a>
-{{/add_event}}
+	<section id="event_data"></section>

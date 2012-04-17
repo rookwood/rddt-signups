@@ -32,10 +32,10 @@ class Model_Event extends ORM {
 		$time = Date::offset('Europe/London', $values['timezone']) + $time;
 		
 		// Convert dungeon name to id
-		$dungeon    = ORM::factory('dungeon', array('name' => $values['dungeon']));
+		$dungeon = ORM::factory('dungeon', array('name' => $values['dungeon']));
 		
 		// Convert status name to id
-		$status    = Model_Status::SCHEDULED;
+		$status = Model_Status::SCHEDULED;
 		
 		// Get character id
 		$character = ORM::factory('character', array('name' => $values['character']));
@@ -45,7 +45,7 @@ class Model_Event extends ORM {
 		
 		// Add remaining values needed
 		$values['dungeon_id']   = $dungeon->id;
-		$values['status_id']    = $status->id;
+		$values['status_id']    = $status;
 		$values['time']         = $time;
 		$values['character_id'] = $character->id;
 		$values['user_id']      = $user->id;

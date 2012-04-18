@@ -5,19 +5,31 @@ class Controller_Event extends Abstract_Controller_Website {
 	public function action_index()
 	{
 		$filter = Arr::get($this->request->query(), 'filter', 'default');
-		$sort   = Arr::get($this->request->query(), 'sort',   'ASC');
 		
+		// TODO: Move this to Model_Event
 		switch ($filter)
 		{
-			/* THIS IS NOT CURRENTLY WORKING
+			// Show events that the user has ever signed up for.
 			case 'mine':
-				$events = ORM::factory('event')
-					->with('characters')
-					->select('characters.user_id', 'event.id', 'event.name', 'event.time')
-					->where('user_id', '=', $this->user->id)
-					->find_all();
-			break;*/
+				// Build sub queries to join current user -> characters -> signups -> events
+				$sub1 = DB::select('characters.id')->from('characters')->join('users')->on('characters.user_id', '=', 'users.id')->where('users.id', '=', $this->user->id);
+				$sub2 = DB::select('signups.event_id')->from('signups')->join(array($sub1, 'characters'))->on('characters.id', '=', 'signups.character_id');
+				$sub3 = DB::select('events.id')->from('events')->join(array($sub2, 'signups'))->on('signups.event_id', '=', 'events.id');
+				
+				// Execute our query
+				$events = $sub3->execute();
+					
+				// Build array of event IDs
+				foreach ($events as $event)
+				{
+					$ids[] = $event['id'];
+				}
+				
+				// Pass event object data to the view
+				$events = ORM::factory('event')->where('id', 'IN', $ids)->order_by('time', 'ASC')->find_all();
+			break;
 			
+			// Show all events that started before the current time()
 			case 'past':
 				$events = ORM::factory('event')
 					->where('time', '<', time())
@@ -27,6 +39,7 @@ class Controller_Event extends Abstract_Controller_Website {
 					->find_all();
 			break;
 			
+			// Show all events with dungeon id of $_GET['id']
 			case 'dungeon':
 				$events = ORM::factory('event')
 					->where('time', '>', time() - Date::HOUR)
@@ -37,6 +50,7 @@ class Controller_Event extends Abstract_Controller_Website {
 					->find_all();
 			break;
 			
+			// Show all events 
 			case 'default':
 				$events = ORM::factory('event')
 					->where('time', '>', time() - Date::HOUR)

@@ -37,7 +37,7 @@ class Controller_Build extends Abstract_Controller_Website {
 					$build = ORM::factory('build');
 					$build->add_build($build_post, $quantity_post);
 					
-					$this->request->redirect(Route::url('build');
+					$this->request->redirect(Route::url('build'));
 				}
 				catch(ORM_Validation_Exception $e)
 				{

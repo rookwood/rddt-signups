@@ -95,7 +95,6 @@ class Model_Slot extends ORM {
 			$character = ORM::factory('character', array('name' => $character));
 		}
 		
-		ProfilerToolbar::addData($character->profession);
 		if ($this->has('professions', $character->profession))
 		{
 			return TRUE;

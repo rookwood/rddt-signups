@@ -21,6 +21,70 @@ class Model_Event extends ORM {
 		),
 	);
 	
+	public static function event_list($filter, Model_ACL_User $user = NULL, $id = NULL)
+	{
+		switch ($filter)
+		{
+			// Show events that the user has ever signed up for.
+			case 'mine':
+				if ( ! $user)
+					throw new Kohana_Exception('Must be logged in to search your events.');
+					
+				// Build sub queries to join current user -> characters -> signups -> events
+				$sub1 = DB::select('characters.id')->from('characters')->join('users')->on('characters.user_id', '=', 'users.id')->where('users.id', '=', $user->id);
+				$sub2 = DB::select('signups.event_id')->from('signups')->join(array($sub1, 'characters'))->on('characters.id', '=', 'signups.character_id');
+				$sub3 = DB::select('events.id')->from('events')->join(array($sub2, 'signups'))->on('signups.event_id', '=', 'events.id');
+				
+				// Execute our query
+				$events = $sub3->execute();
+					
+				// Build array of event IDs
+				foreach ($events as $event)
+				{
+					$ids[] = $event['id'];
+				}
+				
+				// Pass event object data to the view
+				$events = ORM::factory('event')->where('id', 'IN', $ids)->order_by('time', 'ASC')->find_all();
+			break;
+			
+			// Show all events that started before the current time()
+			case 'past':
+				$events = ORM::factory('event')
+					->where('time', '<', time())
+					->and_where('status_id', '!=', Model_Status::CANCELLED)
+					->order_by('status_id', 'ASC')
+					->order_by('time', 'ASC')
+					->find_all();
+			break;
+			
+			// Show all events with dungeon id of $_GET['id']
+			case 'dungeon':
+				$events = ORM::factory('event')
+					->where('time', '>', time() - Date::HOUR)
+					->and_where('status_id', '!=', Model_Status::CANCELLED)
+					->and_where('dungeon_id', '=', $id)
+					->order_by('status_id', 'ASC')
+					->order_by('time', 'ASC')
+					->find_all();
+			break;
+			
+			// Show all events 
+			case 'current':
+			// same as current
+			default:
+				$events = ORM::factory('event')
+					->where('time', '>', time() - Date::HOUR)
+					->and_where('status_id', '!=', Model_Status::CANCELLED)
+					->order_by('status_id', 'ASC')
+					->order_by('time', 'ASC')
+					->find_all();
+			break;
+		}
+		
+		return $events;
+	}
+	
 	/**
 	 * Create a new event
 	 */

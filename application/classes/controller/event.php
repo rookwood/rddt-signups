@@ -5,65 +5,10 @@ class Controller_Event extends Abstract_Controller_Website {
 	public function action_index()
 	{
 		$filter = Arr::get($this->request->query(), 'filter', 'default');
-		
-		// TODO: Move this to Model_Event
-		switch ($filter)
-		{
-			// Show events that the user has ever signed up for.
-			case 'mine':
-				// Build sub queries to join current user -> characters -> signups -> events
-				$sub1 = DB::select('characters.id')->from('characters')->join('users')->on('characters.user_id', '=', 'users.id')->where('users.id', '=', $this->user->id);
-				$sub2 = DB::select('signups.event_id')->from('signups')->join(array($sub1, 'characters'))->on('characters.id', '=', 'signups.character_id');
-				$sub3 = DB::select('events.id')->from('events')->join(array($sub2, 'signups'))->on('signups.event_id', '=', 'events.id');
-				
-				// Execute our query
-				$events = $sub3->execute();
-					
-				// Build array of event IDs
-				foreach ($events as $event)
-				{
-					$ids[] = $event['id'];
-				}
-				
-				// Pass event object data to the view
-				$events = ORM::factory('event')->where('id', 'IN', $ids)->order_by('time', 'ASC')->find_all();
-			break;
-			
-			// Show all events that started before the current time()
-			case 'past':
-				$events = ORM::factory('event')
-					->where('time', '<', time())
-					->and_where('status_id', '!=', Model_Status::CANCELLED)
-					->order_by('status_id', 'ASC')
-					->order_by('time', 'ASC')
-					->find_all();
-			break;
-			
-			// Show all events with dungeon id of $_GET['id']
-			case 'dungeon':
-				$events = ORM::factory('event')
-					->where('time', '>', time() - Date::HOUR)
-					->and_where('status_id', '!=', Model_Status::CANCELLED)
-					->and_where('dungeon_id', '=', $this->request->query('id'))
-					->order_by('status_id', 'ASC')
-					->order_by('time', 'ASC')
-					->find_all();
-			break;
-			
-			// Show all events 
-			case 'default':
-				$events = ORM::factory('event')
-					->where('time', '>', time() - Date::HOUR)
-					->and_where('status_id', '!=', Model_Status::CANCELLED)
-					->order_by('status_id', 'ASC')
-					->order_by('time', 'ASC')
-					->find_all();
-			break;
-		}
-		
+		$id     = Arr::get($this->request->query(), 'id',     FALSE);
 			
 		// Pass events to the view class
-		$this->view->event_data = $events;
+		$this->view->event_data = Model_Event::event_list($filter, $this->user, $id);
 	}
 	
 	public function action_display()

@@ -2,7 +2,19 @@
 	{{#add_event}}
 	<a href="{{add_event}}">Add new event</a>
 	{{/add_event}}
-	<a href="{{old_events}}">Show past events</a>
+	
+	<select id="event_filters">
+		<option value="">Filter event list:</option>
+{{#filters.top}}		
+		<option value="{{url}}">{{text}}</option>
+{{/filters.top}}
+		<optgroup label="Filter by dungeon">
+{{#filters.dungeon}}		
+		<option value="{{url}}">{{text}}</option>
+{{/filters.dungeon}}
+		</optgroup>
+	</select>
+	
 	<table id="events">
 		<thead>
 			<tr>

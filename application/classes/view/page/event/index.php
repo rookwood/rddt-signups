@@ -54,4 +54,41 @@ class View_Page_Event_Index extends Abstract_View_Page {
 	{
 		return Route::url('event').URL::query(array('filter' => 'past'));
 	}
+	public function filters()
+	{
+		// Cache results as to save database hits
+		static $filter_list;
+		
+		// Return cached results if available
+		if ( ! empty($filter_list))
+		{
+			return $filter_list;
+		}
+		
+		$out['top'][] = array(
+			'url'  => Route::url('event').URL::query(array('filter' => 'current')),
+			'text' => 'All current events',
+		);		
+		
+		$out['top'][] = array(
+			'url'  => Route::url('event').URL::query(array('filter' => 'mine')),
+			'text' => 'My events',
+		);
+		
+		$out['top'][] = array(
+			'url'  => Route::url('event').URL::query(array('filter' => 'past')),
+			'text' => 'Past events',
+		);
+		
+		foreach (ORM::factory('dungeon')->find_all() as $dungeon)
+		{
+			$out['dungeon'][] = array(
+				'url'  => Route::url('event').URL::query(array('filter' => 'dungeon', 'id' => $dungeon->id)),
+				'text' => $dungeon->name,
+			);
+		}
+		
+		return $filter_list = $out;
+		
+	}
 }

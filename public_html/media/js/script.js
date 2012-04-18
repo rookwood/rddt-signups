@@ -16,4 +16,8 @@ $(document).ready(function() {
 			});
 		});
 	});
+	
+	$('#event_filters').change(function(e) {
+		window.open(this.value, '_self');
+	});
 });

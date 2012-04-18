@@ -98,7 +98,7 @@ class View_Page_Event_Display extends Abstract_View_Page {
 		}
 		
 		// If no attendees yet, use 'no signup' message, also caches attendee list
-		return isset($out) ? $attendees = $out : FALSE;
+		return isset($out) ? $attendee_list = $out : FALSE;
 	}
 	
 	/**

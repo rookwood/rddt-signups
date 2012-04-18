@@ -260,7 +260,7 @@ class Controller_Event extends Abstract_Controller_Website {
 			}
 			
 			// Set sign-up status
-			$signup->status_id  = $signup_status->id;
+			$signup->status_id  = Model_Status::STANDBY_FORCED;
 			
 			// Get slot info
 			$slot = ORM::factory('slot', array('name' => $event_post['slot']));

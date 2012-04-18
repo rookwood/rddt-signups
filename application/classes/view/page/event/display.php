@@ -57,14 +57,13 @@ class View_Page_Event_Display extends Abstract_View_Page {
 		// Return cached results if available
 		if ( ! empty($attendee_list))
 		{
-			ProfilerToolbar::addData('Using cached result for attendees', 'cache');
 			return $attendee_list;
 		}
 		
 		// Statuses needed to test against
-		$ready = ORM::factory('status', array('name' => 'ready'))->id;
-		$standby_voluntary = ORM::factory('status', array('name' => 'stand-by (voluntary)'))->id;
-		$standby_forced    = ORM::factory('status', array('name' => 'stand-by (forced)'))->id;
+		$ready             = Model_Status::READY;
+		$standby_voluntary = Model_Status::STANDBY_VOLUNTARY;
+		$standby_forced    = Moel_Status::STANDBY_FORCED;
 		
 		// Load all characters signed-up for the event
 		$attendees = $this->event_data->characters->where('status_id', '=', $ready)->or_where('status_id', '=', $standby_voluntary)->or_where('status_id', '=', $standby_forced)->find_all();

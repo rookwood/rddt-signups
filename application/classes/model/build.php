@@ -21,7 +21,7 @@
 		$this->url  = $build['url'];
 		
 		$this->create();
-
+		
 		foreach ($quantity as $name => $quantity)
 		{
 			if (is_numeric($quantity))

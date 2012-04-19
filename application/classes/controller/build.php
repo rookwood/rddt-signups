@@ -39,10 +39,21 @@ class Controller_Build extends Abstract_Controller_Website {
 					
 					$this->request->redirect(Route::url('build'));
 				}
-				catch(ORM_Validation_Exception $e)
+				catch(Exception $e)
 				{
-					Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'build.add.failed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
-					$this->view->errors = $e->errors('build');
+					if ($e instanceof Database_Exception)
+					{
+						$build = ORM::factory('build', array('name' => $build_post['name']));
+						$build->visibility = 1;
+						$build->edit_build($build_post, $quantity_post);
+						
+						$this->request->redirect(Route::url('build'));
+					}
+					else
+					{
+						Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'build.add.failed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+						$this->view->errors = $e->errors('build');
+					}
 				}
 				
 				$this->view->build_data = Arr::merge($build_post, $quantity_post);

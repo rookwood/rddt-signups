@@ -1,0 +1,16 @@
+
+	<form action="{{dungeon_edit_url}}" method="POST" id="form_dungeon_add">
+		<fieldset>
+			<legend>Edit dungeon</legend>
+			<ul>
+				<li>
+					<label for="name">Name:</label>
+					<input type="text" name="dungeon[name]" id="name" value="{{name}}" {{#errors.name}}class="error" {{/errors.name}}/>
+				</li>
+				<li>
+					{{{csrf}}}
+					<input type="submit" value="Submit" />
+				</li>
+			</ul>
+		</fieldset>
+	</form>

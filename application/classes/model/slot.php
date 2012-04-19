@@ -58,12 +58,11 @@ class Model_Slot extends ORM {
 	public function edit_slot($data)
 	{
 		// Save new name if changed
-		if ( ! $this->name === $data['name'])
+		if ($this->name != $data['name'])
 		{
 			$this->name = $data['name'];
 			$this->save();
 		}
-		
 		// Deal with profession relationships
 		foreach (Model_Profession::profession_list() as $profession)
 		{

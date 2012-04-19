@@ -50,4 +50,59 @@ class Controller_Dungeon extends Abstract_Controller_Website {
 			}
 		}
 	}
+	
+	public function action_edit()
+	{
+		$dungeon = ORM::factory('dungeon', $this->request->param('id'));
+
+		if ( ! $this->user->can('dungeon_edit', array('dungeon' => $dungeon)))
+		{
+			$status = Policy::$last_code;
+			
+			if (Policy::$last_code === Policy_Dungeon_Add::NOT_LOGGED_IN)
+			{
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'dungeon.edit.not_logged_in'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			}
+			else
+			{
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'dungeon.edit.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			}
+			$this->view = Kostache::factory('page/dungeon/index')
+				->assets(Assets::factory())
+				->set('dungeon_data', ORM::factory('dungeon')->find_all());
+		}
+		else
+		{
+			if ($this->valid_post())
+			{
+				$dungeon_post = Arr::get($this->request->post(), 'dungeon', array());
+				
+				$dungeon->values($dungeon_post, array('name'));
+				$dungeon->save();
+			}
+		}
+		$this->view->dungeon_data = $dungeon;
+	}
+	
+	public function action_remove()
+	{
+		$dungeon = ORM::factory('dungeon', $this->request->param('id'));
+		
+		if ( ! $this->user->can('dungeon_remove', array('dungeon' => $dungeon)))
+		{
+			$status = Policy::$last_code;
+			
+			if (Policy::$last_code === Policy_Dungeon_Add::NOT_LOGGED_IN)
+			{
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'dungeon.remove.not_logged_in'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			}
+			else
+			{
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'dungeon.remove.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			}
+			$this->view = Kostache::factory('page/dungeon/index')
+				->assets(Assets::factory())
+				->set('dungeon_data', ORM::factory('dungeon')->find_all());
+		}
+	}
 }

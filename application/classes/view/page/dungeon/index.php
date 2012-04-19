@@ -8,7 +8,11 @@ class View_Page_Dungeon_Index extends Abstract_View_Page {
 	{
 		foreach ($this->dungeon_data as $dungeon)
 		{
-			$out[] = array('name' => $dungeon->name);
+			$out[] = array(
+				'name'       => $dungeon->name,
+				'edit_url'   => Route::url('dungeon', array('action' => 'edit',   'id' => $dungeon->id)),
+				'remove_url' => Route::url('dungeon', array('action' => 'remove', 'id' => $dungeon->id)),
+			);
 		}
 		
 		return $out;

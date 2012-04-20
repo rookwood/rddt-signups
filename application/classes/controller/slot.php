@@ -88,7 +88,7 @@ class Controller_Slot extends Abstract_Controller_Website {
 				$slot->edit_slot($slot_post);
 				
 				Notices::add('success', 'msg_info', array('message' => Kohana::message('gw', 'slot.edit.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
-				//$this->request->redirect(Route::url('slot'));
+				$this->request->redirect(Route::url('slot'));
 			}
 			catch(ORM_Validation_Exception $e)
 			{

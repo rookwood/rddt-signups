@@ -27,8 +27,8 @@ class Model_Character extends ORM {
 				array('min_length', array(':value', 3)),
 				array('max_length', array(':value', 19)),
 				// To be valid names in game, must start with a letter, contain no numbers, and no more than one consecutive space
-				 array('regex', array(':value', '/^[a-zA-Z]+( [a-zA-Z]+)*$/')),
-				// array(array($this, 'character_name_available')),
+				array('regex', array(':value', '/^[a-zA-Z]+( [a-zA-Z]+)*$/')),
+				array(array($this, 'unique'), array('name', ':value')),
 			),
 			'profession' => array(
 				array(array($this, 'valid_profession')),
@@ -70,17 +70,6 @@ class Model_Character extends ORM {
 		$this->values($data)->save();
 		
 		return $this;
-	}
-	
-	/**
-	 * Check if character name is already in use
-	 *
-	 * @param  string  Name of character to be checked
-	 * @return bool
-	 */
-	public function character_name_available($name)
-	{
-		return (bool) ORM::factory('character', array('name' => $name))->loaded();
 	}
 	
 	/**

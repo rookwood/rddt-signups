@@ -18,6 +18,15 @@ class Model_Slot extends ORM {
 		'signups' => array(),
 	);
 	
+	public function rules()
+	{
+		return array(
+			'name' => array(
+				array('not_empty'),
+			),
+		);
+	}
+	
 	public function slot_available(Model_Event $event)
 	{		
 		// Is the number of total slots greater than the number filled?

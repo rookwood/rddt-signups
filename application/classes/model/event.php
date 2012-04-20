@@ -21,6 +21,15 @@ class Model_Event extends ORM {
 		),
 	);
 	
+	public function rules()
+	{
+		return array(
+			'title' => array(
+				array('not_empty'),
+			),
+		);
+	}
+	
 	public static function event_list($filter, Model_ACL_User $user = NULL, $id = NULL)
 	{
 		switch ($filter)

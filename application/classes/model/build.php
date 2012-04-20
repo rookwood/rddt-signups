@@ -15,15 +15,41 @@
 		'events' => array(),
 	);
 
+	public function rules()
+	{
+		return array(
+			'name' => array(
+				array('not_empty'),
+				array('max_length', array(':value', 50)),
+				array(array($this, 'unique'), array('name', ':value')),
+			),
+			'url' => array(
+				array('url'),
+			),
+		);
+	}
+	
+	/**
+	 * Add a new build
+	 *
+	 * @chainable
+	 * @param   array   Build name, url
+	 * @param   array   Slot quantities
+	 * @return  object  $this
+	 */
 	public function add_build(array $build, array $quantity)
 	{
+		// Set name and url
 		$this->name = $build['name'];
 		$this->url  = $build['url'];
 		
+		// Create new record
 		$this->create();
 		
+		// Now add slot relations
 		foreach ($quantity as $name => $quantity)
 		{
+			// Make sure sensibile data is used
 			if (is_numeric($quantity))
 			{
 				$slot = ORM::factory('slot', array('name' => $name));
@@ -49,6 +75,7 @@
 				}
 				else
 				{
+					// Make new relation
 					$function->build_id = $this->id;
 					$function->slot_id  = $slot->id;
 					$function->number   = $quantity;
@@ -56,6 +83,8 @@
 				}
 			}
 		}
+		
+		return $this;
 	}
 	
 	public function edit_build(array $build, array $quantity)

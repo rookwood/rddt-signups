@@ -32,7 +32,15 @@ abstract class Abstract_Controller_Website extends Controller {
 			if ( ! isset($this->user->timezone))
 			{
 				$this->user->timezone = 'America/Chicago';
-				Notices::add('info', 'info', array('message' => 'Until you log in, all times are displayed in the America/Chicago timezone.', 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				
+				$display_timezone_notice = Cookie::get('display_timezone_notice', TRUE);
+				
+				if ($display_timezone_notice)
+				{
+					// Don't spam users with this on every pageview
+					Cookie::set('display_timezone_notice', FALSE);
+					Notices::add('info', 'info', array('message' => 'Until you log in, all times are displayed in the America/Chicago timezone.', 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				}
 			}
 		}
 		

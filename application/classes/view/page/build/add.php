@@ -18,5 +18,10 @@ class View_Page_Build_Add extends Abstract_View_Page {
 	{
 		return Route::url('slot', array('action' => 'add'));
 	}
+	
+	public function build_add_url()
+	{
+		return Route::url('build', array('aciton' => 'add'));
+	}
 
 }

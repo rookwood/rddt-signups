@@ -51,6 +51,7 @@ return array(
 	'build' => array(
 		'add' => array(
 			'not_allowed'       => 'You may not add new builds at this time.',
+			'failed'            => 'There was an error on the form.  Please check the highlighted fields.',
 			'not_logged_in'     => 'You must be logged in to perform that action.',
 		),
 		'edit' => array(
@@ -58,6 +59,7 @@ return array(
 			'not_allowed'       => 'You may not edit this build at this time.',
 			'not_owner'         => 'You may not edit builds that you did not create.',
 			'not_logged_in'     => 'You must be logged in to perform that action.',
+			'failed'            => 'There was an error on the form.  Please check the highlighted fields.',
 		),
 		'remove' => array(
 			'locked'            => 'This build is locked and may not be removed.',

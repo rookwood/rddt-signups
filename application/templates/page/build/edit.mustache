@@ -6,10 +6,12 @@
 				<li>
 					<label for="name">Build name:</label>
 					<input type="text" name="build[name]" id="name" value="{{build_data.name}}" {{#errors.name}}class="error" {{/errors.name}}/>
+					{{#errors.name}}<p class="error_message">{{errors.name}}</p>{{/errors.name}}
 				</li>
 				<li>
 					<label for="url">Build link:</label>
-					<input type="url" name="build[url]" id="url" value="{{build_data.url}}" {{#errors.url}}class="error" {{/errors.url}}/>
+					<input type="text" name="build[url]" id="url" value="{{build_data.url}}" {{#errors.url}}class="error" {{/errors.url}}/>
+					{{#errors.url}}<p class="error_message">{{errors.url}}</p>{{/errors.url}}
 				</li>
 {{#slots}}
 				<li>

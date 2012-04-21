@@ -66,6 +66,8 @@ if (isset($_SERVER['KOHANA_ENV']))
 	Kohana::$environment = constant('Kohana::'.strtoupper($_SERVER['KOHANA_ENV']));
 }
 
+Kohana::$environment = Kohana::TESTING;
+
 /**
  * Initialize Kohana, setting the default options.
  *
@@ -103,7 +105,7 @@ Session::$default = 'native';
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
-	'profiler'      => MODPATH.'profilertoolbar', // Alert's Profiler Toolbar
+	// 'profiler'      => MODPATH.'profilertoolbar', // Alert's Profiler Toolbar
 	'assets'        => MODPATH.'assets',          // Synapse Studio's asset manager
 	'auth'          => MODPATH.'auth',            // Basic authentication
 	// 'cache'      => MODPATH.'cache',           // Caching with multiple backends
@@ -185,7 +187,19 @@ Route::set('dungeon', 'dungeon(/<action>(/<id>))', array('action' => 'add'))
 		'action'     => 'index',
 	));
 
-Route::set('default', '(<controller>(/<action>(/<id>)))')
+Route::set('error', 'error/<action>')
+	->defaults(array(
+		'controller' => 'error',
+		'action'     => '404',
+	));
+	
+Route::set('cleanroom', 'cleanroom')
+	->defaults(array(
+		'controller' => 'cleanroom',
+		'action'     => 'index',
+	));
+	
+Route::set('default', '')
 	->defaults(array(
 		'controller' => 'welcome',
 		'action'     => 'index',

@@ -7,6 +7,11 @@ class Controller_Event extends Abstract_Controller_Website {
 		$filter = Arr::get($this->request->query(), 'filter', 'default');
 		$id     = Arr::get($this->request->query(), 'id',     FALSE);
 			
+		if ($filter == 'mine' AND ! Auth::instance()->logged_in())
+		{
+			$this->request->redirect(Route::url('user', array('action' => 'login')));
+		}
+		
 		// Pass events to the view class
 		$this->view->event_data = Model_Event::event_list($filter, $this->user, $id);
 	}

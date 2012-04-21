@@ -8,6 +8,22 @@ class View_Page_Event_Display extends Abstract_View_Page {
 	public $event_data;
 
 	/**
+	 * @var  array  Profession list to save on database calls
+	 */
+	protected $_profession_data = array(
+			1	=> 'warrior',
+			2	=> 'ranger',
+			3	=> 'monk',
+			4	=> 'necromancer',
+			5	=> 'elementalist',
+			6	=> 'mesmer',
+			7	=> 'ritualist',
+			8	=> 'assassin',
+			9	=> 'dervish',
+			10	=> 'paragon',
+	);
+
+	/**
 	 * Creates link to sign up for this event
 	 *
 	 * @return  string  URL
@@ -73,7 +89,7 @@ class View_Page_Event_Display extends Abstract_View_Page {
 			if ($signup->status_id == Model_Status::READY)
 			{
 				$out['active'][] = array(
-					'profession' => $character->profession->name,
+					'profession' => $this->_profession_data[$character->profession_id],
 					'name'       => $character->name,
 					'role'       => $signup->slot->name,
 					'comment'    => $signup->comment,
@@ -83,7 +99,7 @@ class View_Page_Event_Display extends Abstract_View_Page {
 			else
 			{
 				$out['standby'][] = array(
-					'profession' => $character->profession->name,
+					'profession' => $this->_profession_data[$character->profession_id],
 					'name'       => $character->name,
 					'role'       => $signup->slot->name,
 					'comment'    => $signup->comment,
@@ -108,7 +124,7 @@ class View_Page_Event_Display extends Abstract_View_Page {
 		foreach ($this->characters as $character)
 		{
 			$out[] = array(
-				'profession' => $character->profession->name,
+				'profession' => $this->_profession_data[$character->profession_id],
 				'name'       => $character->name,
 			);
 		}

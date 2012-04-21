@@ -13,6 +13,22 @@ class View_Page_Character_Index extends Abstract_View_Page {
 	public $count = FALSE;
 	
 	/**
+	 * @var  array  Profession list to save on database calls
+	 */
+	protected $_profession_data = array(
+			1	=> 'warrior',
+			2	=> 'ranger',
+			3	=> 'monk',
+			4	=> 'necromancer',
+			5	=> 'elementalist',
+			6	=> 'mesmer',
+			7	=> 'ritualist',
+			8	=> 'assassin',
+			9	=> 'dervish',
+			10	=> 'paragon',
+	);
+	
+	/**
 	 * Returns a list of the current user's characters
 	 *
 	 * @return  array  Characters
@@ -23,7 +39,7 @@ class View_Page_Character_Index extends Abstract_View_Page {
 		{
 			$out[] = array(
 				'name'       => $character->name,
-				'profession' => $character->profession->name,
+				'profession' => $this->_profession_data[$character->profession_id],
 				'edit_url'   => Route::url('character', array('action' => 'edit', 'id' => $character->id)),
 			);
 		}

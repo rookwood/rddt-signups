@@ -60,13 +60,8 @@ class View_Page_Event_Display extends Abstract_View_Page {
 			return $attendee_list;
 		}
 		
-		// Statuses needed to test against
-		$ready             = Model_Status::READY;
-		$standby_voluntary = Model_Status::STANDBY_VOLUNTARY;
-		$standby_forced    = Model_Status::STANDBY_FORCED;
-		
 		// Load all characters signed-up for the event
-		$attendees = $this->event_data->characters->where('status_id', '=', $ready)->or_where('status_id', '=', $standby_voluntary)->or_where('status_id', '=', $standby_forced)->find_all();
+		$attendees = $this->event_data->characters->where('status_id', '=', Model_Status::READY)->or_where('status_id', '=', Model_Status::STANDBY_VOLUNTARY)->or_where('status_id', '=', Model_Status::STANDBY_FORCED)->find_all();
 		
 		// Iterate through each attendee and pass their data to output
 		foreach ($attendees as $character)
@@ -75,7 +70,7 @@ class View_Page_Event_Display extends Abstract_View_Page {
 			$signup = ORM::factory('signup', array('character_id' => $character->id, 'event_id' => $this->event_data->id));
 			
 			// Active attendees
-			if ($signup->status_id === $ready)
+			if ($signup->status_id == Model_Status::READY)
 			{
 				$out['active'][] = array(
 					'profession' => $character->profession->name,
@@ -97,6 +92,7 @@ class View_Page_Event_Display extends Abstract_View_Page {
 		}
 		
 		// If no attendees yet, use 'no signup' message, also caches attendee list
+		ProfilerToolbar::addData($out, 'attendees');
 		return isset($out) ? $attendee_list = $out : FALSE;
 	}
 	

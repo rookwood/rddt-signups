@@ -101,6 +101,9 @@ class Controller_Build extends Abstract_Controller_Website {
 				try
 				{
 					$build->edit_build($build_post, $quantity_post);
+					
+					Notices::add('success', 'msg_info', array('message' => Kohana::message('gw', 'build.edit.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+					$this->request->redirect('build');
 				}
 				catch(ORM_Validation_Exception $e)
 				{

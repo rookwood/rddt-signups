@@ -24,7 +24,7 @@ return array(
 		'add'    => array(
 			'not_allowed'       => 'You are not authorized to create new events.',
 			'failed '           => 'There was an error creating the event.  Please check the highlighted fields.',
-			'success'           => 'Event created successfully',
+			'success'           => 'Event created.  Make sure that you sign up for a slot!',
 		),
 		'edit'   => array(
 			'not_allowed'       => 'You do not have permission to edit this event.',
@@ -53,6 +53,7 @@ return array(
 			'not_allowed'       => 'You may not add new builds at this time.',
 			'failed'            => 'There was an error on the form.  Please check the highlighted fields.',
 			'not_logged_in'     => 'You must be logged in to perform that action.',
+			'success'           => 'Build added successfully',
 		),
 		'edit' => array(
 			'locked'            => 'This build is locked and may not be edited.',
@@ -60,6 +61,7 @@ return array(
 			'not_owner'         => 'You may not edit builds that you did not create.',
 			'not_logged_in'     => 'You must be logged in to perform that action.',
 			'failed'            => 'There was an error on the form.  Please check the highlighted fields.',
+			'success'           => 'Build updated successfully',
 		),
 		'remove' => array(
 			'locked'            => 'This build is locked and may not be removed.',

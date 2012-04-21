@@ -53,7 +53,7 @@ class Controller_Event extends Abstract_Controller_Website {
 				));
 				
 				// Notification
-				Notices::add('success', 'msg_info', array('message' => Kohana::message('gw', 'event.add.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				Notices::add('info', 'msg_info', array('message' => Kohana::message('gw', 'event.add.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 				
 				// Setup display of created event
 				$this->view = Kostache::factory('page/event/display')

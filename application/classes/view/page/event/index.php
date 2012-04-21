@@ -14,6 +14,11 @@ class View_Page_Event_Index extends Abstract_View_Page {
 	 */
 	public function events()
 	{	
+		static $event_list;
+		
+		if ( ! empty($event_list))
+			return $event_list;
+		
 		foreach($this->event_data as $event)
 		{
 			// Calculate start time using user's time offset from GMT
@@ -32,7 +37,7 @@ class View_Page_Event_Index extends Abstract_View_Page {
 			);
 		}
 		
-		return isset($out) ? $out : FALSE;
+		return isset($out) ? $event_list = $out : FALSE;
 	}
 	
 	/**

@@ -52,9 +52,9 @@ class Controller_Build extends Abstract_Controller_Website {
 					else
 					{
 						Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'build.add.failed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
-						$this->view->errors = $e->errors();
+						$this->view->errors = $e->errors('validation');
 						ProfilerToolbar::addData($e, 'object');
-						ProfilerToolbar::addData($e->errors(), 'errors');
+						ProfilerToolbar::addData($e->errors('build'), 'errors');
 					}
 				}
 				

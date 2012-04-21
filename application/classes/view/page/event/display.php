@@ -63,7 +63,7 @@ class View_Page_Event_Display extends Abstract_View_Page {
 		// Statuses needed to test against
 		$ready             = Model_Status::READY;
 		$standby_voluntary = Model_Status::STANDBY_VOLUNTARY;
-		$standby_forced    = Moel_Status::STANDBY_FORCED;
+		$standby_forced    = Model_Status::STANDBY_FORCED;
 		
 		// Load all characters signed-up for the event
 		$attendees = $this->event_data->characters->where('status_id', '=', $ready)->or_where('status_id', '=', $standby_voluntary)->or_where('status_id', '=', $standby_forced)->find_all();

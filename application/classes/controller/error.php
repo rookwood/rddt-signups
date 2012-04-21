@@ -2,6 +2,12 @@
 
 class Controller_Error extends Controller {
 
+	public function before()
+	{
+		print_r('Error controller invoked.');
+		ob_flush();
+	}
+	
 	public function action_404()
 	{
 		$this->response->body('404\'d');

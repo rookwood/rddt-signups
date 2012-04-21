@@ -75,13 +75,31 @@ return array(
 		'edit' => array(
 			'locked'            => 'This role is locked and may not be edited.',
 			'not_allowed'       => 'You may not edit this role at this time.',
-			'not_owner'         => 'You may not edit roleds that you did not create.',
+			'not_owner'         => 'You may not edit roles that you did not create.',
 			'not_logged_in'     => 'You must be logged in to perform that action.',
 		),
 		'remove' => array(
 			'locked'            => 'This role is locked and may not be removed.',
 			'not_allowed'       => 'You may not remove this role at this time.',
 			'not_owner'         => 'You may not remove roles that you did not create.',
+			'not_logged_in'     => 'You must be logged in to perform that action.',
+		),
+	),
+	'dungeon' => array(
+		'add' => array(
+			'not_allowed'       => 'You may not add new dungeons at this time.',
+			'not_logged_in'     => 'You must be logged in to perform that action.',
+		),
+		'edit' => array(
+			'locked'            => 'This dungeon is locked and may not be edited.',
+			'not_allowed'       => 'You may not edit this dungeon at this time.',
+			'not_owner'         => 'You may not edit dungeon that you did not create.',
+			'not_logged_in'     => 'You must be logged in to perform that action.',
+		),
+		'remove' => array(
+			'locked'            => 'This dungeon is locked and may not be removed.',
+			'not_allowed'       => 'You may not remove this dungeon at this time.',
+			'not_owner'         => 'You may not remove dungeon that you did not create.',
 			'not_logged_in'     => 'You must be logged in to perform that action.',
 		),
 	),

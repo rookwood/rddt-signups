@@ -4,7 +4,7 @@ class Controller_Dungeon extends Abstract_Controller_Website {
 
 	public function action_index()
 	{
-		$dungeons = ORM::factory('dungeon')->find_all();
+		$dungeons = ORM::factory('dungeon')->where('visibility', '=', '1')->find_all();
 		
 		$this->view->dungeon_data = $dungeons;
 	}
@@ -44,6 +44,18 @@ class Controller_Dungeon extends Abstract_Controller_Website {
 				}
 				catch(ORM_Validation_Exception $e)
 				{
+					$errors = $e->errors('dungeon');
+					if (array_key_exists('name', $errors))
+					{
+						$dungeon = ORM::factory('dungeon', array('name' => $dungeon_post['name'], 'visibility' => '0'));
+						if ($dungeon->loaded())
+						{
+							// Dungeon exists in invisible state
+							$dungeon->visibility = 1;
+							$dungeon->save();
+							$this->request->redirect(Route::url('dungeon'));
+						}
+					}
 					$this->view->errors = $e->errors('dungeon');
 					$this->view->values = $dungeon_post;
 				}
@@ -79,6 +91,8 @@ class Controller_Dungeon extends Abstract_Controller_Website {
 				
 				$dungeon->values($dungeon_post, array('name'));
 				$dungeon->save();
+				
+				$this->request->redirect(Route::url('dungeon'));
 			}
 		}
 		$this->view->dungeon_data = $dungeon;
@@ -92,6 +106,7 @@ class Controller_Dungeon extends Abstract_Controller_Website {
 		{
 			$status = Policy::$last_code;
 			
+			ProfilerToolbar::addData('policy failure: '.$status, 'policy');
 			if (Policy::$last_code === Policy_Dungeon_Add::NOT_LOGGED_IN)
 			{
 				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'dungeon.remove.not_logged_in'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
@@ -100,9 +115,14 @@ class Controller_Dungeon extends Abstract_Controller_Website {
 			{
 				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'dungeon.remove.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 			}
-			$this->view = Kostache::factory('page/dungeon/index')
-				->assets(Assets::factory())
-				->set('dungeon_data', ORM::factory('dungeon')->find_all());
+			$this->request->redirect(Route::url('dungeon'));
+		}
+		else
+		{
+			$dungeon->visibility = 0;
+			$dungeon->save();
+			
+			$this->request->redirect(Route::url('dungeon'));
 		}
 	}
 }

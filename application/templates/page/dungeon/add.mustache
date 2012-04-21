@@ -5,7 +5,8 @@
 			<ul>
 				<li>
 					<label for="name">Name:</label>
-					<input type="text" name="dungeon[name]" id="name" value="{{build_data.name}}" {{#errors.name}}class="error" {{/errors.name}}/>
+					<input type="text" name="dungeon[name]" id="name" value="{{values.name}}" {{#errors.name}}class="error" {{/errors.name}}/>
+					{{#errors.name}}<p class="error_message">{{errors.name}}</p>{{/errors.name}}
 				</li>
 				<li>
 					{{{csrf}}}

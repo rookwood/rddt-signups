@@ -328,7 +328,7 @@ class Controller_Event extends Abstract_Controller_Website {
 			// Something bad happened... log it for fixing
 			catch(Exception $e)
 			{
-				ProfilerToolbar::addData($e);
+				throw new HTTP_Exception_500;
 			}
 		}
 		$this->view = Kostache::factory('page/event/display')

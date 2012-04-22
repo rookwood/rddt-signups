@@ -109,7 +109,6 @@ class Controller_Dungeon extends Abstract_Controller_Website {
 		{
 			$status = Policy::$last_code;
 			
-			ProfilerToolbar::addData('policy failure: '.$status, 'policy');
 			if (Policy::$last_code === Policy_Dungeon_Add::NOT_LOGGED_IN)
 			{
 				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'dungeon.remove.not_logged_in'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));

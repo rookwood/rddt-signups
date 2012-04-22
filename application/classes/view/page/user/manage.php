@@ -6,7 +6,7 @@ class View_Page_User_Manage extends Abstract_View_Page {
 
 	public function action()
 	{
-		return Route::url('default', array('controller' => 'user', 'action' => 'manage'));
+		return Route::url('user', array('controller' => 'user', 'action' => 'manage'));
 	}
 
 	/**

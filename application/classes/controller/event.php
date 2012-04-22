@@ -88,6 +88,9 @@ class Controller_Event extends Abstract_Controller_Website {
 		// Load the event object
 		$event = ORM::factory('event', array('id' => $this->request->param('id')));
 		
+		if ( ! $event->loaded())
+			throw new HTTP_Exception_404;
+		
 		// Can user edit this event's details?
 		if ( ! $this->user->can('event_edit', array('event' => $event)))
 		{

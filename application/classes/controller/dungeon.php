@@ -66,6 +66,9 @@ class Controller_Dungeon extends Abstract_Controller_Website {
 	public function action_edit()
 	{
 		$dungeon = ORM::factory('dungeon', $this->request->param('id'));
+		
+		if ( ! $dungeon->loaded())
+			throw new HTTP_Exception_404;
 
 		if ( ! $this->user->can('dungeon_edit', array('dungeon' => $dungeon)))
 		{

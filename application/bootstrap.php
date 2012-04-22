@@ -163,7 +163,7 @@ Route::set('event', 'event(/<action>(/<id>))', array('action' => 'add|remove|edi
 		'action'     => 'index',
 	));
 
-Route::set('character', 'character(/<action>(/<id>))', array('action' => 'add|remove|edit', 'id' => '/^\pN++$/uD'))
+Route::set('character', 'character(/<action>(/<id>))', array('action' => 'add|remove|edit', '/^\pN++$/uD'))
 	->defaults(array(
 		'controller' => 'character',
 		'action'     => 'index',

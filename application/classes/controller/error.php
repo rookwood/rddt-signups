@@ -1,12 +1,6 @@
 <?php defined('SYSPATH') or die('No direct access allowed.');
 
 class Controller_Error extends Controller {
-
-	public function before()
-	{
-		print_r('Error controller invoked.');
-		ob_flush();
-	}
 	
 	public function action_404()
 	{

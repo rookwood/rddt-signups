@@ -10,9 +10,7 @@ class View_Page_Character_Edit extends Abstract_View_Page {
 	}
 	
 	public function professions()
-	{
-		ProfilerToolbar::addData($this->character_data);
-		
+	{		
 		foreach (Model_Profession::profession_list() as $profession)
 		{
 			$out[] = array('name' => $profession, 'selected' => ($this->character_data->profession->name === $profession) ? TRUE : FALSE);

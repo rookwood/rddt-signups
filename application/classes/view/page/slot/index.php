@@ -20,7 +20,6 @@ class View_Page_Slot_Index extends Abstract_View_Page {
 			);
 			
 		}
-		ProfilerToolbar::addData($profs_associated);
 		
 		return $out;
 	}

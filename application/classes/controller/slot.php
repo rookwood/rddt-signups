@@ -57,6 +57,9 @@ class Controller_Slot extends Abstract_Controller_Website {
 		// Load record to be edited
 		$slot = ORM::factory('slot', $this->request->param('id'));
 		
+		if ( ! $slot->loaded())
+			throw new HTTP_Exception_404;
+		
 		// Can this user edit this slot?
 		if ( ! $this->user->can('slot_edit', array('slot' => $slot)))
 		{

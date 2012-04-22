@@ -110,6 +110,9 @@ class Controller_Character extends Abstract_Controller_Website {
 		// Load character model
 		$character = ORM::factory('character', $this->request->param('id'));
 		
+		if ( ! $character->loaded())
+			throw new HTTP_Exception_404;
+		
 		// Is user allowed to edit this character?
 		if ( ! $this->user->can('character_edit', array('character' => $character)))
 		{

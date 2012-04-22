@@ -67,6 +67,9 @@ class Controller_Build extends Abstract_Controller_Website {
 	{	
 		$build = ORM::factory('build', $this->request->param('id'));
 		
+		if ( ! $build->loaded())
+			throw new HTTP_Exception_404;
+		
 		if ( ! $this->user->can('build_edit', array('build' => $build)))
 		{
 			$status = Policy::$last_code;

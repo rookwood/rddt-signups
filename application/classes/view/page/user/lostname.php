@@ -6,9 +6,6 @@ class View_Page_User_Lostname extends Abstract_View_Page {
 	
 	public function action()
 	{
-		return '/'.Route::get('user')
-			->uri(array(
-				'action'     => 'lostname',
-			));
+		return Route::url('user', array('action' => 'lostname'));
 	}
 }

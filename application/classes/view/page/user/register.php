@@ -19,7 +19,7 @@ class View_Page_User_Register extends Abstract_View_Page {
 	 */
 	public function action()
 	{
-		return Route::url('default', array('controller' => 'user', 'action' => 'register'));
+		return Route::url('user', array('controller' => 'user', 'action' => 'register'));
 	}
 	
 	/**

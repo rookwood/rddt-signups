@@ -188,10 +188,7 @@ class View_Page_Event_Display extends Abstract_View_Page {
 		static $role_list;
 		
 		if ( ! empty($role_list))
-		{
-			ProfilerToolbar::addData('Using cached result for role_list', 'cache');
 			return $role_list;
-		}
 		
 		// Slots needed for this build
 		$slots = $this->event_data->build->slots->find_all();

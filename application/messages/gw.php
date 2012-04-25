@@ -40,6 +40,7 @@ return array(
 			'success'           => 'You are now signed-up for this event.',
 			'failed'            => 'There was an error in your information.  Please check the highlighted fields.',
 			'already_enrolled'  => 'You are already signed-up for this event.  If you with to change to another character, cancel your current spot first.',
+			'standby_forced'    => 'The role you selected has already been filled, so you were placed on stand-by.  If someone withdraws, you will be bumped up automatically.',
 		),
 		'withdraw' => array(
 			'success'           => 'You are no longer signed-up for this event.',

@@ -77,8 +77,8 @@ class View_Page_Event_Display extends Abstract_View_Page {
 		}
 		
 		// Load all characters signed-up for the event
-		$attendees = $this->event_data->characters->where('status_id', '=', Model_Status::READY)->or_where('status_id', '=', Model_Status::STANDBY_VOLUNTARY)->or_where('status_id', '=', Model_Status::STANDBY_FORCED)->find_all();
-		
+		$attendees = $this->event_data->characters->where('status_id', 'IN', array(Model_Status::READY, Model_Status::STANDBY_VOLUNTARY, Model_Status::STANDBY_FORCED))->find_all();
+
 		// Iterate through each attendee and pass their data to output
 		foreach ($attendees as $character)
 		{

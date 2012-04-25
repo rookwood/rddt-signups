@@ -211,7 +211,8 @@ class Controller_Event extends Abstract_Controller_Website {
 				
 				if ($policy_status === Policy_Event_Signup_Active::STANDBY_ONLY)
 				{
-					$signup_status = Model_Status::STANDBY_FORCED;
+					$signup_status = ORM::factory('status', Model_Status::STANDBY_FORCED);
+					Notices::add('warning', 'msg_warning', array('message' => Kohana::message('gw', 'event.signup.standby_forced'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 				}
 			}
 			else

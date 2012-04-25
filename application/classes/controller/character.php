@@ -120,7 +120,7 @@ class Controller_Character extends Abstract_Controller_Website {
 			$status = Policy::$last_code;
 			
 			// Unspecified reason for denial
-			if ($status === Policy_Edit_Character::NOT_ALLOWED)
+			if ($status === Policy_Character_Edit::NOT_ALLOWED)
 			{			
 				Notices::add('info', 'msg_info', array('message' => Kohana::message('gw', 'character.edit.not_allowed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 

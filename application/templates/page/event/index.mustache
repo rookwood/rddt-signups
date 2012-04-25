@@ -2,7 +2,7 @@
 	{{#add_event}}
 	<a href="{{add_event}}">Add new event</a>
 	{{/add_event}}
-	
+
 	<select id="event_filters">
 		<option value="">Filter event list:</option>
 {{#filters.top}}		
@@ -14,13 +14,15 @@
 {{/filters.dungeon}}
 		</optgroup>
 	</select>
-	
+	<p>{{filter_message}}</p>
+	<h4>All events are displayed in the timezone set in your profile.</h4>
 	<table id="events">
 		<thead>
 			<tr>
 				<td>Details</td>
 				<td>Date</td>
 				<td>Start time</td>
+				<td>Dungeon</td>
 				<td>Event name</td>
 				<td>Status</td>
 				<td>Host</td>
@@ -33,6 +35,7 @@
 				<td><a href="{{details_link}}" class="event_details">Details</a></td>
 				<td>{{date}}</td>
 				<td>{{time}}</td>
+				<td>{{dungeon}}</td>
 				<td>{{title}}</td>
 				<td>{{status}}</td>
 				<td>{{host}}</td>

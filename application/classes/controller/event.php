@@ -14,6 +14,7 @@ class Controller_Event extends Abstract_Controller_Website {
 		
 		// Pass events to the view class
 		$this->view->event_data = Model_Event::event_list($filter, $this->user, $id);
+		$this->view->filter_message = Kohana::message('gw', 'filter.'.$filter);
 	}
 	
 	public function action_display()
@@ -225,9 +226,13 @@ class Controller_Event extends Abstract_Controller_Website {
 				// Default to forced stand-by on error
 				$signup_status = Model_Status::STANDBY_FORCED;
 			}
+			else
+			{
+				$signup_status = $signup_status->id;
+			}
 			
 			// Set sign-up status
-			$signup->status_id  = Model_Status::STANDBY_FORCED;
+			$signup->status_id  = $signup_status;
 			
 			// Get slot info
 			$slot = ORM::factory('slot', array('name' => $event_post['slot']));

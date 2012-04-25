@@ -5,7 +5,7 @@ class Controller_Slot extends Abstract_Controller_Website {
 	public function action_index()
 	{
 		// Send all slot data to the view class
-		$slots = ORM::factory('slot')->find_all();
+		$slots = ORM::factory('slot')->order_by('name', 'ASC')->find_all();
 		
 		$this->view->slot_data = $slots;
 	}
@@ -43,11 +43,24 @@ class Controller_Slot extends Abstract_Controller_Website {
 				Notices::add('success', 'msg_info', array('message' => Kohana::message('gw', 'slot.add.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 				$this->request->redirect(Route::url('slot'));
 			}
-			catch(ORM_Validation_Exception $e)
+			catch(Exception $e)
 			{
-				// Pass errors and submited data out to the view class
-				$this->view->errors = $e->errors();
-				$this->view->values = $slot_post;
+				$slot = ORM::factory('slot', array('name' => $slot_post['name']));
+				
+				if ($slot->loaded())
+				{
+					$slot->visibility = 1;
+					$slot->save();
+
+					Notices::add('info', 'msg_info', array('message' => Kohana::message('gw', 'slot.add.extant'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+					$this->request->redirect(Route::url('slot'));
+				}
+				else
+				{
+					// Pass errors and submited data out to the view class
+					$this->view->errors = $e->errors();
+					$this->view->values = $slot_post;
+				}
 			}
 		}
 	}

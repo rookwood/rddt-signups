@@ -75,6 +75,7 @@ return array(
 		'add' => array(
 			'not_allowed'       => 'You may not add new player roles at this time.',
 			'not_logged_in'     => 'You must be logged in to perform that action.',
+			'extant'            => 'That slot already exists.',
 		),
 		'edit' => array(
 			'locked'            => 'This role is locked and may not be edited.',
@@ -106,5 +107,11 @@ return array(
 			'not_owner'         => 'You may not remove dungeon that you did not create.',
 			'not_logged_in'     => 'You must be logged in to perform that action.',
 		),
+	),
+	'filter' => array(
+		'mine'                  => 'Events for which you have registered',
+		'dungeon'               => 'Events sorted by selected dungeon',
+		'past'                  => 'Showing completed events',
+		'default'               => FALSE,
 	),
 );

@@ -4,7 +4,7 @@ class Controller_Dungeon extends Abstract_Controller_Website {
 
 	public function action_index()
 	{
-		$dungeons = ORM::factory('dungeon')->where('visibility', '=', '1')->find_all();
+		$dungeons = ORM::factory('dungeon')->where('visibility', '=', '1')->order_by('name', 'ASC')->find_all();
 		
 		$this->view->dungeon_data = $dungeons;
 	}

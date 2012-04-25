@@ -27,13 +27,14 @@ class View_Page_Event_Index extends Abstract_View_Page {
 			// Build event array
 			$out[] = array(
 				'details_link' => Route::url('event', array('action' => 'display', 'id' => $event->id)),
-				'date'         => date('Y M d', $local_start_time),
+				'date'         => date('D Y M d', $local_start_time),
 				'time'         => date('g:i a', $local_start_time),
 				'title'        => $event->title,
 				'status'       => $event->status->name,
 				'host'         => ORM::factory('character', $event->character_id)->name,
 				'build'        => $event->build->name,
 				'url'          => $event->build->url,
+				'dungeon'      => $event->dungeon->name,
 			);
 		}
 		
@@ -59,6 +60,7 @@ class View_Page_Event_Index extends Abstract_View_Page {
 	{
 		return Route::url('event').URL::query(array('filter' => 'past'));
 	}
+	
 	public function filters()
 	{
 		// Cache results as to save database hits
@@ -85,7 +87,7 @@ class View_Page_Event_Index extends Abstract_View_Page {
 			'text' => 'Past events',
 		);
 		
-		foreach (ORM::factory('dungeon')->find_all() as $dungeon)
+		foreach (ORM::factory('dungeon')->where('visibility', '=', '1')->find_all() as $dungeon)
 		{
 			$out['dungeon'][] = array(
 				'url'  => Route::url('event').URL::query(array('filter' => 'dungeon', 'id' => $dungeon->id)),

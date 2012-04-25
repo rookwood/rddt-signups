@@ -4,7 +4,7 @@ class Controller_Build extends Abstract_Controller_Website {
 
 	public function action_index()
 	{		
-		$this->view->build_data = ORM::factory('build')->where('visibility', '=', 1)->find_all();
+		$this->view->build_data = ORM::factory('build')->where('visibility', '=', 1)->order_by('name', 'ASC')->find_all();
 	}
 	
 	public function action_add()

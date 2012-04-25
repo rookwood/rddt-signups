@@ -21,7 +21,7 @@ class View_Page_Slot_Index extends Abstract_View_Page {
 			
 		}
 		
-		return $out;
+		return isset($out) ? $out : FALSE;
 	}
 	
 	public function slot_add_url()

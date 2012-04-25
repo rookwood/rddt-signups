@@ -41,7 +41,7 @@ class Model_Event extends ORM {
 					
 				// Build sub queries to join current user -> characters -> signups -> events
 				$sub1 = DB::select('characters.id')->from('characters')->join('users')->on('characters.user_id', '=', 'users.id')->where('users.id', '=', $user->id);
-				$sub2 = DB::select('signups.event_id')->from('signups')->join(array($sub1, 'characters'))->on('characters.id', '=', 'signups.character_id');
+				$sub2 = DB::select('signups.event_id')->from('signups')->join(array($sub1, 'characters'))->on('characters.id', '=', 'signups.character_id')->where('signups.status_id', '!=', Model_Status::CANCELLED);
 				$sub3 = DB::select('events.id')->from('events')->join(array($sub2, 'signups'))->on('signups.event_id', '=', 'events.id');
 				
 				// Execute our query
@@ -52,6 +52,9 @@ class Model_Event extends ORM {
 				{
 					$ids[] = $event['id'];
 				}
+				
+				if (empty($ids))
+					return array();
 				
 				// Pass event object data to the view
 				$events = ORM::factory('event')->where('id', 'IN', $ids)->order_by('time', 'ASC')->find_all();
@@ -146,7 +149,7 @@ class Model_Event extends ORM {
 		$dungeon    = ORM::factory('dungeon', array('name' => $values['dungeon']));
 		
 		// Convert status name to id
-		$status    = ORM::factory('status', array('name' => $values['status']));
+		$status    = Model_Status::SCHEDULED;
 		
 		// Get character id
 		$character = ORM::factory('character', array('name' => $values['character']));
@@ -156,7 +159,7 @@ class Model_Event extends ORM {
 		
 		// Add remaining values needed
 		$values['dungeon_id']   = $dungeon->id;
-		$values['status_id']    = $status->id;
+		$values['status_id']    = $status;
 		$values['time']         = $time;
 		$values['character_id'] = $character->id;
 		$values['user_id']      = $user->id;

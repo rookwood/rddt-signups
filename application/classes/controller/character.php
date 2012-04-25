@@ -5,7 +5,7 @@ class Controller_Character extends Abstract_Controller_Website {
 	public function action_index()
 	{
 		// Load array of this user's character list from the database
-		$characters = ORM::factory('character')->where('user_id', '=', $this->user->id)->find_all()->as_array();
+		$characters = ORM::factory('character')->where('user_id', '=', $this->user->id)->order_by('name', 'ASC')->find_all()->as_array();
 		
 		// Pass character array to the view class
 		if (count($characters) !== 0)

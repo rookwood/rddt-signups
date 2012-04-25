@@ -43,7 +43,7 @@ class View_Page_Event_Add extends Abstract_View_Page {
 			$out[] = array('value' => $dungeon->name, 'name' => $dungeon->name);
 		}
 		
-		return $out;
+		return isset($out) ? $out : FALSE;
 	}
 	
 	public function characters()
@@ -58,7 +58,7 @@ class View_Page_Event_Add extends Abstract_View_Page {
 			);
 		}
 		
-		return $out;
+		return isset($out) ? $out : FALSE;
 	}
 
 	public function build_list()
@@ -71,6 +71,6 @@ class View_Page_Event_Add extends Abstract_View_Page {
 			$out[] = array('name' => $build->name, 'url' => $build->url, 'selected' => ($this->build_id === $build->id) ? TRUE : FALSE);
 		}
 		
-		return $out;
+		return isset($out) ? $out : FALSE;
 	}
 }

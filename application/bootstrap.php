@@ -157,31 +157,31 @@ Route::set('profile', 'profile(/<user>)')
 		'action'     => 'profile'
 	));
 
-Route::set('event', 'event(/<action>(/<id>))', array('action' => 'add|remove|edit|display|withdraw'))
+Route::set('event', 'event(/<action>(/<id>))', array('action' => 'add|remove|edit|display|withdraw|signup'))
 	->defaults(array(
 		'controller' => 'event',
 		'action'     => 'index',
 	));
 
-Route::set('character', 'character(/<action>(/<id>))', array('action' => 'add|remove|edit', '/^\pN++$/uD'))
+Route::set('character', 'character(/<action>(/<id>))', array('action' => 'add|remove|edit'))
 	->defaults(array(
 		'controller' => 'character',
 		'action'     => 'index',
 	));
 
-Route::set('build', 'build(/<action>(/<id>))', array('action' => 'add|remove|edit', '/^\pN++$/uD'))
+Route::set('build', 'build(/<action>(/<id>))', array('action' => 'add|remove|edit'))
 	->defaults(array(
 		'controller' => 'build',
 		'action'     => 'index',
 	));
 
-Route::set('slot', 'slot(/<action>(/<id>))', array('action' => 'add|remove|edit', '/^\pN++$/uD'))
+Route::set('slot', 'slot(/<action>(/<id>))', array('action' => 'add|remove|edit'))
 	->defaults(array(
 		'controller' => 'slot',
 		'action'     => 'index',
 	));
 
-Route::set('dungeon', 'dungeon(/<action>(/<id>))', array('action' => 'add'))
+Route::set('dungeon', 'dungeon(/<action>(/<id>))', array('action' => 'add|remove|edit'))
 	->defaults(array(
 		'controller' => 'dungeon',
 		'action'     => 'index',

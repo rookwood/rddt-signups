@@ -12,12 +12,12 @@ class View_Page_Event_Edit extends View_Page_Event_Add {
 	
 	public function scheduled_time()
 	{
-		return date('g:i a', $this->event_data->time);
+		return date('g:i a', $this->event_data->time + Date::offset($this->user->timezone, 'Europe/London'));
 	}
 	
 	public function scheduled_date()
 	{
-		return date('Y-m-d', $this->event_data->time);
+		return date('Y-m-d', $this->event_data->time + Date::offset($this->user->timezone, 'Europe/London'));
 	}
 	
 	public function dungeon_list()

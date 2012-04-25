@@ -16,7 +16,7 @@ class View_Page_Build_Index extends Abstract_View_Page {
 			);
 		}
 		
-		return $out;
+		return isset($out) ? $out : FALSE;
 	}
 	
 	public function build_add_link()

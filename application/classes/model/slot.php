@@ -23,6 +23,8 @@ class Model_Slot extends ORM {
 		return array(
 			'name' => array(
 				array('not_empty'),
+				array('max_length', array(':value', 20)),
+				array(array($this, 'unique'), array('name', ':value')),
 			),
 		);
 	}

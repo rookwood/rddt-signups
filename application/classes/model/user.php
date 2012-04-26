@@ -23,6 +23,34 @@ class Model_User extends Model_Auth_User implements Model_ACL_User {
 	);
 	
 	/**
+	 * Rules for the user model. Because the password is _always_ a hash
+	 * when it's set,you need to run an additional not_empty rule in your controller
+	 * to make sure you didn't hash an empty string. The password rules
+	 * should be enforced outside the model or with a model helper method.
+	 *
+	 * @return array Rules
+	 */
+	public function rules()
+	{
+		return array(
+			'username' => array(
+				array('not_empty'),
+				array('max_length', array(':value', 32)),
+				array('alpha_numeric'),
+				array(array($this, 'unique'), array('username', ':value')),
+			),
+			'password' => array(
+				array('not_empty'),
+			),
+			'email' => array(
+				array('not_empty'),
+				array('email'),
+				array(array($this, 'unique'), array('email', ':value')),
+			),
+		);
+	}
+
+	/**
 	 * Wrapper method to execute ACL policies. Only returns a boolean, if you
 	 * need a specific error code, look at Policy::$last_code
 	 *

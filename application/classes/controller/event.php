@@ -181,8 +181,10 @@ class Controller_Event extends Abstract_Controller_Website {
 			$character = ORM::factory('character', array('name' => $event_post['character']));
 			
 			if ( ! $character->loaded())
-				throw new Exception('Charcter not found.');
-			
+			{
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'event.signup.need_character'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				$this->request->redirect(Route::url('character', array('action' => 'add')));
+			}			
 			// Add user to event
 			try
 			{

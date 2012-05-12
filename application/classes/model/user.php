@@ -36,7 +36,7 @@ class Model_User extends Model_Auth_User implements Model_ACL_User {
 			'username' => array(
 				array('not_empty'),
 				array('max_length', array(':value', 32)),
-				array('alpha_numeric'),
+				// array('alpha_numeric'),
 				array(array($this, 'unique'), array('username', ':value')),
 			),
 			'password' => array(

@@ -68,9 +68,9 @@ class Controller_Event extends Abstract_Controller_Website {
 			}
 			catch(ORM_Validation_Exception $e)
 			{
-				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'event.add.failed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'event.add.fail'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 				
-				$this->view->errors = $e->errors('event');
+				$this->view->errors = $e->errors('validation');
 				$this->view->values = $event_post;
 			}
 		}
@@ -184,7 +184,7 @@ class Controller_Event extends Abstract_Controller_Website {
 			{
 				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'event.signup.need_character'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 				$this->request->redirect(Route::url('character', array('action' => 'add')));
-			}			
+			}
 			// Add user to event
 			try
 			{

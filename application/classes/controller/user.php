@@ -188,7 +188,7 @@ class Controller_User extends Abstract_Controller_Website {
 			
 			// Try to log in
 			$user = Auth::instance()->login($user_post['username'], $user_post['password'], $remember);
-
+			
 			if ($user)
 			{
 				// Check to see if we had saved a user destination before forcing login

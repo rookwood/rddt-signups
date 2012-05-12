@@ -26,10 +26,27 @@ class Model_Event extends ORM {
 		return array(
 			'title' => array(
 				array('not_empty'),
+				array('max_length', array(':value', 50)),
+			),
+			'time' => array(
+				array('not_empty'),
 			),
 		);
 	}
 	
+	/**
+	 * Labels for fields in this model
+	 *
+	 * @return array Labels
+	 */
+	public function labels()
+	{
+		return array(
+			'time'             => 'Time',
+			'title'            => 'Event title',
+		);
+	}
+
 	public static function event_list($filter, Model_ACL_User $user = NULL, $id = NULL)
 	{
 		switch ($filter)
@@ -104,10 +121,14 @@ class Model_Event extends ORM {
 	 {
 		// Convert date+time to epoch timestamp
 		$time_string = (string) $values['time'] ." ". (string) $values['date'];
+		
 		$time = strtotime($time_string);
 		
-		// Offset timestamp from user's timezone to GMT for storage
-		$time = Date::offset('Europe/London', $values['timezone']) + $time;
+		if ($time !== FALSE)
+		{
+			// Offset timestamp from user's timezone to GMT for storage
+			$time = Date::offset('Europe/London', $values['timezone']) + $time;
+		}
 		
 		// Convert dungeon name to id
 		$dungeon = ORM::factory('dungeon', array('name' => $values['dungeon']));

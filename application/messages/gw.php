@@ -23,7 +23,7 @@ return array(
 		),
 		'add'    => array(
 			'not_allowed'       => 'You are not authorized to create new events.',
-			'failed '           => 'There was an error creating the event.  Please check the highlighted fields.',
+			'fail'              => 'There was an error creating the event.  Please check the highlighted fields.',
 			'success'           => 'Event created.  Make sure that you sign up for a slot!',
 		),
 		'edit'   => array(
@@ -34,6 +34,7 @@ return array(
 			'not_allowed'       => 'You are not allowed to cancel this event.',
 			'not_owner'         => 'You may only cancel events that you created.',
 			'start_time_passed' => 'You may not cancel events once their start time has passed.',
+			'success'           => 'This event has ben cancelled.',
 		),
 		'signup' => array(
 			'not_allowed'       => 'You do not currently have permission to sign-up for this event.',
@@ -41,6 +42,7 @@ return array(
 			'failed'            => 'There was an error in your information.  Please check the highlighted fields.',
 			'already_enrolled'  => 'You are already signed-up for this event.  If you with to change to another character, cancel your current spot first.',
 			'standby_forced'    => 'The role you selected has already been filled, so you were placed on stand-by.  If someone withdraws, you will be bumped up automatically.',
+			'need_character'    => 'You must add at least one character before you may sign-up for events.',
 		),
 		'withdraw' => array(
 			'success'           => 'You are no longer signed-up for this event.',

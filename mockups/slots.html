@@ -1,0 +1,180 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>[rddt]Events</title>
+	<meta name="description" content="">
+
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- All JavaScript at the bottom, except this Modernizr build.
+	Modernizr enables HTML5 elements & feature detects for optimal performance.-->
+	<script src="js/vendor/modernizr-2.5.3.min.js"></script>
+</head>
+
+<body>
+	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+	<div class="container">
+		<header class="masthead">
+			<h1>Reddit Guild Wars 1</h1>
+			<h2>Event Information</h2>
+		</header><!-- end masthead -->
+		<nav>
+			<ul>
+				<li>
+					<a href="#">My Account</a>
+					<ul>
+						<li><a href="#">Edit Profile</a></li>
+						<li><a href="#">Characters</a></li>
+						<li><a href="#">My Events</a></li>
+						<li><a href="#">Logout</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">Events</a>
+				</li>
+				<li>
+					<a href="#">Builds</a>
+				</li>
+				<li>
+					<a href="#">Dungeons</a>
+				</li>
+				<li>
+					<a href="#" class="logout">Logout</a>
+				</li>
+			</ul>
+		</nav>
+		<section id="slots">
+			<h3>Slots</h3>
+			<ul id="filer">
+				<li><a href="">#</a></li>
+				<li><a href="">A</a></li>
+				<li><a href="">B</a></li>
+				<li><a href="">C</a></li>
+				<li><a href="">D</a></li>
+				<li><a href="">E</a></li>
+				<li><a href="">F</a></li>
+				<li><a href="">G</a></li>
+				<li><a href="">H</a></li>
+				<li><a href="">I</a></li>
+				<li><a href="">J</a></li>
+				<li><a href="">K</a></li>
+				<li><a href="">L</a></li>
+				<li><a href="">M</a></li>
+				<li><a href="">N</a></li>
+				<li><a href="">O</a></li>
+				<li><a href="">P</a></li>
+				<li><a href="">Q</a></li>
+				<li><a href="">R</a></li>
+				<li><a href="">S</a></li>
+				<li><a href="">T</a></li>
+				<li><a href="">U</a></li>
+				<li><a href="">V</a></li>
+				<li><a href="">W</a></li>
+				<li><a href="">X</a></li>
+				<li><a href="">Y</a></li>
+				<li><a href="">Z</a></li>
+				<li><a href="">All</a></li>
+			</ul>
+			<section id="slot_list">
+				<ul>
+					<li>
+						<p><span class="name">DWG (Any primary)</span>Professions: Warrior, Ranger, Monk, Necromancer, Elementalist, Mesmer, Ritualist, Assassin, Dervish, Paragon</p>
+					</li>
+					<li>
+						<p><span class="name">DWG (Frostway)</span>Professions: Ritualist, Mesmer</p>
+					</li>
+					<li>
+						<p><span class="name">Derpy Dervish</span>Professions: Dervish</p>
+					</li>
+				</ul>
+			</section>
+			<form action="#" method="post">
+				<fieldset>
+					<legend>Add a new slot</legend>
+					<ul>
+						<li>
+							<label for="name">Slot name</label>
+							<input type="text" name="slot[name]" id="name" />
+						</li>
+						<li>
+							<fieldset>
+								<legend>Profession(s)</legend>
+								<ul class="profession_list">
+									<li>
+										<label for="check_warrior">warrior</label>
+										<input type="checkbox" name="slot[profession][]" value="warrior" id="check_warrior" />
+									</li>
+									<li>
+										<label for="check_ranger">ranger</label>
+										<input type="checkbox" name="slot[profession][]" value="ranger" id="check_ranger" />
+									</li>
+									<li>
+										<label for="check_monk">monk</label>
+										<input type="checkbox" name="slot[profession][]" value="monk" id="check_monk" />
+									</li>
+									<li>
+										<label for="check_necromancer">necromancer</label>
+										<input type="checkbox" name="slot[profession][]" value="necromancer" id="check_necromancer" />
+									</li>
+									<li>
+										<label for="check_elementalist">elementalist</label>
+										<input type="checkbox" name="slot[profession][]" value="elementalist" id="check_elementalist" />
+									</li>
+									<li>
+										<label for="check_mesmer">mesmer</label>
+										<input type="checkbox" name="slot[profession][]" value="mesmer" id="check_mesmer" />
+									</li>
+									<li>
+										<label for="check_ritualist">ritualist</label>
+										<input type="checkbox" name="slot[profession][]" value="ritualist" id="check_ritualist" />
+									</li>
+									<li>
+										<label for="check_assassin">assassin</label>
+										<input type="checkbox" name="slot[profession][]" value="assassin" id="check_assassin" />
+									</li>
+									<li>
+										<label for="check_dervish">dervish</label>
+										<input type="checkbox" name="slot[profession][]" value="dervish" id="check_dervish" />
+									</li>
+									<li>
+										<label for="check_paragon">paragon</label>
+										<input type="checkbox" name="slot[profession][]" value="paragon" id="check_paragon" />
+									</li>
+								</ul>
+							</fieldset>
+						</li>
+						<li>
+							<input type="hidden" name="csrf" value="a44142424de528abb43de44f097556d10c48310d" />
+							<input type="submit" value="Add" />
+						</li>
+					</ul>
+				</fieldset>
+			</form>
+		</section><!-- end slots -->
+
+	</div><!-- end container-->
+	<!-- JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom -->
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.7.2.min.js"><\/script>')</script>
+
+	<script src="js/plugins.js"></script>
+	<script src="js/main.js"></script>
+
+<!--
+	<script>
+	var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+	g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+	s.parentNode.insertBefore(g,s)}(document,'script'));
+	</script>
+-->
+</body>
+</html>

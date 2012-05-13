@@ -1,0 +1,142 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>[rddt]Events</title>
+	<meta name="description" content="">
+
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- All JavaScript at the bottom, except this Modernizr build.
+	Modernizr enables HTML5 elements & feature detects for optimal performance.-->
+	<script src="js/vendor/modernizr-2.5.3.min.js"></script>
+</head>
+
+<body>
+	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+	<div class="container">
+		<header class="masthead">
+			<h1>Reddit Guild Wars 1</h1>
+			<h2>Event Information</h2>
+		</header><!-- end masthead -->
+		<nav>
+			<ul>
+				<li>
+					<a href="#">My Account</a>
+					<ul>
+						<li><a href="#">Edit Profile</a></li>
+						<li><a href="#">Characters</a></li>
+						<li><a href="#">My Events</a></li>
+						<li><a href="#">Logout</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">Events</a>
+				</li>
+				<li>
+					<a href="#">Builds</a>
+				</li>
+				<li>
+					<a href="#">Dungeons</a>
+				</li>
+				<li>
+					<a href="#" class="logout">Logout</a>
+				</li>
+			</ul>
+		</nav>
+		<section id="characters">
+			<section id="character_list">
+				<h3>My Characters</h3>
+				<table>
+					<thead>
+						<tr>
+							<td>Name</td>
+							<td colspan="2">Actgions</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><p><span class="character_name">Most Unique</span> Profession: Ritualist</td>
+							<td><a href="#">Edit</a></td>
+							<td><a href="#">Delete</a></td>
+						</tr>
+						<tr>
+							<td><p><span class="character_name">From The Blackness</span> Profession: Assassin</td>
+							<td><a href="#">Edit</a></td>
+							<td><a href="#">Delete</a></td>
+						</tr>
+						<tr>
+							<td><p><span class="character_name">Rookwood Shuffles</span> Profession: Derping</td>
+							<td><a href="#">Edit</a></td>
+							<td><a href="#">Delete</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</section><!-- end character list -->
+			<form action="#" method="post">
+				<fieldset>
+					<legend>Add a new character</legend>
+					<ul>
+						<li>
+							<label for="name">Character name</label>
+							<input type="text" name="character[name]" id="name" />
+						</li>
+						<li>
+							<fieldset class="profession_selector">
+								<legend>Profession</legend>
+									<label for="profession_warrior">Warrior</label>
+									<input type="radio" name="character[profession]" id="profession_warrior" value="warrior" />
+									<label for="profession_mesmer">Mesmer</label>
+									<input type="radio" name="character[profession]" id="profession_mesmer" value="mesmer" />
+									<label for="profession_necromancer">Necromancer</label>
+									<input type="radio" name="character[profession]" id="profession_necromancer" value="necromancer" />
+									<label for="profession_monk">Monk</label>
+									<input type="radio" name="character[profession]" id="profession_monk" value="monk" />
+									<label for="profession_elementalist">Elementalist</label>
+									<input type="radio" name="character[profession]" id="profession_elementalist" value="elementalist" />
+									<label for="profession_ranger">Ranger</label>
+									<input type="radio" name="character[profession]" id="profession_ranger" value="ranger" />
+									<label for="profession_ritualist">Ritualist</label>
+									<input type="radio" name="character[profession]" id="profession_ritualist" value="ritualist" />
+									<label for="profession_assassin">Assassin</label>
+									<input type="radio" name="character[profession]" id="profession_assassin" value="assassin" />
+									<label for="profession_dervish">Dervish</label>
+									<input type="radio" name="character[profession]" id="profession_dervish" value="dervish" />
+									<label for="profession_paragon">Paragon</label>
+									<input type="radio" name="character[profession]" id="profession_paragon" value="paragon" />
+							</fieldset>
+						</li>
+						<li>
+							<input type="hidden" name="csrf" value="a44142424de528abb43de44f097556d10c48310d" />
+							<input type="submit" value="Create" />
+						</li>
+					</ul>
+				</fieldset>
+			</form><!-- end character add form -->
+		</section><!-- end character section -->
+
+	</div><!-- end container-->
+	<!-- JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom -->
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.7.2.min.js"><\/script>')</script>
+
+	<script src="js/plugins.js"></script>
+	<script src="js/main.js"></script>
+
+<!--
+	<script>
+	var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+	g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+	s.parentNode.insertBefore(g,s)}(document,'script'));
+	</script>
+-->
+</body>
+</html>

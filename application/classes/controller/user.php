@@ -53,7 +53,7 @@ class Controller_User extends Abstract_Controller_Website {
 				// User notification
 				Notices::add('info', 'msg_info', array('message' => Kohana::message('koreg', 'user.edit.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 			}
-			catch (ORM_Validtaion_Exception $e)
+			catch (ORM_Validation_Exception $e)
 			{
 				// User notification
 				Notices::add('error', 'msg_error', array('message' => Kohana::message('koreg', 'generic.validation'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));

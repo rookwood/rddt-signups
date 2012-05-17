@@ -2,7 +2,8 @@
 
 class Policy_Character_Edit extends Policy {
 
-	const NOT_OWNER = 1;
+	const NOT_OWNER   = 1;
+	const NOT_ALLOWED = 2;
 	
 	public function execute(Model_ACL_User $user, array $extras = NULL)
 	{

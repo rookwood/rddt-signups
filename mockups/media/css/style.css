@@ -271,7 +271,7 @@ we need to simulate it with percentages and orientation
 .container {
 	position: absolute;
 	display: inline-block;
-	background-color: white;
+	background-image: url(../img/container_bg.png);
 	margin: 0 auto;
 	padding-top: 0;
 
@@ -304,28 +304,82 @@ nav {
 }
 
 nav ul, nav li {
-	display: inline;
+	display: block;
 	padding: 0;
 }
 
-nav a, nav a:visited, nav a:hover, nav a:focus, nav a:active {
+nav ul li {
 	float: left;
+}
 
+nav ul li a:link, nav ul li a:visited {
+	display: block;
+
+	/* background-color: green; */
 	background-image: url(../img/button_menu_separator.png);
-	background-position: top left;
+	background-position: top right;
 	background-repeat: no-repeat;
 
-	height: 45px;
-	padding: 10px 15px 0 15px;
+	height: 33px;		/* height adjusted for padding */
+	padding: 12px 15px 0 15px;
 
 	color: white;
 	text-decoration: none;
+	font-weight: 700;
+	font-size:.8em;
+}
+
+nav ul li a:hover, nav ul li a:active {
+	color: red;
+}
+
+/* CSS for dropdown menu */
+nav ul li ul {
+	position: absolute;
+	display: none;
+}
+
+nav ul li:hover ul {
+	display:block;
+
+	/* background-color:red; */
+	background-image: url(../img/dropdown_bg.png);
+	background-repeat: no-repeat;
+	
+	width:141px;
+	height:141px;	/* height adjusted for padding-top */
+	padding-top:12px;
+	left: -6px;
+	z-index:900;
+}
+
+nav ul li:hover ul li {
+	clear:left;
+}
+
+nav ul li ul li a:link, nav ul li ul li a:visited {
+	clear:left;
+	position:relative;
+	
+	width:126px;
+	height:24px;
+	padding:10px 0 0 15px;
+	
+	z-index:1000;
+	
+/* 	border: 1px dotted red; */
+/* 	background-color: rgba(0,0,255,.2); */
+	background-image: none;
+}
+
+nav ul li ul li a:hover, nav ul li ul li a:active {
 }
 
 fieldset {
+	position: absolute;
 	font-family: Cronos Pro Display;
 	border: none;
-	padding: 0;
+	padding: 0 20px;
 }
 
 fieldset legend {
@@ -347,7 +401,7 @@ fieldset ul {
 }
 
 fieldset ul li {
-	padding: 10px 0 10px 40px;
+	padding: 10px 0 0 40px;
 }
 
 fieldset ul li.button {
@@ -356,11 +410,13 @@ fieldset ul li.button {
 
 fieldset input[type=text], fieldset input[type=password] {	
 	background-image: url(../img/form_input_bg.png);
+	background-repeat: no-repeat;
 	display: block;
 	border: solid 1px #b2b2b2;
-	width: 241px;
-	height: 32px;
+	width: 231px;  /* reduced width by 10px due to padding */
+	height: 30px; /* reduced height by 2 px due to border */
 	margin: 10px 0;
+	padding-left: 10px;
 }
 
 fieldset input[type=submit] {

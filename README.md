@@ -1,28 +1,28 @@
 # [rddt] Sign-ups
-## This is the sign-up website for [rddt] in Guild Wars.
+## I'm working on just the styling here!
 
-This is still a work in progress and open to anyone wishing to contribute.
+This is still a work in progress...
 
 ### Features completed
-* User registration (including handling logins, profiles, and optional email verificaiton)
-* Access control (using the excellent [Vendo-ACL](http://github.com/vendo/acl)
-* Rough user administration to edit user data including application roles
-* Character creation and management
-* Event creation and managment
-* Automatic handling of stand-by status for any given event
-* Build creation and management (including in-game roles)
+* Login page complete
+* Banner positioning fixed with a hack
+* Menu dropdown added and should be working (positioning may need to be tweaked)
+* Container should be correctly centered now
 
 ### Features in progress
-* Filter displayed roles in event sign-up by users' eligible characters
+* Styling for builds
+* Styling for characters
+* Styling for create account
+* Styling for dungeons
+* Styling for event create
+* Styling for events
+* Styling for signup
+* Styling for slots
 
 ### Features to be added
-* Administrative versions of event, build, and character management
+* None at this time
 
-
-### Idea scratchpad (i.e. things I need to add)
-* Get rid of all the silly redirects... just set up the view class manually; it'll be cleaner in the end (in-progress)
-* Go through all policy classes and controllers to make sure that potential errors are all accounted for
-* Write message files for aforementioned potential errors
-* Add comments that I failed to write on the first draft
-* Consider what general users will need access to should they be allowed to create events freely.
-* Email notification of event changes?
+### Other ideas...
+* Change banner image?
+* Change background image?
+* Change colors?

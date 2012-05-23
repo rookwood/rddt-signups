@@ -5,6 +5,7 @@ This is still a work in progress...
 
 ### Features completed
 * Login page complete
+* Background now resizing differently (using jquery plugin)
 * Banner positioning fixed with a hack
 * Menu dropdown added and should be working (positioning may need to be tweaked)
 * Container should be correctly centered now

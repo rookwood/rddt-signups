@@ -20,9 +20,6 @@ This is still a work in progress...
 * Styling for signup
 * Styling for slots
 
-### Features to be added
-* None at this time
-
 ### Other ideas...
 * Change banner image?
 * Change background image?

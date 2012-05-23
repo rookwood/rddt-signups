@@ -215,65 +215,32 @@ td { vertical-align: top; }
 
 
 /* ==|== primary styles =====================================================
-   Author:
+   Author: zerosp4c3
    ========================================================================== */
 
-/* Background stretching */
-
 body {
-	background-attachment: fixed;
-	background-color: #333;
-	background-image: url(../img/bg.png);
-	background-position: top center;
-	background-repeat: no-repeat;
-	 
-	background-size: cover;
-	-moz-background-size: cover;
-	-webkit-background-size: cover;
-	
+	position:absolute;
+	overflow:hidden; 		/* needed to eliminate scrollbars caused by the background image */
+	padding:0;margin:0;	/* necesarry for the raster to fill the screen */
+	height:100%;width:100%;
+
 	font: 1em/1.25 Helvetica, Arial, sans-serif;
-	text-align: center; /* for centering container */
+	text-align: center;		/* for centering the container */
 }
  
-/*
-This next definition doesn't allow the background to get any smaller
-than a predefined size (640x426px in this case). Change the values
-here to match your background image size. The configuration in the
-flexi-background javascript file should also match these values.
-*/
- 
-@media only all and (max-width: 1280px) and (max-height: 899px) {
-	body {
-		background-size: 1280px 899px;
-		-moz-background-size: 1280px 899px;
-		-webkit-background-size: 1280px 899px;
-	}
-}
- 
-/*
-The next 2 definitions are for support in iOS devices.
-Since they don't recoginze the 'cover' keyword for background-size
-we need to simulate it with percentages and orientation
-*/
- 
-@media only screen and (orientation: portrait) and (device-width: 320px), (device-width: 768px) {
-	body {
-	-webkit-background-size: auto 100%;
-	}
-}
- 
-@media only screen and (orientation: landscape) and (device-width: 320px), (device-width: 768px) {
-	body {
-	-webkit-background-size: 100% auto;
-	}
+#bgimg {
+	position:absolute;
+	z-index: -1;
 }
 
 .container {
-	position: absolute;
-	display: inline-block;
+	position:relative;
+	z-index: 5;						/* Place the container above the background image */
+	overflow:visible; 				/* restore scrollbars for the content */
+
+	/* background-color: blue; */
 	background-image: url(../img/container_bg.png);
 	margin: 0 auto;
-	padding-top: 0;
 
 	width: 756px;
 	min-height: 100%;
@@ -288,10 +255,10 @@ we need to simulate it with percentages and orientation
 	
 	width: 756px;
 	height: 170px;
-	padding-top: 1px;
+	padding-top: 1px;			/* Hack for removing unexpected top spacing */
 	margin-bottom: -1px;
 	
-	color: rgba(0,0,0,0);
+	color: rgba(0,0,0,0);		/* Hide masthead text */
 }
 
 nav {
@@ -325,6 +292,7 @@ nav ul li a:link, nav ul li a:visited {
 
 	color: white;
 	text-decoration: none;
+	font-family: Helvetica World;
 	font-weight: 700;
 	font-size:.8em;
 }
@@ -333,12 +301,14 @@ nav ul li a:hover, nav ul li a:active {
 	color: red;
 }
 
-/* CSS for dropdown menu */
+/* START CSS for dropdown menu
+----------------------------------------------- */
 nav ul li ul {
 	position: absolute;
 	display: none;
 }
 
+/* Dropdown under nested list */
 nav ul li:hover ul {
 	display:block;
 
@@ -349,7 +319,7 @@ nav ul li:hover ul {
 	width:141px;
 	height:141px;	/* height adjusted for padding-top */
 	padding-top:12px;
-	left: -6px;
+	left: 2px;
 	z-index:900;
 }
 
@@ -374,6 +344,8 @@ nav ul li ul li a:link, nav ul li ul li a:visited {
 
 nav ul li ul li a:hover, nav ul li ul li a:active {
 }
+/* --------------------------------------
+END CSS for dropdown menu */
 
 fieldset {
 	position: absolute;
@@ -400,14 +372,17 @@ fieldset ul {
 	margin: 0;
 }
 
+/* indent form items */
 fieldset ul li {
 	padding: 10px 0 0 40px;
 }
 
+/* unindent form submit buttons */
 fieldset ul li.button {
-	padding: 10px 0;
+	padding: 20px 0 0 0;
 }
 
+/* Style input boxes for forms */
 fieldset input[type=text], fieldset input[type=password] {	
 	background-image: url(../img/form_input_bg.png);
 	background-repeat: no-repeat;
@@ -419,6 +394,7 @@ fieldset input[type=text], fieldset input[type=password] {
 	padding-left: 10px;
 }
 
+/* Style buttons for forms */
 fieldset input[type=submit] {
 	font-family: Adobe caslon Pro;
 	font-size: 1em;
@@ -430,8 +406,10 @@ fieldset input[type=submit] {
 	height: 54px;
 }
 
-fieldset a, fieldset a:visited, fieldset a:hover, fieldset a:focus, fieldset a:active {
-	font: .9em Helvetica;
+/* Right aligned form links */
+fieldset a:link, fieldset a:visited, fieldset a:hover, fieldset a:active {
+	font-family: Helvetica World;
+	font-size: .9em;
 	color: black;
 	display: block;
 	font-weight: 600;

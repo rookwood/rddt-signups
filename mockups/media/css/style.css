@@ -273,6 +273,7 @@ we need to simulate it with percentages and orientation
 	display: inline-block;
 	background-color: white;
 	margin: 0 auto;
+	padding-top: 0;
 
 	width: 756px;
 	min-height: 100%;
@@ -287,8 +288,10 @@ we need to simulate it with percentages and orientation
 	
 	width: 756px;
 	height: 170px;
+	padding-top: 1px;
+	margin-bottom: -1px;
 	
- 	color: rgba(0,0,0,0);
+	color: rgba(0,0,0,0);
 }
 
 nav {

@@ -354,8 +354,80 @@ nav ul li ul li a:hover, nav ul li ul li a:active {
 /* --------------------------------------
 END CSS for dropdown menu */
 
+h3 {
+	font-family: Cronos Pro Display;
+	padding: 10px 20px;
+	font-size: 1.6em;
+	font-weight: 700;
+	margin: 0;
+}
+
+section {
+	display: block;
+	width: 100%;
+	clear: both;
+}
+
+/* START FILTER STYLES
+--------------------------------------- */
+section ul#filter {
+	margin: 0 30px;
+	padding: 0;
+}
+
+section ul#filter li {
+	float: left;
+	display: block;
+	padding: 0 7px;
+	font-size: .95em;
+}
+
+section ul#filter li a:link, section ul#filter li a:visited {
+	text-decoration: none;
+	font-family: Helvetica World;
+	font-weight: 700;
+	color: #313131;
+}
+
+section ul#filter li a:hover, section ul#filter li a:active {
+	color: #a49898;
+}
+/* ---------------------------------
+END FILTER STYLES */
+
+/* START SLOT_LIST STUFF 
+--------------------------------------- */
+section#slot_list ul {
+	margin: 0 10px;
+	padding: 20px 0 0;
+}
+
+section#slot_list ul li {
+	display: block;
+	margin: 10px 0;
+	width: 733px; 
+	height: 98px;
+
+	background-image: url(../img/slot_bg.png);
+	border: 1px solid #d2d2d2;
+}
+
+section#slot_list ul li p {
+	margin: 30px 20px;
+	font-family: Arial;
+	font-size: .8em;
+}
+section#slot_list ul li span.name {
+	display: block;
+	font-family: Cronos Pro Display;
+	font-size: 1.8em;
+}
+/* ---------------------------------
+END SLOT_LIST STUFF */
+
+/* START FIELDSET STUFF 
+--------------------------------------- */
 fieldset {
-	position: absolute;
 	font-family: Cronos Pro Display;
 	border: none;
 	padding: 0 20px;
@@ -370,8 +442,29 @@ fieldset li {
 	list-style-type: none;
 }
 
-fieldset label {
+/* addressing nested forms */
+fieldset fieldset {
+	margin: 0; padding: 0;
+}
+
+fieldset label, fieldset fieldset legend {
+	font-size: 1em;
 	font-weight: 600;
+}
+
+fieldset fieldset ul li {
+	width:231px;
+	margin: 0; padding: 0;
+	text-transform:capitalize;
+}
+
+/* right align checkboxs */
+fieldset fieldset ul li input[type=checkbox] {
+	float: right;
+}
+
+fieldset fieldset label {
+	font-weight: normal;
 }
 
 fieldset ul {
@@ -430,16 +523,23 @@ fieldset input[type=submit] {
 }
 
 /* Right aligned form links */
-fieldset a:link, fieldset a:visited, fieldset a:hover, fieldset a:active {
+fieldset a:link, fieldset a:visited {
 	font-family: Helvetica World;
 	font-size: .9em;
-	color: black;
+	color: #313131;
 	display: block;
 	font-weight: 600;
 	text-decoration: none;
 	width: 241px;
 	text-align: right;
 }
+
+fieldset a:hover, fieldset a:active {
+	color: #a49898;
+}
+/* ---------------------------------
+END FIELDSET STUFF */
+
 
 /* ==|== media queries ======================================================
    EXAMPLE Media Query for Responsive Design.

@@ -20,6 +20,8 @@
 <body>
 	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 	<img id="bgimg" src="media/img/bg.png" />
+	<div id="realbody">
+	
 	<div class="container">
 		<header class="masthead">
 			<h1>Reddit Guild Wars 1</h1>
@@ -28,7 +30,7 @@
 		<nav>
 			<ul>
 				<li>
-					<a href="#">My Account</a>
+					<a href="#">My Account &nbsp; <img src="media/img/dropdown_arrow.png"></a>
 					<ul>
 						<li><a href="#">Edit Profile</a></li>
 						<li><a href="#">Characters</a></li>
@@ -52,7 +54,7 @@
 		</nav>
 		<section id="slots">
 			<h3>Slots</h3>
-			<ul id="filer">
+			<ul id="filter">
 				<li><a href="">#</a></li>
 				<li><a href="">A</a></li>
 				<li><a href="">B</a></li>
@@ -150,7 +152,7 @@
 								</ul>
 							</fieldset>
 						</li>
-						<li>
+						<li class="button">
 							<input type="hidden" name="csrf" value="a44142424de528abb43de44f097556d10c48310d" />
 							<input type="submit" value="Add" />
 						</li>
@@ -160,6 +162,8 @@
 		</section><!-- end slots -->
 
 	</div><!-- end container-->
+	
+	</div>
 	<!-- JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom -->
 
 	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>

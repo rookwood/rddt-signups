@@ -4,21 +4,24 @@
 This is still a work in progress...
 
 ### Features completed
-* Login page complete
-* Background now resizing differently (using jquery plugin)
+* Background now resized using jquery plugin
 * Banner positioning fixed with a hack
-* Menu dropdown added and should be working (positioning may need to be tweaked)
-* Container should be correctly centered now
+* Menu dropdown added and should be working
+* Container centered and scrolling properly
+* Login page styled
+* Create account page styled
+* Slots page styled
 
 ### Features in progress
 * Styling for builds
 * Styling for characters
-* Styling for create account
 * Styling for dungeons
 * Styling for event create
 * Styling for events
 * Styling for signup
-* Styling for slots
+
+### Other features
+* Edit Profile mockup page?
 
 ### Other ideas...
 * Change banner image?

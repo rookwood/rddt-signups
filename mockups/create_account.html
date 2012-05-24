@@ -20,84 +20,103 @@
 <body>
 	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 	<img id="bgimg" src="media/img/bg.png" />
-	<div class="container">
-		<header class="masthead">
-			<h1>Reddit Guild Wars 1</h1>
-			<h2>Event Information</h2>
-		</header><!-- end masthead -->
-		<nav>
-			<ul>
-				<li>
-					<a href="#">My Account</a>
-					<ul>
-						<li><a href="#">Edit Profile</a></li>
-						<li><a href="#">Characters</a></li>
-						<li><a href="#">My Events</a></li>
-						<li><a href="#">Logout</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="#">Events</a>
-				</li>
-				<li>
-					<a href="#">Builds</a>
-				</li>
-				<li>
-					<a href="#">Dungeons</a>
-				</li>
-				<li>
-					<a href="#" class="logout">Logout</a>
-				</li>
-			</ul>
-		</nav>
-		<section id="account">
-			<form action="#" method="post">
-				<fieldset>
-					<legend>Create New Account</legend>
-					<ul>
-						<li>
-							<label for="user_name">Username</label>
-							<input type="text" name="user[username]" id="user_name" value="{{values.username}}" />
-						</li>
-						<li>
-							<label for="user_email">Email address</label>
-							<input type="text" name="user[email]" id="user_email" value="{{values.email}}" />
-						</li>
-						<li>
-							<label for="user_password">Password</label>
-							<input type="password" name="user[password]" id="user_password" class="error" />
-						</li>
-						<li>
-							<label for="user_repeat_password">Repeat password</label>
-							<input type="password" name="user[password_confirm]" id="user_password_confirm" />
-						</li>
-						<li>
-							<label for="profile_first_name">First name</label>
-							<input type="text" name="profile[first_name]" id="profile_first_name" value="{{values.first_name}}" />
-						</li>
-						<li>
-							<label for="profile_last_name">Last name</label>
-							<input type="text" name="profile[last_name]" id="profile_last_name" value="{{values.last_name}}" />
-						</li>
-						<li>
-							<label for="user_timezone">Time Zone</label>
-							<select name="user[timezone]" id="user_timezone">
-								<option value="{{value}}">Time zone list...</option>
-							</select>
-						</li>
-						<li>
-							<label for="profile_birthdate">Date of birth</label>
-							<input type="date" name="profile[birthdate]" id="profile_birthdate" placeholder="YYYY-MM-DD" />
-						</li>
-						<li>
-							<input type="hidden" name="csrf" value="a44142424de528abb43de44f097556d10c48310d" />
-							<input type="submit" value="Register" />
-						</li>
-				</fieldset>
-			</form><!-- end registration form -->
-		</section><!-- end account -->
+	<div id="realbody">
+	
+		<div class="container">
+			<header class="masthead">
+				<h1>Reddit Guild Wars 1</h1>
+				<h2>Event Information</h2>
+			</header><!-- end masthead -->
+			<nav>
+				<ul>
+					<li>
+						<a href="#">My Account &nbsp; <img src="media/img/dropdown_arrow.png"></a>
+						<ul>
+							<li><a href="#">Edit Profile</a></li>
+							<li><a href="#">Characters</a></li>
+							<li><a href="#">My Events</a></li>
+							<li><a href="#">Logout</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">Events</a>
+					</li>
+					<li>
+						<a href="#">Builds</a>
+					</li>
+					<li>
+						<a href="#">Dungeons</a>
+					</li>
+					<li>
+						<a href="#" class="logout">Logout</a>
+					</li>
+				</ul>
+			</nav>
+			<section id="account">
+				<form action="#" method="post">
+					<fieldset>
+						<legend>Create New Account</legend>
+						<ul>
+							<li>
+								<label for="user_name">Username</label>
+								<input type="text" name="user[username]" id="user_name" value="{{values.username}}" />
+							</li>
+							<li>
+								<label for="user_email">Email address</label>
+								<input type="text" name="user[email]" id="user_email" value="{{values.email}}" />
+							</li>
+							<li>
+								<label for="user_password">Password</label>
+								<input type="password" name="user[password]" id="user_password" class="error" />
+							</li>
+							<li>
+								<label for="user_repeat_password">Repeat password</label>
+								<input type="password" name="user[password_confirm]" id="user_password_confirm" />
+							</li>
+							<li>
+								<label for="profile_first_name">First name</label>
+								<input type="text" name="profile[first_name]" id="profile_first_name" value="{{values.first_name}}" />
+							</li>
+							<li>
+								<label for="profile_last_name">Last name</label>
+								<input type="text" name="profile[last_name]" id="profile_last_name" value="{{values.last_name}}" />
+							</li>
+							<li>
+								<label for="user_timezone">Time Zone</label>
+								<select name="user[timezone]" id="user_timezone">
+									<option value="{{value}}">Time zone list...</option>
+									<option value="{{value}}">Time zone list...</option>
+									<option value="{{value}}">Time zone list...</option>
+									<option value="{{value}}">Time zone list...</option>
+									<option value="{{value}}">Time zone list...</option>
+									<option value="{{value}}">Time zone list...</option>
+									<option value="{{value}}">Time zone list...</option>
+									<option value="{{value}}">Time zone list...</option>
+									<option value="{{value}}">Time zone list...</option>
+									<option value="{{value}}">Time zone list...</option>
+									<option value="{{value}}">Time zone list...</option>
+									<option value="{{value}}">Time zone list...</option>
+									<option value="{{value}}">Time zone list...</option>
+									<option value="{{value}}">Time zone list...</option>
+									<option value="{{value}}">Time zone list...</option>
+									<option value="{{value}}">Time zone list...</option>
+								</select>
+							</li>
+							<li>
+								<label for="profile_birthdate">Date of birth</label>
+								<input type="date" name="profile[birthdate]" id="profile_birthdate" placeholder="YYYY-MM-DD" />
+							</li>
+							<li class="button">
+								<input type="hidden" name="csrf" value="a44142424de528abb43de44f097556d10c48310d" />
+								<input type="submit" value="Register" />
+							</li>
+					</fieldset>
+				</form><!-- end registration form -->
+			</section><!-- end account -->
 
-	</div><!-- end container-->
+		</div><!-- end container-->
+	
+	</div> <!-- end real body -->
 	<!-- JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom -->
 
 	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>

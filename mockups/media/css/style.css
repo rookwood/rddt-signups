@@ -402,9 +402,10 @@ section ul#filter li a:hover, section ul#filter li a:active {
 /* ---------------------------------
 END FILTER STYLES */
 
-/* START Slot List, Builds, Dungeons STYLES
+/* START Slot List, Builds, Dungeons, Character List STYLES
 --------------------------------------- */
-section#slot_list ul, section#builds ul, section#dungeons ul {
+section#slot_list ul, section#builds ul, section#dungeons ul,
+section#character_list table {
 	margin: 0 10px;
 	padding: 0;
 }
@@ -425,6 +426,21 @@ section#slot_list ul li, section#builds ul li, section#dungeons ul li {
 	border: 1px solid #d2d2d2;
 }
 
+section#character_list table {
+	width: 733px;
+}
+
+section#character_list table tr {
+	margin: 10px 0;
+	background-image: url(../img/slot_bg.png);
+	border: 1px solid #d2d2d2;
+}
+
+section#character_list table tr td {
+	height: 96px;		/* height adjusted for border */
+	vertical-align: middle;
+}
+
 section#builds ul li, section#dungeons ul li {
 	position: relative;
 }
@@ -436,7 +452,7 @@ section#slot_list ul li span.name {
 }
 
 section#slot_list ul li p {
-	margin:0; padding: 0;
+	margin: 0; padding: 0;
 	font-family: Arial;
 	font-size: .8em;
 }
@@ -445,6 +461,19 @@ section#builds ul li span.name, section#dungeons ul li span.name {
 	position:absolute; top:50%; height:1.6em; margin-top:-.8em;
 	font-family: Cronos Pro Display;
 	font-size: 1.6em;
+}
+
+section#character_list table tr span.character_name {
+	padding-left:25px;
+	font-family: Cronos Pro Display;
+	font-size: 1.6em;
+	display: block;
+}
+
+section#character_list table tr td p {
+	margin: 0; padding: 0 0 0 25px;
+	font-family: Arial;
+	font-size: .8em;
 }
 
 section#builds ul li a:link, section#builds ul li a:visited {
@@ -456,7 +485,15 @@ section#builds ul li a:link, section#builds ul li a:visited {
 	color: #313131;
 }
 
-section#builds ul li a:hover, section#builds ul li a:active {
+section#character_list a:link, section#character_list a:visited {
+	font-family: Cronos Pro Display;
+	font-size: 1.6em;
+	text-decoration: none;
+	color: #313131;
+}
+
+section#builds ul li a:hover, section#builds ul li a:active,
+section#character_list a:hover, section#character_list a:active {
 	color: #a49898;
 }
 
@@ -497,7 +534,7 @@ section#dungeons ul li.button a:hover, section#dungeons ul li.button a:active {
 }
 
 /* ---------------------------------
-END Slot List, Builds, Dungeons STYLES */
+END Slot List, Builds, Dungeons, Character List STYLES */
 
 /* START FIELDSET STUFF 
 --------------------------------------- */
@@ -533,8 +570,8 @@ fieldset fieldset ul li {
 	text-transform:capitalize;
 }
 
-/* right align checkboxes */
-fieldset fieldset ul li input[type=checkbox] {
+/* right align checkboxes, radio selects */
+fieldset fieldset ul li input[type=checkbox], fieldset fieldset ul li input[type=radio] {
 	margin-top: 4px;
 	float: right;
 }

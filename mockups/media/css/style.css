@@ -224,6 +224,7 @@ body {
 	height:100%;width:100%;
 
 	font: 1em/1.25 Helvetica, Arial, sans-serif;
+	color: #393939;
 	text-align: center;		/* for centering the container */
 }
  
@@ -249,6 +250,12 @@ body {
 	min-height: 100%;
 	
 	text-align: left;
+}
+
+/* Special div used to push the container to the bottom of the page */
+.push {
+	clear: both;
+	height: 40px;
 }
 
 .masthead {
@@ -356,7 +363,7 @@ END CSS for dropdown menu */
 
 h3 {
 	font-family: Cronos Pro Display;
-	padding: 10px 20px;
+	padding: 10px;
 	font-size: 1.6em;
 	font-weight: 700;
 	margin: 0;
@@ -371,15 +378,15 @@ section {
 /* START FILTER STYLES
 --------------------------------------- */
 section ul#filter {
-	margin: 0 30px;
+	margin: 0 16px;
 	padding: 0;
 }
 
 section ul#filter li {
 	float: left;
 	display: block;
-	padding: 0 7px;
-	font-size: .95em;
+	padding: 0 8px;
+	font-size: .9em;
 }
 
 section ul#filter li a:link, section ul#filter li a:visited {
@@ -395,35 +402,95 @@ section ul#filter li a:hover, section ul#filter li a:active {
 /* ---------------------------------
 END FILTER STYLES */
 
-/* START SLOT_LIST STUFF 
+/* START SLOT_LIST, BUILDS STYLES
 --------------------------------------- */
-section#slot_list ul {
+section#slot_list ul, section#builds ul {
 	margin: 0 10px;
+	padding: 0;
+}
+
+section#slot_list ul {
 	padding: 20px 0 0;
 }
 
-section#slot_list ul li {
+section#slot_list ul li, section#builds ul li {
 	display: block;
 	margin: 10px 0;
-	width: 733px; 
-	height: 98px;
+	padding: 25px 30px 35px;
+	
+	width: 673px; 		/* width adjusted for padding */
+	height: 38px;		/* height adjusted for padding */
 
 	background-image: url(../img/slot_bg.png);
 	border: 1px solid #d2d2d2;
 }
 
+section#builds ul li {
+	position: relative;
+}
+
+section#slot_list ul li span.name {
+	font-family: Cronos Pro Display;
+	font-size: 1.6em;
+	display: block;
+}
+
 section#slot_list ul li p {
-	margin: 30px 20px;
+	margin:0; padding: 0;
 	font-family: Arial;
 	font-size: .8em;
 }
-section#slot_list ul li span.name {
-	display: block;
+
+section#builds ul li span.name {
+	position:absolute; top:50%; height:1.6em; margin-top:-.8em;
 	font-family: Cronos Pro Display;
-	font-size: 1.8em;
+	font-size: 1.6em;
+}
+
+section#builds ul li a:link, section#builds ul li a:visited {
+	position:absolute; top:50%; height:1.2em; margin-top:-.6em;
+	right: 35px;
+	font-family: Cronos Pro Display;
+	font-size: 1.2em;
+	text-decoration: none;
+	color: #313131;
+}
+
+section#builds ul li a:hover, section#builds ul li a:active {
+	color: #a49898;
+}
+
+section#builds ul li a img {
+	vertical-align: top;
+	margin-left: 35px;
+}
+
+section#builds ul li.button {
+	position:relative;
+	float: right;
+	margin: 0; padding: 0;
+	width: 153px;
+	height: 44px;
+
+	border: none;
+	background-image: url(../img/add_build_button.png);
+	background-repeat: no-repeat;
+	text-align: center;
+}
+
+section#builds ul li.button a:link, section#builds ul li.button a:visited {
+	position:absolute; top:50%; height:0.8em; margin-top:-0.5em;
+	font-family: Helvetica World;
+	font-size:0.8em;
+	font-weight:700;
+	text-decoration: none;
+	color: #717171;
+}
+
+section#builds ul li.button:hover, section#builds ul li.button:active {
 }
 /* ---------------------------------
-END SLOT_LIST STUFF */
+END SLOT_LIST, BUILDS STYLES */
 
 /* START FIELDSET STUFF 
 --------------------------------------- */
@@ -453,13 +520,15 @@ fieldset label, fieldset fieldset legend {
 }
 
 fieldset fieldset ul li {
-	width:231px;
+	width: 140px;
 	margin: 0; padding: 0;
+	font-family: Arial;
 	text-transform:capitalize;
 }
 
-/* right align checkboxs */
+/* right align checkboxes */
 fieldset fieldset ul li input[type=checkbox] {
+	margin-top: 4px;
 	float: right;
 }
 

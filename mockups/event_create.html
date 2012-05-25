@@ -20,101 +20,107 @@
 <body>
 	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 	<img id="bgimg" src="media/img/bg.png" />
-	<div class="container">
-		<header class="masthead">
-			<h1>Reddit Guild Wars 1</h1>
-			<h2>Event Information</h2>
-		</header><!-- end masthead -->
-		<nav>
-			<ul>
-				<li>
-					<a href="#">My Account</a>
-					<ul>
-						<li><a href="#">Edit Profile</a></li>
-						<li><a href="#">Characters</a></li>
-						<li><a href="#">My Events</a></li>
-						<li><a href="#">Logout</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="#">Events</a>
-				</li>
-				<li>
-					<a href="#">Builds</a>
-				</li>
-				<li>
-					<a href="#">Dungeons</a>
-				</li>
-				<li>
-					<a href="#" class="logout">Logout</a>
-				</li>
-			</ul>
-		</nav>
-		<section id="event_create">
-			<div id="tabs">
+	<div id="realbody">
+	
+		<div class="container">
+			<header class="masthead">
+				<h1>Reddit Guild Wars 1</h1>
+				<h2>Event Information</h2>
+			</header><!-- end masthead -->
+			<nav>
 				<ul>
-					<li><a href="#details">Event Details</a></li>
-					<li><a href="#build">Build</a></li>
-				</ul>
-				<div id="details">
-					<form action="#" method="post">
-					<fieldset>
-						<legend>Create New Event</legend>
+					<li>
+						<a href="#">My Account</a>
 						<ul>
-							<li>
-								<label for="title">Event Title</label>
-								<input type="text" name="event[title]" id="title" />
-							</li>
-							<li>
-								<label for="dungeon">Dungeon</label>
-								<select name="event[dungeon]" id="dungeon">
-									<option value="">Dungeon Name</option>
-								</select>
-							</li>
-							<li>
-								<label for="time">Scheduled time</label>
-								<input type="time" name="event[time]" id="time" value="" />
-							</li>
-							<li>
-								<label for="timezone">In timezone</label>
-								<select name="event[timezone]" id="timezone">
-									<option value=""></option>
-								</select>
-							</li>
-							<li>
-								<label for="date">Scheduled date</label>
-								<input type="date" name="event[date]" id="date" value="" />
-							</li>
-							<li>
-								<label for="description">Event details</label>
-								<textarea name="event[description]" id="description" value=""></textarea>
-							</li>
-							<li>
-								<label for="build">Build planned</label>
-								<select name="event[build]" id="build">
-									<option value="">Builds here</option>
-								</select>
-							</li>
-							<li>
-								<label for="character">Lead as</label>
-								<select name="event[character]" id="character">
-									<option class="" value="">My hero</option>
-								</select>
-							</li>
-							<li>
-								<input type="hidden" name="csrf" value="a44142424de528abb43de44f097556d10c48310d" />
-								<input type="submit" value="Create new event" />
-							</li>
+							<li><a href="#">Edit Profile</a></li>
+							<li><a href="#">Characters</a></li>
+							<li><a href="#">My Events</a></li>
+							<li><a href="#">Logout</a></li>
 						</ul>
-					</fieldset>
-					</form>
-				</div><!-- end event creation form -->
-				<div id="build">
-					<p>Build creation form goes here, I assume</p>
-				</div><!-- end build form -->
-			</div>
-		</section>
-	</div><!-- end container-->
+					</li>
+					<li>
+						<a href="#">Events</a>
+					</li>
+					<li>
+						<a href="#">Builds</a>
+					</li>
+					<li>
+						<a href="#">Dungeons</a>
+					</li>
+					<li>
+						<a href="#" class="logout">Logout</a>
+					</li>
+				</ul>
+			</nav>
+			<section id="event_create">
+				<div id="tabs">
+					<ul>
+						<li><a href="#details">Event Details</a></li>
+						<li><a href="#build">Build</a></li>
+					</ul>
+					<div id="details">
+						<form action="#" method="post">
+						<fieldset>
+							<legend>Create New Event</legend>
+							<ul>
+								<li>
+									<label for="title">Event Title</label>
+									<input type="text" name="event[title]" id="title" />
+								</li>
+								<li>
+									<label for="dungeon">Dungeon</label>
+									<select name="event[dungeon]" id="dungeon">
+										<option value="">Dungeon Name</option>
+									</select>
+								</li>
+								<li>
+									<label for="time">Scheduled time</label>
+									<input type="time" name="event[time]" id="time" value="" />
+								</li>
+								<li>
+									<label for="timezone">In timezone</label>
+									<select name="event[timezone]" id="timezone">
+										<option value=""></option>
+									</select>
+								</li>
+								<li>
+									<label for="date">Scheduled date</label>
+									<input type="date" name="event[date]" id="date" value="" />
+								</li>
+								<li>
+									<label for="description">Event details</label>
+									<textarea name="event[description]" id="description" value=""></textarea>
+								</li>
+								<li>
+									<label for="build">Build planned</label>
+									<select name="event[build]" id="build">
+										<option value="">Builds here</option>
+									</select>
+								</li>
+								<li>
+									<label for="character">Lead as</label>
+									<select name="event[character]" id="character">
+										<option class="" value="">My hero</option>
+									</select>
+								</li>
+								<li class="button">
+									<input type="hidden" name="csrf" value="a44142424de528abb43de44f097556d10c48310d" />
+									<input type="submit" value="Create event" />
+								</li>
+							</ul>
+						</fieldset>
+						</form>
+					</div><!-- end event creation form -->
+					<div id="build">
+						<p>Build creation form goes here, I assume</p>
+					</div><!-- end build form -->
+					
+					<div class="push"></div>
+				</div>
+			</section>
+		</div><!-- end container-->
+		
+	</div> <!-- end realbody -->
 	<!-- JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom -->
 
 	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>

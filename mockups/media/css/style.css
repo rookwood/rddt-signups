@@ -596,7 +596,8 @@ fieldset ul li.button {
 }
 
 /* Style input boxes on forms */
-fieldset input[type=text], fieldset input[type=password], fieldset input[type=date] {	
+fieldset input[type=text], fieldset input[type=password], 
+fieldset input[type=date], fieldset input[type=time] {
 	display: block;
 	margin: 10px 0;
 
@@ -606,6 +607,17 @@ fieldset input[type=text], fieldset input[type=password], fieldset input[type=da
 
 	background-image: url(../img/form_input_bg.png);
 	background-repeat: no-repeat;
+	border: solid 1px #b2b2b2;
+}
+
+/* Style textarea boxes on forms */
+fieldset textarea {
+	display: block;
+	margin: 10px 0;
+	
+	width: 237px;			/* reduced width due to border */
+	height: 4em;
+	
 	border: solid 1px #b2b2b2;
 }
 

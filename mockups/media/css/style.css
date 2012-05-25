@@ -252,7 +252,8 @@ body {
 	text-align: left;
 }
 
-/* Special div used to push the container to the bottom of the page */
+/* Special div used to push the container to the bottom of the page
+Used on pages with floating elements at the end of the page */
 .push {
 	clear: both;
 	height: 40px;
@@ -271,6 +272,8 @@ body {
 	color: rgba(0,0,0,0);		/* Hide masthead text */
 }
 
+/* Top navigation menu with dropdown
+---------------------------------------------------- */
 nav {
 	background-image: url(../img/menubg.png);
 	background-repeat: no-repeat;
@@ -401,6 +404,85 @@ section ul#filter li a:hover, section ul#filter li a:active {
 }
 /* ---------------------------------
 END FILTER STYLES */
+
+/* START Sort STYLES
+--------------------------- */
+div.sort_selector {
+	display:block;
+	padding: 10px;
+	height: 38px;		/* sizing the entire sort select menu */
+	line-height: 2em;
+}
+
+section#events div.sort_label {
+	float: right;
+	margin-right: 14px;
+	
+	font-family: Helvetica World;
+	font-size: 0.8em;
+	font-weight: bold;
+	color: #393939;
+}
+
+section#events ul.sort_dropdown {
+	float: right;
+	right: -11px;
+	padding: 0; margin: 0;
+}
+
+section#events ul.sort_dropdown li.sort_selected {
+	display: block;
+	line-height: 2em;		/* for vertical alignment */
+}
+
+section#events li.sort_selected a:link, section#events li.sort_selected a:visited {
+	display: block;
+	width: 141px;			/* width adjusted for padding */
+	height: 38px;
+	padding-left: 12px;
+
+	background-image: url(../img/sort_select_bg.png);
+
+	font-family: Helvetica World;
+	font-size: 0.8em;
+	font-weight: bold;
+	color:  #717171;
+	text-decoration: none;
+}
+
+section#events ul.sort_dropdown li ul {
+	position: absolute;
+	display: none;
+}
+
+section#events ul.sort_dropdown li:hover ul {
+	display: block;
+	z-index: 800;
+	margin: 0 0 0 -3px; padding: 0;
+	width: 192px;
+	height: 101px;
+
+	background-image: url(../img/sort_select_dropdown_bg.png);
+}
+
+ section#events ul.sort_dropdown li ul li {
+	display: block;
+	padding-right: 15px;
+	height: 22px;
+} 
+
+section#events ul.sort_dropdown li ul li a:link, section#events ul.sort_dropdown li ul li a:visited {
+	width:192px;
+	font-weight: normal;
+	color: #646464;
+	background: none;
+}
+
+section#events ul.sort_dropdown li ul li a:hover, section#events ul.sort_dropdown li ul li a:active {
+	color: #a3a3a3;
+}
+ /* -----------------------
+END Sort STYLES */
 
 /* START Slot List, Builds, Dungeons, Character List STYLES
 --------------------------------------- */

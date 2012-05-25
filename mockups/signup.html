@@ -20,168 +20,174 @@
 <body>
 	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 	<img id="bgimg" src="media/img/bg.png" />
-	<div class="container">
-		<header class="masthead">
-			<h1>Reddit Guild Wars 1</h1>
-			<h2>Event Information</h2>
-		</header><!-- end masthead -->
-		<nav>
-			<ul>
-				<li>
-					<a href="#">My Account</a>
-					<ul>
-						<li><a href="#">Edit Profile</a></li>
-						<li><a href="#">Characters</a></li>
-						<li><a href="#">My Events</a></li>
-						<li><a href="#">Logout</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="#">Events</a>
-				</li>
-				<li>
-					<a href="#">Builds</a>
-				</li>
-				<li>
-					<a href="#">Dungeons</a>
-				</li>
-				<li>
-					<a href="#" class="logout">Logout</a>
-				</li>
-			</ul>
-		</nav>
-		<section id="events">
-			<label for="sorter">Sort by</label>
-			<select id="sorter">
-				<option value="mine">My events</option>
-				<option value="">Etc</option>
-			</select>
-			<ul>
-				<li class="event">
-					<li class="event_header">
-						<h4>Domain of Anguish</h4>
-						<h5>Manager: See The Dragon</h5>
-					</li>
-					<li class="event_numbers">
-						<p><span class="player_count">4/8</span><br />players</p>
-					</li>
-					<li class="event_time">
-						<time class="date" datetime="2012-04-20T20:00+00:00">April 20, 2012</time>
-						<time class="time" datetime="2012-04-20T20:00+00:00">9:00 PM GMT</time>
-					</li>
-				<section id="event_details">
-					<ul>
-						<li class="event">
-							<li class="event_header">
-								<h4>Domain of Anguish</h4>
-								<h5>Manager: See The Dragon</h5>
-							</li>
-							<li class="event_numbers">
-								<p><span class="player_count">4/8</span><br />players</p>
-							</li>
-							<li class="event_time">
-								<time class="date" datetime="2012-04-20T20:00+00:00">April 20, 2012</time>
-								<time class="time" datetime="2012-04-20T20:00+00:00">9:00 PM GMT</time>
-							</li>
-						</li><!-- end of this event -->
-					</ul>
-					
-					<div id="tabs">
+	<div id="realbody">
+	
+		<div class="container">
+			<header class="masthead">
+				<h1>Reddit Guild Wars 1</h1>
+				<h2>Event Information</h2>
+			</header><!-- end masthead -->
+			<nav>
+				<ul>
+					<li>
+						<a href="#">My Account</a>
 						<ul>
-							<li><a href="#attendees">Attendees</a></li>
-							<li><a href="#standby">Standby</a></li>
+							<li><a href="#">Edit Profile</a></li>
+							<li><a href="#">Characters</a></li>
+							<li><a href="#">My Events</a></li>
+							<li><a href="#">Logout</a></li>
 						</ul>
-						<div id="attendees">
+					</li>
+					<li>
+						<a href="#">Events</a>
+					</li>
+					<li>
+						<a href="#">Builds</a>
+					</li>
+					<li>
+						<a href="#">Dungeons</a>
+					</li>
+					<li>
+						<a href="#" class="logout">Logout</a>
+					</li>
+				</ul>
+			</nav>
+			<section id="events">
+				<label for="sorter">Sort by</label>
+				<select id="sorter">
+					<option value="mine">My events</option>
+					<option value="">Etc</option>
+				</select>
+				<ul>
+					<li class="event">
+						<li class="event_header">
+							<h4>Domain of Anguish</h4>
+							<h5>Manager: See The Dragon</h5>
+						</li>
+						<li class="event_numbers">
+							<p><span class="player_count">4/8</span><br />players</p>
+						</li>
+						<li class="event_time">
+							<time class="date" datetime="2012-04-20T20:00+00:00">April 20, 2012</time>
+							<time class="time" datetime="2012-04-20T20:00+00:00">9:00 PM GMT</time>
+						</li>
+					<section id="event_details">
+						<ul>
+							<li class="event">
+								<li class="event_header">
+									<h4>Domain of Anguish</h4>
+									<h5>Manager: See The Dragon</h5>
+								</li>
+								<li class="event_numbers">
+									<p><span class="player_count">4/8</span><br />players</p>
+								</li>
+								<li class="event_time">
+									<time class="date" datetime="2012-04-20T20:00+00:00">April 20, 2012</time>
+									<time class="time" datetime="2012-04-20T20:00+00:00">9:00 PM GMT</time>
+								</li>
+							</li><!-- end of this event -->
+						</ul>
+						
+						<div id="tabs">
 							<ul>
-								<li class="ritualist">Rookwood Shuffles</li>
-								<li class="paragon">Paragon Walt</li>
-								<li class="monk">Healaholic Monk</li>
+								<li><a href="#attendees">Attendees</a></li>
+								<li><a href="#standby">Standby</a></li>
 							</ul>
-							<p>Open slots:</p>
-							<ul>
-								<li>DWG</li>
-								<li>Panic</li>
-								<li>HB Monk</li>
-							</ul>
-						</div>
-						<div id="standby">
-							<ul>
-								<li class="ritualist">Rookwood Shuffles</li>
-								<li class="paragon">Paragon Walt</li>
-								<li class="monk">Healaholic Monk</li>
-							</ul>
-						</div>
-					</div>
-					<div id="event_signup">
-						<form action="#" method="post" id="event_signup">
-							<fieldset>
-								<legend>Event Signup</legend>
+							<div id="attendees">
 								<ul>
-									<li>
-										<label for="character">Attend as</label>
-										<select name="event[character]" id="character">
-											<option class="ritualist" value="Rookwood Shuffles">Rookwood Shuffles</option>
-											<option class="assassin" value="Rookwood Sin">Rookwood Sin</option>
-										</select>
-									</li>
-									<li>
-										<label for="slot">Role</label>
-										<select name="event[slot]" id="slot">
-											<option value="dwg">DWG</option>
-											<option value="imba">Imba</option>
-									</li>
-									<li>
-										<label for="comments">Comments</label>
-										<textarea name="event[comment]" id="comments"></textarea>
-									</li>
-									<li>
-										<fieldset class="status">
-											<legend>Status</legend>
-											<label for="status_ready">Ready</label>
-											<input type="radio" name="event[status]" id="status_ready" value="ready" checked="checked" />
-											<label for="status_standby">Stand-by</label>
-											<input type="radio" name="event[status]" id="status_standby" value="stand-by (voluntary)" />
-										</fieldset>					
-									</li>
-									<li>
-										<input type="hidden" name="csrf" value="a44142424de528abb43de44f097556d10c48310d" />
-										<input type="submit" value="Join" />
-									</li>
+									<li class="ritualist">Rookwood Shuffles</li>
+									<li class="paragon">Paragon Walt</li>
+									<li class="monk">Healaholic Monk</li>
 								</ul>
-							</fieldset>
-						</form>
-					</div>
-				</section><!-- end event details section -->
-				</li><!-- end of this event -->
-				<li class="event">
-					<li class="event_header">
-						<h4>Domain of Anguish</h4>
-						<h5>Manager: See The Dragon</h5>
-					</li>
-					<li class="event_numbers">
-						<p><span class="player_count">4/8</span><br />players</p>
-					</li>
-					<li class="event_time">
-						<time class="date" datetime="2012-04-20T20:00+00:00">April 20, 2012</time>
-						<time class="time" datetime="2012-04-20T20:00+00:00">9:00 PM GMT</time>
-					</li>
-				</li><!-- end of this event -->
-				<li class="event">
-					<li class="event_header">
-						<h4>Domain of Anguish</h4>
-						<h5>Manager: See The Dragon</h5>
-					</li>
-					<li class="event_numbers">
-						<p><span class="player_count">4/8</span><br />players</p>
-					</li>
-					<li class="event_time">
-						<time class="date" datetime="2012-04-20T20:00+00:00">April 20, 2012</time>
-						<time class="time" datetime="2012-04-20T20:00+00:00">9:00 PM GMT</time>
-					</li>
-				</li><!-- end of this event -->
-			</ul>
-		</section><!-- end event list -->
-	</div><!-- end container-->
+								<p>Open slots:</p>
+								<ul>
+									<li>DWG</li>
+									<li>Panic</li>
+									<li>HB Monk</li>
+								</ul>
+							</div>
+							<div id="standby">
+								<ul>
+									<li class="ritualist">Rookwood Shuffles</li>
+									<li class="paragon">Paragon Walt</li>
+									<li class="monk">Healaholic Monk</li>
+								</ul>
+							</div>
+						</div>
+						<div id="event_signup">
+							<form action="#" method="post" id="event_signup">
+								<fieldset>
+									<legend>Event Signup</legend>
+									<ul>
+										<li>
+											<label for="character">Attend as</label>
+											<select name="event[character]" id="character">
+												<option class="ritualist" value="Rookwood Shuffles">Rookwood Shuffles</option>
+												<option class="assassin" value="Rookwood Sin">Rookwood Sin</option>
+											</select>
+										</li>
+										<li>
+											<label for="slot">Role</label>
+											<select name="event[slot]" id="slot">
+												<option value="dwg">DWG</option>
+												<option value="imba">Imba</option>
+										</li>
+										<li>
+											<label for="comments">Comments</label>
+											<textarea name="event[comment]" id="comments"></textarea>
+										</li>
+										<li>
+											<fieldset class="status">
+												<legend>Status</legend>
+												<label for="status_ready">Ready</label>
+												<input type="radio" name="event[status]" id="status_ready" value="ready" checked="checked" />
+												<label for="status_standby">Stand-by</label>
+												<input type="radio" name="event[status]" id="status_standby" value="stand-by (voluntary)" />
+											</fieldset>					
+										</li>
+										<li>
+											<input type="hidden" name="csrf" value="a44142424de528abb43de44f097556d10c48310d" />
+											<input type="submit" value="Join" />
+										</li>
+									</ul>
+								</fieldset>
+							</form>
+						</div>
+					</section><!-- end event details section -->
+					</li><!-- end of this event -->
+					<li class="event">
+						<li class="event_header">
+							<h4>Domain of Anguish</h4>
+							<h5>Manager: See The Dragon</h5>
+						</li>
+						<li class="event_numbers">
+							<p><span class="player_count">4/8</span><br />players</p>
+						</li>
+						<li class="event_time">
+							<time class="date" datetime="2012-04-20T20:00+00:00">April 20, 2012</time>
+							<time class="time" datetime="2012-04-20T20:00+00:00">9:00 PM GMT</time>
+						</li>
+					</li><!-- end of this event -->
+					<li class="event">
+						<li class="event_header">
+							<h4>Domain of Anguish</h4>
+							<h5>Manager: See The Dragon</h5>
+						</li>
+						<li class="event_numbers">
+							<p><span class="player_count">4/8</span><br />players</p>
+						</li>
+						<li class="event_time">
+							<time class="date" datetime="2012-04-20T20:00+00:00">April 20, 2012</time>
+							<time class="time" datetime="2012-04-20T20:00+00:00">9:00 PM GMT</time>
+						</li>
+					</li><!-- end of this event -->
+				</ul>
+			</section><!-- end event list -->
+			
+			<div class="push"></div>
+		</div><!-- end container-->
+	
+	</div> <!-- end realbody -->
 	<!-- JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom -->
 
 	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>

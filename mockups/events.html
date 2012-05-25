@@ -20,113 +20,129 @@
 <body>
 	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 	<img id="bgimg" src="media/img/bg.png" />
-	<div class="container">
-		<header class="masthead">
-			<h1>Reddit Guild Wars 1</h1>
-			<h2>Event Information</h2>
-		</header><!-- end masthead -->
-		<nav>
-			<ul>
-				<li>
-					<a href="#">My Account</a>
-					<ul>
-						<li><a href="#">Edit Profile</a></li>
-						<li><a href="#">Characters</a></li>
-						<li><a href="#">My Events</a></li>
-						<li><a href="#">Logout</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="#">Events</a>
-				</li>
-				<li>
-					<a href="#">Builds</a>
-				</li>
-				<li>
-					<a href="#">Dungeons</a>
-				</li>
-				<li>
-					<a href="#" class="logout">Logout</a>
-				</li>
-			</ul>
-		</nav>
-		<section id="events">
-			<label for="sorter">Sort by</label>
-			<select id="sorter">
-				<option value="mine">My events</option>
-				<option value="">Etc</option>
-			</select>
-			<ul>
-				<li class="event">
-					<li class="event_header">
-						<h4>Domain of Anguish</h4>
-						<h5>Manager: See The Dragon</h5>
+	<div id="realbody">
+
+		<div class="container">
+			<header class="masthead">
+				<h1>Reddit Guild Wars 1</h1>
+				<h2>Event Information</h2>
+			</header><!-- end masthead -->
+			<nav>
+				<ul>
+					<li>
+						<a href="#">My Account</a>
+						<ul>
+							<li><a href="#">Edit Profile</a></li>
+							<li><a href="#">Characters</a></li>
+							<li><a href="#">My Events</a></li>
+							<li><a href="#">Logout</a></li>
+						</ul>
 					</li>
-					<li class="event_numbers">
-						<p><span class="player_count">4/8</span><br />players</p>
+					<li>
+						<a href="#">Events</a>
 					</li>
-					<li class="event_time">
-						<time class="date" datetime="2012-04-20T20:00+00:00">April 20, 2012</time>
-						<time class="time" datetime="2012-04-20T20:00+00:00">9:00 PM GMT</time>
+					<li>
+						<a href="#">Builds</a>
 					</li>
-					<section id="event_details">			
-						<div id="tabs">
+					<li>
+						<a href="#">Dungeons</a>
+					</li>
+					<li>
+						<a href="#" class="logout">Logout</a>
+					</li>
+				</ul>
+			</nav> <!-- end navigation -->
+			
+			<section id="events">
+				<div class="sort_selector">
+					<ul class="sort_dropdown">
+						<li class="sort_selected">
+							<a href="#">Dungeon</a>
 							<ul>
-								<li><a href="#attendees">Attendees</a></li>
-								<li><a href="#standby">Standby</a></li>
+								<li><a href="#">My events &nbsp; 1</a></li>
+								<li><a href="#">Date &nbsp; 10</a></li>
+								<li><a href="#">Available slots &nbsp; 10</a></li>
+								<li><a href="#">Past events &nbsp; 240</a></li>
 							</ul>
-							<div id="attendees">
+						</li>
+					</ul> <!-- end dropdown -->
+					<div class="sort_label">Sort by</div>
+				</div>
+				
+				<ul>
+					<li class="event">
+						<li class="event_header">
+							<h4>Domain of Anguish</h4>
+							<h5>Manager: See The Dragon</h5>
+						</li>
+						<li class="event_numbers">
+							<p><span class="player_count">4/8</span><br />players</p>
+						</li>
+						<li class="event_time">
+							<time class="date" datetime="2012-04-20T20:00+00:00">April 20, 2012</time>
+							<time class="time" datetime="2012-04-20T20:00+00:00">9:00 PM GMT</time>
+						</li>
+						<section id="event_details">			
+							<div id="tabs">
 								<ul>
-									<li class="ritualist">Rookwood Shuffles</li>
-									<li class="paragon">Paragon Walt</li>
-									<li class="monk">Healaholic Monk</li>
+									<li><a href="#attendees">Attendees</a></li>
+									<li><a href="#standby">Standby</a></li>
 								</ul>
-								<p><a href="#">Signup for this event</a></p>
+								<div id="attendees">
+									<ul>
+										<li class="ritualist">Rookwood Shuffles</li>
+										<li class="paragon">Paragon Walt</li>
+										<li class="monk">Healaholic Monk</li>
+									</ul>
+									<p><a href="#">Signup for this event</a></p>
+								</div>
+								<div id="standby">
+									<ul>
+										<li class="ritualist">Rookwood Shuffles</li>
+										<li class="paragon">Paragon Walt</li>
+										<li class="monk">Healaholic Monk</li>
+									</ul>
+								</div>
 							</div>
-							<div id="standby">
-								<ul>
-									<li class="ritualist">Rookwood Shuffles</li>
-									<li class="paragon">Paragon Walt</li>
-									<li class="monk">Healaholic Monk</li>
-								</ul>
+							<div id="event_description">
+								<h6>Event title</h6>
+								<p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 							</div>
-						</div>
-						<div id="event_description">
-							<h6>Event title</h6>
-							<p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-						</div>
-					</section><!-- end event details section -->
-				</li><!-- end of this event -->
-				<li class="event">
-					<li class="event_header">
-						<h4>Domain of Anguish</h4>
-						<h5>Manager: See The Dragon</h5>
-					</li>
-					<li class="event_numbers">
-						<p><span class="player_count">4/8</span><br />players</p>
-					</li>
-					<li class="event_time">
-						<time class="date" datetime="2012-04-20T20:00+00:00">April 20, 2012</time>
-						<time class="time" datetime="2012-04-20T20:00+00:00">9:00 PM GMT</time>
-					</li>
-				</li><!-- end of this event -->
-				<li class="event">
-					<li class="event_header">
-						<h4>Domain of Anguish</h4>
-						<h5>Manager: See The Dragon</h5>
-					</li>
-					<li class="event_numbers">
-						<p><span class="player_count">4/8</span><br />players</p>
-					</li>
-					<li class="event_time">
-						<time class="date" datetime="2012-04-20T20:00+00:00">April 20, 2012</time>
-						<time class="time" datetime="2012-04-20T20:00+00:00">9:00 PM GMT</time>
-					</li>
-				</li><!-- end of this event -->
-			</ul>
-		</section><!-- end event list -->
+						</section><!-- end event details section -->
+					</li><!-- end of this event -->
+					<li class="event">
+						<li class="event_header">
+							<h4>Domain of Anguish</h4>
+							<h5>Manager: See The Dragon</h5>
+						</li>
+						<li class="event_numbers">
+							<p><span class="player_count">4/8</span><br />players</p>
+						</li>
+						<li class="event_time">
+							<time class="date" datetime="2012-04-20T20:00+00:00">April 20, 2012</time>
+							<time class="time" datetime="2012-04-20T20:00+00:00">9:00 PM GMT</time>
+						</li>
+					</li><!-- end of this event -->
+					<li class="event">
+						<li class="event_header">
+							<h4>Domain of Anguish</h4>
+							<h5>Manager: See The Dragon</h5>
+						</li>
+						<li class="event_numbers">
+							<p><span class="player_count">4/8</span><br />players</p>
+						</li>
+						<li class="event_time">
+							<time class="date" datetime="2012-04-20T20:00+00:00">April 20, 2012</time>
+							<time class="time" datetime="2012-04-20T20:00+00:00">9:00 PM GMT</time>
+						</li>
+					</li><!-- end of this event -->
+				</ul>
+			</section><!-- end event list -->
+
+		<div class="push"></div>
+		</div><!-- end container-->
 		
-	</div><!-- end container-->
+	</div> <!-- end realbody -->
 	<!-- JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom -->
 
 	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>

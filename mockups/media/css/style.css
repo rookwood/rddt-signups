@@ -410,8 +410,9 @@ END FILTER STYLES */
 div.sort_selector {
 	display:block;
 	padding: 10px;
-	height: 38px;		/* sizing the entire sort select menu */
-	line-height: 2em;
+	height: 38px;			/* sizing the entire sort select menu */
+	line-height: 2.5em;		/* vertical alignment for label */
+	text-transform: capitalize;
 }
 
 section#events div.sort_label {
@@ -432,7 +433,6 @@ section#events ul.sort_dropdown {
 
 section#events ul.sort_dropdown li.sort_selected {
 	display: block;
-	line-height: 2em;		/* for vertical alignment */
 }
 
 section#events li.sort_selected a:link, section#events li.sort_selected a:visited {
@@ -458,11 +458,13 @@ section#events ul.sort_dropdown li ul {
 section#events ul.sort_dropdown li:hover ul {
 	display: block;
 	z-index: 800;
-	margin: 0 0 0 -3px; padding: 0;
+	margin: 0 0 0 -3px; padding: 6px 0 0 0;
 	width: 192px;
-	height: 101px;
+	height: 95px;			/* height adjusted for padding */
 
 	background-image: url(../img/sort_select_dropdown_bg.png);
+	
+	line-height: 22px;
 }
 
  section#events ul.sort_dropdown li ul li {
@@ -473,6 +475,7 @@ section#events ul.sort_dropdown li:hover ul {
 
 section#events ul.sort_dropdown li ul li a:link, section#events ul.sort_dropdown li ul li a:visited {
 	width:192px;
+	padding-left: 15px;
 	font-weight: normal;
 	color: #646464;
 	background: none;

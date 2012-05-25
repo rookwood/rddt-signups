@@ -402,9 +402,9 @@ section ul#filter li a:hover, section ul#filter li a:active {
 /* ---------------------------------
 END FILTER STYLES */
 
-/* START SLOT_LIST, BUILDS STYLES
+/* START Slot List, Builds, Dungeons STYLES
 --------------------------------------- */
-section#slot_list ul, section#builds ul {
+section#slot_list ul, section#builds ul, section#dungeons ul {
 	margin: 0 10px;
 	padding: 0;
 }
@@ -413,7 +413,7 @@ section#slot_list ul {
 	padding: 20px 0 0;
 }
 
-section#slot_list ul li, section#builds ul li {
+section#slot_list ul li, section#builds ul li, section#dungeons ul li {
 	display: block;
 	margin: 10px 0;
 	padding: 25px 30px 35px;
@@ -425,7 +425,7 @@ section#slot_list ul li, section#builds ul li {
 	border: 1px solid #d2d2d2;
 }
 
-section#builds ul li {
+section#builds ul li, section#dungeons ul li {
 	position: relative;
 }
 
@@ -441,7 +441,7 @@ section#slot_list ul li p {
 	font-size: .8em;
 }
 
-section#builds ul li span.name {
+section#builds ul li span.name, section#dungeons ul li span.name {
 	position:absolute; top:50%; height:1.6em; margin-top:-.8em;
 	font-family: Cronos Pro Display;
 	font-size: 1.6em;
@@ -465,32 +465,39 @@ section#builds ul li a img {
 	margin-left: 35px;
 }
 
-section#builds ul li.button {
-	position:relative;
+section#builds ul li.button, section#dungeons ul li.button {
 	float: right;
 	margin: 0; padding: 0;
 	width: 153px;
 	height: 44px;
 
-	border: none;
 	background-image: url(../img/add_build_button.png);
 	background-repeat: no-repeat;
+	border: none;
 	text-align: center;
 }
 
-section#builds ul li.button a:link, section#builds ul li.button a:visited {
-	position:absolute; top:50%; height:0.8em; margin-top:-0.5em;
+section#builds ul li.button a:link, section#builds ul li.button a:visited, 
+section#dungeons ul li.button a:link, section#dungeons ul li.button a:visited {
+	position: absolute; top: 50%; height: 0.8em; margin: -0.4em auto 0;
+	right: 0;
+	width: 153px;
+
 	font-family: Helvetica World;
-	font-size:0.8em;
-	font-weight:700;
+	font-size: 0.8em;
+	font-weight: 700;
+	text-transform:capitalize;
 	text-decoration: none;
 	color: #717171;
 }
 
-section#builds ul li.button:hover, section#builds ul li.button:active {
+section#builds ul li.button a:hover, section#builds ul li.button a:active,
+section#dungeons ul li.button a:hover, section#dungeons ul li.button a:active {
+	color: red;
 }
+
 /* ---------------------------------
-END SLOT_LIST, BUILDS STYLES */
+END Slot List, Builds, Dungeons STYLES */
 
 /* START FIELDSET STUFF 
 --------------------------------------- */

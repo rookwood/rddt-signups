@@ -14,6 +14,7 @@ This is still a work in progress...
 * Builds page styled
 * Dungeons page styled
 * Characters page styled
+* Sort dropdown implemented (menu dropdown method)
 
 ### Features in progress
 * Styling for event create

@@ -511,16 +511,12 @@ section#slot_list ul li, section#builds ul li, section#dungeons ul li {
 }
 
 section#character_list table {
-	width: 733px;
-}
-
-section#character_list table tr {
-	margin: 10px 0;
+	width: 735px;
 	background-image: url(../img/slot_bg.png);
 }
 
 section#character_list table tr td {
-	height: 96px;		/* height adjusted for border */
+	height: 100px; padding: 0;
 	vertical-align: middle;
 }
 

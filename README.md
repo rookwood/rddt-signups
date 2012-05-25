@@ -12,10 +12,10 @@ This is still a work in progress...
 * Create account page styled
 * Slots page styled
 * Builds page styled
+* Dungeons page styled
+* Characters page styled
 
 ### Features in progress
-* Styling for characters
-* Styling for dungeons
 * Styling for event create
 * Styling for events
 * Styling for signup

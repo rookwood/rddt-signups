@@ -11,9 +11,9 @@ This is still a work in progress...
 * Login page styled
 * Create account page styled
 * Slots page styled
+* Builds page styled
 
 ### Features in progress
-* Styling for builds
 * Styling for characters
 * Styling for dungeons
 * Styling for event create

@@ -504,11 +504,10 @@ section#slot_list ul li, section#builds ul li, section#dungeons ul li {
 	margin: 10px 0;
 	padding: 25px 30px 35px;
 	
-	width: 673px; 		/* width adjusted for padding */
-	height: 38px;		/* height adjusted for padding */
+	width: 675px; 		/* width adjusted for padding */
+	height: 40px;		/* height adjusted for padding */
 
 	background-image: url(../img/slot_bg.png);
-	border: 1px solid #d2d2d2;
 }
 
 section#character_list table {
@@ -518,7 +517,6 @@ section#character_list table {
 section#character_list table tr {
 	margin: 10px 0;
 	background-image: url(../img/slot_bg.png);
-	border: 1px solid #d2d2d2;
 }
 
 section#character_list table tr td {

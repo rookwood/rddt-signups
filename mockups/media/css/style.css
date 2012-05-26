@@ -683,8 +683,8 @@ section#events ul li.event_header div {
 }
 
 section#events ul li.event_numbers div {
+	width: 4em; margin-left: -2em; left: 50%;		/* horizontally center text within header */
 	text-align: center;
-	left: 360px;
 }
 
 section#events ul li.event_time div {

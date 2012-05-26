@@ -255,6 +255,7 @@ body {
 /* Special div used to push the container to the bottom of the page
 Used on pages with floating elements at the end of the page */
 .push {
+	position: fixed;
 	clear: both;
 	height: 40px;
 }
@@ -488,7 +489,7 @@ section#events ul.sort_dropdown li ul li a:hover, section#events ul.sort_dropdow
 END Sort STYLES */
 
 /* START Slot List, Builds, Dungeons, Character List STYLES
---------------------------------------- */
+----------------------------------------------------------------------------------- */
 section#slot_list ul, section#builds ul, section#dungeons ul,
 section#character_list table {
 	margin: 0 10px;
@@ -612,10 +613,94 @@ section#dungeons ul li.button a:hover, section#dungeons ul li.button a:active {
 	color: red;
 }
 
-/* ---------------------------------
+/* --------------------------------------------------------------------------
 END Slot List, Builds, Dungeons, Character List STYLES */
 
-/* START FIELDSET STUFF 
+/* START Event STYLES 
+---------------------------------*/
+section#events ul {
+	margin: 0; padding: 0;
+}
+section#events ul li {
+	display: block;
+}
+
+/* Closed events */
+section#events ul li.event_collapsed {
+	position: relative;
+	margin: 0 10px -83px;		/* allow subsequent events to overlap the footer image */
+	width: 735px;
+	height: 191px;				/* height combines bg with the footer */
+
+	background-image: url(../img/event_collapsed_bg.png), url(../img/event_footer.png);
+	background-position: 0 0, 0 95px;
+	background-repeat: no-repeat;
+}
+
+/* Opened events */
+section#events ul li.event_expanded {
+	position: relative;
+	margin: 0 10px;
+	width: 735px;
+	
+	background-image: url(../img/event_expanded_bg.png), url(../img/event_footer.png);
+	background-position: 0 0, 0 355px;
+	background-repeat: no-repeat;
+}
+
+/* Headers */
+section#events ul li ul div.header {
+	position: relative;
+	height: 100px;
+}
+section#events ul li ul li div {
+	position: absolute; top: 50%; 				/* vertically align text within the header */
+	height: 3em; margin-top: -1.5em;
+}
+
+section#events ul li.event_header, section#events ul li.event_numbers, 
+section#events ul li.event_time {
+	font-family: Cronos Pro Display;
+	color: #393939;
+}
+
+section#events ul li.event_header h4, section#events ul li.event_numbers h4,
+section#events ul li.event_time h4 {
+	margin: 0;
+	font-size: 1.6em;
+}
+
+section#events ul li.event_header h5, section#events ul li.event_numbers h5,
+section#events ul li.event_time h5 {
+	margin: 0;
+	font-size: 1.2em;
+	font-weight: normal;
+	text-transform: capitalize;
+}
+
+section#events ul li.event_header div {
+	left: 20px;
+}
+
+section#events ul li.event_numbers div {
+	text-align: center;
+	left: 360px;
+}
+
+section#events ul li.event_time div {
+	right: 10px;
+}
+
+/* Player count colors */
+section#events ul li.event_numbers span.player_count_empty {	color: #717171; }
+section#events ul li.event_numbers span.player_count_low {		color: #1c8300;	}
+section#events ul li.event_numbers span.player_count_high {		color: #bec022;	}
+section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
+
+/* ------------------------
+END Event STYLES */
+
+/* START Feildset STYLES
 --------------------------------------- */
 fieldset {
 	font-family: Cronos Pro Display;
@@ -742,7 +827,7 @@ fieldset a:hover, fieldset a:active {
 	color: #a49898;
 }
 /* ---------------------------------
-END FIELDSET STUFF */
+END Fieldset STYLES */
 
 
 /* ==|== media queries ======================================================

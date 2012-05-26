@@ -255,7 +255,6 @@ body {
 /* Special div used to push the container to the bottom of the page
 Used on pages with floating elements at the end of the page */
 .push {
-	position: fixed;
 	clear: both;
 	height: 40px;
 }
@@ -375,27 +374,26 @@ h3 {
 
 section {
 	display: block;
-	width: 100%;
 	clear: both;
 }
 
 /* START FILTER STYLES
 --------------------------------------- */
 section ul#filter {
-	margin: 0 16px;
-	padding: 0;
+	padding: 0; margin: 0 auto;
+	width: 724px;
 }
 
 section ul#filter li {
-	float: left;
 	display: block;
-	padding: 0 8px;
-	font-size: .9em;
+	float: left;
+	padding: 0 8px 20px;
 }
 
 section ul#filter li a:link, section ul#filter li a:visited {
 	text-decoration: none;
 	font-family: Helvetica World;
+	font-size: .9em;
 	font-weight: 700;
 	color: #313131;
 }
@@ -488,75 +486,58 @@ section#events ul.sort_dropdown li ul li a:hover, section#events ul.sort_dropdow
  /* -----------------------
 END Sort STYLES */
 
-/* START Slot List, Builds, Dungeons, Character List STYLES
+/* START Builds, Character list, Dungeons, Slot list STYLES
 ----------------------------------------------------------------------------------- */
-section#slot_list ul, section#builds ul, section#dungeons ul,
-section#character_list table {
-	margin: 0 10px;
-	padding: 0;
+section#builds ul, section#character_list ul,
+section#dungeons ul, section#slot_list ul {
+	padding: 0; margin: 0;
 }
 
-section#slot_list ul {
-	padding: 20px 0 0;
-}
-
-section#slot_list ul li, section#builds ul li, section#dungeons ul li {
-	display: block;
-	margin: 10px 0;
-	padding: 25px 30px 35px;
-	
-	width: 675px; 		/* width adjusted for padding */
-	height: 40px;		/* height adjusted for padding */
-
-	background-image: url(../img/slot_bg.png);
-}
-
-section#character_list table {
-	width: 735px;
-	background-image: url(../img/slot_bg.png);
-}
-
-section#character_list table tr td {
-	height: 100px; padding: 0;
-	vertical-align: middle;
-}
-
-section#builds ul li, section#dungeons ul li {
+/* Header background */
+section#builds ul li, section#character_list ul li, 
+section#dungeons ul li, section#slot_list ul li {
 	position: relative;
+	display: block;
+	margin: 0 10px 8px;
+	width: 735px;
+	height: 100px;
+	background-image: url(../img/slot_bg.png);
 }
 
-section#slot_list ul li span.name {
+/* Vertically align header elements */
+section#builds ul li div, section#character_list ul li div,
+section#dungeons ul li div, section#slot_list ul li div {
+	position: absolute; top: 50%;
+	height: 3em; margin-top: -1.5em;
+	left: 25px;
+}
+
+section#builds ul li div, section#dungeons ul li div {
+	height: 2.2em; margin-top: -1.1em;
+	left: 30px;
+}
+
+/* Primary title/element of the headers */
+section#builds ul li h4, section#character_list ul li h4,
+section#dungeons ul li h4, section#slot_list ul li h4 {
+	margin: 0;
 	font-family: Cronos Pro Display;
 	font-size: 1.6em;
-	display: block;
+	font-weight: normal;
 }
 
-section#slot_list ul li p {
-	margin: 0; padding: 0;
+/* Secondary element of the headers */
+section#builds ul li h5, section#character_list ul li h5,
+section#dungeons ul li h5, section#slot_list ul li h5 {
+	margin: 0;
 	font-family: Arial;
 	font-size: .8em;
+	font-weight: normal;
 }
 
-section#builds ul li span.name, section#dungeons ul li span.name {
-	position:absolute; top:50%; height:1.6em; margin-top:-.8em;
-	font-family: Cronos Pro Display;
-	font-size: 1.6em;
-}
-
-section#character_list table tr span.character_name {
-	padding-left:25px;
-	font-family: Cronos Pro Display;
-	font-size: 1.6em;
-	display: block;
-}
-
-section#character_list table tr td p {
-	margin: 0; padding: 0 0 0 25px;
-	font-family: Arial;
-	font-size: .8em;
-}
-
+/* Link styles */
 section#builds ul li a:link, section#builds ul li a:visited {
+	display: block;
 	position:absolute; top:50%; height:1.2em; margin-top:-.6em;
 	right: 35px;
 	font-family: Cronos Pro Display;
@@ -566,6 +547,7 @@ section#builds ul li a:link, section#builds ul li a:visited {
 }
 
 section#character_list a:link, section#character_list a:visited {
+	position: absolute; top: 50%; height: 1em; margin-top: -0.5em;
 	font-family: Cronos Pro Display;
 	font-size: 1.6em;
 	text-decoration: none;
@@ -577,14 +559,29 @@ section#character_list a:hover, section#character_list a:active {
 	color: #a49898;
 }
 
+/* Build arrow style */
 section#builds ul li a img {
 	vertical-align: top;
 	margin-left: 35px;
 }
 
+/* Character edit/delete styles */
+section#character_list a.link_edit {
+	right: 135px;
+}
+
+section#character_list a.link_delete {
+	right: 40px;
+}
+
+section#character_list a.link_delete:hover, section#character_list a.link_delete:active {
+	color: red;
+}
+
+/* New build/dundeon button styles */
 section#builds ul li.button, section#dungeons ul li.button {
 	float: right;
-	margin: 0; padding: 0;
+	padding: 0; margin: 0 10px;
 	width: 153px;
 	height: 44px;
 
@@ -596,7 +593,8 @@ section#builds ul li.button, section#dungeons ul li.button {
 
 section#builds ul li.button a:link, section#builds ul li.button a:visited, 
 section#dungeons ul li.button a:link, section#dungeons ul li.button a:visited {
-	position: absolute; top: 50%; height: 0.8em; margin: -0.4em auto 0;
+	position: absolute; 
+	top: 50%; height: 1em; margin: -0.5em auto 0;
 	right: 0;
 	width: 153px;
 
@@ -612,9 +610,8 @@ section#builds ul li.button a:hover, section#builds ul li.button a:active,
 section#dungeons ul li.button a:hover, section#dungeons ul li.button a:active {
 	color: red;
 }
-
 /* --------------------------------------------------------------------------
-END Slot List, Builds, Dungeons, Character List STYLES */
+END Builds, Character list, Dungeons, Slot list STYLES */
 
 /* START Event STYLES 
 ---------------------------------*/
@@ -640,12 +637,18 @@ section#events ul li.event_collapsed {
 /* Opened events */
 section#events ul li.event_expanded {
 	position: relative;
-	margin: 0 10px;
+	margin: 0 10px -83px;
 	width: 735px;
+	height: 451px;
 	
 	background-image: url(../img/event_expanded_bg.png), url(../img/event_footer.png);
 	background-position: 0 0, 0 355px;
 	background-repeat: no-repeat;
+}
+
+/* Event footer to fill negative margin on events */
+div.events_footer {
+	height: 83px;
 }
 
 /* Headers */
@@ -696,7 +699,6 @@ section#events ul li.event_numbers span.player_count_empty {	color: #717171; }
 section#events ul li.event_numbers span.player_count_low {		color: #1c8300;	}
 section#events ul li.event_numbers span.player_count_high {		color: #bec022;	}
 section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
-
 /* ------------------------
 END Event STYLES */
 

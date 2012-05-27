@@ -637,16 +637,38 @@ section#events ul li.event_collapsed {
 /* Opened events */
 section#events ul li.event_expanded {
 	position: relative;
-	margin: 0 10px -83px;
-	width: 735px;
-	height: 451px;
+	margin: 0 10px;
+	width: 733px;				/* width reduced for border */
 	
-	background-image: url(../img/event_expanded_bg.png), url(../img/event_footer.png);
-	background-position: 0 0, 0 355px;
-	background-repeat: no-repeat;
-}
+	border: 1px solid rgba(199,199,199,0.8);
+ 	background-image: url(../img/event_up_arrow.png), linear-gradient(bottom, rgb(235,235,235) 0%, rgb(255,255,255) 90%);
+	background-image: url(../img/event_up_arrow.png), -o-linear-gradient(bottom, rgb(235,235,235) 0%, rgb(255,255,255) 90%);
+	background-image: url(../img/event_up_arrow.png), -moz-linear-gradient(bottom, rgb(235,235,235) 0%, rgb(255,255,255) 90%);
+	background-image: url(../img/event_up_arrow.png), -webkit-linear-gradient(bottom, rgb(235,235,235) 0%, rgb(255,255,255) 90%);
+	background-image: url(../img/event_up_arrow.png), -ms-linear-gradient(bottom, rgb(235,235,235) 0%, rgb(255,255,255) 90%);
 
-/* Event footer to fill negative margin on events */
+	background-image: url(../img/event_up_arrow.png), -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(235,235,235)),
+		color-stop(0.9, rgb(255,255,255))
+	);
+	
+	background-repeat: no-repeat;
+	background-position: right bottom;
+ }
+
+ /* Red paint strokes below every event */
+ div.event_footer {
+	margin: -5px 10px -83px;
+	width: 735px;
+	height: 96px;
+	background-image: url(../img/event_footer.png);
+ }
+ 
+/*	Event footer at the very end of all events
+	fills negative margin on events */
 div.events_footer {
 	height: 83px;
 }
@@ -699,6 +721,117 @@ section#events ul li.event_numbers span.player_count_empty {	color: #717171; }
 section#events ul li.event_numbers span.player_count_low {		color: #1c8300;	}
 section#events ul li.event_numbers span.player_count_high {		color: #bec022;	}
 section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
+
+/* Tab styles */
+#tabs {
+	padding: 0 10px 10px;
+	background: none;
+	border: none;
+	width: 230px;
+}
+
+#tabs .ui-tabs-nav {
+	padding-left: 0px;
+	background: transparent;
+	border-width: 0px 0px 1px 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+	border-color: #d1d1d1;
+}
+
+#tabs .ui-state-default		{
+	height: 20px;
+	font-family: Helvetica World;
+	font-size:  0.8em;
+	font-weight: 700;
+	background: #404040;
+	border-color: #d1d1d1;
+}
+#tabs .ui-state-active {
+	background: white;
+}
+
+#tabs .ui-state-default a {
+	padding: 3px 10px;
+	color: white;
+}
+
+#tabs .ui-state-active a {
+	color: #393939;	
+}
+
+#tabs .ui-tabs-panel {
+	padding: 10px 7px;
+
+	border: 1px solid rgba(199,199,199,0.8);
+	border-top: none;
+	
+	background-image: linear-gradient(bottom, rgb(235,235,235) 0%, rgb(255,255,255) 90%);
+	background-image: -o-linear-gradient(bottom, rgb(235,235,235) 0%, rgb(255,255,255) 90%);
+	background-image: -moz-linear-gradient(bottom, rgb(235,235,235) 0%, rgb(255,255,255) 90%);
+	background-image: -webkit-linear-gradient(bottom, rgb(235,235,235) 0%, rgb(255,255,255) 90%);
+	background-image: -ms-linear-gradient(bottom, rgb(235,235,235) 0%, rgb(255,255,255) 90%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(235,235,235)),
+		color-stop(0.9, rgb(255,255,255))
+	);
+}
+
+#attendees.ui-tabs-panel li, #standby.ui-tabs-panel li {
+	padding: 9px 10px;
+	font-family: Arial;
+	font-size: 0.7em;
+	color: #393939;
+}
+
+/* Adds subtle alternating background */
+#attendees.ui-tabs-panel ul *:nth-child(2n+1),
+#standby.ui-tabs-panel ul *:nth-child(2n+1) {
+	border-radius: 5px;
+	background: #ececec;
+}
+
+/* Signup link styles */
+#attendees.ui-tabs-panel a:link, #attendees.ui-tabs-panel a:visited,
+#standby.ui-tabs-panel a:link, #standby.ui-tabs-panel a:visited {
+	display: block;
+	padding: 9px 10px;
+	font-family: Cronos Pro Display;
+	text-decoration: none;
+	font-size: 1.2em;
+	text-align: right;
+	
+	color: #313131;
+	background-color: #ececec;
+	border-radius: 5px;
+}
+
+#attendees.ui-tabs-panel a:hover, #attendees.ui-tabs-panel a:active,
+#standby.ui-tabs-panel a:hover, #standby.ui-tabs-panel a:active {
+	color: #a49898;
+}
+
+div#event_description {
+	position: absolute;
+	top: 6.5em; left: 47%; right: 20px;
+	
+	font-family: Helvetica World;
+}
+
+div#event_description h6 {
+	font-size: 0.8em;
+	margin: 0;
+}
+
+div#event_description p {
+	font-size: 0.8em;
+	margin: 0;
+}
 /* ------------------------
 END Event STYLES */
 

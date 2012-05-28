@@ -242,8 +242,7 @@ body {
 
 .container {
 	position: relative;
-	/* background-color: blue; */
-	background-image: url(../img/container_bg.png);
+	background: url(../img/container_bg_alt.png);
 	margin: 0 auto;
 
 	width: 756px;
@@ -260,7 +259,7 @@ Used on pages with floating elements at the end of the page */
 }
 
 .masthead {
-	background-image: url(../img/banner.png);
+	background-image: url(../img/banner_alt.png);
 	background-position: top center;
 	background-repeat: no-repeat;
 	

@@ -941,7 +941,9 @@ fieldset select {
 
 /* Style for buttons on forms */
 fieldset input[type=submit] {
+	padding-top: 5px;
 	font-family: Adobe caslon Pro;
+	font-weight: 700;
 	font-size: 1em;
 	color: white;
 

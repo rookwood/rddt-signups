@@ -7,7 +7,7 @@ class Abstract_View_Page extends Abstract_View_Layout {
 	/**
 	 * @var Page title
 	 */
-	public $title = 'Default title that someone forgot to change!';
+	public $title = 'RedditGW Events';
 	
 	/**
 	 * @var  object  Current user

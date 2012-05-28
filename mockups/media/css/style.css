@@ -577,8 +577,10 @@ section#character_list a.link_delete:hover, section#character_list a.link_delete
 	color: red;
 }
 
-/* New build/dundeon button styles */
-section#builds ul li.button, section#dungeons ul li.button {
+/* New build/dungeon/event button styles */
+section#builds ul li.button, 
+section#dungeons ul li.button,
+section#events ul li.button {
 	float: right;
 	padding: 0; margin: 0 10px;
 	width: 153px;
@@ -591,7 +593,8 @@ section#builds ul li.button, section#dungeons ul li.button {
 }
 
 section#builds ul li.button a:link, section#builds ul li.button a:visited, 
-section#dungeons ul li.button a:link, section#dungeons ul li.button a:visited {
+section#dungeons ul li.button a:link, section#dungeons ul li.button a:visited,
+section#events ul li.button a:link, section#events ul li.button a:visited {
 	position: absolute; 
 	top: 50%; height: 1em; margin: -0.5em auto 0;
 	right: 0;
@@ -606,7 +609,8 @@ section#dungeons ul li.button a:link, section#dungeons ul li.button a:visited {
 }
 
 section#builds ul li.button a:hover, section#builds ul li.button a:active,
-section#dungeons ul li.button a:hover, section#dungeons ul li.button a:active {
+section#dungeons ul li.button a:hover, section#dungeons ul li.button a:active,
+section#events ul li.button a:hover, section#events ul li.button a:active {
 	color: red;
 }
 /* --------------------------------------------------------------------------
@@ -618,6 +622,7 @@ section#events ul {
 	margin: 0; padding: 0;
 }
 section#events ul li {
+	position: relative;
 	display: block;
 }
 
@@ -666,7 +671,7 @@ section#events ul li.event_expanded {
 	background-image: url(../img/event_footer.png);
  }
  
-/*	Event footer at the very end of all events
+/*	Event footer at the bottom of the list of events
 	fills negative margin on events */
 div.events_footer {
 	height: 83px;
@@ -675,6 +680,7 @@ div.events_footer {
 /* Headers */
 section#events ul li ul div.header {
 	position: relative;
+	top: 50px;									/* position the div in the middle of the header */
 	height: 100px;
 }
 section#events ul li ul li div {
@@ -940,7 +946,7 @@ fieldset input[type=submit] {
 	color: white;
 
 	border: none;
-	background-image: url(../img/button.png);
+	background: url(../img/button.png);		/* use background instead of -image to remove transparency issue */
 	width: 121px;
 	height: 54px;
 }

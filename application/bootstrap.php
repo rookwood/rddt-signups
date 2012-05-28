@@ -82,7 +82,7 @@ Kohana::$environment = Kohana::TESTING;
  * - boolean  caching     enable or disable internal caching                 FALSE
  */
 Kohana::init(array(
-	'base_url'   => '/redditgw/',
+	'base_url'   => '/',
 	'index_file' => '',
 ));
 

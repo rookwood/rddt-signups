@@ -498,9 +498,24 @@ section#dungeons ul li, section#slot_list ul li {
 	position: relative;
 	display: block;
 	margin: 0 10px 8px;
-	width: 735px;
-	height: 100px;
-	background-image: url(../img/slot_bg.png);
+
+	width: 733px;				/* width reduced for border */
+	height: 98px;				/* height reduced for border */
+	
+	border: 1px solid rgba(199,199,199,0.8);
+	background-image: linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(236,236,236)),
+		color-stop(1, rgb(255,255,255))
+	);
 }
 
 /* Vertically align header elements */
@@ -628,35 +643,46 @@ section#events ul li {
 
 /* Closed events */
 section#events ul li.event_collapsed {
-	position: relative;
-	margin: 0 10px -83px;		/* allow subsequent events to overlap the footer image */
-	width: 735px;
-	height: 191px;				/* height combines bg with the footer */
-
-	background-image: url(../img/event_collapsed_bg.png), url(../img/event_footer.png);
-	background-position: 0 0, 0 95px;
-	background-repeat: no-repeat;
-}
-
-/* Opened events */
-section#events ul li.event_expanded {
-	position: relative;
 	margin: 0 10px;
 	width: 733px;				/* width reduced for border */
 	
 	border: 1px solid rgba(199,199,199,0.8);
- 	background-image: url(../img/event_up_arrow.png), linear-gradient(bottom, rgb(235,235,235) 0%, rgb(255,255,255) 90%);
-	background-image: url(../img/event_up_arrow.png), -o-linear-gradient(bottom, rgb(235,235,235) 0%, rgb(255,255,255) 90%);
-	background-image: url(../img/event_up_arrow.png), -moz-linear-gradient(bottom, rgb(235,235,235) 0%, rgb(255,255,255) 90%);
-	background-image: url(../img/event_up_arrow.png), -webkit-linear-gradient(bottom, rgb(235,235,235) 0%, rgb(255,255,255) 90%);
-	background-image: url(../img/event_up_arrow.png), -ms-linear-gradient(bottom, rgb(235,235,235) 0%, rgb(255,255,255) 90%);
+ 	background-image: url(../img/event_down_arrow.png), linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: url(../img/event_down_arrow.png), -o-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: url(../img/event_down_arrow.png), -moz-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: url(../img/event_down_arrow.png), -webkit-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: url(../img/event_down_arrow.png), -ms-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+
+	background-image: url(../img/event_down_arrow.png), -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(236,236,236)),
+		color-stop(1, rgb(255,255,255))
+	);
+	
+	background-repeat: no-repeat;
+	background-position: right bottom;
+}
+
+/* Opened events */
+section#events ul li.event_expanded {
+	margin: 0 10px;
+	width: 733px;				/* width reduced for border */
+	
+	border: 1px solid rgba(199,199,199,0.8);
+ 	background-image: url(../img/event_up_arrow.png), linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: url(../img/event_up_arrow.png), -o-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: url(../img/event_up_arrow.png), -moz-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: url(../img/event_up_arrow.png), -webkit-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: url(../img/event_up_arrow.png), -ms-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
 
 	background-image: url(../img/event_up_arrow.png), -webkit-gradient(
 		linear,
 		left bottom,
 		left top,
-		color-stop(0, rgb(235,235,235)),
-		color-stop(0.9, rgb(255,255,255))
+		color-stop(0, rgb(236,236,236)),
+		color-stop(1, rgb(255,255,255))
 	);
 	
 	background-repeat: no-repeat;
@@ -772,18 +798,18 @@ section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
 	border: 1px solid rgba(199,199,199,0.8);
 	border-top: none;
 	
-	background-image: linear-gradient(bottom, rgb(235,235,235) 0%, rgb(255,255,255) 90%);
-	background-image: -o-linear-gradient(bottom, rgb(235,235,235) 0%, rgb(255,255,255) 90%);
-	background-image: -moz-linear-gradient(bottom, rgb(235,235,235) 0%, rgb(255,255,255) 90%);
-	background-image: -webkit-linear-gradient(bottom, rgb(235,235,235) 0%, rgb(255,255,255) 90%);
-	background-image: -ms-linear-gradient(bottom, rgb(235,235,235) 0%, rgb(255,255,255) 90%);
+	background-image: linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
 
 	background-image: -webkit-gradient(
 		linear,
 		left bottom,
 		left top,
-		color-stop(0, rgb(235,235,235)),
-		color-stop(0.9, rgb(255,255,255))
+		color-stop(0, rgb(236,236,236)),
+		color-stop(1, rgb(255,255,255))
 	);
 }
 

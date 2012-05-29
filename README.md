@@ -18,19 +18,14 @@ This is still a work in progress...
 * Event create form styled
 * Events page styled
 * Event signup form styled
+* Refactored background images to CSS gradients
+* Changed banner / background /container images
+* Create new event button added to bottom of events page
 
 ### To do
-* Refactor background images to CSS gradients
-* Move new dungeon/build/slot buttons to the top of the page
-* Move project to / from /redditgw/
+* Move new dungeon/build/slot/event buttons to the top of the page?
 
 ### Other features
 * Edit Profile mockup page?
 * Comment functionality on event details (popup on hover?)
-* Create new event button needs to be somewhere (dropdown menu under events on nav bar?)
-* Edit event button needs to be somewhere on the event if you're the owner of the event
-
-### Other ideas...
-* Change banner image?
-* Change background image?
-* Change container opacity to ~70%
+* Edit event button needs to be somewhere on the event if you're the owner of the event?

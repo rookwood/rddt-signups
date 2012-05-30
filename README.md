@@ -22,10 +22,10 @@ This is still a work in progress...
 * Changed banner / background /container images
 * Create new event button added to bottom of events page
 * Edit Profile page styled
+* Comments popup on hover on event details
 
 ### To do
 * Port mockups to mustache templates
 * Edit event button needs to be somewhere on the event if you're the owner of the event?
 * Move new dungeon/build/slot/event buttons to the top of the page?
-* Comment functionality on event details (popup on hover?)
 

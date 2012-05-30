@@ -854,7 +854,7 @@ section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
 	color: rgba(0,0,0,0);
 }
 
-/* Comment box */
+/* User comment styles */
 #attendees.ui-tabs-panel ul ul,
 #standby.ui-tabs-panel ul ul {
 	position: absolute;
@@ -884,19 +884,19 @@ section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
 	height: 54px;
 	padding: 5px 10px 0 15px;
 	
-	overflow: hidden;
+	overflow: hidden;			/* cut off long comments */
 	color: white;
-}
-
-#attendees.ui-tabs-panel li div.role,
-#standby.ui-tabs-panel li div.role {
-	padding: 9px 10px;
 }
 
 /* Padding the role text if a profession icon is visible */
 #attendees.ui-tabs-panel li[class] div.role,
 #standby.ui-tabs-panel li[class] div.role {
 	padding-left: 30px;
+}
+
+#attendees.ui-tabs-panel li div.role,
+#standby.ui-tabs-panel li div.role {
+	padding: 9px 10px;
 }
 
 /* Signup link styles */
@@ -927,13 +927,20 @@ div#event_description {
 }
 
 div#event_description h6 {
-	font-size: 0.8em;
 	margin: 0;
+	font-size: 0.9em;
 }
 
 div#event_description p {
-	font-size: 0.8em;
 	margin: 0;
+	height: 5em;
+	overflow: hidden;			/* cut off long descriptions */
+	
+	font-size: 0.8em;
+}
+
+/* Edit and cancel event links */
+a.edit_event, a.cancel_event {
 }
 /* ------------------------
 END Event STYLES */

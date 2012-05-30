@@ -274,7 +274,7 @@ Used on pages with floating elements at the end of the page */
 /* Top navigation menu with dropdown
 ---------------------------------------------------- */
 nav ul {
-	float: left;
+	display: block;
 	width: 100%;
 	height: 45px;
 
@@ -408,13 +408,13 @@ END FILTER STYLES */
 /* START Sort STYLES
 --------------------------- */
 div.sort_selector {
-	display:block;
 	padding: 10px;
-	height: 38px;			/* sizing the entire sort select menu */
-	line-height: 2.5em;		/* vertical alignment for label */
+	height: 38px;			/* sizing the select dropdown button */
+	line-height: 2.5em;		/* vertical alignment for "Sort By" label */
 	text-transform: capitalize;
 }
 
+/* Sort By label */
 section#events div.sort_label {
 	float: right;
 	margin-right: 14px;
@@ -425,14 +425,11 @@ section#events div.sort_label {
 	color: #393939;
 }
 
+
 section#events ul.sort_dropdown {
 	float: right;
 	right: -11px;
 	padding: 0; margin: 0;
-}
-
-section#events ul.sort_dropdown li.sort_selected {
-	display: block;
 }
 
 section#events li.sort_selected a:link, section#events li.sort_selected a:visited {
@@ -452,13 +449,13 @@ section#events li.sort_selected a:link, section#events li.sort_selected a:visite
 
 section#events ul.sort_dropdown li ul {
 	position: absolute;
-	display: none;
+	left: -9999px;
 }
 
 section#events ul.sort_dropdown li:hover ul {
-	display: block;
+	left: -3px;
 	z-index: 800;
-	margin: 0 0 0 -3px; padding: 6px 0 0 0;
+	padding: 6px 0 0 0;
 	width: 192px;
 	height: 95px;			/* height adjusted for padding */
 
@@ -487,7 +484,7 @@ section#events ul.sort_dropdown li ul li a:hover, section#events ul.sort_dropdow
  /* -----------------------
 END Sort STYLES */
 
-/* START Builds, Character list, Dungeons, Slot list STYLES
+/* START Builds, Character list, Dungeons, Slot list, Event button STYLES
 ----------------------------------------------------------------------------------- */
 section#builds ul, section#character_list ul,
 section#dungeons ul, section#slot_list ul {
@@ -631,7 +628,7 @@ section#events ul li.button a:hover, section#events ul li.button a:active {
 	color: red;
 }
 /* --------------------------------------------------------------------------
-END Builds, Character list, Dungeons, Slot list STYLES */
+END Builds, Character list, Dungeons, Slot list, Event button STYLES */
 
 /* START Event STYLES 
 ---------------------------------*/
@@ -711,7 +708,7 @@ section#events ul li ul div.header {
 	top: 50px;									/* position the div in the middle of the header */
 	height: 100px;
 }
-section#events ul li ul li div {
+section#events ul li ul div.header li div {
 	position: absolute; top: 50%; 				/* vertically align text within the header */
 	height: 3em; margin-top: -1.5em;
 }
@@ -815,29 +812,102 @@ section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
 	);
 }
 
-#attendees.ui-tabs-panel li, #standby.ui-tabs-panel li {
-	padding: 9px 10px;
+#attendees.ui-tabs-panel li,
+#standby.ui-tabs-panel li {
+	position: relative;
+	background-repeat: no-repeat;
+	background-position: 5px 40px;
+
 	font-family: Arial;
 	font-size: 0.7em;
+	color: #a9a9a9;
+}
+
+/* Profession icons */
+#tabs.ui-tabs li.assassin {	background-image: url(../img/prof_assassin_small.png);	}
+#tabs.ui-tabs li.ritualist {	background-image: url(../img/prof_ritualist_small.png);	}
+#tabs.ui-tabs li.dervish {	background-image: url(../img/prof_dervish_small.png);	}
+#tabs.ui-tabs li.paragon {	background-image: url(../img/prof_paragon_small.png);	}
+#tabs.ui-tabs li.elementalist {	background-image: url(../img/prof_elementalist_small.png);	}
+#tabs.ui-tabs li.mesmer {	background-image: url(../img/prof_mesmer_small.png);	}
+#tabs.ui-tabs li.monk {		background-image: url(../img/prof_monk_small.png);		}
+#tabs.ui-tabs li.necromancer {	background-image: url(../img/prof_necromancer_small.png);	}
+#tabs.ui-tabs li.ranger {	background-image: url(../img/prof_ranger_small.png);		}
+#tabs.ui-tabs li.warrior {	background-image: url(../img/prof_warrior_small.png);	}
+
+#attendees.ui-tabs-panel li div.name,
+#standby.ui-tabs-panel li div.name {
+	padding: 9px 10px;
+	border-radius: 5px;
+	background-color: #ececec;
 	color: #393939;
 }
 
-/* Adds subtle alternating background */
-#attendees.ui-tabs-panel ul *:nth-child(2n+1),
-#standby.ui-tabs-panel ul *:nth-child(2n+1) {
-	border-radius: 5px;
-	background: #ececec;
+/* Comment icon */
+#attendees.ui-tabs-panel li div.name a,
+#standby.ui-tabs-panel li div.name a {
+	float: right;
+	width: 16px; height: 16px;
+	padding: 0;
+	
+	background-image: url(../img/comment_icon.png);
+	color: rgba(0,0,0,0);
+}
+
+/* Comment box */
+#attendees.ui-tabs-panel ul ul,
+#standby.ui-tabs-panel ul ul {
+	position: absolute;
+	left: -9999px;
+	list-style: none;
+}
+
+#attendees.ui-tabs-panel li div:hover ul,
+#standby.ui-tabs-panel li div:hover ul {
+	z-index: 5;		/* put the comment on top of the event description */
+	top: -4px;
+	left: 175px;
+}
+
+#attendees.ui-tabs-panel li div ul li,
+#standby.ui-tabs-panel li div ul li {
+	position: absolute;
+	padding: 0;
+	width: 202px;
+	height: 66px;
+	background-image: url(../img/comment_bg.png);
+	background-position: top left;
+}
+
+#attendees.ui-tabs-panel li div.comment,
+#standby.ui-tabs-panel li div.comment {
+	height: 54px;
+	padding: 5px 10px 0 15px;
+	
+	overflow: hidden;
+	color: white;
+}
+
+#attendees.ui-tabs-panel li div.role,
+#standby.ui-tabs-panel li div.role {
+	padding: 9px 10px;
+}
+
+/* Padding the role text if a profession icon is visible */
+#attendees.ui-tabs-panel li[class] div.role,
+#standby.ui-tabs-panel li[class] div.role {
+	padding-left: 30px;
 }
 
 /* Signup link styles */
 #attendees.ui-tabs-panel a:link, #attendees.ui-tabs-panel a:visited,
 #standby.ui-tabs-panel a:link, #standby.ui-tabs-panel a:visited {
 	display: block;
-	padding: 9px 10px;
+	padding: 9px 0;
 	font-family: Cronos Pro Display;
 	text-decoration: none;
 	font-size: 1.2em;
-	text-align: right;
+	text-align: center;
 	
 	color: #313131;
 	background-color: #ececec;

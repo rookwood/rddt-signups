@@ -23,9 +23,9 @@ This is still a work in progress...
 * Create new event button added to bottom of events page
 
 ### To do
-* Move new dungeon/build/slot/event buttons to the top of the page?
+* Edit Profile mockup page style needs to be tweaked
+* Edit event button needs to be somewhere on the event if you're the owner of the event?
 
 ### Other features
-* Edit Profile mockup page?
+* Move new dungeon/build/slot/event buttons to the top of the page?
 * Comment functionality on event details (popup on hover?)
-* Edit event button needs to be somewhere on the event if you're the owner of the event?

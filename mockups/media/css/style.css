@@ -953,13 +953,17 @@ fieldset input[type=date], fieldset input[type=time] {
 	display: block;
 	margin: 10px 0;
 
-	width: 231px;			/* reduced width by 10px due to padding */
+	width: 221px;			/* reduced width by 20px due to padding */
 	height: 30px;			/* reduced height by 2 px due to border */
-	padding-left: 10px;		/* indent text inside box */
+	padding: 0 10px;		/* indent text inside box */
 
 	background-image: url(../img/form_input_bg.png);
 	background-repeat: no-repeat;
 	border: solid 1px #b2b2b2;
+}
+
+fieldset input[disabled=disabled] {
+	opacity: 0.4;
 }
 
 /* Style textarea boxes on forms */

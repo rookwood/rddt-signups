@@ -981,7 +981,7 @@ fieldset select {
 
 	width: 243px;
 	height: 36px;
-	padding-left: 10px;		/* indent text inside box */
+	padding: 0 30px 0 10px;		/* indent text inside box */
 
 	background: transparent url(../img/form_select_bg.png) no-repeat;
 	border: none;

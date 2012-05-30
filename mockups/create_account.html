@@ -10,7 +10,8 @@
 	<title>[rddt]Events</title>
 	<meta name="description" content="">
 
-	<link rel="stylesheet" href="media/css/style.css">
+	<link type="text/css" href="media/css/smoothness/jquery-ui-1.8.20.custom.css" rel="stylesheet" />
+	<link type="text/css" href="media/css/style.css" rel="stylesheet"  />
 
 	<!-- All JavaScript at the bottom, except this Modernizr build.
 	Modernizr enables HTML5 elements & feature detects for optimal performance.-->
@@ -84,22 +85,22 @@
 							<li>
 								<label for="user_timezone">Time Zone</label>
 								<select name="user[timezone]" id="user_timezone">
-									<option value="{{value}}">Time zone list...</option>
-									<option value="{{value}}">Time zone list...</option>
-									<option value="{{value}}">Time zone list...</option>
-									<option value="{{value}}">Time zone list...</option>
-									<option value="{{value}}">Time zone list...</option>
-									<option value="{{value}}">Time zone list...</option>
-									<option value="{{value}}">Time zone list...</option>
-									<option value="{{value}}">Time zone list...</option>
-									<option value="{{value}}">Time zone list...</option>
-									<option value="{{value}}">Time zone list...</option>
-									<option value="{{value}}">Time zone list...</option>
-									<option value="{{value}}">Time zone list...</option>
-									<option value="{{value}}">Time zone list...</option>
-									<option value="{{value}}">Time zone list...</option>
-									<option value="{{value}}">Time zone list...</option>
-									<option value="{{value}}">Time zone list...</option>
+									<option value="Pacific/Midway">(GMT-11:00) Midway Island, Samoa</option>
+									<option value="America/Adak">(GMT-10:00) Hawaii-Aleutian</option>
+									<option value="Etc/GMT+10">(GMT-10:00) Hawaii</option>
+									<option value="Pacific/Marquesas">(GMT-09:30) Marquesas Islands</option>
+									<option value="Pacific/Gambier">(GMT-09:00) Gambier Islands</option>
+									<option value="America/Anchorage">(GMT-09:00) Alaska</option>
+									<option value="America/Ensenada">(GMT-08:00) Tijuana, Baja California</option>
+									<option value="Etc/GMT+8">(GMT-08:00) Pitcairn Islands</option>
+									<option value="America/Los_Angeles">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+									<option value="America/Denver">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
+									<option value="America/Chihuahua">(GMT-07:00) Chihuahua, La Paz, Mazatlan</option>
+									<option value="America/Dawson_Creek">(GMT-07:00) Arizona</option>
+									<option value="America/Belize">(GMT-06:00) Saskatchewan, Central America</option>
+									<option value="America/Cancun">(GMT-06:00) Guadalajara, Mexico City, Monterrey</option>
+									<option value="Chile/EasterIsland">(GMT-06:00) Easter Island</option>
+									<option value="America/Chicago" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
 								</select>
 							</li>
 							<li>
@@ -132,6 +133,13 @@
 			var FullscreenrOptions = {  width: 1280, height: 1200, bgID: '#bgimg' };
 			// This will activate the full screen background!
 			jQuery.fn.fullscreenr(FullscreenrOptions);
+
+			// Calendar popup for picking date
+			$('input[type=date]').datepicker({
+				changeYear : true,
+				dateFormat : 'yy-mm-dd',
+				yearRange  : '1950:+2',
+			});
 		//-->
 	</script>
 

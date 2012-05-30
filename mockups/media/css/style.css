@@ -273,26 +273,20 @@ Used on pages with floating elements at the end of the page */
 
 /* Top navigation menu with dropdown
 ---------------------------------------------------- */
-nav {
-	background-image: url(../img/menubg.png);
-	background-repeat: no-repeat;
-	
+nav ul {
+	float: left;
 	width: 100%;
 	height: 45px;
-	padding-left: 1px;
-}
 
-nav ul {
-	position: relative;
-}
-
-nav ul, nav li {
-	display: block;
-	padding: 0;
+	background-image: url(../img/menubg.png);
+	background-repeat: no-repeat;
+	list-style: none;
 }
 
 nav ul li {
+	position: relative;
 	float: left;
+	padding: 0 0 0 1px;
 }
 
 nav ul li a:link, nav ul li a:visited {
@@ -306,11 +300,11 @@ nav ul li a:link, nav ul li a:visited {
 	height: 33px;		/* height adjusted for padding */
 	padding: 12px 15px 0 15px;
 
-	color: white;
-	text-decoration: none;
 	font-family: Helvetica World;
 	font-weight: 700;
 	font-size:.8em;
+	text-decoration: none;
+	color: white;
 }
 
 nav ul li a:hover, nav ul li a:active {
@@ -319,46 +313,32 @@ nav ul li a:hover, nav ul li a:active {
 
 /* START CSS for dropdown menu
 ----------------------------------------------- */
-nav ul li ul {
+nav ul ul {
 	position: absolute;
-	display: none;
+	left: -9999px;		/* Hide off-screen when not needed (this is more accessible than display:none;) */
+	list-style: none;
 }
 
 /* Dropdown under nested list */
 nav ul li:hover ul {
-	display:block;
-
-	/* background-color:red; */
-	background-image: url(../img/dropdown_bg.png);
-	background-repeat: no-repeat;
-	
 	width:141px;
 	height:141px;	/* height adjusted for padding-top */
 	padding-top:12px;
 	left: -6px;
 	z-index:900;
-}
 
-nav ul li:hover ul li {
-	clear:left;
+	/* background-color:red; */
+	background-image: url(../img/dropdown_bg.png);
 }
 
 nav ul li ul li a:link, nav ul li ul li a:visited {
-	clear:left;
-	position:relative;
-	
 	width:126px;
 	height:24px;
 	padding:10px 0 0 15px;
 	
-	z-index:1000;
-	
 /* 	border: 1px dotted red; */
 /* 	background-color: rgba(0,0,255,.2); */
 	background-image: none;
-}
-
-nav ul li ul li a:hover, nav ul li ul li a:active {
 }
 /* --------------------------------------
 END CSS for dropdown menu */

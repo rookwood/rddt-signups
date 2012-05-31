@@ -115,8 +115,7 @@
 									<h5><time class="time" datetime="2012-04-20T20:00+00:00">9:00 PM GMT</time></h5>
 								</div>
 							</li>
-						</ul> <!-- end of event header -->
-						
+						</ul>
 						<section id="event_details">
 							<div id="tabs">
 								<ul>
@@ -169,16 +168,29 @@
 								</div>
 								<div id="standby">
 									<ul>
+										<!-- <li class="ritualist">
+											<div class="name">
+												Rookwood Shuffles 
+												<a href="#">?</a>
+												<ul>
+													<li>
+														<div class="comment">Lorem ipsum dolor sit amet, fugere rediit est Apollonius in modo invenit. Ego Pentapolim Cyrenaeorum tertia veni ponens quo est se sed esse haec. Euro in deinde vero quo, pentapolitanas Cyrenensi reversus civitatis ne velocitate mare demonstrantibus. Dionysiadis eum ego dum autem nobiscum paulo. Duis ille eum est se sed esse ait mea in lucem exempli paupers coniunx in.</div>
+													</li>
+												</ul>
+											</div>
+											<div class="role">DWG (Frostway)</div>
+										</li> -->
 									</ul>
-									<a href="#">Withdraw from event</a>
+									<a class="withdraw" href="#">Withdraw from event</a>
 								</div>
 							</div> <!-- end tabs -->
 							<div id="event_description">
 								<h6>Event title</h6>
 								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+								<a class="edit_event" href="#">Edit event</a>
+								<a class="cancel_event" href="#">Cancel event</a>
 							</div>
 						</section><!-- end event details section -->
-						
 					</li><!-- end of this event -->
 					<div class="event_footer"></div>
 					
@@ -259,6 +271,7 @@
 			$(function() {
 				$( "#tabs" ).tabs();
 			});
+			
 		//-->
 	</script>
 

@@ -634,10 +634,10 @@ END Builds, Character list, Dungeons, Slot list, Event button STYLES */
 ---------------------------------*/
 section#events ul {
 	margin: 0; padding: 0;
+	list-style: none;
 }
 section#events ul li {
-	position: relative;
-	display: block;
+	position: relative;			/* positioning for event detail elements */
 }
 
 /* Closed events */
@@ -666,6 +666,7 @@ section#events ul li.event_collapsed {
 
 /* Opened events */
 section#events ul li.event_expanded {
+	float: left;					/* float for all exanded event elements */
 	margin: 0 10px;
 	width: 733px;				/* width reduced for border */
 	
@@ -690,7 +691,8 @@ section#events ul li.event_expanded {
 
  /* Red paint strokes below every event */
  div.event_footer {
-	margin: -5px 10px -83px;
+	clear: both;					/* clear floating event detail elements */
+	margin: -5px 10px -83px;		/* negative margins allow overlap of footer */
 	width: 735px;
 	height: 96px;
 	background-image: url(../img/event_footer.png);
@@ -703,29 +705,29 @@ div.events_footer {
 }
 
 /* Headers */
-section#events ul li ul div.header {
+section#events ul li ul.header {
 	position: relative;
 	top: 50px;									/* position the div in the middle of the header */
 	height: 100px;
 }
-section#events ul li ul div.header li div {
+section#events ul li ul.header li div {
 	position: absolute; top: 50%; 				/* vertically align text within the header */
 	height: 3em; margin-top: -1.5em;
 }
 
-section#events ul li.event_header, section#events ul li.event_numbers, 
+section#events ul li.event_title, section#events ul li.event_numbers, 
 section#events ul li.event_time {
 	font-family: Cronos Pro Display;
 	color: #393939;
 }
 
-section#events ul li.event_header h4, section#events ul li.event_numbers h4,
+section#events ul li.event_title h4, section#events ul li.event_numbers h4,
 section#events ul li.event_time h4 {
 	margin: 0;
 	font-size: 1.6em;
 }
 
-section#events ul li.event_header h5, section#events ul li.event_numbers h5,
+section#events ul li.event_title h5, section#events ul li.event_numbers h5,
 section#events ul li.event_time h5 {
 	margin: 0;
 	font-size: 1.2em;
@@ -733,7 +735,7 @@ section#events ul li.event_time h5 {
 	text-transform: capitalize;
 }
 
-section#events ul li.event_header div {
+section#events ul li.event_title div {
 	left: 20px;
 }
 
@@ -752,8 +754,10 @@ section#events ul li.event_numbers span.player_count_low {		color: #1c8300;	}
 section#events ul li.event_numbers span.player_count_high {		color: #bec022;	}
 section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
 
-/* Tab styles */
+/* START Tab styles
+=============== */
 #tabs {
+	float: left;
 	padding: 0 10px 10px;
 	background: none;
 	border: none;
@@ -814,7 +818,6 @@ section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
 
 #attendees.ui-tabs-panel li,
 #standby.ui-tabs-panel li {
-	position: relative;
 	background-repeat: no-repeat;
 	background-position: 5px 40px;
 
@@ -899,7 +902,7 @@ section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
 	padding: 9px 10px;
 }
 
-/* Signup link styles */
+/* Signup / Withdraw link styles */
 #attendees.ui-tabs-panel a:link, #attendees.ui-tabs-panel a:visited,
 #standby.ui-tabs-panel a:link, #standby.ui-tabs-panel a:visited {
 	display: block;
@@ -919,9 +922,17 @@ section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
 	color: #a49898;
 }
 
+#attendees.ui-tabs-panel a.withdraw:hover, #attendees.ui-tabs-panel a.withdraw:active,
+#standby.ui-tabs-panel a.withdraw:hover, #standby.ui-tabs-panel a.withdraw:active {
+	color: red;
+}
+/* ===========
+END Tab styles */
+
 div#event_description {
-	position: absolute;
-	top: 6.5em; left: 47%; right: 20px;
+	position: relative;
+	float: right; right: 20px;
+	width: 51%;
 	
 	font-family: Helvetica World;
 }
@@ -933,15 +944,32 @@ div#event_description h6 {
 
 div#event_description p {
 	margin: 0;
-	height: 5em;
-	overflow: hidden;			/* cut off long descriptions */
-	
+	padding-bottom: 10px;
 	font-size: 0.8em;
 }
 
 /* Edit and cancel event links */
-a.edit_event, a.cancel_event {
+div#event_description a.edit_event, 
+div#event_description a.cancel_event {
+	display: inline-block;
+	padding: 0 10px 10px 0;
+	text-decoration: none;
+	
+	font-family: Cronos Pro Display;
+	font-size: 1.2em;
+	color: #393939;
 }
+
+div#event_description a.edit_event:hover,
+div#event_description a.edit_event:active {
+	color: #a49898;
+}
+
+div#event_description a.cancel_event:hover,
+div#event_description a.cancel_event:active {
+	color: red;
+}
+
 /* ------------------------
 END Event STYLES */
 

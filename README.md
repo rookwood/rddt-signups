@@ -3,6 +3,15 @@
 
 This is still a work in progress...
 
+### To do
+* Builds page needs edit/create event links
+* Slots page needs edit link
+* Dungeons page needs edit/remove links
+* Edit build/slot/dungeon/character pages?
+* Port mockups to mustache templates
+* Move new dungeon/build/slot/event buttons to the top of the page?
+* Fix text/number alignment on sort by dropdown menu?
+
 ### Features completed
 * Background now resized using jquery plugin
 * Banner positioning fixed with a hack
@@ -23,9 +32,5 @@ This is still a work in progress...
 * Create new event button added to bottom of events page
 * Edit Profile page styled
 * Comments popup on hover on event details
-
-### To do
-* Port mockups to mustache templates
-* Edit event button needs to be somewhere on the event if you're the owner of the event?
-* Move new dungeon/build/slot/event buttons to the top of the page?
+* Edit/cancel event links added
 

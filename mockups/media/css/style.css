@@ -523,6 +523,7 @@ section#dungeons ul li div, section#slot_list ul li div {
 	position: absolute; top: 50%;
 	height: 3em; margin-top: -1.5em;
 	left: 25px;
+	width: 100%;
 }
 
 section#builds ul li div, section#dungeons ul li div {
@@ -542,6 +543,7 @@ section#dungeons ul li h4, section#slot_list ul li h4 {
 /* Secondary element of the headers */
 section#builds ul li h5, section#character_list ul li h5,
 section#dungeons ul li h5, section#slot_list ul li h5 {
+	width: 80%;
 	margin: 0;
 	font-family: Arial;
 	font-size: .8em;
@@ -549,45 +551,41 @@ section#dungeons ul li h5, section#slot_list ul li h5 {
 }
 
 /* Link styles */
-section#builds ul li a:link, section#builds ul li a:visited {
-	display: block;
-	position:absolute; top:50%; height:1.2em; margin-top:-.6em;
-	right: 35px;
+section#builds ul li a, section#slot_list ul li a {
+	position:relative; top:50%; height: 1.2em; margin-top: -0.6em;
+	float: right; margin-right: 35px;
+	
 	font-family: Cronos Pro Display;
 	font-size: 1.2em;
 	text-decoration: none;
 	color: #313131;
 }
 
-section#character_list a:link, section#character_list a:visited {
-	position: absolute; top: 50%; height: 1em; margin-top: -0.5em;
+section#character_list a, section#dungeons a {
+	position:relative; top:50%; height: 1em; margin-top: -0.5em;
+	float: right; margin-right: 40px;
 	font-family: Cronos Pro Display;
 	font-size: 1.6em;
 	text-decoration: none;
 	color: #313131;
 }
 
-section#builds ul li a:hover, section#builds ul li a:active,
-section#character_list a:hover, section#character_list a:active {
-	color: #a49898;
-}
-
-/* Build arrow style */
+/* Builds link arrow style */
 section#builds ul li a img {
 	vertical-align: top;
 	margin-left: 35px;
 }
 
-/* Character edit/delete styles */
-section#character_list a.link_edit {
-	right: 135px;
+section#builds ul li a:hover, section#builds ul li a:active,
+section#character_list a:hover, section#character_list a:active,
+section#dungeons a:hover, section#dungeons a:active,
+section#slot_list ul li a:hover, section#slot_list ul li a:active {
+	color: #a49898;
 }
 
-section#character_list a.link_delete {
-	right: 40px;
-}
-
-section#character_list a.link_delete:hover, section#character_list a.link_delete:active {
+/* Character delete styles */
+section#character_list a.delete:hover, section#character_list a.delete:active,
+section#dungeons a.delete:hover, section#dungeons a.delete:active {
 	color: red;
 }
 
@@ -986,48 +984,31 @@ fieldset legend {
 	padding: 10px 0;
 }
 
-fieldset li {
-	list-style-type: none;
-}
-
-/* addressing nested forms */
-fieldset fieldset {
-	margin: 0; padding: 0;
-}
-
 fieldset label, fieldset fieldset legend {
 	font-size: 1em;
 	font-weight: 600;
 }
 
-fieldset fieldset ul li {
-	width: 140px;
-	margin: 0; padding: 0;
-	font-family: Arial;
-	text-transform:capitalize;
-}
-
-/* right align checkboxes, radio selects */
-fieldset fieldset ul li input[type=checkbox], fieldset fieldset ul li input[type=radio] {
-	margin-top: 4px;
-	float: right;
-}
-
-fieldset fieldset label {
+section#edit_build fieldset label,
+section#edit_character fieldset label,
+section#edit_dungeon fieldset label,
+section#edit_slot fieldset label, section#edit_slot fieldset fieldset legend {
+	font-size: 1.2em;
 	font-weight: normal;
 }
 
 fieldset ul {
-	padding: 0;
-	margin: 0;
+	margin: 0; padding: 0;
+	list-style-type: none;
 }
 
-/* indent form items */
+/* Indent form items */
 fieldset ul li {
 	padding: 10px 0 0 40px;
+	width: 243px;
 }
 
-/* unindent form submit buttons */
+/* Unindent form submit buttons */
 fieldset ul li.button {
 	padding: 20px 0 40px 0;
 }
@@ -1047,6 +1028,39 @@ fieldset input[type=date], fieldset input[type=time] {
 	border: solid 1px #b2b2b2;
 }
 
+fieldset input[type=number] {
+	float: right;
+	padding: 1px 10px 0 10px;
+	width: 3em;
+	border-top-left-radius: 5px; border-bottom-left-radius: 5px;
+	border: solid 1px #b2b2b2;
+}
+
+/* Nested forms */
+fieldset fieldset {
+	margin: 0; padding: 0;
+}
+
+fieldset fieldset label,
+section#edit_slot fieldset fieldset label {
+	font-size: 1em;
+	font-weight: normal;
+}
+
+fieldset fieldset ul li {
+	width: 140px;
+	margin: 0; padding: 0;
+	font-family: Arial;
+	text-transform: capitalize;
+}
+
+/* right align checkboxes, radio selects */
+fieldset fieldset ul li input[type=checkbox], fieldset fieldset ul li input[type=radio] {
+	margin-top: 4px;
+	float: right;
+}
+
+/* Fade disabled inputs */
 fieldset input[disabled=disabled] {
 	opacity: 0.4;
 }
@@ -1074,6 +1088,10 @@ fieldset select {
 
 	background: transparent url(../img/form_select_bg.png) no-repeat;
 	border: none;
+}
+
+section#edit_character fieldset select {
+	text-transform: capitalize;
 }
 
 /* Style for buttons on forms */

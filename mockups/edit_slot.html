@@ -9,7 +9,10 @@
 
 	<title>[rddt]Events</title>
 	<meta name="description" content="">
+	
+	<link rel="shortcut icon" type="image/png" href="media/img/favicon.png?ver=1.0" />
 
+	<!-- Stylesheet -->
 	<link rel="stylesheet" href="media/css/style.css">
 
 	<!-- All JavaScript at the bottom, except this Modernizr build.
@@ -52,51 +55,73 @@
 					</li>
 				</ul>
 			</nav>
-			<section id="dungeons">
-				<h3>Dungeons</h3>
-				<ul>
-					<li>
-						<div>
-							<h4>Bogroot Growths</h4>
-						</div>
-						<a class="delete" href="#">Delete</a>
-						<a class="edit" href="#">Edit</a>
-					</li>
-					<li>
-						<div>
-							<h4>Catacombs of Kathandrax</h4>
-						</div>
-						<a class="delete" href="#">Delete</a>
-						<a class="edit" href="#">Edit</a>
-					</li>
-					<li>
-						<div>
-							<h4>Domain of Anguish</h4>
-						</div>
-						<a class="delete" href="#">Delete</a>
-						<a class="edit" href="#">Edit</a>
-					</li>
-					<li>
-						<div>
-							<h4>Codex Arena</h4>
-						</div>
-						<a class="delete" href="#">Delete</a>
-						<a class="edit" href="#">Edit</a>
-					</li>
-					<li>
-						<div>
-							<h4>Shards of Orr</h4>
-						</div>
-						<a class="delete" href="#">Delete</a>
-						<a class="edit" href="#">Edit</a>
-					</li>
-					<li class="button"><a href="#">Add new dungeon</a></li>
-				</ul>
-			</section><!-- end dungeons -->
+			<section id="edit_slot">
+				<form action="" method="POST" id="form_slot_edit_action">
+					<fieldset>
+						<legend>Edit slot</legend>
+						<ul>
+							<li>
+								<label for="name">Slot name:</label>
+								<input type="text" name="slot[name]" id="name" value="100b / VoS" required="true" />
+							</li>
+							<li>
+								<fieldset>
+									<legend>Profession(s):</legend>
+									<ul class="profession_list">
+										<li>
+											<label for="check_warrior">warrior</label>
+											<input type="checkbox" name="slot[profession][]" value="warrior" id="check_warrior" checked="checked" />
+										</li>
+										<li>
+											<label for="check_ranger">ranger</label>
+											<input type="checkbox" name="slot[profession][]" value="ranger" id="check_ranger" />
+										</li>
+										<li>
+											<label for="check_monk">monk</label>
+											<input type="checkbox" name="slot[profession][]" value="monk" id="check_monk" />
+										</li>
+										<li>
+											<label for="check_necromancer">necromancer</label>
+											<input type="checkbox" name="slot[profession][]" value="necromancer" id="check_necromancer" />
+										</li>
+										<li>
+											<label for="check_elementalist">elementalist</label>
+											<input type="checkbox" name="slot[profession][]" value="elementalist" id="check_elementalist" />
+										</li>
+										<li>
+											<label for="check_mesmer">mesmer</label>
+											<input type="checkbox" name="slot[profession][]" value="mesmer" id="check_mesmer" />
+										</li>
+										<li>
+											<label for="check_ritualist">ritualist</label>
+											<input type="checkbox" name="slot[profession][]" value="ritualist" id="check_ritualist" />
+										</li>
+										<li>
+											<label for="check_assassin">assassin</label>
+											<input type="checkbox" name="slot[profession][]" value="assassin" id="check_assassin" checked="checked" />
+										</li>
+										<li>
+											<label for="check_dervish">dervish</label>
+											<input type="checkbox" name="slot[profession][]" value="dervish" id="check_dervish" checked="checked" />
+										</li>
+										<li>
+											<label for="check_paragon">paragon</label>
+											<input type="checkbox" name="slot[profession][]" value="paragon" id="check_paragon" />
+										</li>
+									</ul>
+								</fieldset>
+							</li>
+							<li class="button">
+								<input type="hidden" name="csrf" value="033cc160ac88ee710719afeba75b6c4904f65437" />
+								<input type="submit" value="Submit" />
+							</li>
+						</ul>
+					</fieldset>
+				</form>
+			</section><!-- end build -->
 
-			<div class="push"></div>
 		</div><!-- end container-->
-		
+	
 	</div> <!-- end realbody -->
 	<!-- JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom -->
 

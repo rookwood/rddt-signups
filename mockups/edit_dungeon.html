@@ -9,7 +9,10 @@
 
 	<title>[rddt]Events</title>
 	<meta name="description" content="">
+	
+	<link rel="shortcut icon" type="image/png" href="media/img/favicon.png?ver=1.0" />
 
+	<!-- Stylesheet -->
 	<link rel="stylesheet" href="media/css/style.css">
 
 	<!-- All JavaScript at the bottom, except this Modernizr build.
@@ -52,51 +55,26 @@
 					</li>
 				</ul>
 			</nav>
-			<section id="dungeons">
-				<h3>Dungeons</h3>
-				<ul>
-					<li>
-						<div>
-							<h4>Bogroot Growths</h4>
-						</div>
-						<a class="delete" href="#">Delete</a>
-						<a class="edit" href="#">Edit</a>
-					</li>
-					<li>
-						<div>
-							<h4>Catacombs of Kathandrax</h4>
-						</div>
-						<a class="delete" href="#">Delete</a>
-						<a class="edit" href="#">Edit</a>
-					</li>
-					<li>
-						<div>
-							<h4>Domain of Anguish</h4>
-						</div>
-						<a class="delete" href="#">Delete</a>
-						<a class="edit" href="#">Edit</a>
-					</li>
-					<li>
-						<div>
-							<h4>Codex Arena</h4>
-						</div>
-						<a class="delete" href="#">Delete</a>
-						<a class="edit" href="#">Edit</a>
-					</li>
-					<li>
-						<div>
-							<h4>Shards of Orr</h4>
-						</div>
-						<a class="delete" href="#">Delete</a>
-						<a class="edit" href="#">Edit</a>
-					</li>
-					<li class="button"><a href="#">Add new dungeon</a></li>
-				</ul>
-			</section><!-- end dungeons -->
+			<section id="edit_dungeon">
+				<form action="#" method="POST" id="form_dungeon_add">
+					<fieldset>
+						<legend>Edit dungeon</legend>
+						<ul>
+							<li>
+								<label for="name">Name:</label>
+								<input type="text" name="dungeon[name]" id="name" value="Bogroot Growths" required="true" />
+							</li>
+							<li class="button">
+								<input type="hidden" name="csrf" value="033cc160ac88ee710719afeba75b6c4904f65437" />
+								<input type="submit" value="Submit" />
+							</li>
+						</ul>
+					</fieldset>
+				</form>
+			</section><!-- end build -->
 
-			<div class="push"></div>
 		</div><!-- end container-->
-		
+	
 	</div> <!-- end realbody -->
 	<!-- JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom -->
 

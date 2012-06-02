@@ -5,7 +5,8 @@ This is still a work in progress...
 
 ### To do
 * Port mockups to mustache templates
-* Fix text/number alignment on sort by dropdown menu?
+* Replace fonts with Google web fonts
+* Validate/minimize all css
 
 ### Other ideas
 * Move new dungeon/build/slot/event buttons to the top of the page?
@@ -36,3 +37,4 @@ This is still a work in progress...
 * Edit slot links added
 * Edit/delete dungeon links added
 * Edit build/character/dungeon/slot pages added
+* Fixed text/number alignment on sort by dropdown menu

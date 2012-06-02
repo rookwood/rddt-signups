@@ -409,7 +409,7 @@ END FILTER STYLES */
 --------------------------- */
 div.sort_selector {
 	padding: 10px;
-	height: 38px;			/* sizing the select dropdown button */
+	height: 38px;				/* sizing the select dropdown button */
 	line-height: 2.5em;		/* vertical alignment for "Sort By" label */
 	text-transform: capitalize;
 }
@@ -424,7 +424,6 @@ section#events div.sort_label {
 	font-weight: bold;
 	color: #393939;
 }
-
 
 section#events ul.sort_dropdown {
 	float: right;
@@ -479,6 +478,12 @@ section#events ul.sort_dropdown li ul li a:link, section#events ul.sort_dropdown
 }
 
 section#events ul.sort_dropdown li ul li a:hover, section#events ul.sort_dropdown li ul li a:active {
+	color: #a3a3a3;
+}
+
+section#events ul.sort_dropdown li ul li a .count {
+	position: absolute;
+	left: 12em;
 	color: #a3a3a3;
 }
  /* -----------------------

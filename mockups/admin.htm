@@ -12,7 +12,7 @@
 			 More info: h5bp.com/b/378 -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title>Profile Editor</title>
+	<title>Admin Dashboard</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -47,6 +47,15 @@
 			<nav>
 				<ul>
 					<li>
+						<a>Administrator &nbsp; <img src="media/img/dropdown_arrow.png"></a>
+						<ul>
+							<li><a href="#">Dashboard</a></li>
+							<li><a href="#">Users</a></li>
+							<li><a href="#">Roles</a></li>
+							<li><a href="#">Site Settings</a></li>
+						</ul>
+					</li>
+					<li>
 						<a>My Account &nbsp; <img src="media/img/dropdown_arrow.png"></a>
 						<ul>
 							<li><a href="#">My Profile</a></li>
@@ -62,73 +71,6 @@
 				</ul>
 			</nav> <!-- end navigation -->
 
-			<section id="profile">
-				<form action="#" method="post" class="panel">
-					<fieldset>
-						<legend>Personal Information</legend>
-						<ul>
-							<li>
-								<label for="user_name">Username:</label>
-								<input type="text" name="user[username]" id="user_name" value="username" disabled="disabled" />
-							</li>
-							<li>
-								<label for="user_email">Email address:</label>
-								<input type="text" name="user[email]" id="user_email" value="email@mail.com" />
-							</li>
-							<li>
-								<label for="user_password">Password:</label>
-								<input type="password" name="user[password]" id="user_password" />
-							</li>
-							<li>
-								<label for="user_repeat_password">Repeat password:</label>
-								<input type="password" name="user[password_confirm]" id="user_password_confirm" />
-							</li>
-							<li>
-								<label for="profile_first_name">First name:</label>
-								<input type="text" name="profile[first_name]" id="profile_first_name" value="Firstname alskdjflajsldfjasdfasdfasdfasdfasdfasdfasdfasdf" />
-							</li>
-							<li>
-								<label for="profile_last_name">Last name:</label>
-								<input type="text" name="profile[last_name]" id="profile_last_name" value="Lastname" />
-							</li>
-							<li>
-								<label for="user_timezone">Time Zone:</label>
-								<select name="user[timezone]" id="user_timezone">
-									<option value="Pacific/Midway" selected="selected">(GMT-11:00) Midway Island, Samoa</option>
-									<option value="America/Adak">(GMT-10:00) Hawaii-Aleutian</option>
-									<option value="Etc/GMT+10">(GMT-10:00) Hawaii</option>
-									<option value="Pacific/Marquesas">(GMT-09:30) Marquesas Islands</option>
-									<option value="Pacific/Gambier">(GMT-09:00) Gambier Islands</option>
-									<option value="America/Anchorage">(GMT-09:00) Alaska</option>
-									<option value="America/Ensenada">(GMT-08:00) Tijuana, Baja California</option>
-									<option value="Etc/GMT+8">(GMT-08:00) Pitcairn Islands</option>
-									<option value="America/Los_Angeles">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
-									<option value="America/Denver">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
-									<option value="America/Chihuahua">(GMT-07:00) Chihuahua, La Paz, Mazatlan</option>
-									<option value="America/Dawson_Creek">(GMT-07:00) Arizona</option>
-									<option value="America/Belize">(GMT-06:00) Saskatchewan, Central America</option>
-									<option value="America/Cancun">(GMT-06:00) Guadalajara, Mexico City, Monterrey</option>
-									<option value="Chile/EasterIsland">(GMT-06:00) Easter Island</option>
-									<option value="America/Chicago">(GMT-06:00) Central Time (US &amp; Canada)</option>
-									<option value="America/New_York">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
-									<option value="America/Havana">(GMT-05:00) Cuba</option>
-									<option value="America/Bogota">(GMT-05:00) Bogota, Lima, Quito, Rio Branco</option>
-								</select>
-
-							</li>
-							<li>
-								<label for="profile_birthdate">Date of birth:</label>
-								<input type="date" name="profile[birthdate]" id="profile_birthdate" placeholder="YYYY-MM-DD" value="0000-00-00" />
-							</li>
-							<li class="button">
-								<input type="hidden" name="csrf" value="033cc160ac88ee710719afeba75b6c4904f65437" />
-								<input type="submit" value="Submit" />
-							</li>
-						</ul>
-					</fieldset>
-				</form>
-			</section>
-			
 		</div> <!-- end container -->
 	</div> <!-- end realbody -->
 

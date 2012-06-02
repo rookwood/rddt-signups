@@ -258,6 +258,10 @@ Used on pages with floating elements at the end of the page */
 	height: 40px;
 }
 
+.container a {
+	text-decoration: none;
+}
+
 .masthead {
 	background-image: url(../img/banner_alt.png);
 	background-position: top center;
@@ -289,8 +293,9 @@ nav ul li {
 	padding: 0 0 0 1px;
 }
 
-nav ul li a:link, nav ul li a:visited {
+nav ul li a, nav ul li a:visited {
 	display: block;
+	cursor: pointer;
 
 	/* background-color: green; */
 	background-image: url(../img/button_menu_separator.png);
@@ -425,13 +430,9 @@ section#events div.sort_label {
 	color: #393939;
 }
 
-section#events ul.sort_dropdown {
-	float: right;
-	right: -11px;
-	padding: 0; margin: 0;
-}
-
-section#events li.sort_selected a:link, section#events li.sort_selected a:visited {
+/* The top link shown in the select box */
+section#events li.sort_selected a {
+	cursor: pointer;
 	display: block;
 	width: 141px;			/* width adjusted for padding */
 	height: 38px;
@@ -444,6 +445,13 @@ section#events li.sort_selected a:link, section#events li.sort_selected a:visite
 	font-weight: bold;
 	color:  #717171;
 	text-decoration: none;
+}
+
+/* Dropdown menu styles */
+section#events ul.sort_dropdown {
+	float: right;
+	right: -11px;
+	padding: 0; margin: 0;
 }
 
 section#events ul.sort_dropdown li ul {

@@ -43,15 +43,23 @@
 		<div class="container">
 			<a href="/">
 				<header class="masthead">
-					<h1>Reddit Guild Wars 1</h1>
-					<h2>Event Information</h2>
+					<h1>RedditGW</h1>
+					<h2>Event Signup website</h2>
 				</header>
 			</a>
 			<nav id="top_nav">
 				<ul>
-{{#links}}
-					<li><a href="{{location}}">{{#icon}}<img src="{{src}}" />{{/icon}}{{text}}</a></li>
-{{/links}}
+					{{#links}}
+					<li><a {{#location}}href="{{location}}"{{/location}}>{{text}} {{#icon}}&nbsp;<img src="{{src}}" />{{/icon}}</a>
+						{{#dropdown}}
+						<ul>
+							{{#dropdown_links}}
+							<li><a href="{{location}}">{{text}}</a></li>
+							{{/dropdown_links}}
+						</ul>
+						{{/dropdown}}
+					</li>
+					{{/links}}
 				</ul>
 			</nav>
 {{{notices}}}

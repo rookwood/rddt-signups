@@ -154,6 +154,7 @@ class Abstract_View_Page extends Abstract_View_Layout {
 							),
 							
 							array(
+								'location' => Route::url('event'),
 								'text'     => 'My Events',
 							),
 							

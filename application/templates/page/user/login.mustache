@@ -6,13 +6,15 @@
 				<li>
 					<label for="user_name">Username:</label>
 					<input type="text" name="user[username]" id="user_name" autofocus="autofocus" />
+					{{#retrieval}}{{#retrival_user}}<a href="{{retrieval_user}}">Forgot username?</a>{{/retrival_user}}{{/retrieval}}
 				</li>
 				<li>
 					<label for="user_password">Password:</label>
 					<input type="password" name="user[password]" id="user_password" />
+					{{#retrieval}}{{#retrieval_pw}}<a href="{{retrieval_pw}}">Forgot password?</a>{{/retrieval_pw}}{{/retrieval}}
 				</li>
 				<li>
-					<label for="remember">Remember login:</label>
+					<label for="remember">Remember me?</label>
 					<input type="checkbox" name="remember" value="TRUE" id="remember" checked="checked" />
 				</li>
 				<li class="button">
@@ -22,11 +24,3 @@
 			</ul>
 		</fieldset>
 	</form>
-{{#retrieval}}
-
-	<ul id="recovery">
-{{#retrieval_links}}
-	<li><a href="{{url}}">{{text}}</a></li>
-{{/retrieval_links}}
-	</ul>
-{{/retrieval}}

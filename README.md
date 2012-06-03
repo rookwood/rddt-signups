@@ -11,6 +11,14 @@ This is still a work in progress...
 ### Other ideas
 * Move new dungeon/build/slot/event buttons to the top of the page?
 * Builds page needs create event links?
+* Officer page
+    * Show leader/officers (specify guild?)
+    * Only admin can add/remove leadership role?
+* Invite page
+    * Request an invite
+    * Invite status page (pending [full guild/alliance status?], invited, rejected because of name/guild membership)
+    * Show invites to leadership only?
+    * Show history of invites (last ~10-15 only?), who invited, what guild?
 
 ### Features completed
 * Background now resized using jquery plugin

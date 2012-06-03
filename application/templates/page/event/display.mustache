@@ -1,125 +1,90 @@
-	<form action="{{sign_up_link}}" method="post" id="sign_up_form" class="panel">
-		<fieldset>
-			<legend>Event details{{#edit_event}} <a href="{{edit_event}}">(edit this event)</a>{{/edit_event}}</legend>
-			<table id="events">
-				<thead>
-					<tr>
-						<td>Date</td>
-						<td>Start time</td>
-						<td>Event name</td>
-						<td>Status</td>
-						<td>Host</td>
-						<td>Build</td>
-					</tr>
-				</thead>
-				<tbody>
-				{{#event}}
-					<tr>
-						<td>{{date}}</td>
-						<td>{{time}}</td>
-						<td>{{description}}</td>
-						<td>{{status}}</td>
-						<td><span title="{{host}}">{{hostas}}</span></td>
-						<td>{{#url}}<a href="{{url}}" target="_blank">{{/url}}{{build}}{{#url}}</a>{{/url}}</td>
-					</tr>
-				{{/event}}
-				</tbody>
-			</table>
-{{#signup}}
-			<ul>
-				<li>
-					<label for="character">Attend as:</label>
-					<select name="event[character]" id="character">
-{{#characters}}
-						<option class="{{profession}}" value="{{name}}">{{name}}</option>
-{{/characters}}
-{{^characters}}
-						<option value="">You have no registered characters</option>
-{{/characters}}
-					</select>
-				</li>
-				<li>
-					<label for="slot">For open role slot:</label>
-					<select name="event[slot]" id="slot">
-{{#role_list}}
-						<option value="{{name}}">{{name}} {{#number}}({{number}} / {{total}} open){{/number}}{{^number}}(Stand-by){{/number}}</option>
-{{/role_list}}
-{{^role_list}}
-						<option value="">None of your characters can fit the roles needed for this run</option>
-{{/role_list}}
-					</select>
-					</li>
-				<li>
-					<label for="comments">Comments:</label>
-					<textarea name="event[comment]" id="comments"></textarea>
-				</li>
-				<li>
-					<fieldset class="status">
-						<legend>Sign-up as:</legend>
-						<label for="status_ready">Ready</label>
-						<input type="radio" name="event[status]" id="status_ready" value="ready" checked="checked" />
-						<label for="status_standby">Stand-by</label>
-						<input type="radio" name="event[status]" id="status_standby" value="stand-by (voluntary)" />
-					</fieldset>					
-				</li>
-			</ul>
-			{{{csrf}}}
-			<input type="submit" value="Sign up" />
-{{/signup}}
-		</fieldset>
-		<h4>Currently signed up</h4>
-		<table>
-			<thead>
-				<tr>
-					<td>Name</td>
-					<td>Role</td>
-					<td>Profession</td>
-					<td>Comments</td>
-				</tr>
-			</thead>
-			<tbody>
-		{{#attendees.active}}
-				<tr>
-					<td>{{name}}</td>
-					<td>{{role}}</td>
-					<td><img src="/media/img/prof_icons/{{profession}}.png" width="24" height="24" title="{{profession}}" /></td>
-					<td>{{comment}}</td>
-				</tr>
-		{{/attendees.active}}
-		{{^attendees.active}}
-			<tr><td colspan="4">No one has signed-up yet.</td></tr>
-		{{/attendees.active}}
-			</tbody>
-		</table>
-		<h4>Stand-by list</h4>
-		<table>
-			<thead>
-				<tr>
-					<td>Name</td>
-					<td>Role</td>
-					<td>Profession</td>
-					<td>Comments</td>
-				</tr>
-			</thead>
-			<tbody>
-		{{#attendees.standby}}
-				<tr>
-					<td>{{name}}</td>
-					<td>{{role}}</td>
-					<td><img src="/media/img/prof_icons/{{profession}}.png" width="24" height="24" title="{{profession}}" /></td>
-					<td>{{comment}}</td>
-				</tr>
-		{{/attendees.standby}}
-		{{^attendees.standby}}
-			<tr><td colspan="4">No one has signed-up yet.</td></tr>
-		{{/attendees.standby}}
-			</tbody>
-		</table>
-	</form>
-	
-{{#remove_event}}
-<a href="{{remove_event}}">Cancel this event</a>
-{{/remove_event}}
-{{#withdraw}}
-<a href="{{withdraw}}">Withdraw from this event</a>
-{{/withdraw}}
+					<li class="event_expanded">
+{{#event}}
+						<ul class="header">
+							<li class="event_title">
+								<div>
+									<h4>{{dungeon}}</h4>
+									<h5>Manager: {{hostas}}</h5>
+								</div>
+							</li>
+							<li class="event_numbers">
+								<div>
+									<h4><span class="player_count_low">4/8</span></h4>
+									<h5>Players</h5>
+								</div>
+							</li>
+							<li class="event_time">
+								<div>
+									<h4><time class="date" datetime="{{time_full}}">{{date}}</time></h4>
+									<h5><time class="time" datetime="{{time_full}}">{{time}}</time></h5>
+								</div>
+							</li>
+						</ul>
+{{/event}}
+						<section id="event_details">
+							<div id="tabs">
+								<ul>
+									<li><a href="#attendees">Attendees</a></li>
+									<li><a href="#standby">Standby (0)</a></li>
+								</ul>
+								<div id="attendees">
+									<ul>
+{{#attendees.active}}
+										<li class="{{profession}}">
+											<div class="name">
+												{{name}}
+												<a href="#">?</a>
+												<ul>
+													<li><div class="comment">{{comment}}</div></li>
+												</ul>
+											</div>
+											<div class="role">{{role}}</div>
+										</li>
+{{/attendees.active}}
+{{^attendees.active}}
+										<li>
+											No ready attendees yet.
+										</li>
+{{/attendees.active}}
+
+									</ul>
+									{{#signup}}<a href="#">Sign up for event</a>{{/signup}}
+									{{#withdraw}}<a class="withdraw" href="{{withdraw}}">Withdraw from event</a>{{/withdraw}}
+								</div>
+								<div id="standby">
+									<ul>
+{{#attendees.standby}}
+										<li class="{{profession}}">
+											<div class="name">
+												{{name}}
+												<a href="#">?</a>
+												<ul>
+													<li><div class="comment">{{comment}}</div></li>
+												</ul>
+											</div>
+											<div class="role">{{role}}</div>
+										</li>
+{{/attendees.standby}}
+{{^attendees.standby}}
+										<li>
+											No one on standby.
+										</li>
+{{/attendees.standby}}
+									</ul>
+									{{#signup}}<a href="#">Sign up for event</a>{{/signup}}
+									{{#withdraw}}<a class="withdraw" href="{{withdraw}}">Withdraw from event</a>{{/withdraw}}
+								</div>
+							</div> <!-- end tabs -->
+							<div id="event_description">
+{{#event}}
+								<h6>{{title}}</h6>
+								<p>{{description}}</p>
+								{{#url}}<a class="build" href="{{url}}" target="_blank" title="Link to more information about {{build}}">{{build}}</a>{{/url}}
+								{{^url}}<a class="build_disabled" title="No additional information for {{build}}">{{build}}</a>{{/url}}
+{{/event}}
+								{{#edit_event}}<a class="edit_event" href="{{edit_event}}">Edit event</a>{{/edit_event}}
+								{{#remove_event}}<a class="cancel_event" href="{{remove_event}}">Cancel event</a>{{/remove_event}}
+							</div>
+						</section><!-- end event details section -->
+					</li><!-- end of this event -->
+					<div class="event_footer"></div>

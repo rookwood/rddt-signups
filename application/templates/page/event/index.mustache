@@ -1,53 +1,65 @@
-
-	{{#add_event}}
-	<a href="{{add_event}}">Add new event</a>
-	{{/add_event}}
-
-	<select id="event_filters">
-		<option value="">Filter event list:</option>
-{{#filters.top}}		
-		<option value="{{url}}">{{text}}</option>
+			<section id="events">
+				<div class="sort_selector">
+					<ul class="sort_dropdown">
+						<li class="sort_selected">
+							<a>{{filter}}</a>
+							<ul>
+{{#filters.top}}
+								<li><a href="{{url}}">{{text}} <span class="count"></span></a></li>
 {{/filters.top}}
-		<optgroup label="Filter by dungeon">
-{{#filters.dungeon}}		
-		<option value="{{url}}">{{text}}</option>
-{{/filters.dungeon}}
-		</optgroup>
-	</select>
-	<p>{{filter_message}}</p>
-	<h4>All events are displayed in the timezone set in your profile.</h4>
-	<table id="events">
-		<thead>
-			<tr>
-				<td>Details</td>
-				<td>Date</td>
-				<td>Start time</td>
-				<td>Dungeon</td>
-				<td>Event name</td>
-				<td>Status</td>
-				<td>Host</td>
-				<td>Build</td>
-			</tr>
-		</thead>
-		<tbody>
-		{{#events}}
-			<tr>
-				<td><a href="{{details_link}}" class="event_details">Details</a></td>
-				<td>{{date}}</td>
-				<td>{{time}}</td>
-				<td>{{dungeon}}</td>
-				<td>{{title}}</td>
-				<td>{{status}}</td>
-				<td>{{host}}</td>
-				<td>{{#url}}<a href="{{url}}" target="_blank">{{/url}}{{build}}{{#url}}</a>{{/url}}</td>
-			</tr>
-		{{/events}}
-		{{^events}}
-			<tr>
-				<td colspan="7">No events scheduled at this time</td>
-			</tr>
-		{{/events}}
-		</tbody>
-	</table>
+							</ul>
+						</li>
+					</ul> <!-- end dropdown -->
+					<div class="sort_label">Sort by</div>
+				</div>
+
+				<p>{{filter_message}}</p>
+				<!-- <p>All events are displayed in the timezone set in your profile.</p> -->
+				
+				<ul>
+{{#events}}
+					<a href="{{details_link}}" class="event_details" title="Expand '{{title}}'">
+					<li class="event_collapsed">
+						<ul class="header">
+							<li class="event_title">
+								<div>
+									<h4>{{dungeon}}</h4>
+									<h5>Manager: {{host}}</h5>
+								</div>
+							</li>
+							<li class="event_numbers">
+								<div>
+									<h4><span class="player_count_empty">0/8</span></h4>
+									<h5>Players</h5>
+								</div>
+							</li>
+							<li class="event_time">
+								<div>
+									<h4><time class="date" datetime="{{time_full}}">{{date}}</time></h4>
+									<h5><time class="time" datetime="{{time_full}}">{{time}}</time></h5>
+								</div>
+							</li>
+						</ul>
+					</li><!-- end of this event -->
+					</a>
+					<div class="event_footer"></div>
+					
+				<!-- {{status}} -->
+{{/events}}
+{{^events}}
+					<li>
+						<ul class="header">
+							<li class="event_title">
+								<div>
+									<h4>No events scheduled at this time</h4>
+					</div></li></ul></li>
+{{/events}}
+					<section id="event_data"></section>
+{{#add_event}}
+					<li class="button"><a href="{{add_event}}">Create new event</a></li>
+{{/add_event}}
+				</ul>
+			</section><!-- end event list -->
+
+			<div class="events_footer"></div>
 	
-	<section id="event_data"></section>

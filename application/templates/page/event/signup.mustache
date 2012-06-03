@@ -1,0 +1,41 @@
+{{#signup}}
+			<ul>
+				<li>
+					<label for="character">Attend as:</label>
+					<select name="event[character]" id="character">
+{{#characters}}
+						<option class="{{profession}}" value="{{name}}">{{name}}</option>
+{{/characters}}
+{{^characters}}
+						<option value="">You have no registered characters</option>
+{{/characters}}
+					</select>
+				</li>
+				<li>
+					<label for="slot">For open role slot:</label>
+					<select name="event[slot]" id="slot">
+{{#role_list}}
+						<option value="{{name}}">{{name}} {{#number}}({{number}} / {{total}} open){{/number}}{{^number}}(Stand-by){{/number}}</option>
+{{/role_list}}
+{{^role_list}}
+						<option value="">None of your characters can fit the roles needed for this run</option>
+{{/role_list}}
+					</select>
+					</li>
+				<li>
+					<label for="comments">Comments:</label>
+					<textarea name="event[comment]" id="comments"></textarea>
+				</li>
+				<li>
+					<fieldset class="status">
+						<legend>Sign-up as:</legend>
+						<label for="status_ready">Ready</label>
+						<input type="radio" name="event[status]" id="status_ready" value="ready" checked="checked" />
+						<label for="status_standby">Stand-by</label>
+						<input type="radio" name="event[status]" id="status_standby" value="stand-by (voluntary)" />
+					</fieldset>					
+				</li>
+			</ul>
+			{{{csrf}}}
+			<input type="submit" value="Sign up" />
+{{/signup}}

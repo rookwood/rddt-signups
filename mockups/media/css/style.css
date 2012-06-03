@@ -960,9 +960,11 @@ div#event_description p {
 }
 
 /* Edit and cancel event links */
+div#event_description a.build,
+div#event_description a.build_disabled,
 div#event_description a.edit_event, 
 div#event_description a.cancel_event {
-	display: inline-block;
+	float: left;
 	padding: 0 10px 10px 0;
 	text-decoration: none;
 	
@@ -971,6 +973,16 @@ div#event_description a.cancel_event {
 	color: #393939;
 }
 
+div#event_description a.edit_event {
+	clear: left;
+}
+
+div#event_description a.build_disabled {
+	opacity: 0.5;
+}
+
+div#event_description a.build:hover,
+div#event_description a.build:active,
 div#event_description a.edit_event:hover,
 div#event_description a.edit_event:active {
 	color: #a49898;

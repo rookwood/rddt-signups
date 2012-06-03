@@ -208,70 +208,6 @@ table { border-collapse: collapse; border-spacing: 0; }
 td { vertical-align: top; }
 
 
-/* ==|== primary styles =====================================================
-   Author: 
-   ========================================================================== */
-
-/* Nav bar */
-/* nav { background-color: #2d2d2d; display:block; height:29px; padding-left: 4px; border-bottom: 1px solid #000; width: 100%; overflow: hidden;} */
-nav ul {/*padding: 2px 0 0 2px;*/}
-/* nav li {display: inline; margin-right: 8px;}
-nav li a {font-family: Arial, sans-serif; font-size: 13px; padding: 0 8px; text-decoration:none; color: #ccc; display:inline-block;  height: 29px; line-height: 29px;}
-nav li a:visited {color: #ccc;}
-nav li a:hover {color: #ccc; background-color: #444;}
-nav li a img {margin: -2px 2px 0 0;} */
-/* End of nav bar */
-
-/* form { padding: 12px 0px 12px 12px;}
-form.panel { background-color: #f8f8f8; border-top: 1px solid #d5d5d5; border-bottom: 1px solid #d5d5d5; }
-form fieldset { border: 1px solid #f8f8f8;}
-form legend { font-size: 16px; margin-left: 12px; margin-top: 20px;}
-form li { list-style-type: none; margin: 10px 0;}
-label { display: block; float: left; width: 120px;}
-fieldset#settings label { display:block; float:left; width:200px;}
-form input[type=submit], button.standard_action { margin: 6px; text-transform: uppercase; font-size: 12px; font-weight: 700; padding: 7px 12px; border: 1px solid #4480e1; color: #fff; background-color: #4d90fe;
-background-image: -webkit-gradient(linear, left top, left bottom, from(#4d90fe), to(#4787ed)); 
-background-image: -webkit-linear-gradient(top, #4d90fe, #4787ed); 
-background-image:    -moz-linear-gradient(top, #4d90fe, #4787ed); 
-background-image:     -ms-linear-gradient(top, #4d90fe, #4787ed); 
-background-image:      -o-linear-gradient(top, #4d90fe, #4787ed); 
-background-image:         linear-gradient(top, #4d90fe, #4787ed);
-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#4d90fe', EndColorStr='#4787ed'); 
-}
-form input[type=submit]:hover, button.standard_action:hover { margin: 6px; text-transform: uppercase; font-size: 12px; font-weight: 700; padding: 7px 12px; border: 1px solid #4480e1; color: #fff; background-color: #4d90fe;
-background-image: -webkit-gradient(linear, left top, left bottom, from(#4d90fe), to(#357ae8)); 
-background-image: -webkit-linear-gradient(top, #4d90fe, #357ae8); 
-background-image:    -moz-linear-gradient(top, #4d90fe, #357ae8); 
-background-image:     -ms-linear-gradient(top, #4d90fe, #357ae8); 
-background-image:      -o-linear-gradient(top, #4d90fe, #357ae8); 
-background-image:         linear-gradient(top, #4d90fe, #357ae8);
-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#4d90fe', EndColorStr='#357ae8'); 
-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-}
-form input[type=text], form input[type=password], form input[type=date], form input[type=radio] { border: 1px solid #d5d5d5; width: 151px;}
-form input[type=radio] { display: block; height:20px; padding: 5px, 0}
-
-table {background-color: #f8f8f8; margin:12px;}
-table td {border: 1px solid #d5d5d5; padding: 2px 4px;}
-table tr.even {background-color: #fff;}
-table tr:hover {background-color: #e8e8e8;}
-
-input#user_search {
-	background: url(../img/magnifying_glass.png) 3px 3px no-repeat white;
-	padding-left: 24px;
-	height: 24px;
-}
-form input.error {
-	background-color: #feecec;
-	background-image: url(../img/icons/error.png);
-	background-repeat: no-repeat;
-	background-position: 2px 2px;
-	text-indent: 24px;
-	width: 151px;
-}
-
-p.error_message {display:inline;}
- */
 
 /* ==|== primary styles =====================================================
    Author: zerosp4c3
@@ -746,6 +682,7 @@ section#events ul li {
 section#events ul li.event_collapsed {
 	margin: 0 10px;
 	width: 733px;				/* width reduced for border */
+	height: 98px;				/* height reduced for border */
 	
 	border: 1px solid rgba(199,199,199,0.8);
  	background-image: url(../img/event_down_arrow.png), linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
@@ -810,8 +747,12 @@ div.events_footer {
 section#events ul li ul.header {
 	position: relative;
 	top: 50px;									/* position the div in the middle of the header */
+}
+
+section#events ul li.event_expanded ul.header {
 	height: 100px;
 }
+
 section#events ul li ul.header li div {
 	position: absolute; top: 50%; 				/* vertically align text within the header */
 	height: 3em; margin-top: -1.5em;
@@ -834,7 +775,6 @@ section#events ul li.event_time h5 {
 	margin: 0;
 	font-size: 1.2em;
 	font-weight: normal;
-	text-transform: capitalize;
 }
 
 section#events ul li.event_title div {
@@ -1050,10 +990,12 @@ div#event_description p {
 	font-size: 0.8em;
 }
 
-/* Edit and cancel event links */
+/* Additional build/edit/cancel event links */
+div#event_description a.build,
+div#event_description a.build_disabled,
 div#event_description a.edit_event, 
 div#event_description a.cancel_event {
-	display: inline-block;
+	float: left;
 	padding: 0 10px 10px 0;
 	text-decoration: none;
 	
@@ -1062,6 +1004,16 @@ div#event_description a.cancel_event {
 	color: #393939;
 }
 
+div#event_description a.edit_event {
+	clear: left;			/* Force edit and cancel links to another line */
+}
+
+div#event_description a.build_disabled {
+	opacity: 0.5;
+}
+
+div#event_description a.build:hover,
+div#event_description a.build:active,
 div#event_description a.edit_event:hover,
 div#event_description a.edit_event:active {
 	color: #a49898;

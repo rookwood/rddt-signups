@@ -1,20 +1,15 @@
-
-	<table>
-		<thead>
-			<tr>
-				<td colspan="2">Actions</td>
-				<td>Name</td>
-			</tr>
-		</thead>
-		<tbody>
+	<section id="dungeons">
+		<h3>Dungeons</h3>
+		<ul>
 {{#dungeon_list}}
-			<tr>
-				<td><a href="{{remove_url}}"><img src="/media/img/icons/page_delete.png" title="Remove {{name}}" /></a></td>
-				<td><a href="{{edit_url}}"><img src="/media/img/icons/page_edit.png" title="Edit {{name}}" /></a></td>
-				<td>{{name}}</td>
-			</tr>
+			<li>
+				<div>
+					<h4>{{name}}</h4>
+				</div>
+				<a class="delete" href="{{remove_url}}" title="Delete {{name}}">Delete</a>
+				<a class="edit" href="{{edit_url}}"  title="Edit {{name}}">Edit</a>
+			</li>
 {{/dungeon_list}}
-		</tbody>
-	</table>
-
-<a href="{{dungeon_add_url}}">Add new dungeon</a>
+			<li class="button"><a href="{{dungeon_add_url}}">Add new dungeon</a></li>
+		</ul>
+	</section>

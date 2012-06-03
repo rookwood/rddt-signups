@@ -30,7 +30,8 @@ audio:not([controls]) { display: none; }
  * 3. Prevent iOS text size adjust on device orientation change, without disabling user zoom: h5bp.com/g
  */
 
-html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+/* html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; } */
+html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
 
 body { margin: 0; font-size: 13px; line-height: 1.231; }
 
@@ -212,16 +213,16 @@ td { vertical-align: top; }
    ========================================================================== */
 
 /* Nav bar */
-nav { background-color: #2d2d2d; display:block; height:29px; padding-left: 4px; border-bottom: 1px solid #000; width: 100%; overflow: hidden;}
+/* nav { background-color: #2d2d2d; display:block; height:29px; padding-left: 4px; border-bottom: 1px solid #000; width: 100%; overflow: hidden;} */
 nav ul {/*padding: 2px 0 0 2px;*/}
-nav li {display: inline; margin-right: 8px;}
+/* nav li {display: inline; margin-right: 8px;}
 nav li a {font-family: Arial, sans-serif; font-size: 13px; padding: 0 8px; text-decoration:none; color: #ccc; display:inline-block;  height: 29px; line-height: 29px;}
 nav li a:visited {color: #ccc;}
 nav li a:hover {color: #ccc; background-color: #444;}
-nav li a img {margin: -2px 2px 0 0;}
+nav li a img {margin: -2px 2px 0 0;} */
 /* End of nav bar */
 
-form { padding: 12px 0px 12px 12px;}
+/* form { padding: 12px 0px 12px 12px;}
 form.panel { background-color: #f8f8f8; border-top: 1px solid #d5d5d5; border-bottom: 1px solid #d5d5d5; }
 form fieldset { border: 1px solid #f8f8f8;}
 form legend { font-size: 16px; margin-left: 12px; margin-top: 20px;}
@@ -270,8 +271,971 @@ form input.error {
 }
 
 p.error_message {display:inline;}
+ */
 
+/* ==|== primary styles =====================================================
+   Author: zerosp4c3
+   ========================================================================== */
 
+body {
+	overflow:hidden; 		/* needed to eliminate scrollbars caused by the background image */
+	padding:0;margin:0;	/* necesarry for the raster to fill the screen */
+	height:100%;width:100%;
+
+	font: 1em/1.25 Helvetica, Arial, sans-serif;
+	color: #393939;
+	text-align: center;		/* for centering the container */
+}
+ 
+#bgimg {
+	position:absolute;
+	z-index: -1;
+}
+
+#realbody {
+	position: absolute;
+	z-index: 5;						/* Place the container above the background image */
+	overflow: auto;					/* restore scrollbars for the content */
+	height: 100%;width: 100%;	/* Make the new body fill the screen */
+}
+
+.container {
+	position: relative;
+	background: url(../img/container_bg_alt.png);
+	margin: 0 auto;
+
+	width: 756px;
+	min-height: 100%;
+	
+	text-align: left;
+}
+
+/* Special div used to push the container to the bottom of the page
+Used on pages with floating elements at the end of the page */
+.push {
+	clear: both;
+	height: 40px;
+}
+
+.container a {
+	text-decoration: none;
+}
+
+.masthead {
+	background-image: url(../img/banner_alt.png);
+	background-position: top center;
+	background-repeat: no-repeat;
+	
+	width: 756px;
+	height: 170px;
+	padding-top: 1px;		/* Hack for removing unexpected top spacing */
+	margin-bottom: -1px;
+}
+
+.masthead h1, .masthead h2 {
+	display: none;			/* Hide masthead text */
+}
+
+/* Top navigation menu with dropdown
+---------------------------------------------------- */
+nav ul {
+	display: block;
+	width: 100%;
+	height: 45px;
+
+	background-image: url(../img/menubg.png);
+	background-repeat: no-repeat;
+	list-style: none;
+}
+
+nav ul li {
+	position: relative;
+	float: left;
+	padding: 0 0 0 1px;
+}
+
+nav ul li a, nav ul li a:visited {
+	display: block;
+	cursor: pointer;
+
+	/* background-color: green; */
+	background-image: url(../img/button_menu_separator.png);
+	background-position: top right;
+	background-repeat: no-repeat;
+
+	height: 33px;		/* height adjusted for padding */
+	padding: 12px 15px 0 15px;
+
+	font-family: Helvetica World;
+	font-weight: 700;
+	font-size:.8em;
+	text-decoration: none;
+	color: white;
+}
+
+nav ul li a:hover, nav ul li a:active {
+	color: red;
+}
+
+/* START CSS for dropdown menu
+----------------------------------------------- */
+nav ul ul {
+	position: absolute;
+	left: -9999px;		/* Hide off-screen when not needed (this is more accessible than display:none;) */
+	list-style: none;
+}
+
+/* Dropdown under nested list */
+nav ul li:hover ul {
+	width:141px;
+	height:141px;	/* height adjusted for padding-top */
+	padding-top:12px;
+	left: -6px;
+	z-index:900;
+
+	/* background-color:red; */
+	background-image: url(../img/dropdown_bg.png);
+}
+
+nav ul li ul li a:link, nav ul li ul li a:visited {
+	width:126px;
+	height:24px;
+	padding:10px 0 0 15px;
+	
+/* 	border: 1px dotted red; */
+/* 	background-color: rgba(0,0,255,.2); */
+	background-image: none;
+}
+/* --------------------------------------
+END CSS for dropdown menu */
+
+h3 {
+	font-family: Cronos Pro Display;
+	padding: 10px;
+	font-size: 1.6em;
+	font-weight: 700;
+	margin: 0;
+}
+
+section {
+	display: block;
+	clear: both;
+}
+
+/* News (welcome page) */
+div#news {
+	margin: 0 10px; padding: 0 15px;
+
+	width: 703px;				/* width reduced for border and padding */
+	
+	border: 1px solid rgba(199,199,199,0.8);
+	background-image: linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(236,236,236)),
+		color-stop(1, rgb(255,255,255))
+	);
+}
+
+/* START FILTER STYLES
+--------------------------------------- */
+section ul#filter {
+	padding: 0; margin: 0 auto;
+	width: 724px;
+}
+
+section ul#filter li {
+	display: block;
+	float: left;
+	padding: 0 8px 20px;
+}
+
+section ul#filter li a:link, section ul#filter li a:visited {
+	text-decoration: none;
+	font-family: Helvetica World;
+	font-size: .9em;
+	font-weight: 700;
+	color: #313131;
+}
+
+section ul#filter li a:hover, section ul#filter li a:active {
+	color: #a49898;
+}
+/* ---------------------------------
+END FILTER STYLES */
+
+/* START Sort STYLES
+--------------------------- */
+div.sort_selector {
+	padding: 10px;
+	height: 38px;				/* sizing the select dropdown button */
+	line-height: 2.5em;		/* vertical alignment for "Sort By" label */
+	text-transform: capitalize;
+}
+
+/* Sort By label */
+section#events div.sort_label {
+	float: right;
+	margin-right: 14px;
+	
+	font-family: Helvetica World;
+	font-size: 0.8em;
+	font-weight: bold;
+	color: #393939;
+}
+
+/* The top link shown in the select box */
+section#events li.sort_selected a {
+	cursor: pointer;
+	display: block;
+	width: 141px;			/* width adjusted for padding */
+	height: 38px;
+	padding-left: 12px;
+
+	background-image: url(../img/sort_select_bg.png);
+
+	font-family: Helvetica World;
+	font-size: 0.8em;
+	font-weight: bold;
+	color:  #717171;
+	text-decoration: none;
+}
+
+/* Dropdown menu styles */
+section#events ul.sort_dropdown {
+	float: right;
+	right: -11px;
+	padding: 0; margin: 0;
+}
+
+section#events ul.sort_dropdown li ul {
+	position: absolute;
+	left: -9999px;
+}
+
+section#events ul.sort_dropdown li:hover ul {
+	left: -3px;
+	z-index: 800;
+	padding: 6px 0 0 0;
+	width: 192px;
+	height: 95px;			/* height adjusted for padding */
+
+	background-image: url(../img/sort_select_dropdown_bg.png);
+	
+	line-height: 22px;
+}
+
+ section#events ul.sort_dropdown li ul li {
+	display: block;
+	padding-right: 15px;
+	height: 22px;
+} 
+
+section#events ul.sort_dropdown li ul li a:link, section#events ul.sort_dropdown li ul li a:visited {
+	width:192px;
+	padding-left: 15px;
+	font-weight: normal;
+	color: #646464;
+	background: none;
+}
+
+section#events ul.sort_dropdown li ul li a:hover, section#events ul.sort_dropdown li ul li a:active {
+	color: #a3a3a3;
+}
+
+section#events ul.sort_dropdown li ul li a .count {
+	position: absolute;
+	left: 12em;
+	color: #a3a3a3;
+}
+ /* -----------------------
+END Sort STYLES */
+
+/* START Builds, Character list, Dungeons, Slot list, Event button STYLES
+----------------------------------------------------------------------------------- */
+section#builds ul, section#character_list ul,
+section#dungeons ul, section#slot_list ul {
+	padding: 0; margin: 0;
+}
+
+/* Header background */
+section#builds ul li, section#character_list ul li, 
+section#dungeons ul li, section#slot_list ul li {
+	position: relative;
+	display: block;
+	margin: 0 10px 8px;
+
+	width: 733px;				/* width reduced for border */
+	height: 98px;				/* height reduced for border */
+	
+	border: 1px solid rgba(199,199,199,0.8);
+	background-image: linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(236,236,236)),
+		color-stop(1, rgb(255,255,255))
+	);
+}
+
+/* Profession icon placement */
+section#characters ul li div.profession_icon {
+	margin: 0; top: -2px; left: 0;		/* align icon with the borders of containing li element */
+	background-repeat: no-repeat;
+	height: 100px;
+	opacity: 0.15;
+}
+
+/* Vertically align header elements */
+section#builds ul li div, section#character_list ul li div,
+section#dungeons ul li div, section#slot_list ul li div {
+	position: absolute; top: 50%;
+	height: 3em; margin-top: -1.5em;
+	left: 25px;
+	width: 100%;
+}
+
+section#builds ul li div, section#dungeons ul li div {
+	height: 2.2em; margin-top: -1.1em;
+	left: 30px;
+}
+
+/* Primary title/element of the headers */
+section#builds ul li h4, section#character_list ul li h4,
+section#dungeons ul li h4, section#slot_list ul li h4 {
+	margin: 0;
+	font-family: Cronos Pro Display;
+	font-size: 1.6em;
+	font-weight: normal;
+}
+
+/* Secondary element of the headers */
+section#builds ul li h5, section#character_list ul li h5,
+section#dungeons ul li h5, section#slot_list ul li h5 {
+	float: left;
+	margin: 0;
+	font-family: Arial;
+	font-size: .8em;
+	font-weight: normal;
+}
+
+section#slot_list ul li p {
+	width: 70%;
+	float: left;
+	margin: 0; padding: 0;
+	font-family: Arial;
+	font-size: .8em;
+	text-transform: capitalize;
+}
+
+/* Link styles */
+section#builds ul li a, section#slot_list ul li a {
+	position:relative; top:50%; height: 1.2em; margin-top: -0.6em;
+	float: right; margin-right: 35px;
+	
+	font-family: Cronos Pro Display;
+	font-size: 1.2em;
+	text-decoration: none;
+	color: #313131;
+}
+
+section#character_list a, section#dungeons a {
+	position:relative; top:50%; height: 1em; margin-top: -0.5em;
+	float: right; margin-right: 40px;
+	font-family: Cronos Pro Display;
+	font-size: 1.6em;
+	text-decoration: none;
+	color: #313131;
+}
+
+/* Builds link arrow style */
+section#builds ul li a img {
+	vertical-align: top;
+	margin-left: 35px;
+}
+
+section#builds a.disabled_build_link,
+section#builds a.disabled_build_link:hover,
+section#builds a.disabled_build_link:active {
+	color: #a49898;
+	opacity: 0.5;
+}
+
+section#builds ul li a:hover, section#builds ul li a:active,
+section#character_list a:hover, section#character_list a:active,
+section#dungeons a:hover, section#dungeons a:active,
+section#slot_list ul li a:hover, section#slot_list ul li a:active {
+	color: #a49898;
+}
+
+/* Character delete styles */
+section#character_list a.delete:hover, section#character_list a.delete:active,
+section#dungeons a.delete:hover, section#dungeons a.delete:active {
+	color: red;
+}
+
+/* New build/dungeon/event button styles */
+section#builds ul li.button, 
+section#characters ul li.button, 
+section#dungeons ul li.button,
+section#events ul li.button,
+section#slots ul li.button {
+	float: right;
+	padding: 0; margin: 0 10px;
+	width: 153px;
+	height: 44px;
+
+	background-image: url(../img/new_button.png);
+	background-repeat: no-repeat;
+	border: none;
+	text-align: center;
+}
+
+section#builds ul li.button a:link, section#builds ul li.button a:visited, 
+section#characters ul li.button a:link, section#characters ul li.button a:visited, 
+section#dungeons ul li.button a:link, section#dungeons ul li.button a:visited,
+section#events ul li.button a:link, section#events ul li.button a:visited,
+section#slots ul li.button a:link, section#slots ul li.button a:visited {
+	position: absolute; 
+	top: 50%; height: 1em; margin: -0.5em auto 0;
+	right: 0;
+	width: 153px;
+
+	font-family: Helvetica World;
+	font-size: 0.8em;
+	font-weight: 700;
+	text-transform:capitalize;
+	text-decoration: none;
+	color: #717171;
+}
+
+section#builds ul li.button a:hover, section#builds ul li.button a:active,
+section#characters ul li.button a:hover, section#characters ul li.button a:active,
+section#dungeons ul li.button a:hover, section#dungeons ul li.button a:active,
+section#events ul li.button a:hover, section#events ul li.button a:active,
+section#slots ul li.button a:hover, section#slots ul li.button a:active {
+	color: red;
+}
+/* --------------------------------------------------------------------------
+END Builds, Character list, Dungeons, Slot list, Event button STYLES */
+
+/* START Event STYLES 
+---------------------------------*/
+section#events ul {
+	margin: 0; padding: 0;
+	list-style: none;
+}
+section#events ul li {
+	position: relative;			/* positioning for event detail elements */
+}
+
+/* Closed events */
+section#events ul li.event_collapsed {
+	margin: 0 10px;
+	width: 733px;				/* width reduced for border */
+	
+	border: 1px solid rgba(199,199,199,0.8);
+ 	background-image: url(../img/event_down_arrow.png), linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: url(../img/event_down_arrow.png), -o-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: url(../img/event_down_arrow.png), -moz-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: url(../img/event_down_arrow.png), -webkit-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: url(../img/event_down_arrow.png), -ms-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+
+	background-image: url(../img/event_down_arrow.png), -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(236,236,236)),
+		color-stop(1, rgb(255,255,255))
+	);
+	
+	background-repeat: no-repeat;
+	background-position: right bottom;
+}
+
+/* Opened events */
+section#events ul li.event_expanded {
+	float: left;					/* float for all exanded event elements */
+	margin: 0 10px;
+	width: 733px;				/* width reduced for border */
+	
+	border: 1px solid rgba(199,199,199,0.8);
+ 	background-image: url(../img/event_up_arrow.png), linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: url(../img/event_up_arrow.png), -o-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: url(../img/event_up_arrow.png), -moz-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: url(../img/event_up_arrow.png), -webkit-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: url(../img/event_up_arrow.png), -ms-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+
+	background-image: url(../img/event_up_arrow.png), -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(236,236,236)),
+		color-stop(1, rgb(255,255,255))
+	);
+	
+	background-repeat: no-repeat;
+	background-position: right bottom;
+ }
+
+ /* Red paint strokes below every event */
+ div.event_footer {
+	clear: both;					/* clear floating event detail elements */
+	margin: -5px 10px -83px;		/* negative margins allow overlap of footer */
+	width: 735px;
+	height: 96px;
+	background-image: url(../img/event_footer.png);
+ }
+ 
+/*	Event footer at the bottom of the list of events
+	fills negative margin on events */
+div.events_footer {
+	height: 83px;
+}
+
+/* Headers */
+section#events ul li ul.header {
+	position: relative;
+	top: 50px;									/* position the div in the middle of the header */
+	height: 100px;
+}
+section#events ul li ul.header li div {
+	position: absolute; top: 50%; 				/* vertically align text within the header */
+	height: 3em; margin-top: -1.5em;
+}
+
+section#events ul li.event_title, section#events ul li.event_numbers, 
+section#events ul li.event_time {
+	font-family: Cronos Pro Display;
+	color: #393939;
+}
+
+section#events ul li.event_title h4, section#events ul li.event_numbers h4,
+section#events ul li.event_time h4 {
+	margin: 0;
+	font-size: 1.6em;
+}
+
+section#events ul li.event_title h5, section#events ul li.event_numbers h5,
+section#events ul li.event_time h5 {
+	margin: 0;
+	font-size: 1.2em;
+	font-weight: normal;
+	text-transform: capitalize;
+}
+
+section#events ul li.event_title div {
+	left: 20px;
+}
+
+section#events ul li.event_numbers div {
+	width: 4em; margin-left: -2em; left: 50%;		/* horizontally center text within header */
+	text-align: center;
+}
+
+section#events ul li.event_time div {
+	right: 10px;
+}
+
+/* Player count colors */
+section#events ul li.event_numbers span.player_count_empty {	color: #717171; }
+section#events ul li.event_numbers span.player_count_low {		color: #1c8300;	}
+section#events ul li.event_numbers span.player_count_high {		color: #bec022;	}
+section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
+
+/* START Tab styles
+=============== */
+#tabs {
+	float: left;
+	padding: 0 10px 10px;
+	background: none;
+	border: none;
+	width: 230px;
+}
+
+#tabs .ui-tabs-nav {
+	padding-left: 0px;
+	background: transparent;
+	border-width: 0px 0px 1px 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+	border-color: #d1d1d1;
+}
+
+#tabs .ui-state-default		{
+	height: 20px;
+	font-family: Helvetica World;
+	font-size:  0.8em;
+	font-weight: 700;
+	background: #404040;
+	border-color: #d1d1d1;
+}
+#tabs .ui-state-active {
+	background: white;
+}
+
+#tabs .ui-state-default a {
+	padding: 3px 10px;
+	color: white;
+}
+
+#tabs .ui-state-active a {
+	color: #393939;	
+}
+
+#tabs .ui-tabs-panel {
+	padding: 10px 7px;
+
+	border: 1px solid rgba(199,199,199,0.8);
+	border-top: none;
+	
+	background-image: linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(236,236,236)),
+		color-stop(1, rgb(255,255,255))
+	);
+}
+
+#attendees.ui-tabs-panel li,
+#standby.ui-tabs-panel li {
+	background-repeat: no-repeat;
+	background-position: 5px 40px;
+
+	font-family: Arial;
+	font-size: 0.7em;
+	color: #a9a9a9;
+}
+
+/* Profession icons */
+#tabs.ui-tabs li.assassin {	background-image: url(../img/prof_assassin_small.png);	}
+#tabs.ui-tabs li.ritualist {	background-image: url(../img/prof_ritualist_small.png);	}
+#tabs.ui-tabs li.dervish {	background-image: url(../img/prof_dervish_small.png);	}
+#tabs.ui-tabs li.paragon {	background-image: url(../img/prof_paragon_small.png);	}
+#tabs.ui-tabs li.elementalist {	background-image: url(../img/prof_elementalist_small.png);	}
+#tabs.ui-tabs li.mesmer {	background-image: url(../img/prof_mesmer_small.png);	}
+#tabs.ui-tabs li.monk {		background-image: url(../img/prof_monk_small.png);		}
+#tabs.ui-tabs li.necromancer {	background-image: url(../img/prof_necromancer_small.png);	}
+#tabs.ui-tabs li.ranger {	background-image: url(../img/prof_ranger_small.png);		}
+#tabs.ui-tabs li.warrior {	background-image: url(../img/prof_warrior_small.png);	}
+
+#attendees.ui-tabs-panel li div.name,
+#standby.ui-tabs-panel li div.name {
+	padding: 9px 10px;
+	border-radius: 5px;
+	background-color: #ececec;
+	color: #393939;
+}
+
+/* Comment icon */
+#attendees.ui-tabs-panel li div.name a,
+#standby.ui-tabs-panel li div.name a {
+	float: right;
+	width: 16px; height: 16px;
+	padding: 0;
+	
+	background-image: url(../img/comment_icon.png);
+	color: rgba(0,0,0,0);
+}
+
+/* User comment styles */
+#attendees.ui-tabs-panel ul ul,
+#standby.ui-tabs-panel ul ul {
+	position: absolute;
+	left: -9999px;
+	list-style: none;
+}
+
+#attendees.ui-tabs-panel li div:hover ul,
+#standby.ui-tabs-panel li div:hover ul {
+	z-index: 5;		/* put the comment on top of the event description */
+	top: -4px;
+	left: 175px;
+}
+
+#attendees.ui-tabs-panel li div ul li,
+#standby.ui-tabs-panel li div ul li {
+	position: absolute;
+	padding: 0;
+	width: 202px;
+	height: 66px;
+	background-image: url(../img/comment_bg.png);
+	background-position: top left;
+}
+
+#attendees.ui-tabs-panel li div.comment,
+#standby.ui-tabs-panel li div.comment {
+	height: 54px;
+	padding: 5px 10px 0 15px;
+	
+	overflow: hidden;			/* cut off long comments */
+	color: white;
+}
+
+/* Padding the role text if a profession icon is visible */
+#attendees.ui-tabs-panel li[class] div.role,
+#standby.ui-tabs-panel li[class] div.role {
+	padding-left: 30px;
+}
+
+#attendees.ui-tabs-panel li div.role,
+#standby.ui-tabs-panel li div.role {
+	padding: 9px 10px;
+}
+
+/* Signup / Withdraw link styles */
+#attendees.ui-tabs-panel a:link, #attendees.ui-tabs-panel a:visited,
+#standby.ui-tabs-panel a:link, #standby.ui-tabs-panel a:visited {
+	display: block;
+	padding: 9px 0;
+	font-family: Cronos Pro Display;
+	text-decoration: none;
+	font-size: 1.2em;
+	text-align: center;
+	
+	color: #313131;
+	background-color: #ececec;
+	border-radius: 5px;
+}
+
+#attendees.ui-tabs-panel a:hover, #attendees.ui-tabs-panel a:active,
+#standby.ui-tabs-panel a:hover, #standby.ui-tabs-panel a:active {
+	color: #a49898;
+}
+
+#attendees.ui-tabs-panel a.withdraw:hover, #attendees.ui-tabs-panel a.withdraw:active,
+#standby.ui-tabs-panel a.withdraw:hover, #standby.ui-tabs-panel a.withdraw:active {
+	color: red;
+}
+/* ===========
+END Tab styles */
+
+div#event_description {
+	position: relative;
+	float: right; right: 20px;
+	width: 51%;
+	
+	font-family: Helvetica World;
+}
+
+div#event_description h6 {
+	margin: 0;
+	font-size: 0.9em;
+}
+
+div#event_description p {
+	margin: 0;
+	padding-bottom: 10px;
+	font-size: 0.8em;
+}
+
+/* Edit and cancel event links */
+div#event_description a.edit_event, 
+div#event_description a.cancel_event {
+	display: inline-block;
+	padding: 0 10px 10px 0;
+	text-decoration: none;
+	
+	font-family: Cronos Pro Display;
+	font-size: 1.2em;
+	color: #393939;
+}
+
+div#event_description a.edit_event:hover,
+div#event_description a.edit_event:active {
+	color: #a49898;
+}
+
+div#event_description a.cancel_event:hover,
+div#event_description a.cancel_event:active {
+	color: red;
+}
+
+/* ------------------------
+END Event STYLES */
+
+/* START Feildset STYLES
+--------------------------------------- */
+fieldset {
+	font-family: Cronos Pro Display;
+	border: none;
+	padding: 0 20px;
+}
+
+fieldset legend {
+	font-size: 1.6em;
+	padding: 10px 0;
+}
+
+fieldset label, fieldset fieldset legend {
+	font-size: 1em;
+	font-weight: 600;
+}
+
+section#add_build fieldset label, section#edit_build fieldset label,
+section#edit_character fieldset label,
+section#add_dungeon fieldset label, section#edit_dungeon fieldset label,
+section#add_slot fieldset label, section#add_slot fieldset fieldset legend,
+section#edit_slot fieldset label, section#edit_slot fieldset fieldset legend {
+	font-size: 1.2em;
+	font-weight: normal;
+}
+
+fieldset ul {
+	margin: 0; padding: 0;
+	list-style-type: none;
+}
+
+/* Indent form items */
+fieldset ul li {
+	padding: 10px 0 0 40px;
+	width: 243px;
+}
+
+/* Unindent form submit buttons */
+fieldset ul li.button {
+	padding: 20px 0 40px 0;
+}
+
+/* Style input boxes on forms */
+fieldset input[type=text], fieldset input[type=password], 
+fieldset input[type=date], fieldset input[type=time] {
+	display: block;
+	margin: 10px 0;
+
+	width: 221px;			/* reduced width by 20px due to padding */
+	height: 30px;			/* reduced height by 2 px due to border */
+	padding: 0 10px;		/* indent text inside box */
+
+	background-image: url(../img/form_input_bg.png);
+	background-repeat: no-repeat;
+	border: solid 1px #b2b2b2;
+}
+
+fieldset input[type=number] {
+	float: right;
+	padding: 1px 10px 0 10px;
+	width: 3em;
+	border-top-left-radius: 5px; border-bottom-left-radius: 5px;
+	border: solid 1px #b2b2b2;
+}
+
+/* Nested forms */
+fieldset fieldset {
+	margin: 0; padding: 0;
+}
+
+/* Reset font sizes on nested forms, e.g. professions */
+fieldset fieldset label,
+section#add_slot fieldset fieldset label,
+section#edit_slot fieldset fieldset label {
+	font-size: 1em;
+	font-weight: normal;
+}
+
+fieldset fieldset ul li {
+	width: 140px;
+	margin: 0; padding: 0;
+	font-family: Arial;
+	text-transform: capitalize;
+}
+
+/* right align checkboxes, radio selects */
+fieldset fieldset ul li input[type=checkbox], fieldset fieldset ul li input[type=radio] {
+	margin-top: 4px;
+	float: right;
+}
+
+/* Fade disabled inputs */
+fieldset input[disabled=disabled] {
+	opacity: 0.4;
+}
+
+/* Style textarea boxes on forms */
+fieldset textarea {
+	display: block;
+	margin: 10px 0;
+	
+	width: 237px;			/* reduced width due to border */
+	height: 4em;
+	
+	border: solid 1px #b2b2b2;
+}
+
+/* Style dropdown select on forms */
+fieldset select {
+	-webkit-appearance: none; -moz-appearance: none; appearance: none;
+	display: block;
+	margin: 10px 0;
+
+	width: 243px;
+	height: 36px;
+	padding: 0 30px 0 10px;		/* indent text inside box */
+
+	background: transparent url(../img/form_select_bg.png) no-repeat;
+	border: none;
+}
+
+section#edit_character fieldset select {
+	text-transform: capitalize;
+}
+
+/* Style for buttons on forms */
+fieldset input[type=submit] {
+	padding-top: 5px;
+	font-family: Adobe caslon Pro;
+	font-weight: 700;
+	font-size: 1em;
+	color: white;
+
+	border: none;
+	background: url(../img/button.png);		/* use background instead of -image to remove transparency issue */
+	width: 121px;
+	height: 54px;
+}
+
+/* Right aligned form links */
+fieldset a:link, fieldset a:visited {
+	font-family: Helvetica World;
+	font-size: .9em;
+	color: #313131;
+	display: block;
+	font-weight: 600;
+	text-decoration: none;
+	width: 241px;
+	text-align: right;
+}
+
+fieldset a:hover, fieldset a:active {
+	color: #a49898;
+}
+
+fieldset a.delete:hover, fieldset a.delete:active {
+	color: red;
+}
+/* ---------------------------------
+END Fieldset STYLES */
 
 
 

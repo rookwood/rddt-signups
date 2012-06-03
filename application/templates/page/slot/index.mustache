@@ -1,21 +1,50 @@
-<h4>Slots</h4>
-<table>
-	<thead>
-		<tr>
-			<td colspan="1">Actions</td>
-			<td>Name</td>
-			<td>Professions</td>
-		</tr>
-	</thead>
-	<tbody>
-{{#slot_list}}
-		<tr>
-			<td><a href="{{edit_link}}"><img src="/media/img/icons/page_edit.png" /></a></td>
-			<td>{{name}}</td>
-			<td>{{professions}}</td>
-		</tr>
-{{/slot_list}}
-	</tbody>
-</table>
+	<section id="slots">
+		<h3>Slots</h3>
+		<ul id="filter">
+			<li><a href="">#</a></li>
+			<li><a href="">A</a></li>
+			<li><a href="">B</a></li>
+			<li><a href="">C</a></li>
+			<li><a href="">D</a></li>
+			<li><a href="">E</a></li>
+			<li><a href="">F</a></li>
+			<li><a href="">G</a></li>
+			<li><a href="">H</a></li>
+			<li><a href="">I</a></li>
+			<li><a href="">J</a></li>
+			<li><a href="">K</a></li>
+			<li><a href="">L</a></li>
+			<li><a href="">M</a></li>
+			<li><a href="">N</a></li>
+			<li><a href="">O</a></li>
+			<li><a href="">P</a></li>
+			<li><a href="">Q</a></li>
+			<li><a href="">R</a></li>
+			<li><a href="">S</a></li>
+			<li><a href="">T</a></li>
+			<li><a href="">U</a></li>
+			<li><a href="">V</a></li>
+			<li><a href="">W</a></li>
+			<li><a href="">X</a></li>
+			<li><a href="">Y</a></li>
+			<li><a href="">Z</a></li>
+			<li><a href="">All</a></li>
+		</ul>
 
-<a href="{{slot_add_url}}">Add new slot</a>
+		<section id="slot_list">
+			<ul>
+
+{{#slot_list}}
+				<li>
+					<div>
+						<h4>{{name}}</h4>
+						<h5>Professions: &nbsp;</h5>
+						<p>{{professions}}</p>
+					</div>
+					<a class="edit" href="{{edit_link}}" title="Edit {{name}}">Edit slot</a>
+				</li>
+{{/slot_list}}
+				<li class="button"><a href="{{slot_add_url}}">Add new slot</a></li>
+			</ul>
+			
+		</section>

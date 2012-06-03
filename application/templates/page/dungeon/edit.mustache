@@ -1,17 +1,18 @@
-
-	<form action="{{dungeon_edit_url}}" method="POST" id="form_dungeon_add">
-		<fieldset>
-			<legend>Edit dungeon</legend>
-			<ul>
-				<li>
-					<label for="name">Name:</label>
-					<input type="text" name="dungeon[name]" id="name" value="{{name}}" {{#errors.name}}class="error" {{/errors.name}}/>
-					{{#errors.name}}<p class="error_message">{{errors.name}}</p>{{/errors.name}}
-				</li>
-				<li>
-					{{{csrf}}}
-					<input type="submit" value="Submit" />
-				</li>
-			</ul>
-		</fieldset>
-	</form>
+	<section id="edit_dungeon">
+		<form action="{{dungeon_edit_url}}" method="POST" id="form_dungeon_add">
+			<fieldset>
+				<legend>Edit dungeon</legend>
+				<ul>
+					<li>
+						<label for="name">Name:</label>
+						<input type="text" name="dungeon[name]" id="name" value="{{name}}" {{#errors.name}}class="error" {{/errors.name}}/>
+						{{#errors.name}}<p class="error_message">{{errors.name}}</p>{{/errors.name}}
+					</li>
+					<li class="button">
+						{{{csrf}}}
+						<input type="submit" value="Submit" />
+					</li>
+				</ul>
+			</fieldset>
+		</form>
+	</section>

@@ -7,7 +7,7 @@ This is still a work in progress...
 * New Google web font, refactored all fonts
 * Moved new dungeon/build/slot/event buttons to the top of the page
 * New background, banner and menu styles
-* All regular user pages styled
+* All regular user pages styled (tabs now working)
 
 ### To do
 * Sign up for event link/page not working yet

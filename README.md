@@ -11,8 +11,9 @@ This is still a work in progress...
 
 ### To do
 * Sign up for event link/page not working yet
-* Sort dropdown incomplete
+* Sort by dropdown incomplete
 * Filter slot links not working yet
+* Event player count not working yet
 * Validate/minimize all css
 
 ### Other ideas

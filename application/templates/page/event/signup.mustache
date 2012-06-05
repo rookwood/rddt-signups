@@ -1,4 +1,7 @@
 {{#signup}}
+	<form action="{{sign_up_link}}" method="post" id="sign_up_form" class="panel">
+		<fieldset>
+			<legend>Event Sign up</legend>
 			<ul>
 				<li>
 					<label for="character">Attend as:</label>
@@ -35,7 +38,11 @@
 						<input type="radio" name="event[status]" id="status_standby" value="stand-by (voluntary)" />
 					</fieldset>					
 				</li>
+				<li class="button">
+					{{{csrf}}}
+					<input type="submit" value="Sign up" />
+				</li>
 			</ul>
-			{{{csrf}}}
-			<input type="submit" value="Sign up" />
+		</fieldset>
+	</form>
 {{/signup}}

@@ -5,21 +5,21 @@
 			<ul>
 				<li>
 					<label for="user_name">Username:</label>
-					<input type="text" name="user[username]" id="user_name" autofocus="autofocus" />
+					<input type="text" name="user[username]" id="user_name" autofocus="autofocus" tabindex="1" />
 					{{#retrieval}}{{#retrival_user}}<a href="{{retrieval_user}}">Forgot username?</a>{{/retrival_user}}{{/retrieval}}
 				</li>
 				<li>
 					<label for="user_password">Password:</label>
-					<input type="password" name="user[password]" id="user_password" />
+					<input type="password" name="user[password]" id="user_password" tabindex="2" />
 					{{#retrieval}}{{#retrieval_pw}}<a href="{{retrieval_pw}}">Forgot password?</a>{{/retrieval_pw}}{{/retrieval}}
 				</li>
 				<li>
 					<label for="remember">Remember me?</label>
-					<input type="checkbox" name="remember" value="TRUE" id="remember" checked="checked" />
+					<input type="checkbox" name="remember" value="TRUE" id="remember" checked="checked" tabindex="3" />
 				</li>
 				<li class="button">
 					{{{csrf}}}
-					<input type="submit" value="Submit" />
+					<input type="submit" value="Submit" tabindex="4" />
 				</li>
 			</ul>
 		</fieldset>

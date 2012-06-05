@@ -218,7 +218,7 @@ body {
 	padding:0;margin:0;	/* necesarry for the raster to fill the screen */
 	height:100%;width:100%;
 
-	font: 1em/1.25 Helvetica, Arial, sans-serif;
+	font: 1em/1.25 Arial, Helvetica, sans-serif;
 	color: #393939;
 	text-align: center;		/* for centering the container */
 }
@@ -231,14 +231,14 @@ body {
 #realbody {
 	position: absolute;
 	z-index: 5;						/* Place the container above the background image */
-	overflow: auto;					/* restore scrollbars for the content */
-	height: 100%;width: 100%;	/* Make the new body fill the screen */
+	overflow: auto;				/* restore scrollbars for the content */
+	height: 100%;width: 100%;		/* Make the new body fill the screen */
 }
 
 .container {
 	position: relative;
 	background: url(../img/container_bg_alt.png);
-	margin: 0 auto;
+	margin: 146px auto 0;			/* Push container down right below menu background */
 
 	width: 756px;
 	min-height: 100%;
@@ -258,14 +258,15 @@ Used on pages with floating elements at the end of the page */
 }
 
 .masthead {
-	background-image: url(../img/banner_alt.png);
+	position: absolute; top: -136px;	/* banner at the top of page with 10px space */
+	width: 756px; height: 100px;
+	padding-top: 1px;					/* Hack for removing extra spacing */
+	margin-bottom: -1px;
+
+	background-image: url(../img/banner.png);
 	background-position: top center;
 	background-repeat: no-repeat;
-	
-	width: 756px;
-	height: 170px;
-	padding-top: 1px;		/* Hack for removing unexpected top spacing */
-	margin-bottom: -1px;
+	z-index: 5;							/* banner on top */
 }
 
 .masthead h1, .masthead h2 {
@@ -275,13 +276,19 @@ Used on pages with floating elements at the end of the page */
 /* Top navigation menu with dropdown
 ---------------------------------------------------- */
 nav ul {
-	display: block;
+	position: absolute; top: -46px;
 	width: 100%;
-	height: 45px;
+	height: 46px;
 
-	background-image: url(../img/menubg.png);
+	background-image: url(../img/menu_bg.png);
 	background-repeat: no-repeat;
 	list-style: none;
+}
+
+nav #alien {
+	float: left;
+	margin: -7px 0 0 10px;
+	width: 33px; height: 47px;
 }
 
 nav ul li {
@@ -295,17 +302,17 @@ nav ul li a, nav ul li a:visited {
 	cursor: pointer;
 
 	/* background-color: green; */
-	background-image: url(../img/button_menu_separator.png);
+	background-image: url(../img/menu_link_separator.png);
 	background-position: top right;
 	background-repeat: no-repeat;
 
-	height: 33px;		/* height adjusted for padding */
+	height: 34px;		/* height adjusted for padding */
 	padding: 12px 15px 0 15px;
 
-	font-family: Helvetica World;
-	font-weight: 700;
-	font-size:.8em;
 	text-decoration: none;
+	text-transform: capitalize;
+	font-size:.8em;
+	font-weight: bold;
 	color: white;
 }
 
@@ -326,6 +333,7 @@ nav ul li:hover ul {
 	width:141px;
 	height:141px;	/* height adjusted for padding-top */
 	padding-top:12px;
+	top: 46px;		/* top adjusted for moved menu */
 	left: -6px;
 	z-index:900;
 
@@ -346,11 +354,10 @@ nav ul li ul li a:link, nav ul li ul li a:visited {
 END CSS for dropdown menu */
 
 h3 {
-	font-family: Cronos Pro Display;
-	padding: 10px;
-	font-size: 1.6em;
-	font-weight: 700;
-	margin: 0;
+	display: inline-block;
+	margin: 0; padding: 10px;
+	font: 1.4em 'Philosopher', sans-serif;
+	font-weight: bold;
 }
 
 section {
@@ -383,6 +390,7 @@ div#news {
 /* START FILTER STYLES
 --------------------------------------- */
 section ul#filter {
+	clear: both;
 	padding: 0; margin: 0 auto;
 	width: 724px;
 }
@@ -393,14 +401,14 @@ section ul#filter li {
 	padding: 0 8px 20px;
 }
 
-section ul#filter li a:link, section ul#filter li a:visited {
+section ul#filter li a, section ul#filter li a:visited {
 	text-decoration: none;
-	font-family: Helvetica World;
 	font-size: .9em;
-	font-weight: 700;
+	font-weight: bold;
 	color: #313131;
 }
 
+section ul#filter li a.disabled,
 section ul#filter li a:hover, section ul#filter li a:active {
 	color: #a49898;
 }
@@ -418,11 +426,10 @@ div.sort_selector {
 
 /* Sort By label */
 section#events div.sort_label {
-	float: right;
-	margin-right: 14px;
+	float: left;
+	margin-right: 10px;
 	
-	font-family: Helvetica World;
-	font-size: 0.8em;
+	font-size: 0.9em;
 	font-weight: bold;
 	color: #393939;
 }
@@ -437,8 +444,7 @@ section#events li.sort_selected a {
 
 	background-image: url(../img/sort_select_bg.png);
 
-	font-family: Helvetica World;
-	font-size: 0.8em;
+	font-size: 0.9em;
 	font-weight: bold;
 	color:  #717171;
 	text-decoration: none;
@@ -446,9 +452,9 @@ section#events li.sort_selected a {
 
 /* Dropdown menu styles */
 section#events ul.sort_dropdown {
-	float: right;
-	right: -11px;
+	float: left; right: -11px;
 	padding: 0; margin: 0;
+	clear: none;
 }
 
 section#events ul.sort_dropdown li ul {
@@ -474,7 +480,8 @@ section#events ul.sort_dropdown li:hover ul {
 	height: 22px;
 } 
 
-section#events ul.sort_dropdown li ul li a:link, section#events ul.sort_dropdown li ul li a:visited {
+section#events ul.sort_dropdown li ul li a:link, 
+section#events ul.sort_dropdown li ul li a:visited {
 	width:192px;
 	padding-left: 15px;
 	font-weight: normal;
@@ -482,7 +489,8 @@ section#events ul.sort_dropdown li ul li a:link, section#events ul.sort_dropdown
 	background: none;
 }
 
-section#events ul.sort_dropdown li ul li a:hover, section#events ul.sort_dropdown li ul li a:active {
+section#events ul.sort_dropdown li ul li a:hover, 
+section#events ul.sort_dropdown li ul li a:active {
 	color: #a3a3a3;
 }
 
@@ -497,15 +505,17 @@ END Sort STYLES */
 /* START Builds, Character list, Dungeons, Slot list, Event button STYLES
 ----------------------------------------------------------------------------------- */
 section#builds ul, section#character_list ul,
-section#dungeons ul, section#slot_list ul {
+section#dungeons ul, section#slot_list ul,
+section#events ul {
 	padding: 0; margin: 0;
+	list-style: none;
+	clear: both;
 }
 
 /* Header background */
 section#builds ul li, section#character_list ul li, 
 section#dungeons ul li, section#slot_list ul li {
 	position: relative;
-	display: block;
 	margin: 0 10px 8px;
 
 	width: 733px;				/* width reduced for border */
@@ -545,7 +555,7 @@ section#dungeons ul li div, section#slot_list ul li div {
 }
 
 section#builds ul li div, section#dungeons ul li div {
-	height: 2.2em; margin-top: -1.1em;
+	height: 1.4em; margin-top: -0.7em;
 	left: 30px;
 }
 
@@ -553,18 +563,15 @@ section#builds ul li div, section#dungeons ul li div {
 section#builds ul li h4, section#character_list ul li h4,
 section#dungeons ul li h4, section#slot_list ul li h4 {
 	margin: 0;
-	font-family: Cronos Pro Display;
-	font-size: 1.6em;
-	font-weight: normal;
+	font: 1.4em 'Philosopher', sans-serif;
 }
 
 /* Secondary element of the headers */
-section#builds ul li h5, section#character_list ul li h5,
-section#dungeons ul li h5, section#slot_list ul li h5 {
+section#character_list ul li h5,
+section#slot_list ul li h5 {
 	float: left;
 	margin: 0;
-	font-family: Arial;
-	font-size: .8em;
+	font-size: 1em;
 	font-weight: normal;
 }
 
@@ -572,8 +579,6 @@ section#slot_list ul li p {
 	width: 70%;
 	float: left;
 	margin: 0; padding: 0;
-	font-family: Arial;
-	font-size: .8em;
 	text-transform: capitalize;
 }
 
@@ -582,8 +587,7 @@ section#builds ul li a, section#slot_list ul li a {
 	position:relative; top:50%; height: 1.2em; margin-top: -0.6em;
 	float: right; margin-right: 35px;
 	
-	font-family: Cronos Pro Display;
-	font-size: 1.2em;
+	font: 1.2em 'Philosopher', sans-serif;
 	text-decoration: none;
 	color: #313131;
 }
@@ -591,8 +595,8 @@ section#builds ul li a, section#slot_list ul li a {
 section#character_list a, section#dungeons a {
 	position:relative; top:50%; height: 1em; margin-top: -0.5em;
 	float: right; margin-right: 40px;
-	font-family: Cronos Pro Display;
-	font-size: 1.6em;
+	
+	font: 1.2em 'Philosopher', sans-serif;
 	text-decoration: none;
 	color: #313131;
 }
@@ -624,45 +628,31 @@ section#dungeons a.delete:hover, section#dungeons a.delete:active {
 }
 
 /* New build/dungeon/event button styles */
-section#builds ul li.button, 
-section#characters ul li.button, 
-section#dungeons ul li.button,
-section#events ul li.button,
-section#slots ul li.button {
-	float: right;
-	padding: 0; margin: 0 10px;
+section#builds a.button:link, section#builds a.button:visited, 
+section#characters a.button:link, section#characters a.button:visited, 
+section#dungeons a.button:link, section#dungeons a.button:visited,
+section#events a.button:link, section#events a.button:visited,
+section#slots a.button:link, section#slots a.button:visited {
+	display: block; float: right;
+	padding-top: 12px; margin: 10px 10px 8px;
 	width: 153px;
-	height: 44px;
-
+	height: 32px;
 	background-image: url(../img/new_button.png);
-	background-repeat: no-repeat;
-	border: none;
+	z-index: 500;
+
 	text-align: center;
-}
-
-section#builds ul li.button a:link, section#builds ul li.button a:visited, 
-section#characters ul li.button a:link, section#characters ul li.button a:visited, 
-section#dungeons ul li.button a:link, section#dungeons ul li.button a:visited,
-section#events ul li.button a:link, section#events ul li.button a:visited,
-section#slots ul li.button a:link, section#slots ul li.button a:visited {
-	position: absolute; 
-	top: 50%; height: 1em; margin: -0.5em auto 0;
-	right: 0;
-	width: 153px;
-
-	font-family: Helvetica World;
-	font-size: 0.8em;
-	font-weight: 700;
-	text-transform:capitalize;
 	text-decoration: none;
+	text-transform: capitalize;
+	font: 0.9em Arial, Helvetica, sans-serif;
+	font-weight: bold;
 	color: #717171;
 }
 
-section#builds ul li.button a:hover, section#builds ul li.button a:active,
-section#characters ul li.button a:hover, section#characters ul li.button a:active,
-section#dungeons ul li.button a:hover, section#dungeons ul li.button a:active,
-section#events ul li.button a:hover, section#events ul li.button a:active,
-section#slots ul li.button a:hover, section#slots ul li.button a:active {
+section#builds a.button:hover, section#builds a.button:active,
+section#characters a.button:hover, section#characters a.button:active,
+section#dungeons a.button:hover, section#dungeons a.button:active,
+section#events a.button:hover, section#events a.button:active,
+section#slots a.button:hover, section#slots a.button:active {
 	color: red;
 }
 /* --------------------------------------------------------------------------
@@ -670,10 +660,6 @@ END Builds, Character list, Dungeons, Slot list, Event button STYLES */
 
 /* START Event STYLES 
 ---------------------------------*/
-section#events ul {
-	margin: 0; padding: 0;
-	list-style: none;
-}
 section#events ul li {
 	position: relative;			/* positioning for event detail elements */
 }
@@ -760,20 +746,20 @@ section#events ul li ul.header li div {
 
 section#events ul li.event_title, section#events ul li.event_numbers, 
 section#events ul li.event_time {
-	font-family: Cronos Pro Display;
+	font-family: 'Philosopher', sans-serif;
 	color: #393939;
 }
 
 section#events ul li.event_title h4, section#events ul li.event_numbers h4,
 section#events ul li.event_time h4 {
 	margin: 0;
-	font-size: 1.6em;
+	font-size: 1.4em;
 }
 
 section#events ul li.event_title h5, section#events ul li.event_numbers h5,
 section#events ul li.event_time h5 {
 	margin: 0;
-	font-size: 1.2em;
+	font-size: 1em;
 	font-weight: normal;
 }
 
@@ -787,7 +773,7 @@ section#events ul li.event_numbers div {
 }
 
 section#events ul li.event_time div {
-	right: 10px;
+	right: 20px;
 }
 
 /* Player count colors */
@@ -816,20 +802,20 @@ section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
 	border-color: #d1d1d1;
 }
 
-#tabs .ui-state-default		{
+#tabs .ui-state-default {
 	height: 20px;
-	font-family: Helvetica World;
 	font-size:  0.8em;
-	font-weight: 700;
+	font-weight: bold;
 	background: #404040;
 	border-color: #d1d1d1;
 }
+
 #tabs .ui-state-active {
 	background: white;
 }
 
 #tabs .ui-state-default a {
-	padding: 3px 10px;
+	padding: 2px 10px;
 	color: white;
 }
 
@@ -863,7 +849,6 @@ section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
 	background-repeat: no-repeat;
 	background-position: 5px 40px;
 
-	font-family: Arial;
 	font-size: 0.7em;
 	color: #a9a9a9;
 }
@@ -880,8 +865,8 @@ section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
 #tabs.ui-tabs li.ranger {	background-image: url(../img/prof_ranger_small.png);		}
 #tabs.ui-tabs li.warrior {	background-image: url(../img/prof_warrior_small.png);	}
 
-#attendees.ui-tabs-panel li div.name,
-#standby.ui-tabs-panel li div.name {
+#attendees.ui-tabs-panel li div.player,
+#standby.ui-tabs-panel li div.player {
 	padding: 9px 10px;
 	border-radius: 5px;
 	background-color: #ececec;
@@ -889,8 +874,8 @@ section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
 }
 
 /* Comment icon */
-#attendees.ui-tabs-panel li div.name a,
-#standby.ui-tabs-panel li div.name a {
+#attendees.ui-tabs-panel li div.player a,
+#standby.ui-tabs-panel li div.player a {
 	float: right;
 	width: 16px; height: 16px;
 	padding: 0;
@@ -948,13 +933,14 @@ section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
 #attendees.ui-tabs-panel a:link, #attendees.ui-tabs-panel a:visited,
 #standby.ui-tabs-panel a:link, #standby.ui-tabs-panel a:visited {
 	display: block;
-	padding: 9px 0;
-	font-family: Cronos Pro Display;
+	padding: 5px 0;
+
 	text-decoration: none;
-	font-size: 1.2em;
 	text-align: center;
+	font-size: 0.9em;
+	font-weight: bold;
 	
-	color: #313131;
+	color: #555555;
 	background-color: #ececec;
 	border-radius: 5px;
 }
@@ -975,13 +961,12 @@ div#event_description {
 	position: relative;
 	float: right; right: 20px;
 	width: 51%;
-	
-	font-family: Helvetica World;
 }
 
 div#event_description h6 {
 	margin: 0;
-	font-size: 0.9em;
+	font-size: 0.8em;
+	font-weight: bold;
 }
 
 div#event_description p {
@@ -999,9 +984,9 @@ div#event_description a.cancel_event {
 	padding: 0 10px 10px 0;
 	text-decoration: none;
 	
-	font-family: Cronos Pro Display;
-	font-size: 1.2em;
-	color: #393939;
+	font-size: 0.9em;
+	font-weight: bold;
+	color: #555555;
 }
 
 div#event_description a.edit_event {
@@ -1030,28 +1015,18 @@ END Event STYLES */
 /* START Feildset STYLES
 --------------------------------------- */
 fieldset {
-	font-family: Cronos Pro Display;
 	border: none;
 	padding: 0 20px;
 }
 
 fieldset legend {
-	font-size: 1.6em;
+	font: 1.4em 'Philosopher', sans-serif;
 	padding: 10px 0;
 }
 
 fieldset label, fieldset fieldset legend {
+	font: 1.4em 'Philosopher', sans-serif;
 	font-size: 1em;
-	font-weight: 600;
-}
-
-section#add_build fieldset label, section#edit_build fieldset label,
-section#edit_character fieldset label,
-section#add_dungeon fieldset label, section#edit_dungeon fieldset label,
-section#add_slot fieldset label, section#add_slot fieldset fieldset legend,
-section#edit_slot fieldset label, section#edit_slot fieldset fieldset legend {
-	font-size: 1.2em;
-	font-weight: normal;
 }
 
 fieldset ul {
@@ -1102,15 +1077,13 @@ fieldset fieldset {
 fieldset fieldset label,
 section#add_slot fieldset fieldset label,
 section#edit_slot fieldset fieldset label {
-	font-size: 1em;
-	font-weight: normal;
+	font: 1em Arial, Helvetica, sans-serif;
+	text-transform: capitalize;
 }
 
 fieldset fieldset ul li {
 	width: 140px;
 	margin: 0; padding: 0;
-	font-family: Arial;
-	text-transform: capitalize;
 }
 
 /* right align checkboxes, radio selects */
@@ -1155,28 +1128,26 @@ section#edit_character fieldset select {
 
 /* Style for buttons on forms */
 fieldset input[type=submit] {
-	padding-top: 5px;
-	font-family: Adobe caslon Pro;
-	font-weight: 700;
-	font-size: 1em;
-	color: white;
-
-	border: none;
-	background: url(../img/button.png);		/* use background instead of -image to remove transparency issue */
 	width: 121px;
 	height: 54px;
+	border: none;
+	background: url(../img/button.png);		/* use background instead of -image to remove transparency issue */
+
+	font: 1em "Times New Roman", Times, serif;
+	font-weight: bold;
+	color: white;
 }
 
 /* Right aligned form links */
 fieldset a:link, fieldset a:visited {
-	font-family: Helvetica World;
-	font-size: .9em;
-	color: #313131;
 	display: block;
-	font-weight: 600;
-	text-decoration: none;
 	width: 241px;
+	
 	text-align: right;
+	text-decoration: none;
+	font-size: .9em;
+	font-weight: bold;
+	color: #313131;
 }
 
 fieldset a:hover, fieldset a:active {

@@ -223,7 +223,7 @@ body {
 	padding:0;margin:0;	/* necesarry for the raster to fill the screen */
 	height:100%;width:100%;
 
-	font: 1em/1.25 Helvetica, Arial, sans-serif;
+	font: 1em/1.25 Arial, Helvetica, sans-serif;
 	color: #393939;
 	text-align: center;		/* for centering the container */
 }
@@ -305,8 +305,7 @@ nav ul li a, nav ul li a:visited {
 	height: 33px;		/* height adjusted for padding */
 	padding: 12px 15px 0 15px;
 
-	font-family: Helvetica World;
-	font-weight: 700;
+	font-weight: bold;
 	font-size:.8em;
 	text-decoration: none;
 	color: white;
@@ -349,11 +348,9 @@ nav ul li ul li a:link, nav ul li ul li a:visited {
 END CSS for dropdown menu */
 
 h3 {
-	font-family: Cronos Pro Display;
-	padding: 10px;
-	font-size: 1.6em;
-	font-weight: 700;
-	margin: 0;
+	font: 1.4em 'Philosopher', sans-serif;
+	font-weight: bold;
+	margin: 0; padding: 10px;
 }
 
 section {
@@ -534,13 +531,13 @@ section#dungeons ul li, section#slot_list ul li {
 section#builds ul li div, section#character_list ul li div,
 section#dungeons ul li div, section#slot_list ul li div {
 	position: absolute; top: 50%;
-	height: 3em; margin-top: -1.5em;
+	height: 2.4em; margin-top: -1.1em;
 	left: 25px;
 	width: 100%;
 }
 
 section#builds ul li div, section#dungeons ul li div {
-	height: 2.2em; margin-top: -1.1em;
+	height: 2em; margin-top: -1em;
 	left: 30px;
 }
 
@@ -548,9 +545,7 @@ section#builds ul li div, section#dungeons ul li div {
 section#builds ul li h4, section#character_list ul li h4,
 section#dungeons ul li h4, section#slot_list ul li h4 {
 	margin: 0;
-	font-family: Cronos Pro Display;
-	font-size: 1.6em;
-	font-weight: normal;
+	font: 1.4em 'Philosopher', sans-serif;
 }
 
 /* Secondary element of the headers */
@@ -558,7 +553,6 @@ section#builds ul li h5, section#character_list ul li h5,
 section#dungeons ul li h5, section#slot_list ul li h5 {
 	width: 80%;
 	margin: 0;
-	font-family: Arial;
 	font-size: .8em;
 	font-weight: normal;
 }
@@ -999,25 +993,18 @@ END Event STYLES */
 /* START Feildset STYLES
 --------------------------------------- */
 fieldset {
-	font-family: Cronos Pro Display;
 	border: none;
 	padding: 0 20px;
 }
 
 fieldset legend {
-	font-size: 1.6em;
+	font-family: 'Philosopher', sans-serif;
+	font-size: 1.4em;
 	padding: 10px 0;
 }
 
 fieldset label, fieldset fieldset legend {
-	font-size: 1em;
-	font-weight: 600;
-}
-
-section#edit_build fieldset label,
-section#edit_character fieldset label,
-section#edit_dungeon fieldset label,
-section#edit_slot fieldset label, section#edit_slot fieldset fieldset legend {
+	font-family: 'Philosopher', sans-serif;
 	font-size: 1.2em;
 	font-weight: normal;
 }
@@ -1029,6 +1016,7 @@ fieldset ul {
 
 /* Indent form items */
 fieldset ul li {
+	clear: both;
 	padding: 10px 0 0 40px;
 	width: 243px;
 }
@@ -1068,6 +1056,7 @@ fieldset fieldset {
 
 fieldset fieldset label,
 section#edit_slot fieldset fieldset label {
+	font-family: Arial, Helvetica, sans-serif;
 	font-size: 1em;
 	font-weight: normal;
 }
@@ -1075,7 +1064,6 @@ section#edit_slot fieldset fieldset label {
 fieldset fieldset ul li {
 	width: 140px;
 	margin: 0; padding: 0;
-	font-family: Arial;
 	text-transform: capitalize;
 }
 
@@ -1121,9 +1109,8 @@ section#edit_character fieldset select {
 
 /* Style for buttons on forms */
 fieldset input[type=submit] {
-	padding-top: 5px;
-	font-family: Adobe caslon Pro;
-	font-weight: 700;
+	font-family: "Times New Roman", Times, serif;
+	font-weight: bold;
 	font-size: 1em;
 	color: white;
 
@@ -1135,14 +1122,11 @@ fieldset input[type=submit] {
 
 /* Right aligned form links */
 fieldset a:link, fieldset a:visited {
-	font-family: Helvetica World;
-	font-size: .9em;
-	color: #313131;
-	display: block;
-	font-weight: 600;
+	float: right;
 	text-decoration: none;
-	width: 241px;
-	text-align: right;
+	font-size: .8em;
+	font-weight: bold;
+	color: #313131;
 }
 
 fieldset a:hover, fieldset a:active {

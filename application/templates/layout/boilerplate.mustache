@@ -38,17 +38,16 @@
 </head>
 
 <body>
-	<img id="bgimg" src="/media/img/background_alt2.jpg" />
+	<img id="bgimg" src="/media/img/background.jpg" />
 	<div id="realbody">
 		<div class="container">
-			<a href="/">
-				<header class="masthead">
-					<h1>RedditGW</h1>
-					<h2>Event Signup website</h2>
-				</header>
-			</a>
+			<header class="masthead">
+				<h1>RedditGW</h1>
+				<h2>Event Signup website</h2>
+			</header>
 			<nav id="top_nav">
 				<ul>
+					<a id="alien" href="/"><img src="/media/img/alien.png" /></a>
 					{{#links}}
 					<li><a {{#location}}href="{{location}}"{{/location}}>{{text}} {{#icon}}&nbsp;<img src="{{src}}" />{{/icon}}</a>
 						{{#dropdown}}
@@ -84,10 +83,6 @@
 		
 		var FullscreenrOptions = {  width: 1280, height: 1200, bgID: '#bgimg' };
 		jQuery.fn.fullscreenr(FullscreenrOptions);
-		
-		$(function() {
-			$( "#tabs" ).tabs();
-		});
 	</script>
 	<!-- scripts concatenated and minified via ant build script-->
 	<script defer src="/media/js/plugins.js"></script>

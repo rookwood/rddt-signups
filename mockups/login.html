@@ -13,6 +13,7 @@
 	<link rel="shortcut icon" type="image/png" href="media/img/favicon.png?ver=1.0" />
 
 	<!-- Stylesheet -->
+	<link href='http://fonts.googleapis.com/css?family=Philosopher:400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="media/css/style.css">
 
 	<!-- All JavaScript at the bottom, except this Modernizr build.
@@ -64,17 +65,17 @@
 						<ul>
 							<li>
 								<label for="user_name">Username :</label>
-								<input type="text" name="user[username]" id="user_name" autofocus="autofocus" />
-								<a href="#">Forgot username?</a>
+								<input type="text" name="user[username]" id="user_name" autofocus="autofocus" tabindex="1"/>
+								<a href="#">(Forgot username?)</a>
 							</li>
 							<li>
 								<label for="user_password">Password :</label>
-								<input type="password" name="user[password]" id="user_password" />
+								<input type="password" name="user[password]" id="user_password" tabindex="2" />
 								<a href="#">Forgot password?</a>
 							</li>
 							<li>
 								<label for="remember">Remember me ?</label>
-								<input type="checkbox" name="remember" value="TRUE" id="remember" checked="checked" />
+								<input type="checkbox" name="remember" value="TRUE" id="remember" checked="checked" tabindex="3" />
 							</li>
 							<li class="button">
 								<input type="hidden" name="csrf" value="a44142424de528abb43de44f097556d10c48310d" />

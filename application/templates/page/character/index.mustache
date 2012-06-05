@@ -2,6 +2,7 @@
 	<section id="characters">
 		<section id="character_list">
 			<h3>My Characters</h3>
+			{{#character_add_link}}<a class="button" href="{{character_add_link}}">Add new character</a>{{/character_add_link}}
 {{^count}}		<p>You have no characters listed.</p>{{/count}}
 {{#count}}
 				<ul>
@@ -16,7 +17,6 @@
 						<a href="{{edit_url}}" class="edit" title="Edit {{name}}">Edit</a>
 					</li>
 {{/character_list}}
-{{#character_add_link}}<li class="button"><a href="{{character_add_link}}">Add new character</a></li>{{/character_add_link}}
 				</ul>
 
 {{/count}}

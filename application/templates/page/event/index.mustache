@@ -1,5 +1,7 @@
 			<section id="events">
+				{{#add_event}}<a class="button" href="{{add_event}}">Create new event</a>{{/add_event}}
 				<div class="sort_selector">
+					<div class="sort_label">Sort by</div>
 					<ul class="sort_dropdown">
 						<li class="sort_selected">
 							<a>{{filter}}</a>
@@ -10,15 +12,14 @@
 							</ul>
 						</li>
 					</ul> <!-- end dropdown -->
-					<div class="sort_label">Sort by</div>
 				</div>
 
-				<p>{{filter_message}}</p>
+				{{#filter_message}}<p>{{filter_message}}</p>{{/filter_message}}
 				<!-- <p>All events are displayed in the timezone set in your profile.</p> -->
 				
 				<ul>
 {{#events}}
-					<a href="{{details_link}}" class="event_details" title="Expand '{{title}}'">
+					<a href="{{details_link}}" class="event_details" title="Expand '{{title}}' event">
 					<li class="event_collapsed">
 						<ul class="header">
 							<li class="event_title">
@@ -55,9 +56,6 @@
 					</div></li></ul></li>
 {{/events}}
 					<section id="event_data"></section>
-{{#add_event}}
-					<li class="button"><a href="{{add_event}}">Create new event</a></li>
-{{/add_event}}
 				</ul>
 			</section><!-- end event list -->
 

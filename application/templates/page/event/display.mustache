@@ -30,13 +30,12 @@
 								<div id="attendees">
 									<ul>
 {{#attendees.active}}
-										<li class="{{profession}}">
+										<li>
 											<div class="player">
-												{{name}}
+												<img class="profession" src="/media/img/prof_icons/{{profession}}_small.png" />
+												<span class="name">{{name}}</span>
 												<a href="#">?</a>
-												<ul>
-													<li><div class="comment">{{comment}}</div></li>
-												</ul>
+												<ul><li><div class="comment">{{comment}}</div></li></ul>
 											</div>
 											<div class="role">{{role}}</div>
 										</li>

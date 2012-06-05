@@ -846,24 +846,9 @@ section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
 
 #attendees.ui-tabs-panel li,
 #standby.ui-tabs-panel li {
-	background-repeat: no-repeat;
-	background-position: 5px 40px;
-
 	font-size: 0.7em;
 	color: #a9a9a9;
 }
-
-/* Profession icons */
-#tabs.ui-tabs li.assassin {	background-image: url(../img/prof_assassin_small.png);	}
-#tabs.ui-tabs li.ritualist {	background-image: url(../img/prof_ritualist_small.png);	}
-#tabs.ui-tabs li.dervish {	background-image: url(../img/prof_dervish_small.png);	}
-#tabs.ui-tabs li.paragon {	background-image: url(../img/prof_paragon_small.png);	}
-#tabs.ui-tabs li.elementalist {	background-image: url(../img/prof_elementalist_small.png);	}
-#tabs.ui-tabs li.mesmer {	background-image: url(../img/prof_mesmer_small.png);	}
-#tabs.ui-tabs li.monk {		background-image: url(../img/prof_monk_small.png);		}
-#tabs.ui-tabs li.necromancer {	background-image: url(../img/prof_necromancer_small.png);	}
-#tabs.ui-tabs li.ranger {	background-image: url(../img/prof_ranger_small.png);		}
-#tabs.ui-tabs li.warrior {	background-image: url(../img/prof_warrior_small.png);	}
 
 #attendees.ui-tabs-panel li div.player,
 #standby.ui-tabs-panel li div.player {
@@ -871,6 +856,13 @@ section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
 	border-radius: 5px;
 	background-color: #ececec;
 	color: #393939;
+}
+
+#attendees.ui-tabs-panel li div.player span.name,
+#standby.ui-tabs-panel li div.player span.name {
+	position:absolute; top: 1em; padding-left: 1em;
+	width: 130px; height: 1em;
+	overflow: hidden;
 }
 
 /* Comment icon */
@@ -916,12 +908,6 @@ section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
 	
 	overflow: hidden;			/* cut off long comments */
 	color: white;
-}
-
-/* Padding the role text if a profession icon is visible */
-#attendees.ui-tabs-panel li[class] div.role,
-#standby.ui-tabs-panel li[class] div.role {
-	padding-left: 30px;
 }
 
 #attendees.ui-tabs-panel li div.role,

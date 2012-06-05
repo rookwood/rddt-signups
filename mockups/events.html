@@ -55,7 +55,9 @@
 			</nav> <!-- end navigation -->
 			
 			<section id="events">
+				<a class="button" href="#">Create new event</a>
 				<div class="sort_selector">
+					<div class="sort_label">Sort by</div>
 					<ul class="sort_dropdown">
 						<li class="sort_selected">
 							<a>Dungeon</a>
@@ -67,7 +69,6 @@
 							</ul>
 						</li>
 					</ul> <!-- end dropdown -->
-					<div class="sort_label">Sort by</div>
 				</div>
 				
 				<ul>
@@ -82,7 +83,7 @@
 							<li class="event_numbers">
 								<div>
 									<h4><span class="player_count_empty">0/8</span></h4>
-									<h5>players</h5>
+									<h5>Players</h5>
 								</div>
 							</li>
 							<li class="event_time">
@@ -106,7 +107,7 @@
 							<li class="event_numbers">
 								<div>
 									<h4><span class="player_count_low">4/8</span></h4>
-									<h5>players</h5>
+									<h5>Players</h5>
 								</div>
 							</li>
 							<li class="event_time">
@@ -124,9 +125,10 @@
 								</ul>
 								<div id="attendees">
 									<ul>
-										<li class="ritualist">
-											<div class="name">
-												Rookwood Shuffles 
+										<li>
+											<div class="player">
+												<img class="profession" src="media/img/prof_ritualist_small.png" />
+												<span class="name">Rookwood Shuffles</span>
 												<a href="#">?</a>
 												<ul>
 													<li>
@@ -136,22 +138,36 @@
 											</div>
 											<div class="role">DWG (Frostway)</div>
 										</li>
-										<li class="paragon">
-											<div class="name">
-												Paragon Walt 
+										<li>
+											<div class="player">
+												<img class="profession" src="media/img/prof_paragon_small.png" />
+												<span class="name">Paragon Walt</span>
 												<a href="#">?</a>
-												<ul><li><div class="comment">Lorem ipsum dolor sit amet</div></li></ul>												
+												<ul><li><div class="comment">Lorem ipsum dolor sit amet</div></li></ul>
 											</div>
 											<div class="role">DWG (Frostway)</div>
 										</li>
-										<li class="monk">
-											<div class="name">Healaholic Monk</div>
+										<li>
+											<div class="player">
+												<img class="profession" src="media/img/prof_monk_small.png" />
+												<span class="name">Healaholic Monk</span>
+											</div>
 											<div class="role">DWG (Frostway)</div>
 										</li>
 										<li>
+											<div class="player">
+												<img class="profession" src="media/img/prof_mesmer_small.png" />
+												<span class="name">Svet</span>
+											</div>
 											<div class="role">ST</div>
 										</li>
 										<li>
+											<div class="player">
+												<img class="profession" src="media/img/prof_ranger_small.png" />
+												<span class="name">Blah Blah Blah Blah Blah Blah</span>
+												<a href="#">?</a>
+												<ul><li><div class="comment">Lorem ipsum dolor sit amet</div></li></ul>
+											</div>
 											<div class="role">Panic</div>
 										</li>
 										<li>
@@ -169,7 +185,7 @@
 								<div id="standby">
 									<ul>
 										<!-- <li class="ritualist">
-											<div class="name">
+											<div class="player">
 												Rookwood Shuffles 
 												<a href="#">?</a>
 												<ul>
@@ -180,6 +196,9 @@
 											</div>
 											<div class="role">DWG (Frostway)</div>
 										</li> -->
+										<li class="empty">
+											No one on standby.
+										</li>
 									</ul>
 									<a class="withdraw" href="#">Withdraw from event</a>
 								</div>
@@ -207,7 +226,7 @@
 							<li class="event_numbers">
 								<div>
 									<h4><span class="player_count_high">6/8</span></h4>
-									<h5>players</h5>
+									<h5>Players</h5>
 								</div>
 							</li>
 							<li class="event_time">
@@ -231,7 +250,7 @@
 							<li class="event_numbers">
 								<div>
 									<h4><span class="player_count_full">12/12</span></h4>
-									<h5>players</h5>
+									<h5>Players</h5>
 								</div>
 							</li>
 							<li class="event_time">
@@ -243,8 +262,6 @@
 						</ul>
 					</li><!-- end of this event -->
 					<div class="event_footer"></div>
-					
-					<li class="button"><a href="#">Create new event</a></li>
 				</ul>
 			</section><!-- end event list -->
 

@@ -265,6 +265,7 @@ body {
 
 /* Banner positioning */
 .masthead {
+	padding-top: 10px;
 	height: 90px;
 }
 

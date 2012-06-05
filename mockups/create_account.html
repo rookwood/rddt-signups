@@ -10,7 +10,8 @@
 	<title>[rddt]Events</title>
 	<meta name="description" content="">
 
-	<link rel="stylesheet" href="media/css/style.css">
+	<link type="text/css" href="media/css/smoothness/jquery-ui-1.8.20.custom.css" rel="stylesheet" />
+	<link type="text/css" href="media/css/style.css" rel="stylesheet"  />
 
 	<!-- All JavaScript at the bottom, except this Modernizr build.
 	Modernizr enables HTML5 elements & feature detects for optimal performance.-->
@@ -19,111 +20,128 @@
 
 <body>
 	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-	<div class="container">
-		<header class="masthead">
-			<h1>Reddit Guild Wars 1</h1>
-			<h2>Event Information</h2>
-		</header><!-- end masthead -->
-		<nav>
-			<ul>
-				<li>
-					<a href="#">My Account</a>
-					<ul>
-						<li><a href="#">Edit Profile</a></li>
-						<li><a href="#">Characters</a></li>
-						<li><a href="#">My Events</a></li>
-						<li><a href="#">Logout</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="#">Events</a>
-				</li>
-				<li>
-					<a href="#">Builds</a>
-				</li>
-				<li>
-					<a href="#">Dungeons</a>
-				</li>
-				<li>
-					<a href="#" class="logout">Logout</a>
-				</li>
-			</ul>
-		</nav>
-		<section id="account">
-			<form action="#" method="post">
-				<fieldset>
-					<legend>Create New Account</legend>
-					<ul>
-						<li>
-							<label for="user_name">Username</label>
-							<input type="text" name="user[username]" id="user_name" value="{{values.username}}" />
-						</li>
-						<li>
-							<label for="user_email">Email address</label>
-							<input type="text" name="user[email]" id="user_email" value="{{values.email}}" />
-						</li>
-						<li>
-							<label for="user_password">Password</label>
-							<input type="password" name="user[password]" id="user_password" class="error" />
-						</li>
-						<li>
-							<label for="user_repeat_password">Repeat password</label>
-							<input type="password" name="user[password_confirm]" id="user_password_confirm" />
-						</li>
-						<li>
-							<label for="profile_first_name">First name</label>
-							<input type="text" name="profile[first_name]" id="profile_first_name" value="{{values.first_name}}" />
-						</li>
-						<li>
-							<label for="profile_last_name">Last name</label>
-							<input type="text" name="profile[last_name]" id="profile_last_name" value="{{values.last_name}}" />
-						</li>
-						<li>
-							<label for="user_timezone">Time Zone</label>
-							<select name="user[timezone]" id="user_timezone">
-								<option value="{{value}}">Time zone list...</option>
-							</select>
-						</li>
-						<li>
-							<label for="profile_birthdate">Date of birth</label>
-							<input type="date" name="profile[birthdate]" id="profile_birthdate" placeholder="YYYY-MM-DD" />
-						</li>
-						<li>
-							<input type="hidden" name="csrf" value="a44142424de528abb43de44f097556d10c48310d" />
-							<input type="submit" value="Register" />
-						</li>
-				</fieldset>
-			</form><!-- end registration form -->
-			<form action="#" method="post">
-				<fieldset>
-					<legend>Login</legend>
-					<ul>
-						<li>
-							<label for="user_name">Username</label>
-							<input type="text" name="user[username]" id="user_name" autofocus="autofocus" />
-						</li>
-							<label for="user_password">Password</label>
-							<input type="password" name="user[password]" id="user_password" />
-							<a href="#">Forgot password?</a>
-							<a href="#">Forgot username?</a>
-						</li>
-						<li>
-							<label for="remember">Remember me?</label>
-							<input type="checkbox" name="remember" value="TRUE" id="remember" checked="checked" />
-						</li>
-						<li>
-							<input type="hidden" name="csrf" value="a44142424de528abb43de44f097556d10c48310d" />
-							<input type="submit" value=Login" />
-						</li>
-				</fieldset>
-			</form><!-- end login form -->
-		</section><!-- end account -->
+	<img id="bgimg" src="media/img/background_alt2.jpg" />
+	<div id="realbody">
+	
+		<div class="container">
+			<header class="masthead">
+				<h1>Reddit Guild Wars 1</h1>
+				<h2>Event Information</h2>
+			</header><!-- end masthead -->
+			<nav>
+				<ul>
+					<li>
+						<a>My Account &nbsp; <img src="media/img/dropdown_arrow.png"></a>
+						<ul>
+							<li><a href="#">Edit Profile</a></li>
+							<li><a href="#">Characters</a></li>
+							<li><a href="#">My Events</a></li>
+							<li><a href="#">Logout</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">Events</a>
+					</li>
+					<li>
+						<a href="#">Builds</a>
+					</li>
+					<li>
+						<a href="#">Dungeons</a>
+					</li>
+					<li>
+						<a href="#" class="logout">Logout</a>
+					</li>
+				</ul>
+			</nav>
+			<section id="account">
+				<form action="#" method="post">
+					<fieldset>
+						<legend>Create New Account</legend>
+						<ul>
+							<li>
+								<label for="user_name">Username</label>
+								<input type="text" name="user[username]" id="user_name" value="{{values.username}}" />
+							</li>
+							<li>
+								<label for="user_email">Email address</label>
+								<input type="text" name="user[email]" id="user_email" value="{{values.email}}" />
+							</li>
+							<li>
+								<label for="user_password">Password</label>
+								<input type="password" name="user[password]" id="user_password" class="error" />
+							</li>
+							<li>
+								<label for="user_repeat_password">Repeat password</label>
+								<input type="password" name="user[password_confirm]" id="user_password_confirm" />
+							</li>
+							<li>
+								<label for="profile_first_name">First name</label>
+								<input type="text" name="profile[first_name]" id="profile_first_name" value="{{values.first_name}}" />
+							</li>
+							<li>
+								<label for="profile_last_name">Last name</label>
+								<input type="text" name="profile[last_name]" id="profile_last_name" value="{{values.last_name}}" />
+							</li>
+							<li>
+								<label for="user_timezone">Time Zone</label>
+								<select name="user[timezone]" id="user_timezone">
+									<option value="Pacific/Midway">(GMT-11:00) Midway Island, Samoa</option>
+									<option value="America/Adak">(GMT-10:00) Hawaii-Aleutian</option>
+									<option value="Etc/GMT+10">(GMT-10:00) Hawaii</option>
+									<option value="Pacific/Marquesas">(GMT-09:30) Marquesas Islands</option>
+									<option value="Pacific/Gambier">(GMT-09:00) Gambier Islands</option>
+									<option value="America/Anchorage">(GMT-09:00) Alaska</option>
+									<option value="America/Ensenada">(GMT-08:00) Tijuana, Baja California</option>
+									<option value="Etc/GMT+8">(GMT-08:00) Pitcairn Islands</option>
+									<option value="America/Los_Angeles">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+									<option value="America/Denver">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
+									<option value="America/Chihuahua">(GMT-07:00) Chihuahua, La Paz, Mazatlan</option>
+									<option value="America/Dawson_Creek">(GMT-07:00) Arizona</option>
+									<option value="America/Belize">(GMT-06:00) Saskatchewan, Central America</option>
+									<option value="America/Cancun">(GMT-06:00) Guadalajara, Mexico City, Monterrey</option>
+									<option value="Chile/EasterIsland">(GMT-06:00) Easter Island</option>
+									<option value="America/Chicago" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
+								</select>
+							</li>
+							<li>
+								<label for="profile_birthdate">Date of birth</label>
+								<input type="date" name="profile[birthdate]" id="profile_birthdate" placeholder="YYYY-MM-DD" />
+							</li>
+							<li class="button">
+								<input type="hidden" name="csrf" value="a44142424de528abb43de44f097556d10c48310d" />
+								<input type="submit" value="Register" />
+							</li>
+					</fieldset>
+				</form><!-- end registration form -->
+			</section><!-- end account -->
 
-	</div><!-- end container-->
+		</div><!-- end container-->
+	
+	</div> <!-- end real body -->
 	<!-- JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom -->
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="media/js/vendor/jquery-1.7.2.min.js"><\/script>')</script>
+	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="media/js/vendor/jquery-1.7.2.min.js"><\/script>')</script> -->
+
+	<!-- Background scaling -->
+	<script type="text/javascript" src="media/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="media/js/jquery-ui-1.8.20.custom.min.js"></script>
+	<script src="media/js/jquery.fullscreenr.js" type="text/javascript"></script>
+	<script type="text/javascript">  
+		<!--
+			// You need to specify the size of your background image here (could be done automatically by some PHP code)
+			var FullscreenrOptions = {  width: 1280, height: 1200, bgID: '#bgimg' };
+			// This will activate the full screen background!
+			jQuery.fn.fullscreenr(FullscreenrOptions);
+
+			// Calendar popup for picking date
+			$('input[type=date]').datepicker({
+				changeYear : true,
+				dateFormat : 'yy-mm-dd',
+				yearRange  : '1950:+2',
+			});
+		//-->
+	</script>
 
 	<script src="media/js/plugins.js"></script>
 	<script src="media/js/main.js"></script>

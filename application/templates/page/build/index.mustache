@@ -1,22 +1,19 @@
-	<h4>Currently available builds</h4>
-	<table>
-		<thead>
-			<tr>
-				<td colspan="2">Actions</td>
-				<td>Name</td>
-				<td>PvX link</td>
-			</tr>
-		</thead>
-		<tbody>
+	<section id="builds">
+		<h3>Currently Available Builds</h3>
+		<a class="button" href="{{build_add_link}}">Add new build</a>
+		<ul>
 {{#build_list}}
-			<tr>
-				<td><a href="{{create_url}}"><img src="/media/img/icons/page_add.png" title="Create event using {{name}}" /></a></td>
-				<td><a href="{{edit_url}}"><img src="/media/img/icons/page_edit.png" title="Edit {{name}}" /></a></td>
-				<td>{{name}}</td>
-				<td>{{#url}}<a href="{{url}}" target="_blank">Build link</a>{{/url}}{{^url}}No link available{{/url}}</td>
-			</tr>
+			<li>
+				<div>
+					<h4>{{name}}</h4>
+				</div>
+				{{#url}}<a class="build_link" href="{{url}}" title="Link to more information about {{name}}" target="_blank">Build link <img src="media/img/build_link_arrow.png"></a>{{/url}}
+				{{^url}}<a class="disabled_build_link" title="No additional information about {{name}}">Build link <img src="media/img/build_link_arrow.png"></a>{{/url}}
+				<a class="edit_build" href="{{edit_url}}" title="Edit {{name}}">Edit build</a>
+<!-- 			<a href="{{create_url}}"><img src="/media/img/icons/page_add.png" title="Create event using {{name}}" /></a> -->
+			</li>
 {{/build_list}}
-		</tbody>
-	</table>
 
-<a href="{{build_add_link}}">Add new build</a>
+			
+		</ul>
+	</section><!-- end builds -->

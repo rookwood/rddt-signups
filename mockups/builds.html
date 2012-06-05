@@ -19,6 +19,9 @@
 
 <body>
 	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+	<img id="bgimg" src="media/img/background_alt2.jpg" />
+	<div id="realbody">
+	
 	<div class="container">
 		<header class="masthead">
 			<h1>Reddit Guild Wars 1</h1>
@@ -27,7 +30,7 @@
 		<nav>
 			<ul>
 				<li>
-					<a href="#">My Account</a>
+					<a>My Account &nbsp; <img src="media/img/dropdown_arrow.png"></a>
 					<ul>
 						<li><a href="#">Edit Profile</a></li>
 						<li><a href="#">Characters</a></li>
@@ -52,20 +55,67 @@
 		<section id="builds">
 			<h3>Currently Available Builds</h3>
 			<ul>
-				<li>DoA Frostway <span class="build_link"><a href="#">Build link</a></span></li>
-				<li>DoA Glaiveway <span class="build_link"><a href="#">Build link</a></span></li>
-				<li>Sucksc <span class="build_link"><a href="#">Build link</a></span></li>
-				<li>Snoway <span class="build_link"><a href="#">Build link</a></span></li>
-				<li>Randomway <span class="build_link"><a href="#">Build link</a></span></li>
+				<li>
+					<div>
+						<h4>DoA Frostway</h4>
+					</div>
+					<a class="build_link" href="#">Build link <img src="media/img/build_link_arrow.png"></a>
+					<a class="edit_build" href="#">Edit build</a>
+				</li>
+				<li>
+					<div>
+						<h4>DoA Glaiveway</h4>
+					</div>
+					<a class="build_link" href="#">Build link <img src="media/img/build_link_arrow.png"></a>
+					<a class="edit_build" href="#">Edit build</a>
+				</li>
+				<li>
+					<div>
+						<h4>Sucksc</h4>
+					</div>
+					<a class="build_link" href="#">Build link <img src="media/img/build_link_arrow.png"></a>
+					<a class="edit_build" href="#">Edit build</a>
+				</li>
+				<li>
+					<div>
+						<h4>Snoway</h4>
+					</div>
+					<a class="build_link" href="#">Build link <img src="media/img/build_link_arrow.png"></a>
+					<a class="edit_build" href="#">Edit build</a>
+				</li>
+				<li>
+					<div>
+						<h4>Randomway</h4>
+					</div>
+					<a class="build_link" href="#">Build link <img src="media/img/build_link_arrow.png"></a>
+					<a class="edit_build" href="#">Edit build</a>
+				</li>
+				<li class="button"><a href="#">Add new build</a></li>
+				
 			</ul>
-			<a href="#">Add new build</a>
 		</section><!-- end builds -->
 
+		<div class="push"></div>
 	</div><!-- end container-->
+	
+	</div> <!-- end realbody -->
 	<!-- JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom -->
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="media/js/vendor/jquery-1.7.2.min.js"><\/script>')</script>
+	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="media/js/vendor/jquery-1.7.2.min.js"><\/script>')</script> -->
+
+	<!-- Background scaling -->
+	<script type="text/javascript" src="media/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="media/js/jquery-ui-1.8.20.custom.min.js"></script>
+	<script src="media/js/jquery.fullscreenr.js" type="text/javascript"></script>
+	<script type="text/javascript">  
+		<!--
+			// You need to specify the size of your background image here (could be done automatically by some PHP code)
+			var FullscreenrOptions = {  width: 1280, height: 1200, bgID: '#bgimg' };
+			// This will activate the full screen background!
+			jQuery.fn.fullscreenr(FullscreenrOptions);
+		//-->
+	</script>
 
 	<script src="media/js/plugins.js"></script>
 	<script src="media/js/main.js"></script>

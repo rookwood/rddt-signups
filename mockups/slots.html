@@ -19,6 +19,9 @@
 
 <body>
 	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+	<img id="bgimg" src="media/img/background_alt2.jpg" />
+	<div id="realbody">
+	
 	<div class="container">
 		<header class="masthead">
 			<h1>Reddit Guild Wars 1</h1>
@@ -27,7 +30,7 @@
 		<nav>
 			<ul>
 				<li>
-					<a href="#">My Account</a>
+					<a>My Account &nbsp; <img src="media/img/dropdown_arrow.png"></a>
 					<ul>
 						<li><a href="#">Edit Profile</a></li>
 						<li><a href="#">Characters</a></li>
@@ -51,7 +54,7 @@
 		</nav>
 		<section id="slots">
 			<h3>Slots</h3>
-			<ul id="filer">
+			<ul id="filter">
 				<li><a href="">#</a></li>
 				<li><a href="">A</a></li>
 				<li><a href="">B</a></li>
@@ -81,16 +84,29 @@
 				<li><a href="">Z</a></li>
 				<li><a href="">All</a></li>
 			</ul>
+
 			<section id="slot_list">
 				<ul>
 					<li>
-						<p><span class="name">DWG (Any primary)</span>Professions: Warrior, Ranger, Monk, Necromancer, Elementalist, Mesmer, Ritualist, Assassin, Dervish, Paragon</p>
+						<div>
+							<h4>DWG (Any primary)</h4>
+							<h5>Professions: Warrior, Ranger, Monk, Necromancer, Elementalist, Mesmer, Ritualist, Assassin, Dervish, Paragon</h5>
+						</div>
+						<a class="edit" href="#">Edit slot</a>
 					</li>
 					<li>
-						<p><span class="name">DWG (Frostway)</span>Professions: Ritualist, Mesmer</p>
+						<div>
+							<h4>DWG (Frostway)</h4>
+							<h5>Professions: Ritualist, Mesmer</h5>
+						</div>
+						<a class="edit" href="#">Edit slot</a>
 					</li>
 					<li>
-						<p><span class="name">Derpy Dervish</span>Professions: Dervish</p>
+						<div>
+							<h4>Derpy Dervish</h4>
+							<h5>Professions: Dervish</h5>
+						</div>
+						<a class="edit" href="#">Edit slot</a>
 					</li>
 				</ul>
 			</section>
@@ -99,12 +115,12 @@
 					<legend>Add a new slot</legend>
 					<ul>
 						<li>
-							<label for="name">Slot name</label>
-							<input type="text" name="slot[name]" id="name" />
+							<label for="name">Slot name:</label>
+							<input type="text" name="slot[name]" id="name" required="true" />
 						</li>
 						<li>
 							<fieldset>
-								<legend>Profession(s)</legend>
+								<legend>Profession(s):</legend>
 								<ul class="profession_list">
 									<li>
 										<label for="check_warrior">warrior</label>
@@ -149,7 +165,7 @@
 								</ul>
 							</fieldset>
 						</li>
-						<li>
+						<li class="button">
 							<input type="hidden" name="csrf" value="a44142424de528abb43de44f097556d10c48310d" />
 							<input type="submit" value="Add" />
 						</li>
@@ -159,10 +175,25 @@
 		</section><!-- end slots -->
 
 	</div><!-- end container-->
+	
+	</div>
 	<!-- JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom -->
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="media/js/vendor/jquery-1.7.2.min.js"><\/script>')</script>
+	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="media/js/vendor/jquery-1.7.2.min.js"><\/script>')</script> -->
+
+	<!-- Background scaling -->
+	<script type="text/javascript" src="media/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="media/js/jquery-ui-1.8.20.custom.min.js"></script>
+	<script src="media/js/jquery.fullscreenr.js" type="text/javascript"></script>
+	<script type="text/javascript">  
+		<!--
+			// You need to specify the size of your background image here (could be done automatically by some PHP code)
+			var FullscreenrOptions = {  width: 1280, height: 1200, bgID: '#bgimg' };
+			// This will activate the full screen background!
+			jQuery.fn.fullscreenr(FullscreenrOptions);
+		//-->
+	</script>
 
 	<script src="media/js/plugins.js"></script>
 	<script src="media/js/main.js"></script>

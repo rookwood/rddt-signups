@@ -10,6 +10,7 @@
 	<title>[rddt]Events</title>
 	<meta name="description" content="">
 
+	<link type="text/css" href="media/css/smoothness/jquery-ui-1.8.20.custom.css" rel="stylesheet" />
 	<link rel="stylesheet" href="media/css/style.css">
 
 	<!-- All JavaScript at the bottom, except this Modernizr build.
@@ -19,117 +20,279 @@
 
 <body>
 	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-	<div class="container">
-		<header class="masthead">
-			<h1>Reddit Guild Wars 1</h1>
-			<h2>Event Information</h2>
-		</header><!-- end masthead -->
-		<nav>
-			<ul>
-				<li>
-					<a href="#">My Account</a>
-					<ul>
-						<li><a href="#">Edit Profile</a></li>
-						<li><a href="#">Characters</a></li>
-						<li><a href="#">My Events</a></li>
-						<li><a href="#">Logout</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="#">Events</a>
-				</li>
-				<li>
-					<a href="#">Builds</a>
-				</li>
-				<li>
-					<a href="#">Dungeons</a>
-				</li>
-				<li>
-					<a href="#" class="logout">Logout</a>
-				</li>
-			</ul>
-		</nav>
-		<section id="events">
-			<label for="sorter">Sort by</label>
-			<select id="sorter">
-				<option value="mine">My events</option>
-				<option value="">Etc</option>
-			</select>
-			<ul>
-				<li class="event">
-					<li class="event_header">
-						<h4>Domain of Anguish</h4>
-						<h5>Manager: See The Dragon</h5>
+	<img id="bgimg" src="media/img/background_alt2.jpg" />
+	<div id="realbody">
+
+		<div class="container">
+			<header class="masthead">
+				<h1>Reddit Guild Wars 1</h1>
+				<h2>Event Information</h2>
+			</header><!-- end masthead -->
+			<nav>
+				<ul>
+					<li>
+						<a>My Account &nbsp; <img src="media/img/dropdown_arrow.png"></a>
+						<ul>
+							<li><a href="#">Edit Profile</a></li>
+							<li><a href="#">Characters</a></li>
+							<li><a href="#">My Events</a></li>
+							<li><a href="#">Logout</a></li>
+						</ul>
 					</li>
-					<li class="event_numbers">
-						<p><span class="player_count">4/8</span><br />players</p>
+					<li>
+						<a href="#">Events</a>
 					</li>
-					<li class="event_time">
-						<time class="date" datetime="2012-04-20T20:00+00:00">April 20, 2012</time>
-						<time class="time" datetime="2012-04-20T20:00+00:00">9:00 PM GMT</time>
+					<li>
+						<a href="#">Builds</a>
 					</li>
-					<section id="event_details">			
-						<div id="tabs">
+					<li>
+						<a href="#">Dungeons</a>
+					</li>
+					<li>
+						<a href="#" class="logout">Logout</a>
+					</li>
+				</ul>
+			</nav> <!-- end navigation -->
+			
+			<section id="events">
+				<a class="button" href="#">Create new event</a>
+				<div class="sort_selector">
+					<div class="sort_label">Sort by</div>
+					<ul class="sort_dropdown">
+						<li class="sort_selected">
+							<a>Dungeon</a>
 							<ul>
-								<li><a href="#attendees">Attendees</a></li>
-								<li><a href="#standby">Standby</a></li>
+								<li><a href="#">My events <span class="count">1</span></a></li>
+								<li><a href="#">Date <span class="count">10</span></a></li>
+								<li><a href="#">Available slots <span class="count">10</span></a></li>
+								<li><a href="#">Past events <span class="count">234</span></a></li>
 							</ul>
-							<div id="attendees">
+						</li>
+					</ul> <!-- end dropdown -->
+				</div>
+				
+				<ul>
+					<li class="event_collapsed">
+						<ul class="header">
+							<li class="event_title">
+								<div>
+									<h4>Catacombs of Kathandrax</h4>
+									<h5>Manager: See The Dragon</h5>
+								</div>
+							</li>
+							<li class="event_numbers">
+								<div>
+									<h4><span class="player_count_empty">0/8</span></h4>
+									<h5>Players</h5>
+								</div>
+							</li>
+							<li class="event_time">
+								<div>
+									<h4><time class="date" datetime="2012-04-20T20:00+00:00">April 20, 2012</time></h4>
+									<h5><time class="time" datetime="2012-04-20T20:00+00:00">9:00 PM GMT</time></h5>
+								</div>
+							</li>
+						</ul>
+					</li><!-- end of this event -->
+					<div class="event_footer"></div>
+					
+					<li class="event_expanded">
+						<ul class="header">
+							<li class="event_title">
+								<div>
+									<h4>Domain of Anguish</h4>
+									<h5>Manager: See The Dragon</h5>
+								</div>
+							</li>
+							<li class="event_numbers">
+								<div>
+									<h4><span class="player_count_low">4/8</span></h4>
+									<h5>Players</h5>
+								</div>
+							</li>
+							<li class="event_time">
+								<div>
+									<h4><time class="date" datetime="2012-04-20T20:00+00:00">April 20, 2012</time></h4>
+									<h5><time class="time" datetime="2012-04-20T20:00+00:00">9:00 PM GMT</time></h5>
+								</div>
+							</li>
+						</ul>
+						<section id="event_details">
+							<div id="tabs">
 								<ul>
-									<li class="ritualist">Rookwood Shuffles</li>
-									<li class="paragon">Paragon Walt</li>
-									<li class="monk">Healaholic Monk</li>
+									<li><a href="#attendees">Attendees</a></li>
+									<li><a href="#standby">Standby (0)</a></li>
 								</ul>
-								<p><a href="#">Signup for this event</a></p>
+								<div id="attendees">
+									<ul>
+										<li>
+											<div class="player">
+												<img class="profession" src="media/img/prof_ritualist_small.png" />
+												<span class="name">Rookwood Shuffles</span>
+												<a href="#">?</a>
+												<ul>
+													<li>
+														<div class="comment">Lorem ipsum dolor sit amet, fugere rediit est Apollonius in modo invenit. Ego Pentapolim Cyrenaeorum tertia veni ponens quo est se sed esse haec. Euro in deinde vero quo, pentapolitanas Cyrenensi reversus civitatis ne velocitate mare demonstrantibus. Dionysiadis eum ego dum autem nobiscum paulo. Duis ille eum est se sed esse ait mea in lucem exempli paupers coniunx in.</div>
+													</li>
+												</ul>
+											</div>
+											<div class="role">DWG (Frostway)</div>
+										</li>
+										<li>
+											<div class="player">
+												<img class="profession" src="media/img/prof_paragon_small.png" />
+												<span class="name">Paragon Walt</span>
+												<a href="#">?</a>
+												<ul><li><div class="comment">Lorem ipsum dolor sit amet</div></li></ul>
+											</div>
+											<div class="role">DWG (Frostway)</div>
+										</li>
+										<li>
+											<div class="player">
+												<img class="profession" src="media/img/prof_monk_small.png" />
+												<span class="name">Healaholic Monk</span>
+											</div>
+											<div class="role">DWG (Frostway)</div>
+										</li>
+										<li>
+											<div class="player">
+												<img class="profession" src="media/img/prof_mesmer_small.png" />
+												<span class="name">Svet</span>
+											</div>
+											<div class="role">ST</div>
+										</li>
+										<li>
+											<div class="player">
+												<img class="profession" src="media/img/prof_ranger_small.png" />
+												<span class="name">Blah Blah Blah Blah Blah Blah</span>
+												<a href="#">?</a>
+												<ul><li><div class="comment">Lorem ipsum dolor sit amet</div></li></ul>
+											</div>
+											<div class="role">Panic</div>
+										</li>
+										<li>
+											<div class="role">UA Monk</div>
+										</li>
+										<li>
+											<div class="role">PnH Monk</div>
+										</li>
+										<li>
+											<div class="role">Imbagon</div>
+										</li>
+									</ul>
+									<a href="#">Sign up for event</a>
+								</div>
+								<div id="standby">
+									<ul>
+										<!-- <li class="ritualist">
+											<div class="player">
+												Rookwood Shuffles 
+												<a href="#">?</a>
+												<ul>
+													<li>
+														<div class="comment">Lorem ipsum dolor sit amet, fugere rediit est Apollonius in modo invenit. Ego Pentapolim Cyrenaeorum tertia veni ponens quo est se sed esse haec. Euro in deinde vero quo, pentapolitanas Cyrenensi reversus civitatis ne velocitate mare demonstrantibus. Dionysiadis eum ego dum autem nobiscum paulo. Duis ille eum est se sed esse ait mea in lucem exempli paupers coniunx in.</div>
+													</li>
+												</ul>
+											</div>
+											<div class="role">DWG (Frostway)</div>
+										</li> -->
+										<li class="empty">
+											No one on standby.
+										</li>
+									</ul>
+									<a class="withdraw" href="#">Withdraw from event</a>
+								</div>
+							</div> <!-- end tabs -->
+							<div id="event_description">
+								<h6>Event title</h6>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+								<!-- <a class="build" href="#">Build link</a> -->
+								<a class="build_disabled" title="No additional information about Frostway">Build: Frostway</a>
+								<a class="edit_event" href="#">Edit event</a>
+								<a class="cancel_event" href="#">Cancel event</a>
 							</div>
-							<div id="standby">
-								<ul>
-									<li class="ritualist">Rookwood Shuffles</li>
-									<li class="paragon">Paragon Walt</li>
-									<li class="monk">Healaholic Monk</li>
-								</ul>
-							</div>
-						</div>
-						<div id="event_description">
-							<h6>Event title</h6>
-							<p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-						</div>
-					</section><!-- end event details section -->
-				</li><!-- end of this event -->
-				<li class="event">
-					<li class="event_header">
-						<h4>Domain of Anguish</h4>
-						<h5>Manager: See The Dragon</h5>
-					</li>
-					<li class="event_numbers">
-						<p><span class="player_count">4/8</span><br />players</p>
-					</li>
-					<li class="event_time">
-						<time class="date" datetime="2012-04-20T20:00+00:00">April 20, 2012</time>
-						<time class="time" datetime="2012-04-20T20:00+00:00">9:00 PM GMT</time>
-					</li>
-				</li><!-- end of this event -->
-				<li class="event">
-					<li class="event_header">
-						<h4>Domain of Anguish</h4>
-						<h5>Manager: See The Dragon</h5>
-					</li>
-					<li class="event_numbers">
-						<p><span class="player_count">4/8</span><br />players</p>
-					</li>
-					<li class="event_time">
-						<time class="date" datetime="2012-04-20T20:00+00:00">April 20, 2012</time>
-						<time class="time" datetime="2012-04-20T20:00+00:00">9:00 PM GMT</time>
-					</li>
-				</li><!-- end of this event -->
-			</ul>
-		</section><!-- end event list -->
+						</section><!-- end event details section -->
+					</li><!-- end of this event -->
+					<div class="event_footer"></div>
+					
+					<li class="event_collapsed">
+						<ul class="header">
+							<li class="event_title">
+								<div>
+									<h4>Domain of Anguish</h4>
+									<h5>Manager: See The Dragon</h5>
+								</div>
+							</li>
+							<li class="event_numbers">
+								<div>
+									<h4><span class="player_count_high">6/8</span></h4>
+									<h5>Players</h5>
+								</div>
+							</li>
+							<li class="event_time">
+								<div>
+									<h4><time class="date" datetime="2012-04-20T20:00+00:00">April 20, 2012</time></h4>
+									<h5><time class="time" datetime="2012-04-20T20:00+00:00">9:00 PM GMT</time></h5>
+								</div>
+							</li>
+						</ul>
+					</li><!-- end of this event -->
+					<div class="event_footer"></div>
+					
+					<li class="event_collapsed">
+						<ul class="header">
+							<li class="event_title">
+								<div>
+									<h4>Domain of Anguish</h4>
+									<h5>Manager: See The Dragon</h5>
+								</div>
+							</li>
+							<li class="event_numbers">
+								<div>
+									<h4><span class="player_count_full">12/12</span></h4>
+									<h5>Players</h5>
+								</div>
+							</li>
+							<li class="event_time">
+								<div>
+									<h4><time class="date" datetime="2012-04-20T20:00+00:00">April 20, 2012</time></h4>
+									<h5><time class="time" datetime="2012-04-20T20:00+00:00">9:00 PM GMT</time></h5>
+								</div>
+							</li>
+						</ul>
+					</li><!-- end of this event -->
+					<div class="event_footer"></div>
+				</ul>
+			</section><!-- end event list -->
+
+			<div class="events_footer"></div>
+			<div class="push"></div>
+		</div><!-- end container-->
 		
-	</div><!-- end container-->
+	</div> <!-- end realbody -->
 	<!-- JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom -->
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="media/js/vendor/jquery-1.7.2.min.js"><\/script>')</script>
+	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="media/js/vendor/jquery-1.7.2.min.js"><\/script>')</script> -->
+
+	<!-- Background scaling -->
+	<script type="text/javascript" src="media/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="media/js/jquery-ui-1.8.20.custom.min.js"></script>
+	<script src="media/js/jquery.fullscreenr.js" type="text/javascript"></script>
+	<script type="text/javascript">  
+		<!--
+			// You need to specify the size of your background image here (could be done automatically by some PHP code)
+			var FullscreenrOptions = {  width: 1280, height: 1200, bgID: '#bgimg' };
+			// This will activate the full screen background!
+			jQuery.fn.fullscreenr(FullscreenrOptions);
+
+			// Setting up the attendees/standby tabs
+			$(function() {
+				$( "#tabs" ).tabs();
+			});
+			
+		//-->
+	</script>
 
 	<script src="media/js/plugins.js"></script>
 	<script src="media/js/main.js"></script>

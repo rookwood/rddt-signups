@@ -65,12 +65,6 @@ abstract class Abstract_View_Admin_Layout extends Abstract_View_Page {
 		
 		$links = array();
 		
-		// Link back to publicly-viewable area of site
-		$links[] = array(
-			'location' => '/',
-			'text'     => 'Main Site',
-		);
-		
 		// Administrative sections
 		if ($this->user->can('use_admin'))
 		{

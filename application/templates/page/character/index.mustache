@@ -1,25 +1,25 @@
 
-{{^count}}<p>You have no characters listed.</p>{{/count}}
+	<section id="characters">
+		<section id="character_list">
+			<h3>My Characters</h3>
+			{{#character_add_link}}<a class="button" href="{{character_add_link}}">Add new character</a>{{/character_add_link}}
+{{^count}}		<p>You have no characters listed.</p>{{/count}}
 {{#count}}
-	<table>
-		<thead>
-			<tr>
-				<td>Actions</td>
-				<td>Name</td>
-				<td>Profession</td>
-			</tr>
-		</thead>
-		<tbody>
+				<ul>
 {{#character_list}}
-			<tr>
-				<td><a href="{{edit_url}}"><img src="/media/img/icons/page_edit.png" title="Edit {{name}}" /></a></td>
-				<td>{{name}}</td>
-				<td><img src="/media/img/prof_icons/{{profession}}.png" width="24" height="24" title="{{profession}}" /></td>
-			</tr>
+					<li>
+						<div class="profession_icon" style="background-image: url('/media/img/prof_icons/{{profession}}.png');"></div>
+						<div>
+							<h4>{{name}}</h4>
+							<h5>Profession: {{profession}}</h5>
+						</div>
+						<a href="#" class="delete" title="Delete {{name}}">Delete</a>
+						<a href="{{edit_url}}" class="edit" title="Edit {{name}}">Edit</a>
+					</li>
 {{/character_list}}
-		</tbody>
-	</table>
+				</ul>
+
 {{/count}}
 
-{{#character_add_link}}<a href="{{character_add_link}}">Add a new character</a>{{/character_add_link}}
 {{^character_add_link}}<p>You may not add new characters at this time.</p>{{/character_add_link}}
+	</section><!-- end character list -->

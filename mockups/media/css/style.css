@@ -254,8 +254,13 @@ body {
 	display: table-cell;
 }
 
-.container_r3 section {
+.container_r3 > section {
 	background: url(../img/container_bg_alt.png);
+}
+
+.footer {
+	clear: both;
+	height: 40px;
 }
 
 /* Banner positioning */

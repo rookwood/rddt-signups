@@ -1,25 +1,30 @@
+	<section id="add_slot">
+		<form action="{{slot_add_url}}" method="POST" id="form_slot_add_action">
+			<fieldset>
+				<legend>Add new slot</legend>
+				<ul>
+					<li>
+						<label for="name">Slot name:</label>
+						<input type="text" name="slot[name]" id="name" value="{{values.name}}" {{#errors.name}}class="error" {{/errors.name}}/>
+					</li>
+					<li>
+						<fieldset>
+							<legend>Profession(s):</legend>
+							<ul class="profession_list">
 
-	<form action="{{slot_add_url}}" method="POST" id="form_slot_add_action">
-		<fieldset>
-			<legend>Add new slot</legend>
-			<ul>
-				<li>
-					<label for="name">Slot name:</label>
-					<input type="text" name="slot[name]" id="name" value="{{values.name}}" {{#errors.name}}class="error" {{/errors.name}}/>
-				</li>
-				<li>
-					<p>Eligible professions:</p>
-				</li>
 {{#professions}}
-				<li>
-					<label for="check_{{.}}">{{.}}</label>
-					<input type="checkbox" name="slot[profession][]" value="{{.}}" id="check_{{.}}" />
-				</li>
+								<li>
+									<label for="check_{{.}}">{{.}}</label>
+									<input type="checkbox" name="slot[profession][]" value="{{.}}" id="check_{{.}}" />
+								</li>
 {{/professions}}
-				<li>
-					{{{csrf}}}
-					<input type="submit" value="Submit" />
-				</li>
-			</ul>
-		</fieldset>
-	</form>
+							</ul>
+						</fieldset>
+					</li>
+					<li class="button">
+						{{{csrf}}}
+						<input type="submit" value="Submit" />
+					</li>
+				</ul>
+			</fieldset>
+		</form>

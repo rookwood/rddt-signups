@@ -26,15 +26,16 @@ class View_Page_Event_Index extends Abstract_View_Page {
 
 			// Build event array
 			$out[] = array(
-				'details_link' => Route::url('event', array('action' => 'display', 'id' => $event->id)),
-				'date'         => date('D Y M d', $local_start_time),
-				'time'         => date('g:i a', $local_start_time),
-				'title'        => $event->title,
-				'status'       => $event->status->name,
-				'host'         => ORM::factory('character', $event->character_id)->name,
-				'build'        => $event->build->name,
-				'url'          => $event->build->url,
-				'dungeon'      => $event->dungeon->name,
+				'details_link'	=> Route::url('event', array('action' => 'display', 'id' => $event->id)),
+				'date'		=> date('F d, Y', $local_start_time),
+				'time'		=> date('g:i A T', $local_start_time),
+				'time_full'	=> date('c', $local_start_time),
+				'title'		=> $event->title,
+				'status'		=> $event->status->name,
+				'host'		=> ORM::factory('character', $event->character_id)->name,
+				'build'		=> $event->build->name,
+				'url'			=> $event->build->url,
+				'dungeon'	=> $event->dungeon->name,
 			);
 		}
 		

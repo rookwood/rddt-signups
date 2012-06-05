@@ -7,7 +7,7 @@ class Abstract_View_Page extends Abstract_View_Layout {
 	/**
 	 * @var Page title
 	 */
-	public $title = 'Default title that someone forgot to change!';
+	public $title = 'RedditGW Events';
 	
 	/**
 	 * @var  object  Current user
@@ -68,13 +68,35 @@ class Abstract_View_Page extends Abstract_View_Layout {
 		
 		$links = array();
 		
-		// Admin dashboard link
+		// Admin links
 		if ($this->user->can('use_admin'))
 		{
 			$links[] = array(
-				'location' => Route::url('admin'),
-				'text'     => 'Admin dashboard',
-				'icon'     => array('src' => '/media/img/icons/application_form.png'),
+				'text'		=> 'Administrator',
+				'icon'		=> array('src' => '/media/img/dropdown_arrow.png'),
+				'dropdown'	=> array(
+					'dropdown_links' => array(
+						array(
+							'location' => Route::url('admin'),
+							'text'     => 'Dashboard',
+						),
+						
+						array(
+							'location' => Route::url('admin', array('controller' => 'role')),
+							'text'     => 'Roles',
+						),
+						
+						array(
+							'location' => Route::url('admin', array('controller' => 'user')),
+							'text'     => 'Users',
+						),
+						
+						array(
+							'location' => Route::url('admin', array('controller' => 'dashboard', 'action' => 'settings')),
+							'text'     => 'Settings',
+						),
+					),
+				),
 			);
 		}
 		
@@ -105,47 +127,67 @@ class Abstract_View_Page extends Abstract_View_Layout {
 			);
 		}
 		
-		// User profile edit link
-		if ($this->user->can('edit_own_profile'))
-		{
-			$links[] = array(
-				'location' => Route::url('user', array('controller' => 'user', 'action' => 'manage')),
-				'text'     => 'Edit Profile'
-			);
-		}
-		
-		// Logout link
+		/* User account links:
+		my account
+		my profile
+		my characters
+		my events
+		logout 	*/
+		// And other links..
 		if (Auth::instance()->logged_in())
 		{
-			$links[] = array(
-				'location' => Route::url('character'),
-				'text'     => 'My Characters',
-			);		
-			
+			if ($this->user->can('edit_own_profile'))
+			{
+				$links[] = array(
+					'text'		=> 'My Account',
+					'icon'		=> array('src' => '/media/img/dropdown_arrow.png'),
+					'dropdown'	=> array(
+						'dropdown_links' => array(
+							array(
+								'location' => Route::url('user', array('controller' => 'user', 'action' => 'manage')),
+								'text'     => 'My Profile'
+							),
+							
+							array(
+								'location' => Route::url('character'),
+								'text'     => 'My Characters',
+							),
+							
+							array(
+								'location' => Route::url('event'),
+								'text'     => 'My Events',
+							),
+							
+							array(
+								'location' => Route::url('user', array('controller' => 'user', 'action' => 'logout')),
+								'text'     => 'Log out'
+							),
+						),
+					),
+				);
+			}
+
+		
 			$links[] = array(
 				'location' => Route::url('event'),
-				'text'     => 'Scheduled events',
+				'text'     => 'Events',
 			);
 			
 			$links[] = array(
 				'location' => Route::url('build'),
-				'text'     => 'Build list',
+				'text'     => 'Builds',
 			);
 			
 			$links[] = array(
 				'location' => Route::url('slot'),
-				'text'     => 'Slot list',
+				'text'     => 'Slots',
 			);
 			
 			$links[] = array(
 				'location' => Route::url('dungeon'),
-				'text'     => 'Dungeon list',
+				'text'     => 'Dungeons',
 			);
 			
-			$links[] = array(
-				'location' => Route::url('user', array('controller' => 'user', 'action' => 'logout')),
-				'text'     => 'Log out'
-			);
 		}
 		
 		return $links;

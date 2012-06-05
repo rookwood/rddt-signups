@@ -19,112 +19,154 @@
 
 <body>
 	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-	<div class="container">
-		<header class="masthead">
-			<h1>Reddit Guild Wars 1</h1>
-			<h2>Event Information</h2>
-		</header><!-- end masthead -->
-		<nav>
-			<ul>
-				<li>
-					<a href="#">My Account</a>
-					<ul>
-						<li><a href="#">Edit Profile</a></li>
-						<li><a href="#">Characters</a></li>
-						<li><a href="#">My Events</a></li>
-						<li><a href="#">Logout</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="#">Events</a>
-				</li>
-				<li>
-					<a href="#">Builds</a>
-				</li>
-				<li>
-					<a href="#">Dungeons</a>
-				</li>
-				<li>
-					<a href="#" class="logout">Logout</a>
-				</li>
-			</ul>
-		</nav>
-		<section id="characters">
-			<section id="character_list">
-				<h3>My Characters</h3>
-				<table>
-					<thead>
-						<tr>
-							<td>Name</td>
-							<td colspan="2">Actgions</td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><p><span class="character_name">Most Unique</span> Profession: Ritualist</td>
-							<td><a href="#">Edit</a></td>
-							<td><a href="#">Delete</a></td>
-						</tr>
-						<tr>
-							<td><p><span class="character_name">From The Blackness</span> Profession: Assassin</td>
-							<td><a href="#">Edit</a></td>
-							<td><a href="#">Delete</a></td>
-						</tr>
-						<tr>
-							<td><p><span class="character_name">Rookwood Shuffles</span> Profession: Derping</td>
-							<td><a href="#">Edit</a></td>
-							<td><a href="#">Delete</a></td>
-						</tr>
-					</tbody>
-				</table>
-			</section><!-- end character list -->
-			<form action="#" method="post">
-				<fieldset>
-					<legend>Add a new character</legend>
+	<img id="bgimg" src="media/img/background_alt2.jpg" />
+	<div id="realbody">
+	
+		<div class="container">
+			<header class="masthead">
+				<h1>Reddit Guild Wars 1</h1>
+				<h2>Event Information</h2>
+			</header><!-- end masthead -->
+			<nav>
+				<ul>
+					<li>
+						<a>My Account &nbsp; <img src="media/img/dropdown_arrow.png"></a>
+						<ul>
+							<li><a href="#">Edit Profile</a></li>
+							<li><a href="#">Characters</a></li>
+							<li><a href="#">My Events</a></li>
+							<li><a href="#">Logout</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">Events</a>
+					</li>
+					<li>
+						<a href="#">Builds</a>
+					</li>
+					<li>
+						<a href="#">Dungeons</a>
+					</li>
+					<li>
+						<a href="#" class="logout">Logout</a>
+					</li>
+				</ul>
+			</nav>
+			<section id="characters">
+				<section id="character_list">
+					<h3>My Characters</h3>
 					<ul>
 						<li>
-							<label for="name">Character name</label>
-							<input type="text" name="character[name]" id="name" />
+							<div>
+								<h4>Svet Damodred</h4>
+								<h5>Profession: Mesmer</h5>
+							</div>
+							<a href="#" class="delete">Delete</a>
+							<a href="#" class="edit">Edit</a>
 						</li>
 						<li>
-							<fieldset class="profession_selector">
-								<legend>Profession</legend>
-									<label for="profession_warrior">Warrior</label>
-									<input type="radio" name="character[profession]" id="profession_warrior" value="warrior" />
-									<label for="profession_mesmer">Mesmer</label>
-									<input type="radio" name="character[profession]" id="profession_mesmer" value="mesmer" />
-									<label for="profession_necromancer">Necromancer</label>
-									<input type="radio" name="character[profession]" id="profession_necromancer" value="necromancer" />
-									<label for="profession_monk">Monk</label>
-									<input type="radio" name="character[profession]" id="profession_monk" value="monk" />
-									<label for="profession_elementalist">Elementalist</label>
-									<input type="radio" name="character[profession]" id="profession_elementalist" value="elementalist" />
-									<label for="profession_ranger">Ranger</label>
-									<input type="radio" name="character[profession]" id="profession_ranger" value="ranger" />
-									<label for="profession_ritualist">Ritualist</label>
-									<input type="radio" name="character[profession]" id="profession_ritualist" value="ritualist" />
-									<label for="profession_assassin">Assassin</label>
-									<input type="radio" name="character[profession]" id="profession_assassin" value="assassin" />
-									<label for="profession_dervish">Dervish</label>
-									<input type="radio" name="character[profession]" id="profession_dervish" value="dervish" />
-									<label for="profession_paragon">Paragon</label>
-									<input type="radio" name="character[profession]" id="profession_paragon" value="paragon" />
-							</fieldset>
+							<div>
+								<h4>From The Blackness</h4>
+								<h5>Profession: Assassin</h5>
+							</div>
+							<a href="#" class="delete">Delete</a>
+							<a href="#" class="edit">Edit</a>
 						</li>
 						<li>
-							<input type="hidden" name="csrf" value="a44142424de528abb43de44f097556d10c48310d" />
-							<input type="submit" value="Create" />
+							<div>
+								<h4>Rookwood Shuffles</h4>
+								<h5>Profession: Derping</h5>
+							</div>
+							<a href="#" class="delete">Delete</a>
+							<a href="#" class="edit">Edit</a>
 						</li>
 					</ul>
-				</fieldset>
-			</form><!-- end character add form -->
-		</section><!-- end character section -->
+				</section><!-- end character list -->
+				
+				<form action="#" method="post">
+					<fieldset>
+						<legend>Add a new character</legend>
+						<ul>
+							<li>
+								<label for="name">Character name</label>
+								<input type="text" name="character[name]" id="name" />
+							</li>
+							<li>
+								<fieldset class="profession_selector">
+									<legend>Profession</legend>
+									<ul>
+										<li>
+											<label for="profession_warrior">Warrior</label>
+											<input type="radio" name="character[profession]" id="profession_warrior" value="warrior" />
+										</li>
+										<li>
+											<label for="profession_mesmer">Mesmer</label>
+											<input type="radio" name="character[profession]" id="profession_mesmer" value="mesmer" />
+										</li>
+										<li>
+											<label for="profession_necromancer">Necromancer</label>
+											<input type="radio" name="character[profession]" id="profession_necromancer" value="necromancer" />
+										</li>
+										<li>
+											<label for="profession_monk">Monk</label>
+											<input type="radio" name="character[profession]" id="profession_monk" value="monk" />
+										</li>
+										<li>
+											<label for="profession_elementalist">Elementalist</label>
+											<input type="radio" name="character[profession]" id="profession_elementalist" value="elementalist" />
+										</li>
+										<li>
+											<label for="profession_ranger">Ranger</label>
+											<input type="radio" name="character[profession]" id="profession_ranger" value="ranger" />
+										</li>
+										<li>
+											<label for="profession_ritualist">Ritualist</label>
+											<input type="radio" name="character[profession]" id="profession_ritualist" value="ritualist" />
+										</li>
+										<li>
+											<label for="profession_assassin">Assassin</label>
+											<input type="radio" name="character[profession]" id="profession_assassin" value="assassin" />
+										</li>
+										<li>
+											<label for="profession_dervish">Dervish</label>
+											<input type="radio" name="character[profession]" id="profession_dervish" value="dervish" />
+										</li>
+										<li>
+											<label for="profession_paragon">Paragon</label>
+											<input type="radio" name="character[profession]" id="profession_paragon" value="paragon" />
+										</li>
+									</ul>
+								</fieldset>
+							</li>
+							<li class="button">
+								<input type="hidden" name="csrf" value="a44142424de528abb43de44f097556d10c48310d" />
+								<input type="submit" value="Create" />
+							</li>
+						</ul>
+					</fieldset>
+				</form><!-- end character add form -->
+			</section><!-- end character section -->
 
-	</div><!-- end container-->
+		</div><!-- end container-->
+		
+	</div> <!-- end realbody -->
 	<!-- JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom -->
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="media/js/vendor/jquery-1.7.2.min.js"><\/script>')</script>
+	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="media/js/vendor/jquery-1.7.2.min.js"><\/script>')</script> -->
+
+	<!-- Background scaling -->
+	<script type="text/javascript" src="media/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="media/js/jquery-ui-1.8.20.custom.min.js"></script>
+	<script src="media/js/jquery.fullscreenr.js" type="text/javascript"></script>
+	<script type="text/javascript">  
+		<!--
+			// You need to specify the size of your background image here (could be done automatically by some PHP code)
+			var FullscreenrOptions = {  width: 1280, height: 1200, bgID: '#bgimg' };
+			// This will activate the full screen background!
+			jQuery.fn.fullscreenr(FullscreenrOptions);
+		//-->
+	</script>
 
 	<script src="media/js/plugins.js"></script>
 	<script src="media/js/main.js"></script>

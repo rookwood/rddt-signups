@@ -1,49 +1,54 @@
-	<form action="{{action}}" method="post" class="panel">
-		{{#errors}}<div class="error">{{{errors}}}</div>{{/errors}}
-		{{#success}}<div class="success">{{{success}}}</div>{{/success}}
-		<fieldset>
-			<legend>Personal Information</legend>
-			<ul>
-				{{#user}}<li>
-					<label for="user_name">Username:</label>
-					<input type="text" name="user[username]" id="user_name" value="{{username}}" disabled="disabled" />
-				</li>
-				<li>
-					<label for="user_email">Email address:</label>
-					<input type="text" name="user[email]" id="user_email" value="{{email}}" />
-				</li>
-				<li>
-					<label for="user_password">Password:</label>
-					<input type="password" name="user[password]" id="user_password" />
-				</li>
-				<li>
-					<label for="user_repeat_password">Repeat password:</label>
-					<input type="password" name="user[password_confirm]" id="user_password_confirm" />
-				</li>{{#profile}}
-				<li>
-					<label for="profile_first_name">First name:</label>
-					<input type="text" name="profile[first_name]" id="profile_first_name" value="{{first_name}}" />
-				</li>
-				<li>
-					<label for="profile_last_name">Last name:</label>
-					<input type="text" name="profile[last_name]" id="profile_last_name" value="{{last_name}}" />
-				</li>
-				<li>
-					<label for="user_timezone">Time Zone:</label>
-					<select name="user[timezone]" id="user_timezone">
-					{{#timezone_list}}
-						<option value="{{value}}"{{#selected}} selected="selected"{{/selected}}>{{name}}</option>
-					{{/timezone_list}}
-					</select>
-					{{#errors.timezone}}<p class="error_message">{{errors.timezone}}</p>{{/errors.timezone}}
-				</li>
-				<li>
-					<label for="profile_birthdate">Date of birth:</label>
-					<input type="date" name="profile[birthdate]" id="profile_birthdate" placeholder="YYYY-MM-DD" value="{{birthdate}}" />
-				</li>{{/profile}}
-				{{{csrf}}}
-			{{/user}}
-			</ul>
-		</fieldset>
-		<input type="submit" value="Submit" />
-	</form>
+	<section id="profile">
+		<form action="{{action}}" method="post" class="panel">
+			{{#errors}}<div class="error">{{{errors}}}</div>{{/errors}}
+			{{#success}}<div class="success">{{{success}}}</div>{{/success}}
+			<fieldset>
+				<legend>Personal Information</legend>
+				<ul>
+					{{#user}}<li>
+						<label for="user_name">Username:</label>
+						<input type="text" name="user[username]" id="user_name" value="{{username}}" disabled="disabled" />
+					</li>
+					<li>
+						<label for="user_email">Email address:</label>
+						<input type="text" name="user[email]" id="user_email" value="{{email}}" />
+					</li>
+					<li>
+						<label for="user_password">Password:</label>
+						<input type="password" name="user[password]" id="user_password" />
+					</li>
+					<li>
+						<label for="user_repeat_password">Repeat password:</label>
+						<input type="password" name="user[password_confirm]" id="user_password_confirm" />
+					</li>{{#profile}}
+					<li>
+						<label for="profile_first_name">First name:</label>
+						<input type="text" name="profile[first_name]" id="profile_first_name" value="{{first_name}}" />
+					</li>
+					<li>
+						<label for="profile_last_name">Last name:</label>
+						<input type="text" name="profile[last_name]" id="profile_last_name" value="{{last_name}}" />
+					</li>
+					<li>
+						<label for="user_timezone">Time Zone:</label>
+						<select name="user[timezone]" id="user_timezone">
+						{{#timezone_list}}
+							<option value="{{value}}"{{#selected}} selected="selected"{{/selected}}>{{name}}</option>
+						{{/timezone_list}}
+						</select>
+						{{#errors.timezone}}<p class="error_message">{{errors.timezone}}</p>{{/errors.timezone}}
+					</li>
+					<li>
+						<label for="profile_birthdate">Date of birth:</label>
+						<input type="date" name="profile[birthdate]" id="profile_birthdate" placeholder="YYYY-MM-DD" value="{{birthdate}}" />
+					</li>
+					<li class="button">
+						{{{csrf}}}
+						<input type="submit" value="Submit" />
+					</li>
+					{{/profile}}
+					{{/user}}
+				</ul>
+			</fieldset>
+		</form>
+	</section>

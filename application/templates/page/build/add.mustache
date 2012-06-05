@@ -1,30 +1,30 @@
-
-	<form action="{{add_action}}" method="POST" id="form_build_add">
-		<fieldset>
-			<legend>Add new build</legend>
-			<ul>
-				<li>
-					<label for="name">Build name:</label>
-					<input type="text" name="build[name]" id="name" value="{{build_data.name}}" {{#errors.name}}class="error" {{/errors.name}}/>
-					{{#errors.name}}<p class="error_message">{{errors.name}}</p>{{/errors.name}}
-				</li>
-				<li>
-					<label for="url">Build link:</label>
-					<input type="text" name="build[url]" id="url" value="{{build_data.url}}" {{#errors.url}}class="error" {{/errors.url}}novalidate="novalidate" />
-					{{#errors.url}}<p class="error_message">{{errors.url}}</p>{{/errors.url}}
-				</li>
+	<section id="add_build">
+		<form action="{{add_action}}" method="POST" id="form_build_add">
+			<fieldset>
+				<legend>Add new build</legend>
+				<ul>
+					<li>
+						<label for="name">Build name:</label>
+						<input type="text" name="build[name]" id="name" value="{{build_data.name}}" {{#errors.name}}class="error" {{/errors.name}}/>
+						{{#errors.name}}<p class="error_message">{{errors.name}}</p>{{/errors.name}}
+					</li>
+					<li>
+						<label for="url">Build link:</label>
+						<input type="text" name="build[url]" id="url" value="{{build_data.url}}" {{#errors.url}}class="error" {{/errors.url}}novalidate="novalidate" />
+						{{#errors.url}}<p class="error_message">{{errors.url}}</p>{{/errors.url}}
+					</li>
 {{#slots}}
-				<li>
-					<label for="{{name}}">{{name}}:</label>
-					<input type="number" name="quantity[{{name}}]" id="{{name}}" value="{{quantity}}" min="0" />
-				</li>
+					<li>
+						<label for="{{name}}">{{name}}:</label>
+						<input type="number" name="quantity[{{name}}]" id="{{name}}" value="{{quantity}}" min="0" />
+					</li>
 {{/slots}}
-				<li>
-					{{{csrf}}}
-					<input type="submit" value="Submit" />
-				</li>
-			</ul>
-		</fieldset>
-	</form>
-
-<p>Need something not listed here?  You can <a href="{{slot_add}}">add it</a>.
+					<li><a href="{{slot_add}}" title="Add a new slot if you can't find it here!">Add new slot</a></li>
+					<li class="button">
+						{{{csrf}}}
+						<input type="submit" value="Submit" />
+					</li>
+				</ul>
+			</fieldset>
+		</form>
+	</section>

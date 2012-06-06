@@ -232,56 +232,62 @@ body {
 	position: absolute;
 	z-index: 5;						/* Place the container above the background image */
 	overflow: auto;				/* restore scrollbars for the content */
-	height: 100%;width: 100%;		/* Make the new body fill the screen */
+	height: 100%; width: 100%;		/* Make the new body fill the screen */
 }
 
 .container {
+	display: table;
 	position: relative;
-	background: url(../img/container_bg_alt.png);
-	margin: 146px auto 0;			/* Push container down right below menu background */
-
+	margin: 0 auto;
 	width: 756px;
-	min-height: 100%;
+	height: 100%;
 	
 	text-align: left;
+	/* background-color: blue; */
 }
 
-/* Special div used to push the container to the bottom of the page
-Used on pages with floating elements at the end of the page */
-.push {
+.container_r1, .container_r2, .container_r3 {
+	display: table-row
+}
+
+.container_r1 .masthead, .container_r2 nav, .container_r3 section {
+	display: table-cell;
+}
+
+.container_r3 > section {
+	background: url(../img/container_bg_alt.png);
+}
+
+.footer {
 	clear: both;
 	height: 40px;
 }
 
-.container a {
-	text-decoration: none;
-}
-
+/* Banner positioning */
 .masthead {
-	position: absolute; top: -136px;	/* banner at the top of page with 10px space */
-	width: 756px; height: 100px;
-	padding-top: 1px;					/* Hack for removing extra spacing */
-	margin-bottom: -1px;
-
-	background-image: url(../img/banner.png);
-	background-position: top center;
-	background-repeat: no-repeat;
-	z-index: 5;							/* banner on top */
+	height: 90px;
 }
 
+/* Float the banner on top of the nav bar */
+.masthead img {
+	position: absolute;
+}
+
+/* Hide header text */
 .masthead h1, .masthead h2 {
-	display: none;			/* Hide masthead text */
+	display: none;
 }
 
 /* Top navigation menu with dropdown
 ---------------------------------------------------- */
-nav ul {
-	position: absolute; top: -46px;
-	width: 100%;
+nav {
 	height: 46px;
 
 	background-image: url(../img/menu_bg.png);
 	background-repeat: no-repeat;
+}
+
+nav ul {
 	list-style: none;
 }
 
@@ -294,7 +300,6 @@ nav #alien {
 nav ul li {
 	position: relative;
 	float: left;
-	padding: 0 0 0 1px;
 }
 
 nav ul li a, nav ul li a:visited {
@@ -322,33 +327,38 @@ nav ul li a:hover, nav ul li a:active {
 
 /* START CSS for dropdown menu
 ----------------------------------------------- */
+/* Hide off-screen when not needed 
+(this is more accessible than display:none;) */
 nav ul ul {
 	position: absolute;
-	left: -9999px;		/* Hide off-screen when not needed (this is more accessible than display:none;) */
-	list-style: none;
+	left: -9999px;
 }
 
 /* Dropdown under nested list */
 nav ul li:hover ul {
-	width:141px;
-	height:141px;	/* height adjusted for padding-top */
+	width: 141px;
+	height: 141px;			/* height adjusted for padding-top */
 	padding-top:12px;
-	top: 46px;		/* top adjusted for moved menu */
 	left: -6px;
-	z-index:900;
+	z-index: 900;
 
-	/* background-color:red; */
+	text-align: left;
 	background-image: url(../img/dropdown_bg.png);
+	/* background-color:red; */
+}
+
+nav ul li ul li {
+	clear: both;
+	width: 100%;
 }
 
 nav ul li ul li a:link, nav ul li ul li a:visited {
-	width:126px;
-	height:24px;
+	width: 100%;
+	height: 24px;
 	padding:10px 0 0 15px;
 	
-/* 	border: 1px dotted red; */
-/* 	background-color: rgba(0,0,255,.2); */
 	background-image: none;
+	/* background-color: rgba(0,0,255,.2); */
 }
 /* --------------------------------------
 END CSS for dropdown menu */

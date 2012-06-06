@@ -23,68 +23,72 @@
 
 <body>
 	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-	<img id="bgimg" src="media/img/background_alt2.jpg" />
+	<img id="bgimg" src="media/img/background.jpg" />
 	<div id="realbody">
 	
 		<div class="container">
-			<a href="#">
+			<div class="container_r1">
 				<header class="masthead">
+					<img class="banner" src="media/img/banner.png">
 					<h1>Reddit Guild Wars 1</h1>
 					<h2>Event Information</h2>
 				</header><!-- end masthead -->
-			</a>
-			<nav>
-				<ul>
-					<li>
-						<a>My Account &nbsp; <img src="media/img/dropdown_arrow.png"></a>
-						<ul>
-							<li><a href="#">Edit Profile</a></li>
-							<li><a href="#">Characters</a></li>
-							<li><a href="#">My Events</a></li>
-							<li><a href="#">Logout</a></li>
-						</ul>
-					</li>
-					<li>
-						<a href="#">Events</a>
-					</li>
-					<li>
-						<a href="#">Builds</a>
-					</li>
-					<li>
-						<a href="#">Dungeons</a>
-					</li>
-					<li>
-						<a href="#" class="logout">Logout</a>
-					</li>
-				</ul>
-			</nav>
-			<section id="account">
-				<form action="#" method="post">
-					<fieldset>
-						<legend>Log In</legend>
-						<ul>
-							<li>
-								<label for="user_name">Username :</label>
-								<input type="text" name="user[username]" id="user_name" autofocus="autofocus" tabindex="1"/>
-								<a href="#">(Forgot username?)</a>
-							</li>
-							<li>
-								<label for="user_password">Password :</label>
-								<input type="password" name="user[password]" id="user_password" tabindex="2" />
-								<a href="#">Forgot password?</a>
-							</li>
-							<li>
-								<label for="remember">Remember me ?</label>
-								<input type="checkbox" name="remember" value="TRUE" id="remember" checked="checked" tabindex="3" />
-							</li>
-							<li class="button">
-								<input type="hidden" name="csrf" value="a44142424de528abb43de44f097556d10c48310d" />
-								<input type="submit" value="Login" class="formsubmit" />
-							</li>
-					</fieldset>
-				</form><!-- end login form -->
-			</section><!-- end account -->
-
+			</div>
+			<div class="container_r2">
+				<nav>
+					<ul>
+						<li>
+							<a>My Account &nbsp; <img src="media/img/dropdown_arrow.png"></a>
+							<ul>
+								<li><a href="#">Edit Profile</a></li>
+								<li><a href="#">Characters</a></li>
+								<li><a href="#">My Events</a></li>
+								<li><a href="#">Logout</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">Events</a>
+						</li>
+						<li>
+							<a href="#">Builds</a>
+						</li>
+						<li>
+							<a href="#">Dungeons</a>
+						</li>
+						<li>
+							<a href="#" class="logout">Logout</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<div class="container_r3">
+				<section id="account">
+					<form action="#" method="post">
+						<fieldset>
+							<legend>Log In</legend>
+							<ul>
+								<li>
+									<label for="user_name">Username :</label>
+									<input type="text" name="user[username]" id="user_name" autofocus="autofocus" tabindex="1"/>
+									<a href="#">Forgot username?</a>
+								</li>
+								<li>
+									<label for="user_password">Password :</label>
+									<input type="password" name="user[password]" id="user_password" tabindex="2" />
+									<a href="#">Forgot password?</a>
+								</li>
+								<li>
+									<label for="remember">Remember me ?</label>
+									<input type="checkbox" name="remember" value="TRUE" id="remember" checked="checked" tabindex="3" />
+								</li>
+								<li class="button">
+									<input type="hidden" name="csrf" value="a44142424de528abb43de44f097556d10c48310d" />
+									<input type="submit" value="Login" class="formsubmit" />
+								</li>
+						</fieldset>
+					</form><!-- end login form -->
+				</section><!-- end account -->
+			</div> <!-- end content -->
 		</div><!-- end container-->
 	
 	</div> <!-- end realbody -->

@@ -1,7 +1,7 @@
 							<div id="tabs">
 								<ul>
-									<li><a href="#attendees">Attendees</a></li>
-									<li><a href="#standby">Standby (0)</a></li>
+									<li><a href="#attendees">Attendees ({{attendee_count}})</a></li>
+									<li><a href="#standby">Standby ({{standby_count}})</a></li>
 								</ul>
 								<div id="attendees">
 									<ul>
@@ -10,8 +10,8 @@
 											<div class="player">
 												<img class="profession" src="/media/img/prof_icons/{{profession}}_small.png" />
 												<span class="name">{{name}}</span>
-												<a href="#">?</a>
-												<ul><li><div class="comment">{{comment}}</div></li></ul>
+												{{#comment}}<a href="#">?</a>
+												<ul><li><div class="comment">{{comment}}</div></li></ul>{{/comment}}
 											</div>
 											<div class="role">{{role}}</div>
 										</li>
@@ -33,10 +33,10 @@
 											<div class="player">
 												<img class="profession" src="/media/img/prof_icons/{{profession}}_small.png" />
 												<span class="name">{{name}}</span>
-												<a href="#">?</a>
+												{{#comment}}<a href="#">?</a>
 												<ul>
 													<li><div class="comment">{{comment}}</div></li>
-												</ul>
+												</ul>{{/comment}}
 											</div>
 											<div class="role">{{role}}</div>
 										</li>

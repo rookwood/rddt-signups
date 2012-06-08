@@ -234,4 +234,18 @@ class View_Page_Event_Display extends Abstract_View_Page {
 	{
 		return  TRUE === $this->user->can('event_signup', array('event' => $this->event_data));
 	}
+	
+	public function standby_count()
+	{
+		$data = $this->attendees();
+		
+		return empty($data['standby']) ? 0 : count($data['standby']);
+	}
+	
+	public function attendee_count()
+	{
+		$data = $this->attendees();
+		
+		return empty($data['active']) ? 0 : count($data['active']);
+	}
 }

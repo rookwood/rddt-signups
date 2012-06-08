@@ -62,9 +62,7 @@ class Controller_Event extends Abstract_Controller_Website {
 				Notices::add('info', 'msg_info', array('message' => Kohana::message('gw', 'event.add.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 				
 				// Setup display of created event
-				$this->view = Kostache::factory('page/event/display')
-					->assets(Assets::factory())
-					->set('event_data', $event);
+				$this->request->redirect(Route::url('event'));
 			}
 			catch(ORM_Validation_Exception $e)
 			{
@@ -116,8 +114,7 @@ class Controller_Event extends Abstract_Controller_Website {
 				Notices::add('success', 'msg_info', array('message' => Kohana::message('gw', 'event.edit.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 				
 				// Setup display of edited event
-				$this->view = Kostache::factory('page/event/display')
-					->assets(Assets::factory());
+				$this->request->redirect(Route::url('event'));
 			}
 			catch(ORM_Validation_Exception $e)
 			{
@@ -250,15 +247,15 @@ class Controller_Event extends Abstract_Controller_Website {
 			Notices::add('success', 'msg_success', array('message' => Kohana::message('gw', 'event.signup.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 			
 			// Setup display of event
-			$this->view = Kostache::factory('page/event/display')
-					->assets(Assets::factory())
-					->set('event_data', $event);
+				$this->request->redirect(Route::url('event'));
 		}
 		else
 		{
 			// Not a valid post (came to this url directly or bad )
-			Notices::add('error', 'msg_success', array('message' => Kohana::message('gw', 'event.signup.failed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
-			$this->request->redirect(Route::url('event'));
+			//Notices::add('error', 'msg_success', array('message' => Kohana::message('gw', 'event.signup.failed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			//$this->request->redirect(Route::url('event'));
+			$this->view->user = $this->user;
+			$this->view->event_data = $event;
 		}
 	}
 
@@ -339,8 +336,7 @@ class Controller_Event extends Abstract_Controller_Website {
 				throw new HTTP_Exception_500;
 			}
 		}
-		$this->view = Kostache::factory('page/event/display')
-			->assets(Assets::factory());
+		$this->request->redirect(Route::url('event'));
 		
 		$this->view->event_data = $event;
 		$this->view->user = $this->user;

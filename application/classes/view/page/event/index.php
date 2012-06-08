@@ -23,19 +23,24 @@ class View_Page_Event_Index extends Abstract_View_Page {
 		{
 			// Calculate start time using user's time offset from GMT
 			$local_start_time = Date::offset($this->user->timezone, 'Europe/London') + $event->time;
-
+			
+			$player_count = ORM::factory('signup')->where('event_id', '=', $event->id)->and_where('status_id', '=', Model_Status::READY)->count_all();
+			$player_total = Model_Build::max_player_count($event->build->name);
 			// Build event array
 			$out[] = array(
-				'details_link'	=> Route::url('event', array('action' => 'display', 'id' => $event->id)),
-				'date'		=> date('F d, Y', $local_start_time),
-				'time'		=> date('g:i A T', $local_start_time),
-				'time_full'	=> date('c', $local_start_time),
-				'title'		=> $event->title,
-				'status'		=> $event->status->name,
-				'host'		=> ORM::factory('character', $event->character_id)->name,
-				'build'		=> $event->build->name,
-				'url'			=> $event->build->url,
-				'dungeon'	=> $event->dungeon->name,
+				'details_link'  => Route::url('event', array('action' => 'display', 'id' => $event->id)),
+				'date'          => date('F d, Y',  $local_start_time),
+				'time'          => date('g:i A T', $local_start_time),
+				'time_full'     => date('c',       $local_start_time),
+				'title'         => $event->title,
+				'status'        => $event->status->name,
+				'host'          => ORM::factory('character', $event->character_id)->name,
+				'build'         => $event->build->name,
+				'url'           => $event->build->url,
+				'dungeon'       => $event->dungeon->name,
+				'player_count'  => $player_count,
+				'player_total'  => $player_total,
+				'signup_status' => $this->player_count_status($player_count, $player_total),
 			);
 		}
 		
@@ -98,5 +103,24 @@ class View_Page_Event_Index extends Abstract_View_Page {
 		
 		return $filter_list = $out;
 		
+	}
+	
+	protected function player_count_status($active, $total)
+	{
+		switch (TRUE)
+		{
+			case $active == 0:
+				return 'empty';
+			break;
+			case $active / $total >= 0.5:
+				return 'low';
+			break;
+			case $active >= $total:
+				return 'full';
+			break;
+			default:
+				return 'high';
+			break;
+		}
 	}
 }

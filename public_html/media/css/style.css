@@ -788,10 +788,10 @@ section#events ul li.event_time div {
 }
 
 /* Player count colors */
-section#events ul li.event_numbers span.player_count_empty {	color: #717171; }
-section#events ul li.event_numbers span.player_count_low {		color: #1c8300;	}
-section#events ul li.event_numbers span.player_count_high {		color: #bec022;	}
-section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
+span.player_count_empty { color: #717171; }
+span.player_count_low   { color: #1c8300; }
+span.player_count_high  { color: #bec022; }
+span.player_count_full  { color: #e91212; }
 
 section.event_data { display: none;}
 ul.header {cursor: pointer;}

@@ -112,7 +112,7 @@ class View_Page_Event_Index extends Abstract_View_Page {
 			case $active == 0:
 				return 'empty';
 			break;
-			case $active / $total >= 0.5:
+			case ($active / $total) <= 0.5:
 				return 'low';
 			break;
 			case $active >= $total:

@@ -69,40 +69,57 @@ class View_Page_Event_Index extends Abstract_View_Page {
 	
 	public function filters()
 	{
-		// Cache results as to save database hits
-		static $filter_list;
+		// This function is bad, and I should feel bad
+		$filter_key = Request::$current->query('filter');
+		$filter_key = isset($filter_key) ? $filter_key : 'current';
 		
-		// Return cached results if available
-		if ( ! empty($filter_list))
-		{
-			return $filter_list;
-		}
-		
-		$out['top'][] = array(
+		$out['bottom'][] = array(
 			'url'  => Route::url('event').URL::query(array('filter' => 'current')),
-			'text' => 'All current events',
+			'text' => 'Current events',
+			'key'  => 'current',
 		);		
 		
-		$out['top'][] = array(
+		$out['bottom'][] = array(
 			'url'  => Route::url('event').URL::query(array('filter' => 'mine')),
 			'text' => 'My events',
+			'key'  => 'mine',
 		);
 		
-		$out['top'][] = array(
+		$out['bottom'][] = array(
 			'url'  => Route::url('event').URL::query(array('filter' => 'past')),
 			'text' => 'Past events',
+			'key'  => 'past',
 		);
 		
-		foreach (ORM::factory('dungeon')->where('visibility', '=', '1')->find_all() as $dungeon)
+		$out['bottom'][] = array(
+			'url'  => Route::url('event').URL::query(array('filter' => 'dungeon')),
+			'text' => 'Dungeon',
+			'key'  => 'dungeon',
+		);
+		
+		$out['bottom'][] = array(
+			'url'  => Route::url('event').URL::query(array('filter' => 'time')),
+			'text' => 'Start time',
+			'key'  => 'time',
+		);
+		
+		$index = 0;
+
+		foreach ($out['bottom'] as $filter)
 		{
-			$out['dungeon'][] = array(
-				'url'  => Route::url('event').URL::query(array('filter' => 'dungeon', 'id' => $dungeon->id)),
-				'text' => $dungeon->name,
-			);
+			if (array_search($filter_key, $filter) !== FALSE)
+			{
+				$out['top'] = $filter;
+				unset($out['bottom'][$index]);
+			}
+
+			$index += 1;
 		}
+
+		// Reindex for mustache... not sure why this is necessary
+		$out['bottom'] = array_values($out['bottom']);
 		
-		return $filter_list = $out;
-		
+		return $out;
 	}
 	
 	protected function player_count_status($active, $total)

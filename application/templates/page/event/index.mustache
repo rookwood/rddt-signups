@@ -4,11 +4,11 @@
 					<div class="sort_label">Sort by</div>
 					<ul class="sort_dropdown">
 						<li class="sort_selected">
-							<a>{{filter}}</a>
+							<a>{{#filters.top}}{{text}}{{/filters.top}}</a>
 							<ul>
-{{#filters.top}}
+{{#filters.bottom}}
 								<li><a href="{{url}}">{{text}} <span class="count"></span></a></li>
-{{/filters.top}}
+{{/filters.bottom}}
 							</ul>
 						</li>
 					</ul> <!-- end dropdown -->

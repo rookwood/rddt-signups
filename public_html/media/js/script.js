@@ -33,7 +33,7 @@ $(document).ready(function() {
 				event_data.html(data)
 				
 				// setup for jquery ui tabs
-				$('#tabs').tabs();
+				event_data.find('#tabs').tabs();
 				
 				// mark event has having all data loaded
 				$(that).addClass('loaded');

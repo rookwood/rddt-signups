@@ -3,9 +3,8 @@
 		<section id="character_list">
 			<h3>My Characters</h3>
 			{{#character_add_link}}<a class="button" href="{{character_add_link}}">Add new character</a>{{/character_add_link}}
-{{^count}}		<p>You have no characters listed.</p>{{/count}}
-{{#count}}
 				<ul>
+{{#count}}
 {{#character_list}}
 					<li>
 						<div class="profession_icon" style="background-image: url('/media/img/prof_icons/{{profession}}.png');"></div>
@@ -17,9 +16,14 @@
 						<a href="{{edit_url}}" class="edit" title="Edit {{name}}">Edit</a>
 					</li>
 {{/character_list}}
-				</ul>
-
 {{/count}}
+{{^count}}
+					<li>
+						<div>
+							<h4>You haven't added any characters yet.</h4>
+					</div></li>
+{{/count}}
+				</ul>
 
 {{^character_add_link}}<p>You may not add new characters at this time.</p>{{/character_add_link}}
 	</section><!-- end character list -->

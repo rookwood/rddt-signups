@@ -525,7 +525,8 @@ section#events ul {
 
 /* Header background */
 section#builds ul li, section#character_list ul li, 
-section#dungeons ul li, section#slot_list ul li {
+section#dungeons ul li, section#slot_list ul li,
+section#events ul li.no_events {
 	position: relative;
 	margin: 0 10px 8px;
 
@@ -675,10 +676,13 @@ section#events ul li {
 	position: relative;			/* positioning for event detail elements */
 }
 
-/* Closed events */
-section#events ul li.event_collapsed {
+ul#event_list > li {
 	margin: 0 10px;
 	width: 733px;				/* width reduced for border */
+}
+
+/* Closed events */
+section#events ul li.event_collapsed {
 	height: 98px;				/* height reduced for border */
 	
 	border: 1px solid rgba(199,199,199,0.8);
@@ -703,8 +707,6 @@ section#events ul li.event_collapsed {
 /* Opened events */
 section#events ul li.event_expanded {
 	float: left;					/* float for all exanded event elements */
-	margin: 0 10px;
-	width: 733px;				/* width reduced for border */
 	
 	border: 1px solid rgba(199,199,199,0.8);
  	background-image: url(../img/event_up_arrow.png), linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);

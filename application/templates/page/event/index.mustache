@@ -4,11 +4,11 @@
 					<div class="sort_label">Sort by</div>
 					<ul class="sort_dropdown">
 						<li class="sort_selected">
-							<a>{{filter}}</a>
+							<a>{{#filters.top}}{{text}}{{/filters.top}}</a>
 							<ul>
-{{#filters.top}}
+{{#filters.bottom}}
 								<li><a href="{{url}}">{{text}} <span class="count"></span></a></li>
-{{/filters.top}}
+{{/filters.bottom}}
 							</ul>
 						</li>
 					</ul> <!-- end dropdown -->
@@ -17,10 +17,9 @@
 				{{#filter_message}}<p>{{filter_message}}</p>{{/filter_message}}
 				<!-- <p>All events are displayed in the timezone set in your profile.</p> -->
 				
-				<ul>
+				<ul id="event_list">
 {{#events}}
-					<a href="{{details_link}}" class="event_details" title="Expand '{{title}}' event">
-					<li class="event_collapsed">
+					<li class="event_collapsed clickable" data-url="{{details_link}}">
 						<ul class="header">
 							<li class="event_title">
 								<div>
@@ -30,7 +29,7 @@
 							</li>
 							<li class="event_numbers">
 								<div>
-									<h4><span class="player_count_empty">0/8</span></h4>
+									<h4><span class="player_count_{{signup_status}}">{{player_count}}/{{player_total}}</span></h4>
 									<h5>Players</h5>
 								</div>
 							</li>
@@ -41,21 +40,21 @@
 								</div>
 							</li>
 						</ul>
+						<section class="event_data"></section>
 					</li><!-- end of this event -->
-					</a>
+					
 					<div class="event_footer"></div>
 					
 				<!-- {{status}} -->
 {{/events}}
 {{^events}}
-					<li>
+					<li class="no_events">
 						<ul class="header">
 							<li class="event_title">
 								<div>
 									<h4>No events scheduled at this time</h4>
 					</div></li></ul></li>
 {{/events}}
-					<section id="event_data"></section>
 				</ul>
 			</section><!-- end event list -->
 

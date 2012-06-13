@@ -29,6 +29,25 @@
 		);
 	}
 	
+	public static function max_player_count($build)
+	{
+		if ( ! $build instanceof Model_Build)
+		{
+			$build = ORM::factory('build', array('name' => $build));
+		}
+		
+		$functions = ORM::factory('function')->where('build_id', '=', $build->id)->find_all();
+		
+		$quantity = 0;
+		
+		foreach ($functions as $slot)
+		{
+			$quantity += $slot->number;
+		}
+		
+		return $quantity;
+	}
+	
 	/**
 	 * Add a new build
 	 *

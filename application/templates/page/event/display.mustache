@@ -1,31 +1,7 @@
-					<li class="event_expanded">
-{{#event}}
-						<ul class="header">
-							<li class="event_title">
-								<div>
-									<h4>{{dungeon}}</h4>
-									<h5>Manager: {{hostas}}</h5>
-								</div>
-							</li>
-							<li class="event_numbers">
-								<div>
-									<h4><span class="player_count_low">4/8</span></h4>
-									<h5>Players</h5>
-								</div>
-							</li>
-							<li class="event_time">
-								<div>
-									<h4><time class="date" datetime="{{time_full}}">{{date}}</time></h4>
-									<h5><time class="time" datetime="{{time_full}}">{{time}}</time></h5>
-								</div>
-							</li>
-						</ul>
-{{/event}}
-						<section id="event_details">
 							<div id="tabs">
 								<ul>
-									<li><a href="#attendees">Attendees</a></li>
-									<li><a href="#standby">Standby (0)</a></li>
+									<li><a href="#attendees">Attendees ({{attendee_count}})</a></li>
+									<li><a href="#standby">Standby ({{standby_count}})</a></li>
 								</ul>
 								<div id="attendees">
 									<ul>
@@ -34,8 +10,8 @@
 											<div class="player">
 												<img class="profession" src="/media/img/prof_icons/{{profession}}_small.png" />
 												<span class="name">{{name}}</span>
-												<a href="#">?</a>
-												<ul><li><div class="comment">{{comment}}</div></li></ul>
+												{{#comment}}<a href="#">?</a>
+												<ul><li><div class="comment">{{comment}}</div></li></ul>{{/comment}}
 											</div>
 											<div class="role">{{role}}</div>
 										</li>
@@ -55,11 +31,12 @@
 {{#attendees.standby}}
 										<li class="{{profession}}">
 											<div class="player">
-												{{name}}
-												<a href="#">?</a>
+												<img class="profession" src="/media/img/prof_icons/{{profession}}_small.png" />
+												<span class="name">{{name}}</span>
+												{{#comment}}<a href="#">?</a>
 												<ul>
 													<li><div class="comment">{{comment}}</div></li>
-												</ul>
+												</ul>{{/comment}}
 											</div>
 											<div class="role">{{role}}</div>
 										</li>
@@ -84,6 +61,3 @@
 								{{#edit_event}}<a class="edit_event" href="{{edit_event}}">Edit event</a>{{/edit_event}}
 								{{#remove_event}}<a class="cancel_event" href="{{remove_event}}">Cancel event</a>{{/remove_event}}
 							</div>
-						</section><!-- end event details section -->
-					</li><!-- end of this event -->
-					<div class="event_footer"></div>

@@ -506,7 +506,7 @@ Options -Indexes
 RewriteEngine On
 
 # Installation directory
-RewriteBase /redditgw/
+RewriteBase /
 
 # Protect hidden files from being viewed
 <Files .*>

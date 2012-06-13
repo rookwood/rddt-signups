@@ -30,30 +30,36 @@ $(document).ready(function() {
 			
 			// ajax call to fetch event data
 			$.get($(this).data('url'), function(data) {
-				event_data.html(data)
+				event_data.html(data);
 				
 				// setup for jquery ui tabs
 				event_data.find('#tabs').tabs();
 				
 				// mark event has having all data loaded
 				$(that).addClass('loaded');
+				
+				$(that).toggleClass('event_collapsed event_expanded');
+				
+				event_data.slideDown('slow');
 			});
-		}
-		
-		// Toggle details display
-		if ($(this).hasClass('event_collapsed'))
-		{
-			$(this).toggleClass('event_collapsed event_expanded');
-			
-			event_data.slideDown('slow');
 		}
 		else
 		{
-			var that = this;
-			
-			event_data.slideUp('slow', function() {
-				$(that).toggleClass('event_collapsed event_expanded');
-			});
+			// Toggle details display
+			if ($(this).hasClass('event_collapsed'))
+			{
+				$(this).toggleClass('event_collapsed event_expanded');
+				
+				event_data.slideDown('slow');
+			}
+			else
+			{
+				var that = this;
+				
+				event_data.slideUp('slow', function() {
+					$(that).toggleClass('event_collapsed event_expanded');
+				});
+			}
 		}
 	});
 

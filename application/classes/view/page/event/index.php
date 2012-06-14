@@ -28,7 +28,7 @@ class View_Page_Event_Index extends Abstract_View_Page {
 			$out[] = array(
 				'details_link' => Route::url('event', array('action' => 'display', 'id' => $event->id)),
 				'date'         => date('D Y M d', $local_start_time),
-				'time'         => date('g:i a', $local_start_time),
+				'time'         => date('g:i A ', $local_start_time).Date::timezone_abbr($this->user->timezone),
 				'title'        => $event->title,
 				'status'       => $event->status->name,
 				'host'         => ORM::factory('character', $event->character_id)->name,

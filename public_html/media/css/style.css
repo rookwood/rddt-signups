@@ -404,6 +404,7 @@ section ul#filter {
 	clear: both;
 	padding: 0; margin: 0 auto;
 	width: 724px;
+	text-transform: capitalize;
 }
 
 section ul#filter li {

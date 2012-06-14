@@ -4,8 +4,32 @@ class Controller_Slot extends Abstract_Controller_Website {
 	
 	public function action_index()
 	{
-		// Send all slot data to the view class
-		$slots = ORM::factory('slot')->order_by('name', 'ASC')->find_all();
+		$filter = Arr::get($this->request->query(), 'filter', 'all');
+		
+		if ($filter == 'all')
+		{
+			// Send all slot data to the view class
+			$slots = ORM::factory('slot')->order_by('name', 'ASC')->find_all();
+			
+			// Mirror slot data for function that requires them all
+			$this->view->all_slots = $slots;
+		}
+		elseif ($filter != 'num')
+		{
+			// Send filtered list to the view class
+			$slots = ORM::factory('slot')->where('name', 'like', "$filter%")->order_by('name', 'ASC')->find_all();
+			
+			// All slot data for function that requires full list
+			$this->view->all_slots = ORM::factory('slot')->order_by('name', 'ASC')->find_all();
+		}
+		else
+		{
+			// Use numeric filter
+			$slots = ORM::factory('slot')->where('name', 'RLIKE', '^[^a-zA-Z]')->order_by('name', 'ASC')->find_all();
+			
+			// All slot data for function that requires full list
+			$this->view->all_slots = ORM::factory('slot')->order_by('name', 'ASC')->find_all();
+		}
 		
 		$this->view->slot_data = $slots;
 	}

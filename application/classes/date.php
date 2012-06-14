@@ -95,5 +95,13 @@ class Date extends Kohana_Date {
 		'Pacific/Kiritimati'             => '(GMT+14:00) Kiritimati',
 	);
 
+	public static function timezone_abbr($timezone)
+	{
+		$dateTime = new DateTime(); 
+		
+		$dateTime->setTimeZone(new DateTimeZone($timezone)); 
+		
+		return $dateTime->format('T'); 
+	}
 }
 

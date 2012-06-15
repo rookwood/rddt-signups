@@ -6,6 +6,6 @@ class View_Page_User_Lostpw extends Abstract_View_Page {
 	
 	public function action()
 	{
-		return Route::get('user', array('action' => 'lostpw'));
+		return Route::url('user', array('action' => 'lostpw'));
 	}
 }

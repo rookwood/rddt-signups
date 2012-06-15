@@ -71,24 +71,18 @@ class View_Page_Event_Index extends Abstract_View_Page {
 	{
 		// This function is bad, and I should feel bad
 		$filter_key = Request::$current->query('filter');
-		$filter_key = isset($filter_key) ? $filter_key : 'current';
+		$filter_key = isset($filter_key) ? $filter_key : 'time';
 		
 		$out['bottom'][] = array(
-			'url'  => Route::url('event').URL::query(array('filter' => 'current')),
-			'text' => 'Current events',
-			'key'  => 'current',
-		);		
-		
+			'url'  => Route::url('event').URL::query(array('filter' => 'time')),
+			'text' => 'Start time',
+			'key'  => 'time',
+		);
+				
 		$out['bottom'][] = array(
 			'url'  => Route::url('event').URL::query(array('filter' => 'mine')),
 			'text' => 'My events',
 			'key'  => 'mine',
-		);
-		
-		$out['bottom'][] = array(
-			'url'  => Route::url('event').URL::query(array('filter' => 'past')),
-			'text' => 'Past events',
-			'key'  => 'past',
 		);
 		
 		$out['bottom'][] = array(
@@ -98,22 +92,17 @@ class View_Page_Event_Index extends Abstract_View_Page {
 		);
 		
 		$out['bottom'][] = array(
-			'url'  => Route::url('event').URL::query(array('filter' => 'time')),
-			'text' => 'Start time',
-			'key'  => 'time',
+			'url'  => Route::url('event').URL::query(array('filter' => 'past')),
+			'text' => 'Past events',
+			'key'  => 'past',
 		);
 		
-		$index = 0;
-
 		foreach ($out['bottom'] as $filter)
 		{
 			if (array_search($filter_key, $filter) !== FALSE)
 			{
 				$out['top'] = $filter;
-				unset($out['bottom'][$index]);
 			}
-
-			$index += 1;
 		}
 
 		// Reindex for mustache... not sure why this is necessary

@@ -5,7 +5,7 @@ class Controller_Character extends Abstract_Controller_Website {
 	public function action_index()
 	{
 		// Load array of this user's character list from the database
-		$characters = ORM::factory('character')->where('user_id', '=', $this->user->id)->order_by('name', 'ASC')->find_all()->as_array();
+		$characters = ORM::factory('character')->where('user_id', '=', $this->user->id)->and_where('visibility', '=', '1')->order_by('name', 'ASC')->find_all()->as_array();
 		
 		// Pass character array to the view class
 		if (count($characters) !== 0)
@@ -53,20 +53,44 @@ class Controller_Character extends Abstract_Controller_Website {
 			$character_post = Arr::get($this->request->post(), 'character', array());
 						
 			// Create the character
-			try
+			$character = ORM::factory('character', array('name' => $character_post['name']));
+			
+			// Character already exists
+			if ($character->loaded())
 			{
-				$character = ORM::factory('character')->create_character($user, $character_post, array('name', 'profession'));
-				
-				Notices::add('success', 'msg_info', array('message' => Kohana::message('character.add.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				// Duplicate
+				if ($character->visibility == 1)
+				{
+					Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'character.add.duplicate'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				}
+				// Reactivate previously deleted character
+				else
+				{
+					$character->visibility = 1;
+					$character->save();
+					
+					Notices::add('success', 'msg_info', array('message' => Kohana::message('gw', 'character.add.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				}
 				
 				$this->request->redirect(Route::url('character'));
 			}
-			catch(ORM_Validation_Exception $e)
-			{			
-				$this->view->errors = $e->errors('character');
-				
-				// We have no valid Model_Character, so we have to pass the form values back directly
-				$this->view->values = $character_post;
+			else
+			{
+				try
+				{
+					$character = ORM::factory('character')->create_character($user, $character_post, array('name', 'profession'));
+					
+					Notices::add('success', 'msg_info', array('message' => Kohana::message('gw', 'character.add.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+					
+					$this->request->redirect(Route::url('character'));
+				}
+				catch(ORM_Validation_Exception $e)
+				{			
+					$this->view->errors = $e->errors('character');
+					
+					// We have no valid Model_Character, so we have to pass the form values back directly
+					$this->view->values = $character_post;
+				}
 			}
 		}
 	}
@@ -74,7 +98,7 @@ class Controller_Character extends Abstract_Controller_Website {
 	public function action_remove()
 	{
 		// Load character model
-		$character = ORM::factory('character', array('name' => $this->request->param('character')));
+		$character = ORM::factory('character', $this->request->param('id'));
 		
 		if ( ! $this->user->can('character_remove', array('character' => $character)))
 		{
@@ -95,12 +119,15 @@ class Controller_Character extends Abstract_Controller_Website {
 				$this->request->redirect(Route::url('character'));
 			}
 		}
-				
+		
+		if ( ! $character->loaded())
+			die('Failed to load character');
+		
 		// Remove
 		$character->visibility = 0;
 		$character->save();
 		
-		Notices::add('success', 'msg_info', array('message' => Kohana::message('character.remove.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+		Notices::add('success', 'msg_info', array('message' => Kohana::message('gw', 'character.remove.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 		
 		$this->request->redirect(Route::url('character'));
 	}

@@ -40,7 +40,8 @@ class View_Page_Character_Index extends Abstract_View_Page {
 			$out[] = array(
 				'name'       => $character->name,
 				'profession' => $this->_profession_data[$character->profession_id],
-				'edit_url'   => Route::url('character', array('action' => 'edit', 'id' => $character->id)),
+				'edit_url'   => Route::url('character', array('action' => 'edit',   'id' => $character->id)),
+				'delete_url' => Route::url('character', array('action' => 'remove', 'id' => $character->id)),
 			);
 		}
 		

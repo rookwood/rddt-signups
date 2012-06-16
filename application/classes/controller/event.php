@@ -62,7 +62,9 @@ class Controller_Event extends Abstract_Controller_Website {
 				Notices::add('info', 'msg_info', array('message' => Kohana::message('gw', 'event.add.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 				
 				// Setup display of created event
-				$this->request->redirect(Route::url('event'));
+				$this->view = Kostache::factory('page/event/display')
+					->assets(Assets::factory())
+					->set('event_data', $event);
 			}
 			catch(ORM_Validation_Exception $e)
 			{
@@ -114,7 +116,8 @@ class Controller_Event extends Abstract_Controller_Website {
 				Notices::add('success', 'msg_info', array('message' => Kohana::message('gw', 'event.edit.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 				
 				// Setup display of edited event
-				$this->request->redirect(Route::url('event'));
+				$this->view = Kostache::factory('page/event/display')
+					->assets(Assets::factory());
 			}
 			catch(ORM_Validation_Exception $e)
 			{
@@ -149,7 +152,7 @@ class Controller_Event extends Abstract_Controller_Website {
 		$event->status_id =  Model_Status::CANCELLED;
 		$event->save();
 		
-		Notices::add('success', 'msg_info', array('message' => Kohana::message('event.remove.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+		Notices::add('success', 'msg_info', array('message' => Kohana::message('gw', 'event.remove.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 		
 		// Show event list
 		$this->request->redirect(Route::url('event'));
@@ -243,21 +246,21 @@ class Controller_Event extends Abstract_Controller_Website {
 			
 			$signup->save();
 			
-			// Notification of successful signup
-			if ( ! $signup_status = Model_Signup::STANDBY_FORCED)
-			{	
-				Notices::add('success', 'msg_success', array('message' => Kohana::message('gw', 'event.signup.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
-			}
+			// Notification of sign-up
+			Notices::add('success', 'msg_success', array('message' => Kohana::message('gw', 'event.signup.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 			
 			// Setup display of event
-			$this->request->redirect(Route::url('event'));
+			$this->view = Kostache::factory('page/event/display')
+					->assets(Assets::factory())
+					->set('event_data', $event);
 		}
 		else
 		{
 			// Not a valid post (came to this url directly or bad )
-			Notices::add('error', 'msg_success', array('message' => Kohana::message('gw', 'event.signup.failed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
-			
-			$this->request->redirect(Route::url('event'));
+			// Notices::add('error', 'msg_success', array('message' => Kohana::message('gw', 'event.signup.failed'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+			// $this->request->redirect(Route::url('event'));
+			$this->view->user = $this->user;
+			$this->view->event_data = $event;
 		}
 	}
 
@@ -305,53 +308,41 @@ class Controller_Event extends Abstract_Controller_Website {
 			// Get sign-up records with any of the user's charcter IDs
 			$signup = ORM::factory('signup')
 				->where('character_id', 'IN', $ids)
-				->and_where('event_id', '=', $event->id)
 				->find_all();
 			
-			if ( ! $signup->count() > 0)
+			// Cancellation status
+			$cancelled = Model_Status::CANCELLED;
+			
+			try
 			{
-				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'event.withdraw.not_signed_up'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				// Change sign-up status to cancelled
+				foreach ($signup as $signup)
+				{
+					$signup->status_id = $cancelled;
+					$signup->save();
+				}
+				
+				// Bump someone from forced stand-by list up to this slot
+				$standby_forced = Model_Status::STANDBY_FORCED;
+				$ready = Model_Status::READY;
+				
+				$bump = ORM::factory('signup')->where('event_id', '=', $event->id)->and_where('status_id', '=', $standby_forced)->order_by('timestamp', 'DESC')->find(1);
+				if ($bump->loaded())
+				{
+					$bump->status_id = $ready;
+					$bump->save();
+				}
+				
+				Notices::add('success', 'msg_info', array('message' => Kohana::message('gw', 'event.withdraw.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 			}
-			else
+			// Something bad happened... log it for fixing
+			catch(Exception $e)
 			{
-				// Cancellation status
-				$cancelled = Model_Status::CANCELLED;
-				
-				$slots = array();
-				
-				try
-				{
-					// Change sign-up status to cancelled
-					foreach ($signup as $signup)
-					{
-						$signup->status_id = $cancelled;
-						$signup->save();
-						
-						$slots[] = $signup->slot_id;
-					}
-					
-					// Bump someone from forced stand-by list up to this slot
-					$standby_forced = Model_Status::STANDBY_FORCED;
-					$ready = Model_Status::READY;
-					
-					// Can we move someone into that slot that was just emptied?
-					$bump = ORM::factory('signup')->where('event_id', '=', $event->id)->and_where('status_id', '=', $standby_forced)->and_where('slot_id', 'IN', $slots)->order_by('timestamp', 'DESC')->find(1);
-					if ($bump->loaded())
-					{
-						$bump->status_id = $ready;
-						$bump->save();
-					}
-					
-					Notices::add('success', 'msg_info', array('message' => Kohana::message('gw', 'event.withdraw.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
-				}
-				// Something bad happened... log it for fixing
-				catch(Exception $e)
-				{
-					throw new HTTP_Exception_500;
-				}
+				throw new HTTP_Exception_500;
 			}
 		}
-		$this->request->redirect(Route::url('event'));
+		$this->view = Kostache::factory('page/event/display')
+			->assets(Assets::factory());
 		
 		$this->view->event_data = $event;
 		$this->view->user = $this->user;

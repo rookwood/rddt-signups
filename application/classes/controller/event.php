@@ -303,37 +303,45 @@ class Controller_Event extends Abstract_Controller_Website {
 			// Get sign-up records with any of the user's charcter IDs
 			$signup = ORM::factory('signup')
 				->where('character_id', 'IN', $ids)
+				->and_where('event_id', '=', $event->id)
 				->find_all();
 			
-			// Cancellation status
-			$cancelled = Model_Status::CANCELLED;
-			
-			try
+			if ( ! $signup->count() > 0)
 			{
-				// Change sign-up status to cancelled
-				foreach ($signup as $signup)
-				{
-					$signup->status_id = $cancelled;
-					$signup->save();
-				}
-				
-				// Bump someone from forced stand-by list up to this slot
-				$standby_forced = Model_Status::STANDBY_FORCED;
-				$ready = Model_Status::READY;
-				
-				$bump = ORM::factory('signup')->where('event_id', '=', $event->id)->and_where('status_id', '=', $standby_forced)->order_by('timestamp', 'DESC')->find(1);
-				if ($bump->loaded())
-				{
-					$bump->status_id = $ready;
-					$bump->save();
-				}
-				
-				Notices::add('success', 'msg_info', array('message' => Kohana::message('gw', 'event.withdraw.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				Notices::add('error', 'msg_info', array('message' => Kohana::message('gw', 'event.withdraw.not_signed_up'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 			}
-			// Something bad happened... log it for fixing
-			catch(Exception $e)
+			else
 			{
-				throw new HTTP_Exception_500;
+				// Cancellation status
+				$cancelled = Model_Status::CANCELLED;
+				
+				try
+				{
+					// Change sign-up status to cancelled
+					foreach ($signup as $signup)
+					{
+						$signup->status_id = $cancelled;
+						$signup->save();
+					}
+					
+					// Bump someone from forced stand-by list up to this slot
+					$standby_forced = Model_Status::STANDBY_FORCED;
+					$ready = Model_Status::READY;
+					
+					$bump = ORM::factory('signup')->where('event_id', '=', $event->id)->and_where('status_id', '=', $standby_forced)->order_by('timestamp', 'DESC')->find(1);
+					if ($bump->loaded())
+					{
+						$bump->status_id = $ready;
+						$bump->save();
+					}
+					
+					Notices::add('success', 'msg_info', array('message' => Kohana::message('gw', 'event.withdraw.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
+				}
+				// Something bad happened... log it for fixing
+				catch(Exception $e)
+				{
+					throw new HTTP_Exception_500;
+				}
 			}
 		}
 		$this->request->redirect(Route::url('event'));

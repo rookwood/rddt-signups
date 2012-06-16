@@ -404,6 +404,7 @@ section ul#filter {
 	clear: both;
 	padding: 0; margin: 0 auto;
 	width: 724px;
+	text-transform: capitalize;
 }
 
 section ul#filter li {
@@ -877,7 +878,7 @@ ul.header {cursor: pointer;}
 #attendees.ui-tabs-panel li div.player span.name,
 #standby.ui-tabs-panel li div.player span.name {
 	position:absolute; top: 1em; padding-left: 1em;
-	width: 130px; height: 1em;
+	width: 130px; height: 1.2em;
 	overflow: hidden;
 }
 
@@ -923,6 +924,7 @@ ul.header {cursor: pointer;}
 	padding: 5px 10px 0 15px;
 	
 	overflow: hidden;			/* cut off long comments */
+	word-wrap: break-word;		/* break long urls in comments */
 	color: white;
 }
 
@@ -975,6 +977,7 @@ div#event_description p {
 	margin: 0;
 	padding-bottom: 10px;
 	font-size: 0.8em;
+	word-wrap: break-word;		/* break long urls in description */
 }
 
 /* Additional build/edit/cancel event links */

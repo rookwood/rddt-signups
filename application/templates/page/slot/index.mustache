@@ -2,34 +2,16 @@
 		<h3>Slots</h3>
 		<a class="button" href="{{slot_add_url}}">Add new slot</a>
 		<ul id="filter">
-			<li><a class="disabled">#</a></li>
-			<li><a href="">A</a></li>
-			<li><a href="">B</a></li>
-			<li><a href="">C</a></li>
-			<li><a href="">D</a></li>
-			<li><a href="">E</a></li>
-			<li><a class="disabled">F</a></li>
-			<li><a class="disabled">G</a></li>
-			<li><a href="">H</a></li>
-			<li><a href="">I</a></li>
-			<li><a href="">J</a></li>
-			<li><a href="">K</a></li>
-			<li><a href="">L</a></li>
-			<li><a href="">M</a></li>
-			<li><a class="disabled">N</a></li>
-			<li><a class="disabled">O</a></li>
-			<li><a href="">P</a></li>
-			<li><a href="">Q</a></li>
-			<li><a href="">R</a></li>
-			<li><a href="">S</a></li>
-			<li><a href="">T</a></li>
-			<li><a href="">U</a></li>
-			<li><a class="disabled">V</a></li>
-			<li><a href="">W</a></li>
-			<li><a href="">X</a></li>
-			<li><a href="">Y</a></li>
-			<li><a class="disabled">Z</a></li>
-			<li><a href="">All</a></li>
+{{#filter_list}}
+{{#slots}}
+			<li><a href="?filter={{filter}}">{{letter}}</a></li>
+{{/slots}}
+{{^slots}}
+			<li><a class="disabled">{{letter}}</a></li>
+{{/slots}}
+			
+{{/filter_list}}
+			<li><a href="{{slot_list_url}}">All</a></li>
 		</ul>
 
 		<section id="slot_list">

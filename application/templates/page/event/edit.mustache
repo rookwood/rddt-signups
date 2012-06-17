@@ -36,7 +36,7 @@
 				</li>
 				<li>
 					<label for="description">Event details:</label>
-					<textarea name="event[description]" id="description" value="{{event_data.description}}" {{#errors.description}}class="error" {{/errors.description}}></textarea>
+					<textarea name="event[description]" id="description" {{#errors.description}}class="error" {{/errors.description}}>{{description}}</textarea>
 				</li>
 				<li>
 					<label for="build">Build planned:</label>

@@ -61,10 +61,8 @@ class Controller_Event extends Abstract_Controller_Website {
 				// Notification
 				Notices::add('info', 'msg_info', array('message' => Kohana::message('gw', 'event.add.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 				
-				// Setup display of created event
-				$this->view = Kostache::factory('page/event/display')
-					->assets(Assets::factory())
-					->set('event_data', $event);
+				// Go back to event page display
+				$this->request->redirect(Route::url('event'));
 			}
 			catch(ORM_Validation_Exception $e)
 			{
@@ -115,9 +113,8 @@ class Controller_Event extends Abstract_Controller_Website {
 				
 				Notices::add('success', 'msg_info', array('message' => Kohana::message('gw', 'event.edit.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 				
-				// Setup display of edited event
-				$this->view = Kostache::factory('page/event/display')
-					->assets(Assets::factory());
+				// Go back to event page display
+				$this->request->redirect(Route::url('event'));
 			}
 			catch(ORM_Validation_Exception $e)
 			{

@@ -1107,8 +1107,10 @@ fieldset textarea {
 	display: block;
 	margin: 10px 0;
 	
-	width: 237px;			/* reduced width due to border */
-	height: 4em;
+	/*width: 237px;			/* reduced width due to border */
+	width: 500px;
+	height: 12em;
+	font-size: 0.8em;
 	
 	border: solid 1px #b2b2b2;
 }

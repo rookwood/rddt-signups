@@ -250,9 +250,8 @@ class Controller_Event extends Abstract_Controller_Website {
 			Notices::add('success', 'msg_success', array('message' => Kohana::message('gw', 'event.signup.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 			
 			// Setup display of event
-			$this->view = Kostache::factory('page/event/display')
-					->assets(Assets::factory())
-					->set('event_data', $event);
+			// $this->view = Kostache::factory('page/event/display')->assets(Assets::factory())->set('event_data', $event);
+			$this->request->redirect(Route::url('event'));
 		}
 		else
 		{
@@ -310,41 +309,52 @@ class Controller_Event extends Abstract_Controller_Website {
 				->where('character_id', 'IN', $ids)
 				->find_all();
 			
-			// Cancellation status
-			$cancelled = Model_Status::CANCELLED;
-			
 			try
 			{
+				// Do not bump someone from standby by default
+				$bump = FALSE;
+				
 				// Change sign-up status to cancelled
 				foreach ($signup as $signup)
 				{
-					$signup->status_id = $cancelled;
+					// If person was on the attendee list, we can try to bump someone up from standby
+					if ($signup->status_id == Model_Status::READY)
+					{
+						$bump = TRUE;
+					}
+					
+					// Cancel original signup
+					$signup->status_id = Model_Status::CANCELLED;
 					$signup->save();
 				}
 				
-				// Bump someone from forced stand-by list up to this slot
-				$standby_forced = Model_Status::STANDBY_FORCED;
-				$ready = Model_Status::READY;
-				
-				$bump = ORM::factory('signup')->where('event_id', '=', $event->id)->and_where('status_id', '=', $standby_forced)->order_by('timestamp', 'DESC')->find(1);
-				if ($bump->loaded())
+				// Try to bump player from forced standby
+				if (TRUE === $bump)
 				{
-					$bump->status_id = $ready;
-					$bump->save();
+					// Check for player on standby list
+					$bump = ORM::factory('signup')->where('event_id', '=', $event->id)->and_where('status_id', '=', Model_Status::STANDBY_FORCED)->order_by('timestamp', 'DESC')->find(1);
+					
+					// If a record was found
+					if ($bump->loaded())
+					{
+						// Move player to main attendee list
+						$bump->status_id = Model_Status::READY;
+						$bump->save();
+					}
 				}
-				
 				Notices::add('success', 'msg_info', array('message' => Kohana::message('gw', 'event.withdraw.success'), 'is_persistent' => FALSE, 'hash' => Text::random($length = 10)));
 			}
 			// Something bad happened... log it for fixing
 			catch(Exception $e)
 			{
-				throw new HTTP_Exception_500;
+				throw $e;
 			}
 		}
-		$this->view = Kostache::factory('page/event/display')
-			->assets(Assets::factory());
+		// $this->view = Kostache::factory('page/event/display')
+			// ->assets(Assets::factory());
 		
-		$this->view->event_data = $event;
-		$this->view->user = $this->user;
+		// $this->view->event_data = $event;
+		// $this->view->user = $this->user;
+		$this->request->redirect(Route::url('event'));
 	}
 }

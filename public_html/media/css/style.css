@@ -898,11 +898,7 @@ ul.header { cursor: pointer; }
 /* Comment icon */
 #tabs .ui-tabs-panel li div.player a {
 	float: right;
-	width: 16px; height: 16px;
-	padding: 0;
-	
-	background-image: url(../img/comment_icon.png);
-	color: rgba(0,0,0,0);
+	cursor: default;
 }
 
 /* User comment styles */
@@ -942,7 +938,8 @@ ul.header { cursor: pointer; }
 }
 
 /* Signup / Withdraw link styles */
-#tabs .ui-tabs-panel a:link, #tabs .ui-tabs-panel a:visited {
+#tabs .ui-tabs-panel > a:link, 
+#tabs .ui-tabs-panel > a:visited {
 	display: block;
 	padding: 5px 0;
 
@@ -956,11 +953,13 @@ ul.header { cursor: pointer; }
 	border-radius: 5px;
 }
 
-#tabs .ui-tabs-panel a:hover, #tabs .ui-tabs-panel a:active {
+#tabs .ui-tabs-panel > a:hover, 
+#tabs .ui-tabs-panel > a:active {
 	color: #a49898;
 }
 
-#tabs .ui-tabs-panel a.withdraw:hover, #tabs .ui-tabs-panel a.withdraw:active {
+#tabs .ui-tabs-panel > a.withdraw:hover, 
+#tabs .ui-tabs-panel > a.withdraw:active {
 	color: red;
 }
 /* ===========

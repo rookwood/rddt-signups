@@ -304,6 +304,7 @@ class Controller_Event extends Abstract_Controller_Website {
 			// Get sign-up records with any of the user's charcter IDs
 			$signup = ORM::factory('signup')
 				->where('character_id', 'IN', $ids)
+				->where('event_id', '=', $event->id)
 				->find_all();
 			
 			try
@@ -329,7 +330,7 @@ class Controller_Event extends Abstract_Controller_Website {
 				if (TRUE === $bump)
 				{
 					// Check for player on standby list
-					$bump = ORM::factory('signup')->where('event_id', '=', $event->id)->and_where('status_id', '=', Model_Status::STANDBY_FORCED)->order_by('timestamp', 'DESC')->find(1);
+					$bump = ORM::factory('signup')->where('event_id', '=', $event->id)->and_where('status_id', '=', Model_Status::STANDBY_FORCED)->and_where('slot_id', '=', $signup->slot_id)->order_by('timestamp', 'DESC')->find(1);
 					
 					// If a record was found
 					if ($bump->loaded())

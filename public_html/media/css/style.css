@@ -214,33 +214,33 @@ td { vertical-align: top; }
    ========================================================================== */
 
 body {
-	overflow:hidden; 		/* needed to eliminate scrollbars caused by the background image */
-	padding:0;margin:0;	/* necesarry for the raster to fill the screen */
+	/* overflow:hidden; */ 		/* needed to eliminate scrollbars caused by the background image */
+	padding:0;margin:0;			/* necesarry for the raster to fill the screen */
 	height:100%;width:100%;
 
 	font: 1em/1.25 Arial, Helvetica, sans-serif;
 	color: #393939;
-	text-align: center;		/* for centering the container */
+	text-align: center;			/* centering content */
 }
  
 #bgimg {
-	position:absolute;
+	position: fixed;				/* don't scroll the image with the page */
 	z-index: -1;
 }
 
 #realbody {
 	position: absolute;
 	z-index: 5;						/* Place the container above the background image */
-	overflow: auto;				/* restore scrollbars for the content */
+	/* overflow: auto; */					/* restore scrollbars for the content */
 	height: 100%; width: 100%;		/* Make the new body fill the screen */
 }
 
 .container {
-	display: table;
+	display: table;					/* use table display to size content correctly */
 	position: relative;
 	margin: 0 auto;
 	width: 756px;
-	height: 101%;
+	height: 101%;					/* force scrollbars */
 	
 	text-align: left;
 	/* background-color: blue; */
@@ -254,10 +254,12 @@ body {
 	display: table-cell;
 }
 
+/* Display the container background only behind content */
 .container_r3 > section {
 	background: url(../img/container_bg_alt.png);
 }
 
+/* Pad the bottom of the content */
 .footer {
 	clear: both;
 	height: 40px;
@@ -339,7 +341,7 @@ nav ul ul {
 nav ul li:hover ul {
 	width: 141px;
 	height: 141px;			/* height adjusted for padding-top */
-	padding-top:12px;
+	padding-top: 12px;
 	left: -6px;
 	z-index: 900;
 

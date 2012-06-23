@@ -9,16 +9,16 @@
 										<li>
 											<div class="player">
 												<img class="profession" src="/media/img/prof_icons/{{profession}}_small.png" />
-												<span class="name">{{name}}</span>
-												{{#comment}}<a href="#">?</a>
+												<div class="role">{{role}}
+												<span class="name">{{name}}</span></div>
+												{{#comment}}<a><img src="/media/img/comment_icon.png" /></a>
 												<ul><li><div class="comment">{{comment}}</div></li></ul>{{/comment}}
 											</div>
-											<div class="role">{{role}}</div>
 										</li>
 {{/attendees.active}}
 {{^attendees.active}}
-										<li>
-											No ready attendees yet.
+										<li class="empty">
+											No attendees yet.
 										</li>
 {{/attendees.active}}
 
@@ -32,17 +32,17 @@
 										<li class="{{profession}}">
 											<div class="player">
 												<img class="profession" src="/media/img/prof_icons/{{profession}}_small.png" />
-												<span class="name">{{name}}</span>
-												{{#comment}}<a href="#">?</a>
+												<div class="role">{{role}}
+												<span class="name">{{name}}</span></div>
+												{{#comment}}<a><img src="/media/img/comment_icon.png" /></a>
 												<ul>
 													<li><div class="comment">{{comment}}</div></li>
 												</ul>{{/comment}}
 											</div>
-											<div class="role">{{role}}</div>
 										</li>
 {{/attendees.standby}}
 {{^attendees.standby}}
-										<li>
+										<li class="empty">
 											No one on standby.
 										</li>
 {{/attendees.standby}}

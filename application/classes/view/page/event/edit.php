@@ -39,5 +39,10 @@ class View_Page_Event_Edit extends View_Page_Event_Add {
 		
 		return $out;
 	}
+	
+	public function description()
+	{
+		return $this->event_data->description;
+	}
 
 }

@@ -2,7 +2,8 @@
 
 class Policy_Character_Remove extends Policy {
 
-	const NOT_OWNER = 1;
+	const NOT_OWNER   = 1;
+	const NOT_ALLOWED = 2;
 	
 	public function execute(Model_ACL_User $user, array $extras = NULL)
 	{
@@ -26,7 +27,7 @@ class Policy_Character_Remove extends Policy {
 			}
 			
 			// Anyone else shouldn't be here
-			return self::NOT_OWNER
+			return self::NOT_OWNER;
 		}
 	}
 }

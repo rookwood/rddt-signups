@@ -14,6 +14,7 @@ $(document).ready(function() {
 	var FullscreenrOptions = {  width: 1280, height: 1200, bgID: '#bgimg' };
 	jQuery.fn.fullscreenr(FullscreenrOptions);
 
+	
 	// Ajax loading of event details
 	// can't figure out why ul.header won't work for event binding
 	// so using pointless class for the moment but this is problematic
@@ -62,10 +63,23 @@ $(document).ready(function() {
 			}
 		}
 	});
+	
+	$('.clickable > section').click(function(e) {
+		e.stopPropagation();
+	});
 
+	
 	// Handling dropdown event filter list
 	$('#event_filters').change(function(e) {
 		window.open(this.value, '_self');
 	});
+	
+	// Dealing with named anchors on event list page
+	if (window.location.hash != '')
+	{
+		var event_number = window.location.hash;
+		
+		$(event_number).click();
+	}
 	
 });

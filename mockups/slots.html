@@ -22,161 +22,171 @@
 	<img id="bgimg" src="media/img/background_alt2.jpg" />
 	<div id="realbody">
 	
-	<div class="container">
-		<header class="masthead">
-			<h1>Reddit Guild Wars 1</h1>
-			<h2>Event Information</h2>
-		</header><!-- end masthead -->
-		<nav>
-			<ul>
-				<li>
-					<a>My Account &nbsp; <img src="media/img/dropdown_arrow.png"></a>
-					<ul>
-						<li><a href="#">Edit Profile</a></li>
-						<li><a href="#">Characters</a></li>
-						<li><a href="#">My Events</a></li>
-						<li><a href="#">Logout</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="#">Events</a>
-				</li>
-				<li>
-					<a href="#">Builds</a>
-				</li>
-				<li>
-					<a href="#">Dungeons</a>
-				</li>
-				<li>
-					<a href="#" class="logout">Logout</a>
-				</li>
-			</ul>
-		</nav>
-		<section id="slots">
-			<h3>Slots</h3>
-			<ul id="filter">
-				<li><a href="">#</a></li>
-				<li><a href="">A</a></li>
-				<li><a href="">B</a></li>
-				<li><a href="">C</a></li>
-				<li><a href="">D</a></li>
-				<li><a href="">E</a></li>
-				<li><a href="">F</a></li>
-				<li><a href="">G</a></li>
-				<li><a href="">H</a></li>
-				<li><a href="">I</a></li>
-				<li><a href="">J</a></li>
-				<li><a href="">K</a></li>
-				<li><a href="">L</a></li>
-				<li><a href="">M</a></li>
-				<li><a href="">N</a></li>
-				<li><a href="">O</a></li>
-				<li><a href="">P</a></li>
-				<li><a href="">Q</a></li>
-				<li><a href="">R</a></li>
-				<li><a href="">S</a></li>
-				<li><a href="">T</a></li>
-				<li><a href="">U</a></li>
-				<li><a href="">V</a></li>
-				<li><a href="">W</a></li>
-				<li><a href="">X</a></li>
-				<li><a href="">Y</a></li>
-				<li><a href="">Z</a></li>
-				<li><a href="">All</a></li>
-			</ul>
-
-			<section id="slot_list">
-				<ul>
-					<li>
-						<div>
-							<h4>DWG (Any primary)</h4>
-							<h5>Professions: Warrior, Ranger, Monk, Necromancer, Elementalist, Mesmer, Ritualist, Assassin, Dervish, Paragon</h5>
-						</div>
-						<a class="edit" href="#">Edit slot</a>
-					</li>
-					<li>
-						<div>
-							<h4>DWG (Frostway)</h4>
-							<h5>Professions: Ritualist, Mesmer</h5>
-						</div>
-						<a class="edit" href="#">Edit slot</a>
-					</li>
-					<li>
-						<div>
-							<h4>Derpy Dervish</h4>
-							<h5>Professions: Dervish</h5>
-						</div>
-						<a class="edit" href="#">Edit slot</a>
-					</li>
-				</ul>
-			</section>
-			<form action="#" method="post">
-				<fieldset>
-					<legend>Add a new slot</legend>
+		<div class="container">
+			<div class="container_r1">
+				<header class="masthead">
+					<img class="banner" src="media/img/banner.png">
+					<h1>Reddit Guild Wars 1</h1>
+					<h2>Event Information</h2>
+				</header><!-- end masthead -->
+			</div>
+			<div class="container_r2">
+				<nav>
 					<ul>
 						<li>
-							<label for="name">Slot name:</label>
-							<input type="text" name="slot[name]" id="name" required="true" />
+							<a>My Account &nbsp; <img src="media/img/dropdown_arrow.png"></a>
+							<ul>
+								<li><a href="#">Edit Profile</a></li>
+								<li><a href="#">Characters</a></li>
+								<li><a href="#">My Events</a></li>
+								<li><a href="#">Logout</a></li>
+							</ul>
 						</li>
 						<li>
-							<fieldset>
-								<legend>Profession(s):</legend>
-								<ul class="profession_list">
-									<li>
-										<label for="check_warrior">warrior</label>
-										<input type="checkbox" name="slot[profession][]" value="warrior" id="check_warrior" />
-									</li>
-									<li>
-										<label for="check_ranger">ranger</label>
-										<input type="checkbox" name="slot[profession][]" value="ranger" id="check_ranger" />
-									</li>
-									<li>
-										<label for="check_monk">monk</label>
-										<input type="checkbox" name="slot[profession][]" value="monk" id="check_monk" />
-									</li>
-									<li>
-										<label for="check_necromancer">necromancer</label>
-										<input type="checkbox" name="slot[profession][]" value="necromancer" id="check_necromancer" />
-									</li>
-									<li>
-										<label for="check_elementalist">elementalist</label>
-										<input type="checkbox" name="slot[profession][]" value="elementalist" id="check_elementalist" />
-									</li>
-									<li>
-										<label for="check_mesmer">mesmer</label>
-										<input type="checkbox" name="slot[profession][]" value="mesmer" id="check_mesmer" />
-									</li>
-									<li>
-										<label for="check_ritualist">ritualist</label>
-										<input type="checkbox" name="slot[profession][]" value="ritualist" id="check_ritualist" />
-									</li>
-									<li>
-										<label for="check_assassin">assassin</label>
-										<input type="checkbox" name="slot[profession][]" value="assassin" id="check_assassin" />
-									</li>
-									<li>
-										<label for="check_dervish">dervish</label>
-										<input type="checkbox" name="slot[profession][]" value="dervish" id="check_dervish" />
-									</li>
-									<li>
-										<label for="check_paragon">paragon</label>
-										<input type="checkbox" name="slot[profession][]" value="paragon" id="check_paragon" />
-									</li>
-								</ul>
-							</fieldset>
+							<a href="#">Events</a>
 						</li>
-						<li class="button">
-							<input type="hidden" name="csrf" value="a44142424de528abb43de44f097556d10c48310d" />
-							<input type="submit" value="Add" />
+						<li>
+							<a href="#">Builds</a>
+						</li>
+						<li>
+							<a href="#">Dungeons</a>
+						</li>
+						<li>
+							<a href="#" class="logout">Logout</a>
 						</li>
 					</ul>
-				</fieldset>
-			</form>
-		</section><!-- end slots -->
+				</nav>
+			</div>
+			<div class="container_r3">
+				<section id="slots">
+					<h3>Slots</h3>
+					<ul id="filter">
+						<li><a href="">#</a></li>
+						<li><a href="">A</a></li>
+						<li><a href="">B</a></li>
+						<li><a href="">C</a></li>
+						<li><a href="">D</a></li>
+						<li><a href="">E</a></li>
+						<li><a href="">F</a></li>
+						<li><a href="">G</a></li>
+						<li><a href="">H</a></li>
+						<li><a href="">I</a></li>
+						<li><a href="">J</a></li>
+						<li><a href="">K</a></li>
+						<li><a href="">L</a></li>
+						<li><a href="">M</a></li>
+						<li><a href="">N</a></li>
+						<li><a href="">O</a></li>
+						<li><a href="">P</a></li>
+						<li><a href="">Q</a></li>
+						<li><a href="">R</a></li>
+						<li><a href="">S</a></li>
+						<li><a href="">T</a></li>
+						<li><a href="">U</a></li>
+						<li><a href="">V</a></li>
+						<li><a href="">W</a></li>
+						<li><a href="">X</a></li>
+						<li><a href="">Y</a></li>
+						<li><a href="">Z</a></li>
+						<li><a href="">All</a></li>
+					</ul>
 
-	</div><!-- end container-->
+					<section id="slot_list">
+						<ul>
+							<li>
+								<div>
+									<h4>DWG (Any primary)</h4>
+									<h5>Professions: &nbsp;</h5>
+									<p>Warrior, Ranger, Monk, Necromancer, Elementalist, Mesmer, Ritualist, Assassin, Dervish, Paragon</p>
+								</div>
+								<a class="edit" href="#">Edit slot</a>
+							</li>
+							<li>
+								<div>
+									<h4>DWG (Frostway)</h4>
+									<h5>Professions: &nbsp;</h5>
+									<p>Ritualist, Mesmer</p>
+								</div>
+								<a class="edit" href="#">Edit slot</a>
+							</li>
+							<li>
+								<div>
+									<h4>Derpy Dervish</h4>
+									<h5>Professions: &nbsp;</h5>
+									<p>Dervish</p>
+								</div>
+								<a class="edit" href="#">Edit slot</a>
+							</li>
+						</ul>
+					</section>
+					<form action="#" method="post">
+						<fieldset>
+							<legend>Add a new slot</legend>
+							<ul>
+								<li>
+									<label for="name">Slot name:</label>
+									<input type="text" name="slot[name]" id="name" required="true" />
+								</li>
+								<li>
+									<fieldset>
+										<legend>Profession(s):</legend>
+										<ul class="profession_list">
+											<li>
+												<label for="check_warrior">warrior</label>
+												<input type="checkbox" name="slot[profession][]" value="warrior" id="check_warrior" />
+											</li>
+											<li>
+												<label for="check_ranger">ranger</label>
+												<input type="checkbox" name="slot[profession][]" value="ranger" id="check_ranger" />
+											</li>
+											<li>
+												<label for="check_monk">monk</label>
+												<input type="checkbox" name="slot[profession][]" value="monk" id="check_monk" />
+											</li>
+											<li>
+												<label for="check_necromancer">necromancer</label>
+												<input type="checkbox" name="slot[profession][]" value="necromancer" id="check_necromancer" />
+											</li>
+											<li>
+												<label for="check_elementalist">elementalist</label>
+												<input type="checkbox" name="slot[profession][]" value="elementalist" id="check_elementalist" />
+											</li>
+											<li>
+												<label for="check_mesmer">mesmer</label>
+												<input type="checkbox" name="slot[profession][]" value="mesmer" id="check_mesmer" />
+											</li>
+											<li>
+												<label for="check_ritualist">ritualist</label>
+												<input type="checkbox" name="slot[profession][]" value="ritualist" id="check_ritualist" />
+											</li>
+											<li>
+												<label for="check_assassin">assassin</label>
+												<input type="checkbox" name="slot[profession][]" value="assassin" id="check_assassin" />
+											</li>
+											<li>
+												<label for="check_dervish">dervish</label>
+												<input type="checkbox" name="slot[profession][]" value="dervish" id="check_dervish" />
+											</li>
+											<li>
+												<label for="check_paragon">paragon</label>
+												<input type="checkbox" name="slot[profession][]" value="paragon" id="check_paragon" />
+											</li>
+										</ul>
+									</fieldset>
+								</li>
+								<li class="button">
+									<input type="hidden" name="csrf" value="a44142424de528abb43de44f097556d10c48310d" />
+									<input type="submit" value="Add" />
+								</li>
+							</ul>
+						</fieldset>
+					</form>
+				</section><!-- end slots -->
+			</div> <!-- end content -->
+
+		</div><!-- end container -->
+	</div> <!-- end realbody -->
 	
-	</div>
 	<!-- JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom -->
 
 	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>

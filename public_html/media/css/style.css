@@ -796,8 +796,8 @@ span.player_count_low   { color: #1c8300; }
 span.player_count_high  { color: #bec022; }
 span.player_count_full  { color: #e91212; }
 
-section.event_data { display: none;}
-ul.header {cursor: pointer;}
+section.event_data { display: none; }
+ul.header { cursor: pointer; }
 
 /* START Tab styles
 =============== */
@@ -817,6 +817,10 @@ ul.header {cursor: pointer;}
 	-webkit-border-radius: 0px;
 	border-radius: 0px;
 	border-color: #d1d1d1;
+}
+
+#tabs.ui-widget {
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 
 #tabs .ui-state-default {
@@ -842,6 +846,7 @@ ul.header {cursor: pointer;}
 
 #tabs .ui-tabs-panel {
 	padding: 10px 7px;
+	font-family: Arial, Helvetica, sans-serif;
 
 	border: 1px solid rgba(199,199,199,0.8);
 	border-top: none;
@@ -861,55 +866,63 @@ ul.header {cursor: pointer;}
 	);
 }
 
-#attendees.ui-tabs-panel li,
-#standby.ui-tabs-panel li {
+#tabs .ui-tabs-panel li {
 	font-size: 0.7em;
 	color: #a9a9a9;
 }
 
-#attendees.ui-tabs-panel li div.player,
-#standby.ui-tabs-panel li div.player {
-	padding: 9px 10px;
-	border-radius: 5px;
-	background-color: #ececec;
+#tabs .ui-tabs-panel li div.player {
+	padding: 5px 10px;
 	color: #393939;
 }
 
-#attendees.ui-tabs-panel li div.player span.name,
-#standby.ui-tabs-panel li div.player span.name {
-	position:absolute; top: 1em; padding-left: 1em;
-	width: 130px; height: 1.2em;
+/* Alternating backgrounds */
+#tabs .ui-tabs-panel li:nth-child(odd) div.player {
+	background-color: #ececec;
+	border-radius: 5px;
+}
+
+/* Centering profession icon */
+#tabs .ui-tabs-panel li div.player > img {
+	position: absolute; 
+	top: 50%; margin-top: -10px;
+}
+
+#tabs .ui-tabs-panel li div.role {
+	display: inline-block;
+	margin-left: 30px;
+	width: 140px; height: 2.4em;
 	overflow: hidden;
+	word-wrap: break-word;		/* break long names up */
+}
+
+#tabs .ui-tabs-panel li div.role span.name {
+	color: #a9a9a9;
+	display: block;
 }
 
 /* Comment icon */
-#attendees.ui-tabs-panel li div.player a,
-#standby.ui-tabs-panel li div.player a {
-	float: right;
-	width: 16px; height: 16px;
-	padding: 0;
-	
-	background-image: url(../img/comment_icon.png);
-	color: rgba(0,0,0,0);
+#tabs .ui-tabs-panel li div.player a {
+	position: absolute;
+	top: 50%; margin-top: -8px;
+	float: right; right: 10px;
+	cursor: default;
 }
 
 /* User comment styles */
-#attendees.ui-tabs-panel ul ul,
-#standby.ui-tabs-panel ul ul {
+#tabs .ui-tabs-panel ul ul {
 	position: absolute;
 	left: -9999px;
 	list-style: none;
 }
 
-#attendees.ui-tabs-panel li div:hover ul,
-#standby.ui-tabs-panel li div:hover ul {
+#tabs .ui-tabs-panel li div:hover ul {
 	z-index: 5;		/* put the comment on top of the event description */
 	top: -4px;
-	left: 175px;
+	left: 222px;
 }
 
-#attendees.ui-tabs-panel li div ul li,
-#standby.ui-tabs-panel li div ul li {
+#tabs .ui-tabs-panel li div ul li {
 	position: absolute;
 	padding: 0;
 	width: 202px;
@@ -918,8 +931,7 @@ ul.header {cursor: pointer;}
 	background-position: top left;
 }
 
-#attendees.ui-tabs-panel li div.comment,
-#standby.ui-tabs-panel li div.comment {
+#tabs .ui-tabs-panel li div.comment {
 	height: 54px;
 	padding: 5px 10px 0 15px;
 	
@@ -928,15 +940,11 @@ ul.header {cursor: pointer;}
 	color: white;
 }
 
-#attendees.ui-tabs-panel li div.role,
-#standby.ui-tabs-panel li div.role {
-	padding: 9px 10px;
-}
-
 /* Signup / Withdraw link styles */
-#attendees.ui-tabs-panel a:link, #attendees.ui-tabs-panel a:visited,
-#standby.ui-tabs-panel a:link, #standby.ui-tabs-panel a:visited {
+#tabs .ui-tabs-panel > a:link, 
+#tabs .ui-tabs-panel > a:visited {
 	display: block;
+	margin-top: 5px;
 	padding: 5px 0;
 
 	text-decoration: none;
@@ -949,13 +957,13 @@ ul.header {cursor: pointer;}
 	border-radius: 5px;
 }
 
-#attendees.ui-tabs-panel a:hover, #attendees.ui-tabs-panel a:active,
-#standby.ui-tabs-panel a:hover, #standby.ui-tabs-panel a:active {
+#tabs .ui-tabs-panel > a:hover, 
+#tabs .ui-tabs-panel > a:active {
 	color: #a49898;
 }
 
-#attendees.ui-tabs-panel a.withdraw:hover, #attendees.ui-tabs-panel a.withdraw:active,
-#standby.ui-tabs-panel a.withdraw:hover, #standby.ui-tabs-panel a.withdraw:active {
+#tabs .ui-tabs-panel > a.withdraw:hover, 
+#tabs .ui-tabs-panel > a.withdraw:active {
 	color: red;
 }
 /* ===========
@@ -1107,8 +1115,10 @@ fieldset textarea {
 	display: block;
 	margin: 10px 0;
 	
-	width: 237px;			/* reduced width due to border */
-	height: 4em;
+	/*width: 237px;			/* reduced width due to border */
+	width: 500px;
+	height: 12em;
+	font-size: 0.8em;
 	
 	border: solid 1px #b2b2b2;
 }

@@ -13,13 +13,12 @@
 						</li>
 					</ul> <!-- end dropdown -->
 				</div>
-
-				{{#filter_message}}<p>{{filter_message}}</p>{{/filter_message}}
-				<!-- <p>All events are displayed in the timezone set in your profile.</p> -->
+				<p>Please be online 15 minutes prior to start time to allow for easy group formation and preparation.</p>
 				
 				<ul id="event_list">
 {{#events}}
-					<li class="event_collapsed clickable" data-url="{{details_link}}">
+					<li class="event_collapsed clickable" data-url="{{details_link}}" id="{{id}}">
+						<a name="{{id}}"></a>
 						<ul class="header">
 							<li class="event_title">
 								<div>

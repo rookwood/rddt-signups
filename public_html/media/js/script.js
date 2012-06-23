@@ -74,4 +74,12 @@ $(document).ready(function() {
 		window.open(this.value, '_self');
 	});
 	
+	// Dealing with named anchors on event list page
+	if (window.location.hash != '')
+	{
+		var event_number = window.location.hash;
+		
+		$(event_number).click();
+	}
+	
 });

@@ -41,6 +41,7 @@ class View_Page_Event_Index extends Abstract_View_Page {
 				'player_count'  => $player_count,
 				'player_total'  => $player_total,
 				'signup_status' => $this->player_count_status($player_count, $player_total),
+				'id'            => $event->id,
 			);
 		}
 		

@@ -57,6 +57,7 @@
 								<p>{{description}}</p>
 								{{#url}}<a class="build" href="{{url}}" target="_blank" title="Link to more information about {{build}}">Build: {{build}}</a>{{/url}}
 								{{^url}}<a class="build_disabled" title="No additional information for {{build}}">Build: {{build}}</a>{{/url}}
+								<a href="{{event_link}}" class="edit_event">Link to this event</a>
 {{/event}}
 								{{#edit_event}}<a class="edit_event" href="{{edit_event}}">Edit event</a>{{/edit_event}}
 								{{#remove_event}}<a class="cancel_event" href="{{remove_event}}">Cancel event</a>{{/remove_event}}

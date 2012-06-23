@@ -49,17 +49,18 @@ class View_Page_Event_Display extends Abstract_View_Page {
 		$host = ORM::factory('character', $event->character_id);
 		
 		return array(
-			'dungeon'	=> $event->dungeon->name,
+			'dungeon'      => $event->dungeon->name,
 			'host'         => $host->user->username,
 			'hostas'       => $host->name,
-			'date'		=> date('F d, Y', $local_start_time),
-			'time'		=> date('g:i A T', $local_start_time),
-			'time_full'	=> date('c', $local_start_time),
+			'date'         => date('F d, Y', $local_start_time),
+			'time'         => date('g:i A T', $local_start_time),
+			'time_full'    => date('c', $local_start_time),
 			'build'        => $event->build->name,
 			'url'          => $event->build->url,
-			'title'		=> $event->title,
+			'title'        => $event->title,
 			'description'  => $event->description,
 			'status'       => $event->status->name,
+			'event_link'   => Route::url('event').'#'.$event->id,
 		);
 	}
 	

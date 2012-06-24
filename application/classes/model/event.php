@@ -92,14 +92,12 @@ class Model_Event extends ORM {
 				$events = ORM::factory('event')
 					->where('time', '>', time() - Date::HOUR)
 					->and_where('status_id', '!=', Model_Status::CANCELLED)
-					->and_where('dungeon_id', '=', $id)
-					->order_by('status_id', 'ASC')
-					->order_by('time', 'ASC')
+					->order_by('dungeon_id', 'ASC')
 					->find_all();
 			break;
 			
 			// Show all events 
-			case 'current':
+			case 'time':
 			// same as current
 			default:
 				$events = ORM::factory('event')

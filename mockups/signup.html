@@ -23,79 +23,84 @@
 	<div id="realbody">
 	
 		<div class="container">
-			<header class="masthead">
-				<h1>Reddit Guild Wars 1</h1>
-				<h2>Event Information</h2>
-			</header><!-- end masthead -->
-			<nav>
-				<ul>
-					<li>
-						<a>My Account &nbsp; <img src="media/img/dropdown_arrow.png"></a>
-						<ul>
-							<li><a href="#">Edit Profile</a></li>
-							<li><a href="#">Characters</a></li>
-							<li><a href="#">My Events</a></li>
-							<li><a href="#">Logout</a></li>
-						</ul>
-					</li>
-					<li>
-						<a href="#">Events</a>
-					</li>
-					<li>
-						<a href="#">Builds</a>
-					</li>
-					<li>
-						<a href="#">Dungeons</a>
-					</li>
-					<li>
-						<a href="#" class="logout">Logout</a>
-					</li>
-				</ul>
-			</nav>
-
-			<div id="event_signup">
-				<form action="#" method="post" id="event_signup">
-					<fieldset>
-						<legend>Event Signup</legend>
-						<ul>
-							<li>
-								<label for="character">Attend as:</label>
-								<select name="event[character]" id="character">
-									<option class="ritualist" value="Rookwood Shuffles">Rookwood Shuffles</option>
-									<option class="assassin" value="Rookwood Sin">Rookwood Sin</option>
-								</select>
-							</li>
-							<li>
-								<label for="slot">Role:</label>
-								<select name="event[slot]" id="slot">
-									<option value="dwg">DWG</option>
-									<option value="imba">Imba</option>
-								</select>
-							</li>
-							<li>
-								<label for="comments">Comments:</label>
-								<textarea name="event[comment]" id="comments"></textarea>
-							</li>
-							<li>
-								<fieldset class="status">
-									<legend>Status</legend>
-									<label for="status_ready">Ready</label>
-									<input type="radio" name="event[status]" id="status_ready" value="ready" checked="checked" />
-									<label for="status_standby">Stand-by</label>
-									<input type="radio" name="event[status]" id="status_standby" value="stand-by (voluntary)" />
-								</fieldset>					
-							</li>
-							<li class="button">
-								<input type="hidden" name="csrf" value="a44142424de528abb43de44f097556d10c48310d" />
-								<input type="submit" value="Sign up" />
-							</li>
-						</ul>
-					</fieldset>
-				</form>
-			</div> <!-- end event signup -->
-
-			</section><!-- end event list -->
-			
+			<div class="container_r1">
+				<header class="masthead">
+					<img class="banner" src="media/img/banner.png">
+					<h1>Reddit Guild Wars 1</h1>
+					<h2>Event Information</h2>
+				</header><!-- end masthead -->
+			</div>
+			<div class="container_r2">
+				<nav>
+					<ul>
+						<li>
+							<a>My Account &nbsp; <img src="media/img/dropdown_arrow.png"></a>
+							<ul>
+								<li><a href="#">Edit Profile</a></li>
+								<li><a href="#">Characters</a></li>
+								<li><a href="#">My Events</a></li>
+								<li><a href="#">Logout</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">Events</a>
+						</li>
+						<li>
+							<a href="#">Builds</a>
+						</li>
+						<li>
+							<a href="#">Dungeons</a>
+						</li>
+						<li>
+							<a href="#" class="logout">Logout</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<div class="container_r3">
+				<section>
+					<div id="event_signup">
+						<form action="#" method="post" id="event_signup">
+							<fieldset>
+								<legend>Event Signup</legend>
+								<ul>
+									<li>
+										<label for="character">Attend as:</label>
+										<select name="event[character]" id="character">
+											<option class="ritualist" value="Rookwood Shuffles">Rookwood Shuffles</option>
+											<option class="assassin" value="Rookwood Sin">Rookwood Sin</option>
+										</select>
+									</li>
+									<li>
+										<label for="slot">Role:</label>
+										<select name="event[slot]" id="slot">
+											<option value="dwg">DWG</option>
+											<option value="imba">Imba</option>
+										</select>
+									</li>
+									<li>
+										<label for="comments">Comments:</label>
+										<textarea name="event[comment]" id="comments"></textarea>
+									</li>
+									<li>
+										<fieldset class="status">
+											<legend>Status</legend>
+											<label for="status_ready">Ready</label>
+											<input type="radio" name="event[status]" id="status_ready" value="ready" checked="checked" />
+											<label for="status_standby">Stand-by</label>
+											<input type="radio" name="event[status]" id="status_standby" value="stand-by (voluntary)" />
+										</fieldset>					
+									</li>
+									<li class="button">
+										<input type="hidden" name="csrf" value="a44142424de528abb43de44f097556d10c48310d" />
+										<input type="submit" value="Sign up" />
+									</li>
+								</ul>
+							</fieldset>
+						</form>
+					</div> <!-- end event signup -->
+				</section>
+			</div> <!-- end content -->
 		</div><!-- end container-->
 	
 	</div> <!-- end realbody -->

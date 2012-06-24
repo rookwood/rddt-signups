@@ -240,7 +240,7 @@ body {
 	position: relative;
 	margin: 0 auto;
 	width: 756px;
-	height: 100%;
+	height: 101%;
 	
 	text-align: left;
 	/* background-color: blue; */
@@ -265,6 +265,7 @@ body {
 
 /* Banner positioning */
 .masthead {
+	padding-top: 10px;
 	height: 90px;
 }
 
@@ -403,6 +404,7 @@ section ul#filter {
 	clear: both;
 	padding: 0; margin: 0 auto;
 	width: 724px;
+	text-transform: capitalize;
 }
 
 section ul#filter li {
@@ -524,7 +526,8 @@ section#events ul {
 
 /* Header background */
 section#builds ul li, section#character_list ul li, 
-section#dungeons ul li, section#slot_list ul li {
+section#dungeons ul li, section#slot_list ul li,
+section#events ul li.no_events {
 	position: relative;
 	margin: 0 10px 8px;
 
@@ -674,10 +677,13 @@ section#events ul li {
 	position: relative;			/* positioning for event detail elements */
 }
 
-/* Closed events */
-section#events ul li.event_collapsed {
+ul#event_list > li {
 	margin: 0 10px;
 	width: 733px;				/* width reduced for border */
+}
+
+/* Closed events */
+section#events ul li.event_collapsed {
 	height: 98px;				/* height reduced for border */
 	
 	border: 1px solid rgba(199,199,199,0.8);
@@ -702,8 +708,6 @@ section#events ul li.event_collapsed {
 /* Opened events */
 section#events ul li.event_expanded {
 	float: left;					/* float for all exanded event elements */
-	margin: 0 10px;
-	width: 733px;				/* width reduced for border */
 	
 	border: 1px solid rgba(199,199,199,0.8);
  	background-image: url(../img/event_up_arrow.png), linear-gradient(bottom, rgb(236,236,236) 0%, rgb(255,255,255) 100%);
@@ -787,10 +791,13 @@ section#events ul li.event_time div {
 }
 
 /* Player count colors */
-section#events ul li.event_numbers span.player_count_empty {	color: #717171; }
-section#events ul li.event_numbers span.player_count_low {		color: #1c8300;	}
-section#events ul li.event_numbers span.player_count_high {		color: #bec022;	}
-section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
+span.player_count_empty { color: #717171; }
+span.player_count_low   { color: #1c8300; }
+span.player_count_high  { color: #bec022; }
+span.player_count_full  { color: #e91212; }
+
+section.event_data { display: none; }
+ul.header { cursor: pointer; }
 
 /* START Tab styles
 =============== */
@@ -810,6 +817,10 @@ section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
 	-webkit-border-radius: 0px;
 	border-radius: 0px;
 	border-color: #d1d1d1;
+}
+
+#tabs.ui-widget {
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 
 #tabs .ui-state-default {
@@ -835,6 +846,7 @@ section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
 
 #tabs .ui-tabs-panel {
 	padding: 10px 7px;
+	font-family: Arial, Helvetica, sans-serif;
 
 	border: 1px solid rgba(199,199,199,0.8);
 	border-top: none;
@@ -854,55 +866,63 @@ section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
 	);
 }
 
-#attendees.ui-tabs-panel li,
-#standby.ui-tabs-panel li {
+#tabs .ui-tabs-panel li {
 	font-size: 0.7em;
 	color: #a9a9a9;
 }
 
-#attendees.ui-tabs-panel li div.player,
-#standby.ui-tabs-panel li div.player {
-	padding: 9px 10px;
-	border-radius: 5px;
-	background-color: #ececec;
+#tabs .ui-tabs-panel li div.player {
+	padding: 5px 10px;
 	color: #393939;
 }
 
-#attendees.ui-tabs-panel li div.player span.name,
-#standby.ui-tabs-panel li div.player span.name {
-	position:absolute; top: 1em; padding-left: 1em;
-	width: 130px; height: 1em;
+/* Alternating backgrounds */
+#tabs .ui-tabs-panel li:nth-child(odd) div.player {
+	background-color: #ececec;
+	border-radius: 5px;
+}
+
+/* Centering profession icon */
+#tabs .ui-tabs-panel li div.player > img {
+	position: absolute; 
+	top: 50%; margin-top: -10px;
+}
+
+#tabs .ui-tabs-panel li div.role {
+	display: inline-block;
+	margin-left: 30px;
+	width: 140px; height: 2.4em;
 	overflow: hidden;
+	word-wrap: break-word;		/* break long names up */
+}
+
+#tabs .ui-tabs-panel li div.role span.name {
+	color: #a9a9a9;
+	display: block;
 }
 
 /* Comment icon */
-#attendees.ui-tabs-panel li div.player a,
-#standby.ui-tabs-panel li div.player a {
-	float: right;
-	width: 16px; height: 16px;
-	padding: 0;
-	
-	background-image: url(../img/comment_icon.png);
-	color: rgba(0,0,0,0);
+#tabs .ui-tabs-panel li div.player a {
+	position: absolute;
+	top: 50%; margin-top: -8px;
+	float: right; right: 10px;
+	cursor: default;
 }
 
 /* User comment styles */
-#attendees.ui-tabs-panel ul ul,
-#standby.ui-tabs-panel ul ul {
+#tabs .ui-tabs-panel ul ul {
 	position: absolute;
 	left: -9999px;
 	list-style: none;
 }
 
-#attendees.ui-tabs-panel li div:hover ul,
-#standby.ui-tabs-panel li div:hover ul {
+#tabs .ui-tabs-panel li div:hover ul {
 	z-index: 5;		/* put the comment on top of the event description */
 	top: -4px;
-	left: 175px;
+	left: 222px;
 }
 
-#attendees.ui-tabs-panel li div ul li,
-#standby.ui-tabs-panel li div ul li {
+#tabs .ui-tabs-panel li div ul li {
 	position: absolute;
 	padding: 0;
 	width: 202px;
@@ -911,24 +931,20 @@ section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
 	background-position: top left;
 }
 
-#attendees.ui-tabs-panel li div.comment,
-#standby.ui-tabs-panel li div.comment {
+#tabs .ui-tabs-panel li div.comment {
 	height: 54px;
 	padding: 5px 10px 0 15px;
 	
 	overflow: hidden;			/* cut off long comments */
+	word-wrap: break-word;		/* break long urls in comments */
 	color: white;
 }
 
-#attendees.ui-tabs-panel li div.role,
-#standby.ui-tabs-panel li div.role {
-	padding: 9px 10px;
-}
-
 /* Signup / Withdraw link styles */
-#attendees.ui-tabs-panel a:link, #attendees.ui-tabs-panel a:visited,
-#standby.ui-tabs-panel a:link, #standby.ui-tabs-panel a:visited {
+#tabs .ui-tabs-panel > a:link, 
+#tabs .ui-tabs-panel > a:visited {
 	display: block;
+	margin-top: 5px;
 	padding: 5px 0;
 
 	text-decoration: none;
@@ -941,13 +957,13 @@ section#events ul li.event_numbers span.player_count_full {		color: #e91212;	}
 	border-radius: 5px;
 }
 
-#attendees.ui-tabs-panel a:hover, #attendees.ui-tabs-panel a:active,
-#standby.ui-tabs-panel a:hover, #standby.ui-tabs-panel a:active {
+#tabs .ui-tabs-panel > a:hover, 
+#tabs .ui-tabs-panel > a:active {
 	color: #a49898;
 }
 
-#attendees.ui-tabs-panel a.withdraw:hover, #attendees.ui-tabs-panel a.withdraw:active,
-#standby.ui-tabs-panel a.withdraw:hover, #standby.ui-tabs-panel a.withdraw:active {
+#tabs .ui-tabs-panel > a.withdraw:hover, 
+#tabs .ui-tabs-panel > a.withdraw:active {
 	color: red;
 }
 /* ===========
@@ -969,6 +985,7 @@ div#event_description p {
 	margin: 0;
 	padding-bottom: 10px;
 	font-size: 0.8em;
+	word-wrap: break-word;		/* break long urls in description */
 }
 
 /* Additional build/edit/cancel event links */
